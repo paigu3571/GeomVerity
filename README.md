@@ -14,10 +14,11 @@ GeomVerity将CAD图元转为带来源引用的工程对象。确定性几何算�
 
 ## 演示画面
 
-![识别前后](docs/images/recognition.jpg)
-![删门风险](docs/images/door-risk.jpg)
-![灯具证据](docs/images/lamp-evidence.jpg)
-![真实查看器操作片段](docs/images/demo.gif)
+|工程对象|删门风险|灯具证据|
+|---|---|---|
+|[![识别后](docs/images/recognition.jpg)](docs/images/recognition.jpg)|[![风险卡](docs/images/door-risk.jpg)](docs/images/door-risk.jpg)|[![证据卡](docs/images/lamp-evidence.jpg)](docs/images/lamp-evidence.jpg)|
+
+<img src="docs/images/demo.gif" width="600" alt="真实查看器画面：识别前后、风险与证据，10秒循环" />
 
 ## 快速开始
 
