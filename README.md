@@ -56,6 +56,8 @@ python -m cst.demo
 | 可追溯决策 | 输入、规则、模型与人工确认记录；证据包哈希核验 | [证据包验收](docs/acceptance/evidence.md) |
 | SDK/MCP | SDK核心调用与七个只读MCP工具 | [接口验收](docs/acceptance/interfaces.md) |
 
+两名工程师单次对照：传统人工组40分钟发现5/8；工具组含约5分钟扫描，总计约10分钟发现8/8。[人工与工具计时](eval/human_vs_tool.md)。
+
 实际模型返回112个去重房名。原关键词未覆盖的46种名称中，模型为42种提出可审核类别，4种保留UNKNOWN；原关键词未覆盖的46种中，工程师审核后启用45种（包含人工修正）。工程师已审核63项：43项采纳、20项修改；56项启用，采光天井及6项上空名称暂缓启用。修改后的类别不算模型直接判断正确。49种人工名称的35/49一致对照保留在详细评测中。[样本与不一致明细](eval/llm_naming.md)。
 
 首次冻结的8项改图对照为6项对应、1项部分、1项不一致；人工记录房名笔误更正后为7项对应、1项部分。
@@ -96,3 +98,5 @@ python -m unittest discover -s python/tests -v
 著作权人、原作者及维护者：张田。其他贡献者和第三方保留各自权利。自有代码使用[MPL-2.0](LICENSE)，依赖见[NOTICE](NOTICE)。[维护](docs/guides/maintenance.md) · [路线图](docs/architecture/roadmap.md) · [安全报告](SECURITY.md) · [治理角色](GOVERNANCE.md)。
 
 GeomVerity combines deterministic geometry processing, constrained LLM proposals, engineering rules and traceable decision records. It supports CAD snapshot analysis, version comparison and auditable engineering assistance.
+
+当前交付为[v0.3.1](https://github.com/paigu3571/GeomVerity/releases/tag/v0.3.1)。[正式协作通知](https://paigu3571.github.io/GeomVerity/notice.html)提供风险分组、版本时间与每句来源。

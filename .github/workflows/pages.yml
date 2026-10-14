@@ -25,6 +25,7 @@ jobs:
           mkdir -p dist/pages
           cp dist/demo/changes/semantic_view.html dist/pages/index.html
           cp dist/demo/notifications/notice.md dist/pages/notice.md
+          cp dist/demo/notifications/notice.html dist/pages/notice.html
           wc -c dist/pages/*
       - uses: actions/upload-pages-artifact@v3
         with:

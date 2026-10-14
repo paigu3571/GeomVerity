@@ -1,0 +1,104 @@
+{
+  "origin": "REAL_JSON",
+  "sample": "A-change",
+  "room_count": 5,
+  "lamp_count": 5,
+  "cad_window_reselected": false,
+  "rows": [
+    {
+      "kind": "room",
+      "name": "水泵房",
+      "space_id": "sem_2f25fd74d54597b52d6a21c4",
+      "text_handle": "51970",
+      "outer_block_handle": "25507",
+      "reference_wall_handle": "599DC",
+      "result": "导出CAD对象引用一致"
+    },
+    {
+      "kind": "room",
+      "name": "2#公变配电房",
+      "space_id": "sem_719e9bb0e246005243d58f5d",
+      "text_handle": "51631",
+      "outer_block_handle": "25507",
+      "reference_wall_handle": "599DC",
+      "result": "导出CAD对象引用一致"
+    },
+    {
+      "kind": "room",
+      "name": "预留充电桩配电房",
+      "space_id": "sem_455c4e2eeefbca7907a8a77f",
+      "text_handle": "5162F",
+      "outer_block_handle": "25507",
+      "reference_wall_handle": "59AA5",
+      "result": "导出CAD对象引用一致"
+    },
+    {
+      "kind": "room",
+      "name": "专变配电房",
+      "space_id": "sem_c55cb6084edd7d0638572646",
+      "text_handle": "51616",
+      "outer_block_handle": "25507",
+      "reference_wall_handle": "59554",
+      "result": "导出CAD对象引用一致"
+    },
+    {
+      "kind": "room",
+      "name": "商业配电房",
+      "space_id": "sem_f00d3bd48ed659303d810bb3",
+      "text_handle": "51665",
+      "outer_block_handle": "25507",
+      "reference_wall_handle": "59489",
+      "result": "导出CAD对象引用一致"
+    },
+    {
+      "kind": "lamp",
+      "name": "变配电室",
+      "lamp_id": "light_91d6ee36a3f6707224b3f563",
+      "space_id": "sem_052598fca5b2ea4a8add8e7b",
+      "text_handle": "62478",
+      "wall_handle": "5129D",
+      "wall_anchor_distance_mm": 8e-05,
+      "result": "房间归属/墙来源/墙面位置一致"
+    },
+    {
+      "kind": "lamp",
+      "name": "预留充电桩配电房",
+      "lamp_id": "light_4f4adf5d146233edc5a849cd",
+      "space_id": "sem_455c4e2eeefbca7907a8a77f",
+      "text_handle": "5162F",
+      "wall_handle": "59536",
+      "wall_anchor_distance_mm": 0.00064,
+      "result": "房间归属/墙来源/墙面位置一致"
+    },
+    {
+      "kind": "lamp",
+      "name": "2#公变配电房",
+      "lamp_id": "light_c32f6a4cc0bc76eb7f6ce25e",
+      "space_id": "sem_719e9bb0e246005243d58f5d",
+      "text_handle": "51631",
+      "wall_handle": "59A5C",
+      "wall_anchor_distance_mm": 0.00031,
+      "result": "房间归属/墙来源/墙面位置一致"
+    },
+    {
+      "kind": "lamp",
+      "name": "专变配电房",
+      "lamp_id": "light_5618eef4423db7cb67087a73",
+      "space_id": "sem_c55cb6084edd7d0638572646",
+      "text_handle": "51616",
+      "wall_handle": "595A0",
+      "wall_anchor_distance_mm": 9e-05,
+      "result": "房间归属/墙来源/墙面位置一致"
+    },
+    {
+      "kind": "lamp",
+      "name": "3#公变配电房",
+      "lamp_id": "light_8b8230b6dbbc66db3cb3219f",
+      "space_id": "sem_df42c54a0c9a6a8e53f29165",
+      "text_handle": "51623",
+      "wall_handle": "5959C",
+      "wall_anchor_distance_mm": 0.00029,
+      "result": "房间归属/墙来源/墙面位置一致"
+    }
+  ]
+}

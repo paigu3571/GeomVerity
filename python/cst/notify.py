@@ -116,5 +116,80 @@ def notify(old,new,replay=False,output='dist/notify',registry='versions.yaml',ch
             before=(change['old'] or {}).get('name');after=(change['new'] or {}).get('name')
             description='房名：'+str(before)+' → '+str(after) if before and after and before!=after else fact['change_type']
             paragraphs += ['## '+('优先核对：' if item['rank']<=1 else '')+fact['name'], '', '旧版：'+versions['version_old']['version']+'；扫描：'+display_time(versions['version_old']['scanned_at'])+'；Handle：'+str(fact['old_handle'] or '无旧对象'), '新版：'+versions['version_new']['version']+'；扫描：'+display_time(versions['version_new']['scanned_at'])+'；Handle：'+str(fact['new_handle'] or '无新对象'), '', '变化：'+description, *([item['risk'][0]['text']] if item['risk'] else []), claim['text'], '']
-    (output/'notice.md').write_text('\n'.join(paragraphs)+'\n',encoding='utf-8')
+    presentation=render_notice(delta,notice_items,answer,validation,versions,tools.objects,output)
+    (output/'notice.json').write_text(json.dumps({'answer':answer,'validation':validation,'cache_id':token,'sign_off_state':'待工程师签字','sent':False,'change_id_bindings':change_id_bindings,'presentation':presentation},ensure_ascii=False,indent=2),encoding='utf-8')
     return {'valid':validation['valid'],'errors':validation['errors'],'cache_id':token,'network_used':not replay,'output':output.as_posix(),'sent':False}
+
+
+def is_recognition_fluctuation(change):
+    basis=change.get('basis','')
+    return basis.startswith('派生围合差异') or (basis.startswith('房名文字仍在') and not change.get('related_source_changes'))
+
+
+def render_notice(delta,items,answer,validation,versions,objects,output):
+    """同一结构生成Markdown和正式离线HTML；模型原缓存单独保留。"""
+    from html import escape
+    from shapely.geometry import Polygon
+    claims={next((i for i in c.get('object_ids',[]) if i.startswith('change_')),None):c for c in answer.get('claims',[])}
+    changes={c['id']:c for c in delta['changes']};groups={'优先处理':[],'需复核':[],'仅记录':[]}
+    for item in items:
+        c=changes[item['id']];ref=c['new'] or c['old'];fluctuation=is_recognition_fluctuation(c)
+        group='仅记录' if fluctuation else '优先处理' if item['rank']<=1 else '需复核' if item['rank']==2 or c.get('related_source_changes') else '仅记录'
+        geometry=c.get('new_geometry') or c.get('old_geometry') or {};paths=geometry.get('paths',[])
+        area=None;position=None
+        if paths:
+            polygon=Polygon([(p['x'],p['y']) for p in paths[0]])
+            if polygon.is_valid:
+                area=polygon.area/1e6;q=polygon.representative_point();position=[round(q.x,1),round(q.y,1)]
+        obj=objects.get((c['new'] or {}).get('id'))
+        labels=[e.source_handle for e in obj.evidence if e.kind=='spatial_text'] if obj else []
+        location={'space_id':ref['id'],'room_text_handles':labels,'geometry_reference_handle':ref['handle'],'area_m2':area,'position_wcs_mm':position}
+        sentences=[]
+        def template(text):sentences.append({'text':text,'source':'模板','validation':'源快照核对通过','evidence_refs':[c['id'],'version_old','version_new']})
+        template(ref['name']+(f'，面积{area:.1f}㎡' if area is not None else '')+(f'，位置WCS({position[0]:.1f}, {position[1]:.1f})mm' if position else '')+'；房名文字Handle：'+('、'.join(labels) or '未取得')+'。')
+        if fluctuation:
+            template('程序识别波动，无需处理建筑修改；仅记录围合提取差异，原图修改未获证实。')
+        else:
+            before=(c['old'] or {}).get('name');after=(c['new'] or {}).get('name')
+            template('变化：'+(f'{before} → {after}' if before and after and before!=after else '、'.join(k for k in c['kinds'] if k!='来源对象变化'))+'。')
+            if item['risk']:template(item['risk'][0]['title'])
+            claim=claims.get(item['id'])
+            if claim and validation['valid']:sentences.append({'text':claim['text'],'source':'模型','validation':'引用校验通过','evidence_refs':claim['object_ids']})
+            elif claim:template('模型草案引用校验未通过，未采用其文字。')
+        sentences=[dict(sentence,text=part.strip()) for sentence in sentences for part in re.split(r'(?<=[。！？])',sentence['text']) if part.strip()]
+        groups[group].append({'id':c['id'],'name':ref['name'],'location':location,'fluctuation':fluctuation,'sentences':sentences})
+    # 房间轮廓未变但门窗变化时，仍从实际源对象变化补一条模板协作项。
+    covered={r['location']['space_id'] for rows in groups.values() for r in rows if not r['fluctuation']}
+    door_rooms={}
+    for c in delta['changes']:
+        if (c.get('new') or c.get('old') or {}).get('type') not in ('opening','door','window'):continue
+        for room in c.get('impact',{}).get('rooms',[]):
+            if room['side']!='new' or room['id'] in covered:continue
+            door_rooms.setdefault(room['id'],{'room':room,'changes':[]})['changes'].append(c)
+    for rid,row in door_rooms.items():
+        obj=objects.get(rid)
+        if obj is None:continue
+        c=row['changes'][0];labels=[e.source_handle for e in obj.evidence if e.kind=='spatial_text']
+        polygon=Polygon([(p.x,p.y) for p in obj.geometry.paths[0]]) if obj.geometry.paths else None
+        area=polygon.area/1e6 if polygon is not None and polygon.is_valid else None
+        position=[round(polygon.representative_point().x,1),round(polygon.representative_point().y,1)] if area is not None else None
+        text=obj.raw_label+(f'（面积{area:.1f}㎡，位置WCS{position}mm）' if area is not None else '')+'的关联门窗源对象发生变化，请核对门位、有效出入口和相关灯具布置。'
+        groups['需复核'].append({'id':c['id'],'name':obj.raw_label,'location':{'space_id':rid,'room_text_handles':labels,'area_m2':area,'position_wcs_mm':position},'fluctuation':False,'sentences':[{'text':text,'source':'模板','validation':'源对象引用核对通过','evidence_refs':[v['id'] for v in row['changes']]}]})
+    summary=f"本次{len(groups['优先处理'])}项优先处理、{len(groups['需复核'])}项需复核、{len(groups['仅记录'])}项仅记录。"
+    local_time=lambda value:datetime.fromisoformat(value.replace('Z','+00:00')).astimezone(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S 北京时间')
+    versions_text='旧版 '+versions['version_old']['version']+'（扫描 '+local_time(versions['version_old']['scanned_at'])+'） → 新版 '+versions['version_new']['version']+'（扫描 '+local_time(versions['version_new']['scanned_at'])+'）；时间只对应版本。'
+    md=['# 致电气专业：提资变更通知','',summary+'【模板｜源快照核对通过】','',versions_text+'【模板｜版本登记核对通过】','', '待工程师签字；未发送。【模板｜状态字段核对通过】','']
+    sections=[]
+    for title,rows in groups.items():
+        md+=['## '+title,''];cards=[]
+        for row in rows:
+            md+=['### '+row['name'],'']
+            body=[]
+            for sentence in row['sentences']:
+                badge=sentence['source']+'｜'+sentence['validation'];md+=[sentence['text']+'【'+badge+'】','']
+                body.append('<p>'+escape(sentence['text'])+'<small>'+escape(badge)+'</small></p>')
+            cards.append('<article><h3>'+escape(row['name'])+'</h3>'+''.join(body)+'<details><summary>开发者 / AI：对象与引用</summary><pre>'+escape(json.dumps(row,ensure_ascii=False,indent=2))+'</pre></details></article>')
+        sections.append('<section><h2>'+title+' · '+str(len(rows))+'项</h2>'+(''.join(cards) or '<p>本组无事项。</p>')+'</section>')
+    html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>提资变更通知</title><style>body{font:16px/1.75 "Microsoft YaHei",sans-serif;background:#f3f7fa;color:#183949;margin:0}main{max-width:1080px;margin:24px auto;padding:24px}header{border-top:6px solid #147b80;background:white;padding:24px}h1{font-size:27px}h2{color:#147b80}article{background:white;border-left:4px solid #d8e6ed;padding:12px 22px;margin:16px 0}section:first-of-type article{border-left-color:#e98528}small{display:block;color:#627888;font-size:12px}pre{white-space:pre-wrap;font-size:12px}details{font-size:12px}p{margin:9px 0}</style><main><header><h1>致电气专业：提资变更通知</h1><p><b>'+summary+'</b><small>模板｜源快照核对通过</small></p><p>'+escape(versions_text)+'<small>模板｜版本登记核对通过</small></p><p>待工程师签字；未发送。<small>模板｜状态字段核对通过</small></p></header>'+''.join(sections)+'</main></html>'
+    output=Path(output);(output/'notice.md').write_text('\n'.join(md)+'\n',encoding='utf-8');(output/'notice.html').write_text(html,encoding='utf-8')
+    return {'summary':summary,'groups':groups,'model_validation':validation,'version_times':versions}

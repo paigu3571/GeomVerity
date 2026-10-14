@@ -17,6 +17,8 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
     directory=Path(directory);data=load(directory);l2=load(directory,L2);l1=load(directory,L1)
     if data.drawing.geometry_units!='mm':raise ValueError('查看器当前支持毫米WCS数据，请先核对单位')
     facts={f.geometry_id:f for f in l2.facts};primitives={p.primitive_id:p for p in l1.primitives}
+    from .references import ReferenceIndex
+    reference_index=ReferenceIndex(l1,l2)
     classes={r['object_id']:r for r in (json.loads((directory/'classifications.json').read_bytes()) if (directory/'bundle-manifest.json').is_file() else classify(directory))['rows']};results=json.loads((directory/'findings.json').read_bytes()) if (directory/'bundle-manifest.json').is_file() else check(directory)
     for f in results['findings']:
         if f['engineer_reviewed']['record_file']:f['engineer_reviewed']['record_file']='l4_confirmations.yaml'
@@ -65,6 +67,7 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
     for f in results['findings']:
         for row in f['values'].get('opening_candidate_audit',[]):
             for id in row['object_ids']:by_room.setdefault(id,[]).append(f)
+    label_boxes=[]
     for o in visible:
         cls=classes.get(o.semantic_id,{});fs=by_room.get(o.semantic_id,[]);id=o.semantic_id
         handles=sorted({o.source.handle,*[e.source_handle for e in o.evidence if e.source_handle]})
@@ -81,7 +84,7 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
         records[id]={'semantic_id':id,'房名':o.raw_label,'类型':o.type,'L4分类':('建筑围合' if o.geometry.extraction_method.startswith('python_wall_polygonize') and cls.get('category')=='NOT_INCLUDED' else cls.get('label','区域对象' if o.type=='zone' else '门窗候选')),
             '二级用途':cls.get('secondary_label','') or (o.raw_label if o.geometry.extraction_method.startswith('python_wall_polygonize') and cls.get('category')=='NOT_INCLUDED' else ''),'L3用途':o.use_code,'状态':o.status,'L2面积(m²)':area or None,
             '源Handle列表':handles,'外层块Handle':o.source.block_path[0].split(':')[0] if o.source.block_path else None,
-            'source':o.source.model_dump(),'geometry':{'kind':o.geometry.kind,'is_closed':o.geometry.is_closed,
+            '定位字段':reference_index.for_object(o),'source':o.source.model_dump(),'geometry':{'kind':o.geometry.kind,'is_closed':o.geometry.is_closed,
                 'is_exact':o.geometry.is_exact,'extraction_method':o.geometry.extraction_method},
             '证据链':evidence_chain(o,facts,primitives),'L2测量':[{'geometry_id':f.geometry_id,**f.measurements.model_dump()} for f in refs],
             '门洞候选清洗':[f['values'] for f in fs if f['rule_id']=='R1'],
@@ -95,7 +98,14 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
                            +(f'<path d="{path}" fill="url(#review)" class="hatch"/>' if o.status=='review' else '')
                            +f'<path d="{path}" fill="none" class="outline"/></g>')
             if x is not None:
+                # 同一轮廓的Space/Shaft可能重叠，按屏幕文本包围范围避让。
                 label=escape(o.raw_label);area_label=f'{area:.1f} m²' if isinstance(area,(int,float)) else '面积资料缺失'
+                for _ in range(12):
+                    width=max(len(o.raw_label)*.45,2)
+                    box=(x-width/2,y-.45,x+width/2,y+.8)
+                    if not any(box[0]<q[2] and box[2]>q[0] and box[1]<q[3] and box[3]>q[1] for q in label_boxes):break
+                    y+=1.35
+                label_boxes.append(box)
                 svg.append(f'<text class="label" x="{x:.3f}" y="{y:.3f}">{label}<tspan x="{x:.3f}" dy=".65">{area_label}</tspan></text>')
                 if o.type=='shaft':svg.append(f'<rect class="shaft-box" data-id="{id}" x="{b[0]:.3f}" y="{b[1]:.3f}" width="{b[2]:.3f}" height="{b[3]:.3f}"/>')
         elif x is not None:
@@ -118,7 +128,7 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
                 id=('invalid_'+lamp['id']) if stale else lamp['id'];x,y=xy(lamp['x'],lamp['y'])
                 records[id]={'生成对象':lamp,'生成依据':{k:v for k,v in group.items() if k!='points'},'房间':rid,
                     'semantic_id':id,'房名':'旧灯具候选（失效）' if stale else '灯具布置候选','类型':'generated_light','状态':'失效' if stale else '演示候选',
-                    'source':group['room_source'],'外层块Handle':group['room_source']['block_path'][0].split(':')[0] if group['room_source']['block_path'] else None,
+                    '定位字段':dict(records.get(rid,{}).get('定位字段',{}),generated_id=id,generated_id_type='生成灯具ID（非CAD原图Handle）',mounting_wall_handle=lamp.get('mounting_wall_handle')),'source':group['room_source'],'外层块Handle':group['room_source']['block_path'][0].split(':')[0] if group['room_source']['block_path'] else None,
                     'L2面积(m²)':records.get(rid,{}).get('L2面积(m²)'),
                     '源Handle列表':group['room_source_handles'],'证据链':records.get(rid,{}).get('证据链'),
                     'view_bounds':[x-.4,y-.4,.8,.8]}
@@ -203,6 +213,12 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
             records[id]['问题高亮']=''.join(extra)
     full=[(min(x for x,y in coords)-ox)/1000,-(max(y for x,y in coords)-oy)/1000,
           (max(x for x,y in coords)-ox)/1000,(max(y for x,y in coords)-oy)/1000]
+    raw_bounds=[(min(x for x,y in coords)-ox)/1000,-(max(y for x,y in coords)-oy)/1000,(max(x for x,y in coords)-min(x for x,y in coords))/1000,(max(y for x,y in coords)-min(y for x,y in coords))/1000]
+    plans=[row['bounds'] for row in room_options if row['type']=='space' and row['bounds']]
+    if plans:
+        left=min(b[0] for b in plans);top=min(b[1] for b in plans)
+        full=[left,top,max(b[0]+b[2] for b in plans)-left,max(b[1]+b[3] for b in plans)-top]
+    else:full=raw_bounds
     default=next((o['id'] for o in room_options if o['name']=='预留充电桩配电房'),None)
     if default is None:default=next((o['id'] for o in room_options if o['category'] in ('SUBSTATION','DISTRIBUTION_ROOM')),room_options[0]['id'] if room_options else None)
     if delta:

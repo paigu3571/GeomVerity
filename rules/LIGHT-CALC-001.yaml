@@ -1,6 +1,6 @@
 id: LIGHT-CALC-001
 title: 壁灯照度数量估算（演示参数）
-rule_version: '0.1.0'
+rule_version: '0.2.0'
 approved: true
 approved_by: 张田（2026-10-13演示近似授权）
 applies_to: [SUBSTATION, DISTRIBUTION_ROOM]
@@ -34,4 +34,4 @@ parameters:
   effective_height_m: 2.4
   height_source: 张田允许h等效取2.4米作为演示近似；未取得灯具尺寸和实际发光中心
   parameter_source: 2026-10-13张田提供演示参数；U不是由RI查表得到，20W未含另行未知的驱动损耗
-scope: 仅规整矩形的有条件流明法估算；不验证照度均匀度、眩光、配光或真实驱动功耗，不作为照明设计签字
+scope: 有效闭合轮廓的利用系数法估算及候选布置LPD计算；不验证照度均匀度、眩光、配光或真实驱动功耗，不作为照明设计签字

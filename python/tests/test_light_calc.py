@@ -10,6 +10,7 @@ class LightCalculationTests(unittest.TestCase):
   self.assertEqual(value['calculated_fixture_count'],15);self.assertEqual(value['estimated']['eav_lx'],200);self.assertTrue(value['estimated']['demo_lpd_limit_met']);self.assertFalse(value['existing_layout']['demo_lpd_limit_met']);self.assertIn('无法判定',value['formal_compliance'])
  def test_irregular_not_forced_and_invalid_parameters_rejected(self):
   rule=yaml.safe_load(RULE.read_text(encoding='utf-8'));room=self.room([(0,0),(8000,0),(8000,3000),(3000,3000),(3000,8000),(0,8000)])
-  self.assertEqual(calculate_room(room,'SUBSTATION',rule)['result'],'需人工计算')
+  value=calculate_room(room,'SUBSTATION',rule,10)
+  self.assertEqual(value['result'],'演示参数回算完成');self.assertAlmostEqual(value['existing_layout']['lpd_w_m2'],200/39);self.assertAlmostEqual(value['room_index'],2*39/(2.4*32),places=5)
   room=self.room([(0,0),(9000,0),(9000,7000),(0,7000)]);rule=copy.deepcopy(rule);rule['parameters']['flux_per_source_lm']=0
   with self.assertRaises(ValueError):calculate_room(room,'SUBSTATION',rule)
