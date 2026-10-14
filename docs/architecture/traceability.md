@@ -40,7 +40,7 @@
 1. 按[JSON字段契约](../api/schema.md)及cs/contracts中的Schema输出三层快照，保留schema_version、producer、时间、图纸来源摘要、单位和坐标系。
 2. 为每个源对象提供ID和完整实例路径。天正来源使用Handle；外部适配器可在同一字符串字段记录稳定源对象标识，但必须标明来源种类，不能伪造CAD可定位性。
 3. 补齐几何事实到原图元、空间到几何与文字的引用；空间用途、邻房关系和未核验信息分别记录，不用AI猜测填成已确认。
-4. 三层必须对应同一来源版本。运行 `cst summary` 与 `cst verify` 检查类型、引用及来源一致性，再运行 `cst check` 或 `cst diff`，导出 `cst bundle` 并校验清单。
+4. 三层必须对应同一来源版本。运行 `python -m cst summary` 与 `python -m cst verify` 检查类型、引用及来源一致性，再运行 `python -m cst check` 或 `python -m cst diff`，导出 `python -m cst bundle` 并校验清单。
 5. 通过[SDK](../api/sdk.md)、[CLI](../api/cli.md)或[MCP](../api/mcp.md)消费同一结果；下游保留源对象/规则/运行引用，不从Viewer文字反向生成工程事实。
 
 有几何但缺源对象证据时，可以记录候选，不宣称已具备同等来源强度。转换后对象标识变化时，跨版身份须重新匹配。当前接口不是通用任意格式上传入口，也没有外部适配器能力自动协商模块。
