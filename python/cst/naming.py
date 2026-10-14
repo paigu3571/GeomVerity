@@ -82,7 +82,8 @@ def experiment(directories, replay=False):
         if not valid:raise ValueError('重答仍不合格式，缓存已保留')
         rows.extend(validated);attempts+=len(transcript)
     rows.sort(key=lambda r:r['name'])
-    gold=table['confirmed_names'];compared=[r for r in rows if r['name'] in gold];disagree=[r for r in compared if r['category']!=gold[r['name']]['category']];new=[r for r in rows if r['name'] not in gold]
+    gold_path=ROOT/'eval/llm_naming_gold.v1.json'
+    gold=json.loads(gold_path.read_bytes())['confirmed_names'] if gold_path.is_file() else table['confirmed_names'];compared=[r for r in rows if r['name'] in gold];disagree=[r for r in compared if r['category']!=gold[r['name']]['category']];new=[r for r in rows if r['name'] not in gold]
     proposals={'schema_version':'naming-proposals.v1','approved':False,'model':config['model'],'cache_ids':cache_ids,'entries':[dict(r,approved=False,approved_by=None,cache_id=cache_by_name[r["name"]]) for r in new]}
     target=ROOT/'rules/naming_proposals.yaml'
     if target.exists():

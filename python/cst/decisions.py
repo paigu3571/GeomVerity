@@ -8,7 +8,7 @@ from .model import load,L1,L2,L3,FILENAMES
 from .naming import digest
 from .priority import finding_rank,room_priorities
 ROOT=Path(__file__).resolve().parents[2]
-ENGINE_VERSION='0.3.1'
+ENGINE_VERSION='0.3.2'
 
 def object_fingerprint(obj):
     return digest({'type':obj.type,'name':obj.raw_label,'use':obj.use_code,'status':obj.status,'geometry':obj.geometry.model_dump()})
@@ -21,7 +21,9 @@ def rule_metadata(rule_id,rules_dir=None):
         if not isinstance(row,dict) or row.get('id')!=rule_id:continue
         clauses=row.get('clauses',[])
         for c in clauses:c.setdefault('code_version',c.get('code','').rsplit('-',1)[-1])
-        return {'id':rule_id,'version':row.get('rule_version',row.get('version','1')),'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'clauses':clauses,'approved_by':row.get('approved_by'),'approved':row.get('approved',False)}
+        catalog=rules_dir/'provenance.yaml'
+        provenance=(yaml.safe_load(catalog.read_text(encoding='utf-8')) or {}).get('rules',{}).get(rule_id,{}) if catalog.is_file() else {}
+        return {'drafted_by':provenance.get('drafted_by',{'type':'HISTORICAL_UNRECORDED','name':'未登记'}),'provenance_sha256':hashlib.sha256(catalog.read_bytes()).hexdigest() if catalog.is_file() else None,'id':rule_id,'version':row.get('rule_version',row.get('version','1')),'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'clauses':clauses,'approved_by':row.get('approved_by'),'approved':row.get('approved',False)}
     raise ValueError('决策缺少规则文件：'+rule_id)
 
 def decision(kind,key,result,ids,objects,rule,run_id,priority=None,engineer=None,evidence=None,llm=None):
@@ -145,4 +147,4 @@ def verify_bundle(directory):
 def rule_impact(code,bundle_directory,synthetic=False):
     rows=json.loads((Path(bundle_directory)/'decisions.json').read_bytes())['decisions']
     selected=[d for d in rows if any(c['code']==code for c in d['rule']['clauses'])]
-    return {'origin':'SYNTHETIC' if synthetic else 'RULE_REFERENCE_QUERY','code':code,'scenario':'假设该规范已修订，仅展示哪些规则/决策需复核，不声明真实修订' if synthetic else '按规范引用查询，不判断规范是否已修订','rules':sorted({d['rule']['id'] for d in selected}),'decision_ids':[d['id'] for d in selected]}
+    return {'origin':'SYNTHETIC' if synthetic else 'RULE_REFERENCE_QUERY','code':code,'scenario':'假设该规范已修订，仅展示哪些规则/决策需复核，不声明真实修订' if synthetic else '按规范引用查询，不判断规范是否已修订','rules':sorted({d['rule']['id'] for d in selected}),'decision_ids':[d['id'] for d in selected],'summary_cn':('SYNTHETIC：假设' if synthetic else '引用查询：')+code+('已修订，' if synthetic else '，')+f'涉及{len({d["rule"]["id"] for d in selected})}条规则、{len(selected)}条决策记录。请复核对应依据与原确认；此处不宣布真实规范修订或工程不合格。','affected_rules':[{'id':rid,'title':next(d['rule']['clauses'][0]['text'] for d in selected if d['rule']['id']==rid),'decision_count':sum(d['rule']['id']==rid for d in selected)} for rid in sorted({d['rule']['id'] for d in selected})]}

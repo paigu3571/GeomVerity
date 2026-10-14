@@ -100,11 +100,11 @@ water_candidates:
   scope: 仅用水风险候选，不等于经常有水且可能漏水的专业事实
 confirmed_names:
   2#公变配电房:
-    category: SUBSTATION
-    secondary_label: 变配电房
+    category: DISTRIBUTION_ROOM
+    secondary_label: 配电房
   3#公变配电房:
-    category: SUBSTATION
-    secondary_label: 变配电房
+    category: DISTRIBUTION_ROOM
+    secondary_label: 配电房
   三网合一机房:
     category: WEAK_CURRENT_ROOM
     secondary_label: 三网合一机房
@@ -127,8 +127,8 @@ confirmed_names:
     category: ARCHITECTURAL_ROOM
     secondary_label: 光厅
   公变配电房:
-    category: SUBSTATION
-    secondary_label: 变配电房
+    category: DISTRIBUTION_ROOM
+    secondary_label: 配电房
   前室:
     category: ARCHITECTURAL_ROOM
     secondary_label: 前室

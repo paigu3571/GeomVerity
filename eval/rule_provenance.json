@@ -1,0 +1,160 @@
+{
+  "version": "0.3.2",
+  "rules": [
+    {
+      "drafted_by": {
+        "type": "HISTORICAL_UNRECORDED",
+        "name": "首次起草者未独立登记",
+        "model": null,
+        "cache_id": null,
+        "note": "检查范围与条件已经张田确认；初版起草记录不追认、不补造"
+      },
+      "provenance_sha256": "4b33785aa889cc92a1886cb2d8176197419f465efdc06688b1f19bb3f5890e77",
+      "id": "R1",
+      "version": "1",
+      "sha256": "28c96c5cd8034c559b4579f7568eed5bd820f63cd5ee54d7ba9a8af973e6185f",
+      "clauses": [
+        {
+          "code": "GB 55024-2022",
+          "article": "3.2.1第1款",
+          "text": "配电室、电容器室长度大于7m时，应至少设置两个出入口。",
+          "strength": "应",
+          "code_version": "2022"
+        }
+      ],
+      "approved_by": "张田",
+      "approved": true
+    },
+    {
+      "drafted_by": {
+        "type": "HISTORICAL_UNRECORDED",
+        "name": "首次起草者未独立登记",
+        "model": null,
+        "cache_id": null,
+        "note": "检查范围与条件已经张田确认；初版起草记录不追认、不补造"
+      },
+      "provenance_sha256": "4b33785aa889cc92a1886cb2d8176197419f465efdc06688b1f19bb3f5890e77",
+      "id": "R2",
+      "version": "1",
+      "sha256": "43b77056564abda87390755193c3cd6df88163ef8d61b9ff14352d6857e6862c",
+      "clauses": [
+        {
+          "code": "GB 55024-2022",
+          "article": "6.2.8第2款",
+          "text": "电气竖井不应贴邻热烟道、热力管道及其他散热量大的场所。",
+          "strength": "应",
+          "code_version": "2022"
+        }
+      ],
+      "approved_by": "张田",
+      "approved": true
+    },
+    {
+      "drafted_by": {
+        "type": "HISTORICAL_UNRECORDED",
+        "name": "首次起草者未独立登记",
+        "model": null,
+        "cache_id": null,
+        "note": "检查范围与条件已经张田确认；初版起草记录不追认、不补造"
+      },
+      "provenance_sha256": "4b33785aa889cc92a1886cb2d8176197419f465efdc06688b1f19bb3f5890e77",
+      "id": "R3",
+      "version": "1",
+      "sha256": "650465fba365882a0068b24214e2d6b3f7bcf80d291d842f4180323c7825bfce",
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不应设在厕所、浴室、厨房或其他经常有水并可能漏水场所的正下方。",
+          "strength": "应",
+          "code_version": "2019"
+        }
+      ],
+      "approved_by": "张田",
+      "approved": true
+    },
+    {
+      "drafted_by": {
+        "type": "HISTORICAL_UNRECORDED",
+        "name": "首次起草者未独立登记",
+        "model": null,
+        "cache_id": null,
+        "note": "检查范围与条件已经张田确认；初版起草记录不追认、不补造"
+      },
+      "provenance_sha256": "4b33785aa889cc92a1886cb2d8176197419f465efdc06688b1f19bb3f5890e77",
+      "id": "R4",
+      "version": "1",
+      "sha256": "99720bd12ab6c26ee76107c733c9afc6d3fe3dda8601f4e834f2263fa6e6f95f",
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不宜与上述场所贴邻。",
+          "strength": "宜",
+          "code_version": "2019"
+        }
+      ],
+      "approved_by": "张田",
+      "approved": true
+    },
+    {
+      "drafted_by": {
+        "type": "AI",
+        "name": "DeepSeek",
+        "model": "deepseek-flash",
+        "cache_id": "draft_8207071988f47e84b2e38bca",
+        "cache_file": "ai_cache/draft_8207071988f47e84b2e38bca.json"
+      },
+      "provenance_sha256": "4b33785aa889cc92a1886cb2d8176197419f465efdc06688b1f19bb3f5890e77",
+      "id": "DRAFT_88e437765ce8",
+      "version": "1",
+      "sha256": "bf09a81c58be33918fa8998f1b8bf6807bb357e7c172fca56f1473980a6ac79f",
+      "clauses": [
+        {
+          "code": "GB 55024-2022",
+          "article": "6.2.8第1款",
+          "text": "电气竖井不应与电梯井、其他专业管道井共用同一竖井。",
+          "strength": "应",
+          "code_version": "2022"
+        }
+      ],
+      "approved_by": "张田",
+      "approved": true
+    },
+    {
+      "drafted_by": {
+        "type": "ENGINEER_PARAMETERS",
+        "name": "张田",
+        "note": "计算公式、演示参数及扩大适用形状由张田给定并批准；代码为AI辅助实现，不计为独立模型规则起草",
+        "model": null,
+        "cache_id": null
+      },
+      "provenance_sha256": "4b33785aa889cc92a1886cb2d8176197419f465efdc06688b1f19bb3f5890e77",
+      "id": "LIGHT-CALC-001",
+      "version": "0.2.0",
+      "sha256": "0b33e511b942237e2ffb61e0e1f226c55c7b503e029bd8be2741cf8ef46997fe",
+      "clauses": [
+        {
+          "code": "GB/T 50034-2024",
+          "code_version": "2024",
+          "article": "表5.5.1",
+          "text": "通用房间或场所的照明标准值见表5.5.1。",
+          "strength": "应",
+          "source_url": "https://gf.cabr-fire.com/article-67007.htm",
+          "verification": "章节已核；配电室具体表格值尚未独立核验，本次200lx按用户给定演示值"
+        },
+        {
+          "code": "GB/T 50034-2024",
+          "code_version": "2024",
+          "article": "6.3.15、6.3.16",
+          "text": "通用房间现行照明功率密度限值应符合GB55015，室形指数不大于1时应修正。",
+          "strength": "应",
+          "source_url": "https://gf.cabr-fire.com/m/article-67011.htm",
+          "verification": "章节已核；6.0W每平方米的对应现行表格待核，不误记为表5.5.1"
+        }
+      ],
+      "approved_by": "张田（2026-10-13演示近似授权）",
+      "approved": true
+    }
+  ]
+}

@@ -146,7 +146,7 @@ def render_notice(delta,items,answer,validation,versions,objects,output):
         location={'space_id':ref['id'],'room_text_handles':labels,'geometry_reference_handle':ref['handle'],'area_m2':area,'position_wcs_mm':position}
         sentences=[]
         def template(text):sentences.append({'text':text,'source':'模板','validation':'源快照核对通过','evidence_refs':[c['id'],'version_old','version_new']})
-        template(ref['name']+(f'，面积{area:.1f}㎡' if area is not None else '')+(f'，位置WCS({position[0]:.1f}, {position[1]:.1f})mm' if position else '')+'；房名文字Handle：'+('、'.join(labels) or '未取得')+'。')
+        template(ref['name']+(f'，面积{area:.1f}㎡' if area is not None else '')+'；房名文字Handle：'+('、'.join(labels) or '未取得')+'。')
         if fluctuation:
             template('程序识别波动，无需处理建筑修改；仅记录围合提取差异，原图修改未获证实。')
         else:
@@ -173,7 +173,7 @@ def render_notice(delta,items,answer,validation,versions,objects,output):
         polygon=Polygon([(p.x,p.y) for p in obj.geometry.paths[0]]) if obj.geometry.paths else None
         area=polygon.area/1e6 if polygon is not None and polygon.is_valid else None
         position=[round(polygon.representative_point().x,1),round(polygon.representative_point().y,1)] if area is not None else None
-        text=obj.raw_label+(f'（面积{area:.1f}㎡，位置WCS{position}mm）' if area is not None else '')+'的关联门窗源对象发生变化，请核对门位、有效出入口和相关灯具布置。'
+        text=obj.raw_label+(f'（面积{area:.1f}㎡）' if area is not None else '')+'的关联门窗源对象发生变化，请核对门位、有效出入口和相关灯具布置。'
         groups['需复核'].append({'id':c['id'],'name':obj.raw_label,'location':{'space_id':rid,'room_text_handles':labels,'area_m2':area,'position_wcs_mm':position},'fluctuation':False,'sentences':[{'text':text,'source':'模板','validation':'源对象引用核对通过','evidence_refs':[v['id'] for v in row['changes']]}]})
     summary=f"本次{len(groups['优先处理'])}项优先处理、{len(groups['需复核'])}项需复核、{len(groups['仅记录'])}项仅记录。"
     local_time=lambda value:datetime.fromisoformat(value.replace('Z','+00:00')).astimezone(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S 北京时间')
@@ -188,7 +188,7 @@ def render_notice(delta,items,answer,validation,versions,objects,output):
             for sentence in row['sentences']:
                 badge=sentence['source']+'｜'+sentence['validation'];md+=[sentence['text']+'【'+badge+'】','']
                 body.append('<p>'+escape(sentence['text'])+'<small>'+escape(badge)+'</small></p>')
-            cards.append('<article><h3>'+escape(row['name'])+'</h3>'+''.join(body)+'<details><summary>开发者 / AI：对象与引用</summary><pre>'+escape(json.dumps(row,ensure_ascii=False,indent=2))+'</pre></details></article>')
+            cards.append('<article><h3>'+escape(row['name'])+'</h3>'+''.join(body)+'<details><summary>定位坐标、空间ID与源对象（同名房间在这里区分）</summary><pre>'+escape(json.dumps(row,ensure_ascii=False,indent=2))+'</pre></details></article>')
         sections.append('<section><h2>'+title+' · '+str(len(rows))+'项</h2>'+(''.join(cards) or '<p>本组无事项。</p>')+'</section>')
     html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>提资变更通知</title><style>body{font:16px/1.75 "Microsoft YaHei",sans-serif;background:#f3f7fa;color:#183949;margin:0}main{max-width:1080px;margin:24px auto;padding:24px}header{border-top:6px solid #147b80;background:white;padding:24px}h1{font-size:27px}h2{color:#147b80}article{background:white;border-left:4px solid #d8e6ed;padding:12px 22px;margin:16px 0}section:first-of-type article{border-left-color:#e98528}small{display:block;color:#627888;font-size:12px}pre{white-space:pre-wrap;font-size:12px}details{font-size:12px}p{margin:9px 0}</style><main><header><h1>致电气专业：提资变更通知</h1><p><b>'+summary+'</b><small>模板｜源快照核对通过</small></p><p>'+escape(versions_text)+'<small>模板｜版本登记核对通过</small></p><p>待工程师签字；未发送。<small>模板｜状态字段核对通过</small></p></header>'+''.join(sections)+'</main></html>'
     output=Path(output);(output/'notice.md').write_text('\n'.join(md)+'\n',encoding='utf-8');(output/'notice.html').write_text(html,encoding='utf-8')

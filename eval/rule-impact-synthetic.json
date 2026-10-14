@@ -1,0 +1,38 @@
+{
+  "origin": "SYNTHETIC",
+  "code": "GB 55024-2022",
+  "scenario": "假设该规范已修订，仅展示哪些规则/决策需复核，不声明真实修订",
+  "rules": [
+    "DRAFT_88e437765ce8",
+    "R1",
+    "R2"
+  ],
+  "decision_ids": [
+    "decision_2e0ff6e1e13a3cb32d73fb08",
+    "decision_57cdc0da110b325ed73cdab0",
+    "decision_a002b68edc000d3bf2c0d6e4",
+    "decision_7a733b0bf2193c336ae69020",
+    "decision_40a74c8dd37c70f6c2b29387",
+    "decision_9d0fe024b9eeb2877452c214",
+    "decision_4d301198bd116bdcdd77a3c5",
+    "decision_2d802aba76114b437ffe322e"
+  ],
+  "summary_cn": "SYNTHETIC：假设GB 55024-2022已修订，涉及3条规则、8条决策记录。请复核对应依据与原确认；此处不宣布真实规范修订或工程不合格。",
+  "affected_rules": [
+    {
+      "id": "DRAFT_88e437765ce8",
+      "title": "电气竖井不应与电梯井、其他专业管道井共用同一竖井。",
+      "decision_count": 1
+    },
+    {
+      "id": "R1",
+      "title": "配电室、电容器室长度大于7m时，应至少设置两个出入口。",
+      "decision_count": 6
+    },
+    {
+      "id": "R2",
+      "title": "电气竖井不应贴邻热烟道、热力管道及其他散热量大的场所。",
+      "decision_count": 1
+    }
+  ]
+}

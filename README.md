@@ -12,6 +12,21 @@ GeomVerity将CAD图元转为带来源引用的工程对象。确定性几何算�
 
 [GitHub](https://github.com/paigu3571/GeomVerity) · [Gitee](https://gitee.com/xiangle7/geom-verity) · [在线演示](https://paigu3571.github.io/GeomVerity/) · [文档导航](docs/README.md)
 
+## 评审速览
+
+|维度|已经做成什么|
+|---|---|
+|技术创新|代码计算、模型提议、工程师批准；数据、规则、AI三层出处，换版后检查旧确认是否失效。|
+|场景落地|真实天正图8处改动：人工40分钟找到5处，工具含扫描约10分钟找全8处。|
+|开源治理|MPL-2.0、依赖声明、3条CI、SHA256；在线免安装，离线免CAD与密钥。|
+|长期发展|开放决策记录、确认失效机制和MCP，为AI生成工程内容探索独立核验。|
+
+## 愿景
+
+让机器去读、去算、去做重复的工作；让人去判断、去负责；让每一个判断都有出处。混合系统帮助工程师读得全、做得快，追溯把复核集中到变化、风险和条件上。我们开源工程决策记录格式、确认失效机制和MCP，探索AI生成工程内容的独立核验层。输入采用公开JSON契约；当前实测来源只有天正插件，其他生成方及审图、施工、运维接入为愿景。详见[可追溯方法与接入契约](docs/architecture/traceability.md)。
+
+![愿景](docs/architecture/vision.svg)
+
 ## 演示画面
 
 |工程对象|删门风险|灯具证据|
@@ -31,7 +46,7 @@ python -m cst.demo
 
 首次安装需要网络；演示阶段不需要AutoCAD或API key。也可运行`powershell -ExecutionPolicy Bypass -File scripts/run_demo.ps1`；Linux/macOS使用`sh scripts/run_demo.sh`。
 
-打开`dist/demo/changes/semantic_view.html`查看两版变化；`dist/demo/notifications/notice.md`保存协作通知，`dist/demo/bundle`保存决策与校验清单。[预期结果与排错](docs/acceptance/demo.md)。
+打开`dist/demo/changes/semantic_view.html`查看两版变化；`dist/demo/notifications/notice.html`显示正式协作通知，`notice.md`为可复制文本，`dist/demo/bundle`保存决策与校验清单。[预期结果与排错](docs/acceptance/demo.md)。
 
 ## 架构
 
@@ -52,7 +67,7 @@ python -m cst.demo
 | 规则检查 | 四条机房条件规则及共井草案示例；A/B中R1分别2/1项满足已核对条件 | [规则验收](docs/acceptance/rules.md) |
 | 提资变更 | 对象变化、隔墙关系、影响候选、旧确认及灯组失效 | [8项人工对照](eval/change_test.md) |
 | 工程AI | 问答、术语提议、规则起草和协作通知；支持缓存重放 | [AI验收](docs/acceptance/ai.md) |
-| 自动出图 | 沿墙避门灯具候选和独立DXF；矩形照度公式演示 | [结果验收](docs/acceptance/changes.md) |
+| 自动出图 | 沿墙避门灯具候选和独立DXF；闭合房间LPD及利用系数法照度估算 | [结果验收](docs/acceptance/changes.md) |
 | 可追溯决策 | 输入、规则、模型与人工确认记录；证据包哈希核验 | [证据包验收](docs/acceptance/evidence.md) |
 | SDK/MCP | SDK核心调用与七个只读MCP工具 | [接口验收](docs/acceptance/interfaces.md) |
 
@@ -91,7 +106,7 @@ python -m unittest discover -s python/tests -v
 
 ## 已知局限
 
-跨楼层、房名错位、出口资格和专业措施资料可能缺失。曲线采样的IsExact标记需进一步修正。灯具为布置候选；真实异形机房不做矩形照度回算。模型引用校验有明确覆盖范围，专业结论需要相应资料与工程师确认。[完整边界](docs/guides/limitations.md)。
+跨楼层、房名错位、出口资格和专业措施资料可能缺失。曲线采样的IsExact标记需进一步修正。灯具为布置候选；有效闭合轮廓可回算LPD与估算照度，真实灯具参数仍需核对。模型引用校验有明确覆盖范围，专业结论需要相应资料与工程师确认。[完整边界](docs/guides/limitations.md)。
 
 ## 维护与许可
 
@@ -99,4 +114,4 @@ python -m unittest discover -s python/tests -v
 
 GeomVerity combines deterministic geometry processing, constrained LLM proposals, engineering rules and traceable decision records. It supports CAD snapshot analysis, version comparison and auditable engineering assistance.
 
-当前交付为[v0.3.1](https://github.com/paigu3571/GeomVerity/releases/tag/v0.3.1)。[正式协作通知](https://paigu3571.github.io/GeomVerity/notice.html)提供风险分组、版本时间与每句来源。
+当前交付为[v0.3.2](https://github.com/paigu3571/GeomVerity/releases/tag/v0.3.2)。[正式协作通知](https://paigu3571.github.io/GeomVerity/notice.html)提供风险分组、版本时间与每句来源。

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="410" viewBox="0 0 1080 410" role="img" aria-labelledby="title desc">
+<title id="title">愿景：生成与独立核验协作</title><desc id="desc">目前已实现天正插件输入，未来其他生成方通过JSON契约接入语义、规则与工程决策记录，并支持签字、审图、施工和运维。</desc>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#147b80"/></marker></defs>
+<rect width="1080" height="410" rx="16" fill="#f2f7f9"/>
+<g font-family="Microsoft YaHei, sans-serif" fill="#183949"><text x="28" y="42" font-size="27" font-weight="bold">愿景｜让每一个判断都有出处</text><text x="28" y="72" font-size="18">让机器读、算、做重复工作；让人判断、负责。</text>
+<text x="37" y="111" font-size="22" font-weight="bold">生成方</text><text x="420" y="111" font-size="22" font-weight="bold">独立的理解与核验层</text><text x="852" y="111" font-size="22" font-weight="bold">工程应用</text>
+<rect x="28" y="127" width="275" height="56" rx="9" fill="#e3f2ee" stroke="#147b80" stroke-width="2"/><text x="43" y="151" font-size="20">工程师绘制的天正CAD图</text><text x="43" y="174" font-size="17" fill="#147b80">当前已实现：天正插件</text>
+<g fill="white" stroke="#94aeb8" stroke-width="1.5" stroke-dasharray="6 4"><rect x="28" y="197" width="275" height="37" rx="7"/><rect x="28" y="245" width="275" height="37" rx="7"/><rect x="28" y="293" width="275" height="37" rx="7"/></g><g font-size="20"><text x="44" y="223">AI生成设计（规划）</text><text x="44" y="271">其他CAD软件（规划）</text><text x="44" y="319">AI Agent（规划）</text></g>
+<path d="M314 226H395" fill="none" stroke="#147b80" stroke-width="3" marker-end="url(#a)"/><text x="322" y="205" font-size="16">JSON契约</text>
+<rect x="414" y="127" width="355" height="203" rx="12" fill="#e6f1f4" stroke="#147b80" stroke-width="2"/>
+<g font-size="23" font-weight="bold"><text x="434" y="166">语义层：对象、关系、版本</text><text x="434" y="217">规则：条款、审批、哈希</text><text x="434" y="268">工程决策记录：依赖与出处</text></g><text x="434" y="311" font-size="17">源图变更 → 旧确认失效／继承</text>
+<path d="M780 226H833" fill="none" stroke="#147b80" stroke-width="3" marker-end="url(#a)"/>
+<g fill="white" stroke="#94aeb8" stroke-width="1.5" stroke-dasharray="6 4"><rect x="851" y="127" width="200" height="43" rx="8"/><rect x="851" y="183" width="200" height="43" rx="8"/><rect x="851" y="239" width="200" height="43" rx="8"/><rect x="851" y="295" width="200" height="43" rx="8"/></g><g font-size="21"><text x="867" y="156">工程师签字</text><text x="867" y="212">审图</text><text x="867" y="268">施工</text><text x="867" y="324">运维</text></g>
+<text x="28" y="378" font-size="17">实线：现有输入与核心；虚线：后续接入／应用。输入确认已有记录，电子签名及全链条协同尚未实现。</text></g></svg>

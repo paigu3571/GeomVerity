@@ -1,0 +1,57 @@
+# SPDX-License-Identifier: MPL-2.0
+schema_version: rule-provenance.v1
+rules:
+  R1:
+    drafted_by:
+      type: HISTORICAL_UNRECORDED
+      name: 首次起草者未独立登记
+      model: null
+      cache_id: null
+      note: 检查范围与条件已经张田确认；初版起草记录不追认、不补造
+    reviewed_by: 张田
+    metadata_recorded_at: '2026-10-14'
+  R2:
+    drafted_by:
+      type: HISTORICAL_UNRECORDED
+      name: 首次起草者未独立登记
+      model: null
+      cache_id: null
+      note: 检查范围与条件已经张田确认；初版起草记录不追认、不补造
+    reviewed_by: 张田
+    metadata_recorded_at: '2026-10-14'
+  R3:
+    drafted_by:
+      type: HISTORICAL_UNRECORDED
+      name: 首次起草者未独立登记
+      model: null
+      cache_id: null
+      note: 检查范围与条件已经张田确认；初版起草记录不追认、不补造
+    reviewed_by: 张田
+    metadata_recorded_at: '2026-10-14'
+  R4:
+    drafted_by:
+      type: HISTORICAL_UNRECORDED
+      name: 首次起草者未独立登记
+      model: null
+      cache_id: null
+      note: 检查范围与条件已经张田确认；初版起草记录不追认、不补造
+    reviewed_by: 张田
+    metadata_recorded_at: '2026-10-14'
+  DRAFT_88e437765ce8:
+    drafted_by:
+      type: AI
+      name: DeepSeek
+      model: deepseek-flash
+      cache_id: draft_8207071988f47e84b2e38bca
+      cache_file: ai_cache/draft_8207071988f47e84b2e38bca.json
+    reviewed_by: 张田
+    metadata_recorded_at: '2026-10-14'
+  LIGHT-CALC-001:
+    drafted_by:
+      type: ENGINEER_PARAMETERS
+      name: 张田
+      note: 计算公式、演示参数及扩大适用形状由张田给定并批准；代码为AI辅助实现，不计为独立模型规则起草
+      model: null
+      cache_id: null
+    reviewed_by: 张田
+    metadata_recorded_at: '2026-10-14'

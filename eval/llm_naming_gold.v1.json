@@ -1,0 +1,202 @@
+{
+  "schema_version": "naming-gold.v1",
+  "scope": "原49名称一级分类对照，不随后续用途口径补录重算",
+  "confirmed_names": {
+    "2#公变配电房": {
+      "category": "SUBSTATION",
+      "secondary_label": "变配电房"
+    },
+    "3#公变配电房": {
+      "category": "SUBSTATION",
+      "secondary_label": "变配电房"
+    },
+    "三网合一机房": {
+      "category": "WEAK_CURRENT_ROOM",
+      "secondary_label": "三网合一机房"
+    },
+    "三网合一机房上空": {
+      "category": "EXCLUDED",
+      "secondary_label": "上空"
+    },
+    "专变配电房": {
+      "category": "SUBSTATION",
+      "secondary_label": "变配电房"
+    },
+    "信号覆盖机房": {
+      "category": "WEAK_CURRENT_ROOM",
+      "secondary_label": "信号覆盖机房"
+    },
+    "充电桩电表间": {
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "secondary_label": "电表间"
+    },
+    "充电桩配电房": {
+      "category": "DISTRIBUTION_ROOM",
+      "secondary_label": "配电房"
+    },
+    "光厅": {
+      "category": "ARCHITECTURAL_ROOM",
+      "secondary_label": "光厅"
+    },
+    "公变配电房": {
+      "category": "SUBSTATION",
+      "secondary_label": "变配电房"
+    },
+    "前室": {
+      "category": "ARCHITECTURAL_ROOM",
+      "secondary_label": "前室"
+    },
+    "前室上空": {
+      "category": "EXCLUDED",
+      "secondary_label": "上空"
+    },
+    "加压送风井": {
+      "category": "HVAC_SHAFT",
+      "secondary_label": "风井"
+    },
+    "加压送风机房": {
+      "category": "HVAC_ROOM",
+      "secondary_label": "风机房"
+    },
+    "合用前室": {
+      "category": "ARCHITECTURAL_ROOM",
+      "secondary_label": "前室"
+    },
+    "商业电气间": {
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "secondary_label": "电气间"
+    },
+    "商业电表间": {
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "secondary_label": "电表间"
+    },
+    "商业配电房": {
+      "category": "DISTRIBUTION_ROOM",
+      "secondary_label": "配电房"
+    },
+    "广电机房": {
+      "category": "WEAK_CURRENT_ROOM",
+      "secondary_label": "广电机房"
+    },
+    "报警阀间": {
+      "category": "PLUMBING_ROOM",
+      "secondary_label": "报警阀间"
+    },
+    "排风井": {
+      "category": "HVAC_SHAFT",
+      "secondary_label": "风井"
+    },
+    "排风排烟井": {
+      "category": "HVAC_SHAFT",
+      "secondary_label": "风井"
+    },
+    "排风排烟机房": {
+      "category": "HVAC_ROOM",
+      "secondary_label": "风机房"
+    },
+    "排风机房": {
+      "category": "HVAC_ROOM",
+      "secondary_label": "风机房"
+    },
+    "检修间": {
+      "category": "ARCHITECTURAL_ROOM",
+      "secondary_label": "检修间"
+    },
+    "水井上空": {
+      "category": "EXCLUDED",
+      "secondary_label": "上空"
+    },
+    "消防控制室": {
+      "category": "WEAK_CURRENT_ROOM",
+      "secondary_label": "消防控制室"
+    },
+    "消防泵房": {
+      "category": "PLUMBING_ROOM",
+      "secondary_label": "水泵房"
+    },
+    "生活水泵房": {
+      "category": "PLUMBING_ROOM",
+      "secondary_label": "水泵房"
+    },
+    "电井上空": {
+      "category": "EXCLUDED",
+      "secondary_label": "上空"
+    },
+    "电梯井上空": {
+      "category": "EXCLUDED",
+      "secondary_label": "上空"
+    },
+    "电梯厅": {
+      "category": "ARCHITECTURAL_ROOM",
+      "secondary_label": "电梯厅"
+    },
+    "电梯厅上空": {
+      "category": "EXCLUDED",
+      "secondary_label": "上空"
+    },
+    "电气进线间": {
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "secondary_label": "电气间"
+    },
+    "电气间": {
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "secondary_label": "电气间"
+    },
+    "电气间上空": {
+      "category": "EXCLUDED",
+      "secondary_label": "上空"
+    },
+    "电表间": {
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "secondary_label": "电表间"
+    },
+    "穿管电气间": {
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "secondary_label": "电气间"
+    },
+    "老年人日间照料中心": {
+      "category": "ARCHITECTURAL_ROOM",
+      "secondary_label": "老年人日间照料中心"
+    },
+    "设备用房": {
+      "category": "ARCHITECTURAL_ROOM",
+      "secondary_label": "设备用房"
+    },
+    "走道": {
+      "category": "ARCHITECTURAL_ROOM",
+      "secondary_label": "走道"
+    },
+    "送风井": {
+      "category": "HVAC_SHAFT",
+      "secondary_label": "风井"
+    },
+    "送风机房": {
+      "category": "HVAC_ROOM",
+      "secondary_label": "风机房"
+    },
+    "采光井": {
+      "category": "EXCLUDED",
+      "secondary_label": "上空"
+    },
+    "面积": {
+      "category": "EXCLUDED",
+      "secondary_label": "面积"
+    },
+    "预留充电桩配电房": {
+      "category": "DISTRIBUTION_ROOM",
+      "secondary_label": "配电房"
+    },
+    "预留设备用房": {
+      "category": "ARCHITECTURAL_ROOM",
+      "secondary_label": "设备用房"
+    },
+    "预留设备间": {
+      "category": "ARCHITECTURAL_ROOM",
+      "secondary_label": "设备用房"
+    },
+    "风井": {
+      "category": "HVAC_SHAFT",
+      "secondary_label": "风井"
+    }
+  }
+}
