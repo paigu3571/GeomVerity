@@ -1,0 +1,42 @@
+{
+  "rows": [
+    {
+      "os": "Windows",
+      "mode": "full",
+      "seconds": 340.359,
+      "peak_rss_bytes": 4062162944,
+      "peak_rss_mib": 3873.98,
+      "exit_code": 0,
+      "python": "3.13.4",
+      "measurement": "single process sampled RSS at 50ms; browser/install excluded"
+    },
+    {
+      "os": "Windows",
+      "mode": "changes-only",
+      "seconds": 182.717,
+      "peak_rss_bytes": 4055101440,
+      "peak_rss_mib": 3867.25,
+      "exit_code": 0,
+      "python": "3.13.4",
+      "measurement": "single process sampled RSS at 50ms; browser/install excluded"
+    },
+    {
+      "os": "Ubuntu / Python 3.11",
+      "mode": "full",
+      "seconds": 384.27,
+      "peak_rss_mib": 4102.84,
+      "exit_code": 0,
+      "measurement": "GNU time -v; browser/install excluded"
+    },
+    {
+      "os": "Ubuntu / Python 3.11",
+      "mode": "changes-only",
+      "seconds": 182.84,
+      "peak_rss_mib": 4100.81,
+      "exit_code": 0,
+      "measurement": "GNU time -v; browser/install excluded"
+    }
+  ],
+  "tested_source_commit": "c853a3516b07de0fdfc84d884e5936592d7f9610",
+  "ubuntu_run": "https://github.com/paigu3571/GeomVerity/actions/runs/38499689728"
+}

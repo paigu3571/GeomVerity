@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    paths: ["python/**", "rules/**", "samples/**", "scripts/**", "cs/**", "pyproject.toml", "setup.py", "MANIFEST.in"]
 permissions:
   contents: read
 jobs:

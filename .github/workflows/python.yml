@@ -2,6 +2,7 @@ name: Python离线验收
 on:
   push:
     branches: [main]
+    paths: ["python/**", "rules/**", "samples/**", "scripts/**", "cs/**", "pyproject.toml", "setup.py", "MANIFEST.in"]
   pull_request:
   workflow_dispatch:
 permissions:

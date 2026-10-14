@@ -55,15 +55,15 @@ python -m cst.demo
 | 可追溯决策 | 输入、规则、模型与人工确认记录；证据包哈希核验 | [证据包验收](docs/acceptance/evidence.md) |
 | SDK/MCP | SDK核心调用与七个只读MCP工具 | [接口验收](docs/acceptance/interfaces.md) |
 
-术语实验在49个已标注名称上与人工一级类别一致35/49；这不是整图识别准确率。[样本与不一致明细](eval/llm_naming.md)。
+实际模型返回112个去重房名。原关键词未覆盖的46种名称中，模型为42种提出可审核类别，4种保留UNKNOWN；采纳数量待人工审核。49种人工名称的35/49一致对照保留在详细评测中。[样本与不一致明细](eval/llm_naming.md)。
 
 首次冻结的8项改图对照为6项对应、1项部分、1项不一致；人工记录房名笔误更正后为7项对应、1项部分。
 
 ## 运行要求
 
-Python 3.11+、64位系统。512MB沙盒中的完整demo、check和全量测试曾因内存不足中断，不支持以512MB作为完整演示配置。实测峰值、耗时和建议内存见[运行测量](eval/runtime.md)。已生成的离线HTML可直接用浏览器打开，无需在本机重算。
+Python 3.11+、64位系统。完整演示建议至少8GB整机内存、运行前可用内存至少5GB；CAD和浏览器并行建议16GB。Windows完整演示本次340.359秒、峰值3873.98MiB；Ubuntu本次384.27秒、峰值4102.84MiB。512MB沙盒中的完整demo、check和全量测试曾因内存不足中断，不支持以512MB作为完整演示配置。实测峰值、耗时和建议内存见[运行测量](eval/runtime.md)。已生成的离线HTML可直接用浏览器打开，无需在本机重算。
 
-缩减运行范围可用 `python -m cst.demo --changes-only`，只执行A→A-change链路，跳过A/B独立报告及问答/草案全组重放；它不承诺能在512MB内完成。
+缩减运行范围可用 `python -m cst.demo --changes-only`，只执行A→A-change链路，跳过A/B独立报告及问答/草案全组重放；实测峰值仍接近4GB，不适合512MB环境。
 
 ## 使用接口
 
@@ -92,6 +92,6 @@ python -m unittest discover -s python/tests -v
 
 ## 维护与许可
 
-著作权人、原作者及维护者：张田。其他贡献者和第三方保留各自权利。自有代码使用[MPL-2.0](LICENSE)，依赖见[NOTICE](NOTICE)。[维护](docs/guides/maintenance.md) · [路线图](docs/architecture/roadmap.md) · [安全报告](SECURITY.md)。
+著作权人、原作者及维护者：张田。其他贡献者和第三方保留各自权利。自有代码使用[MPL-2.0](LICENSE)，依赖见[NOTICE](NOTICE)。[维护](docs/guides/maintenance.md) · [路线图](docs/architecture/roadmap.md) · [安全报告](SECURITY.md) · [治理角色](GOVERNANCE.md)。
 
 GeomVerity combines deterministic geometry processing, constrained LLM proposals, engineering rules and traceable decision records. It supports CAD snapshot analysis, version comparison and auditable engineering assistance.

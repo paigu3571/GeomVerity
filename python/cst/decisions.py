@@ -8,7 +8,7 @@ from .model import load,L1,L2,L3,FILENAMES
 from .naming import digest
 from .priority import finding_rank,room_priorities
 ROOT=Path(__file__).resolve().parents[2]
-ENGINE_VERSION='0.3.0.dev0'
+ENGINE_VERSION='0.3.0'
 
 def object_fingerprint(obj):
     return digest({'type':obj.type,'name':obj.raw_label,'use':obj.use_code,'status':obj.status,'geometry':obj.geometry.model_dump()})
