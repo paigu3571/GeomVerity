@@ -82,3 +82,21 @@ class RecoveryTests(unittest.TestCase):
         self.assertEqual(targets_and_issues(l1,l2,l3)[0],[('男卫','TEXT')])
         l2.facts[0].raw_text='FM甲1222'
         self.assertEqual(targets_and_issues(l1,l2,l3)[0],[])
+
+    def test_diagnostic_sidecar_binds_source_and_does_not_edit_it(self):
+        import tempfile,hashlib,json
+        from pathlib import Path
+        from unittest.mock import patch
+        from cst.room_diagnostics import diagnose_directory
+        l1,l2,l3=fixture(open_gap=True);l3.findings=[]
+        with tempfile.TemporaryDirectory() as temp:
+            source_dir=Path(temp)/'source';source_dir.mkdir()
+            snapshot=source_dir/'building-semantics.v1.json.gz';snapshot.write_bytes(b'SYNTHETIC source')
+            with patch('cst.model.load',side_effect=[l1,l2,l3]):
+                result=diagnose_directory(source_dir,Path(temp)/'out')
+            report=json.loads((Path(temp)/'out/room_issues.json').read_text(encoding='utf-8'))
+            self.assertEqual(result['remaining'],1)
+            self.assertEqual(report['snapshot_sha256'],hashlib.sha256(snapshot.read_bytes()).hexdigest())
+            self.assertEqual(report['issues'][0]['text_handle'],'TEXT')
+            self.assertEqual(snapshot.read_bytes(),b'SYNTHETIC source')
+            self.assertEqual(l3.objects,[])

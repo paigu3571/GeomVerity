@@ -47,6 +47,7 @@ def main():
     p.add_argument("--generated")
     p.add_argument("--changes")
     p.add_argument("--review",help="可选人工修改记录对照JSON；不参与自动识别")
+    p.add_argument("--issues",help="当前扫描对应的房间问题定位JSON")
     p = sub.add_parser("cloud")
     p.add_argument("diff_json")
     p.add_argument("--output",default="dist/changes/impact_cloud.dxf")
@@ -119,7 +120,7 @@ def main():
             result = lights(args.directory,args.output,args.mode)
         elif args.command == "view":
             from .view import write_view
-            result = write_view(args.directory,args.output,args.generated,args.changes,args.review)
+            result = write_view(args.directory,args.output,args.generated,args.changes,args.review,args.issues)
         elif args.command == "cloud":
             from .cloud import cloud
             result = cloud(args.diff_json,args.output)

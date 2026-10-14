@@ -20,48 +20,93 @@ entries:
   approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
   model_proposed_category: SUBSTATION
-  approved_at: '2026-10-13'
-  engineer_note: 两者均属于配电室；变电所/变配电房为地区命名习惯差异，本示例规则共同适用。
+  approved_at: '2026-10-14'
+  engineer_note: 配电室
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
 - name: 1-1楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯属于建筑交通空间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 2-1楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯为建筑房间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 楼梯属于建筑交通空间
 - name: 2-2楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯为建筑房间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 楼梯属于建筑交通空间
 - name: 3-1楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯为建筑房间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 楼梯属于建筑交通空间
 - name: 3-2楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯为建筑房间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 楼梯属于建筑交通空间
 - name: 3-2楼梯上空
   category: ARCHITECTURAL_ROOM
   reason: 楼梯上空属于建筑空间
@@ -70,126 +115,253 @@ entries:
   approved: false
   approved_by: null
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: 空间上方因标高过高，二维平面表达跨层出现的建筑空间
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 本阶段暂缓启用
+  deferred_reason: 跨层或顶板开洞区域本阶段不新增用途语义；保留审核意见。
 - name: 5-1楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯属于建筑交通空间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 5-2楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯属于建筑交通空间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 6-1楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯属于建筑交通空间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 6-2楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯属于建筑交通空间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 7-1楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯属于建筑交通空间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 8-1楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯属于建筑交通空间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 9-1楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯属于建筑交通空间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: B-1坡道
   category: ARCHITECTURAL_ROOM
   reason: 坡道为建筑房间
   confidence: 0.8
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 坡道属于建筑交通空间
 - name: B-2坡道
   category: ARCHITECTURAL_ROOM
   reason: 坡道为建筑房间
   confidence: 0.8
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 坡道属于建筑交通空间
 - name: P-1楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯为建筑房间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 楼梯属于建筑交通空间
 - name: P-2楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯属于建筑交通空间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: P-3楼梯
   category: ARCHITECTURAL_ROOM
   reason: 楼梯属于建筑交通空间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 井
-  category: UNKNOWN
+  category: EXCLUDED
   reason: 井用途无法判断
   confidence: 0.3
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: UNKNOWN
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 排除
 - name: 人防楼梯
   category: ARCHITECTURAL_ROOM
   reason: 人防楼梯为建筑房间
   confidence: 0.8
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 楼梯属于建筑交通空间
 - name: 储藏间
   category: ARCHITECTURAL_ROOM
   reason: 储藏间属于建筑使用房间
   confidence: 0.8
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 公变配电房上空
   category: SUBSTATION
   reason: 公变配电房上空，属变电所
@@ -198,46 +370,93 @@ entries:
   approved: false
   approved_by: null
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: SUBSTATION
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 本阶段暂缓启用
+  deferred_reason: 跨层或顶板开洞区域本阶段不新增用途语义；保留审核意见。
 - name: 冷媒井
   category: HVAC_SHAFT
   reason: 冷媒井属暖通井道
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: HVAC_SHAFT
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 暖通井道
 - name: 卫生服务站
   category: ARCHITECTURAL_ROOM
   reason: 卫生服务站为建筑房间
   confidence: 0.8
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 变配电室
   category: SUBSTATION
   reason: 变配电室，属变电所
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 3739b105144504b4c0272414bd55d0fe2b43041f3b326234734ce854855c371c
+  model_proposed_category: SUBSTATION
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 变电所
 - name: 图书室(人数不超30人)
   category: ARCHITECTURAL_ROOM
   reason: 图书室为建筑房间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 地下室
   category: ARCHITECTURAL_ROOM
   reason: 地下室为建筑房间
   confidence: 0.8
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 地下室上空
   category: ARCHITECTURAL_ROOM
   reason: 地下室上空为建筑房间
@@ -246,14 +465,29 @@ entries:
   approved: false
   approved_by: null
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: 空间上方因标高过高，二维平面表达跨层出现的建筑空间
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 本阶段暂缓启用
+  deferred_reason: 跨层或顶板开洞区域本阶段不新增用途语义；保留审核意见。
 - name: 女卫
   category: ARCHITECTURAL_ROOM
   reason: 女卫为建筑房间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 实施充电桩配电房
   category: DISTRIBUTION_ROOM
   reason: 充电桩配电房属配电室
@@ -263,112 +497,221 @@ entries:
   approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
   model_proposed_category: DISTRIBUTION_ROOM
-  approved_at: '2026-10-13'
-  engineer_note: 两者均属于配电室；变电所/变配电房为地区命名习惯差异，本示例规则共同适用。
+  approved_at: '2026-10-14'
+  engineer_note: 配电室
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
 - name: 密闭通道
   category: ARCHITECTURAL_ROOM
   reason: 密闭通道为建筑房间
   confidence: 0.7
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 封闭楼梯
   category: ARCHITECTURAL_ROOM
   reason: 封闭楼梯为建筑房间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 楼梯属于建筑交通空间
 - name: 弱电机房
   category: WEAK_CURRENT_ROOM
   reason: 名称明确为弱电机房
   confidence: 0.95
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: WEAK_CURRENT_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 弱电房间
 - name: 快递综合服务站(人数不超30人)
   category: ARCHITECTURAL_ROOM
   reason: 属建筑功能房间
   confidence: 0.7
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 扩散室
-  category: UNKNOWN
+  category: HVAC_ROOM
   reason: 用途不明确
   confidence: 0.3
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: UNKNOWN
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 扩散室属于暖通房间
 - name: 排烟井
   category: HVAC_SHAFT
   reason: 排烟井属暖通井道
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: HVAC_SHAFT
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 暖通井道
 - name: 排烟机房
   category: HVAC_ROOM
   reason: 排烟机房属暖通房间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: HVAC_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 暖通房间
 - name: 无障碍卫生间
   category: ARCHITECTURAL_ROOM
   reason: 属建筑功能房间
   confidence: 0.85
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 机动车坡道
-  category: EXCLUDED
+  category: ARCHITECTURAL_ROOM
   reason: 坡道非房间
   confidence: 0.8
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: EXCLUDED
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 坡道属于建筑交通空间
 - name: 水井
   category: PLUMBING_ROOM
   reason: 水井属给排水井道
   confidence: 0.8
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: PLUMBING_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 给排水房间
 - name: 水泵房
   category: PLUMBING_ROOM
   reason: 水泵房，属给排水房间
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 3739b105144504b4c0272414bd55d0fe2b43041f3b326234734ce854855c371c
+  model_proposed_category: PLUMBING_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 给排水房间
 - name: 消防水池
   category: PLUMBING_ROOM
   reason: 消防水池属给排水设施
   confidence: 0.85
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: PLUMBING_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 给排水房间
 - name: 消防水池一
   category: PLUMBING_ROOM
   reason: 消防水池属于给排水专业设施。
   confidence: 0.7
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 8fa6ab6008af8c5a167f72e205d075e397aa8298164ee42f58fd45afc843039b
+  model_proposed_category: PLUMBING_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 给排水房间
 - name: 消防水池上空
   category: UNKNOWN
   reason: 上空区域用途不明确
@@ -377,14 +720,29 @@ entries:
   approved: false
   approved_by: null
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: UNKNOWN
+  review_response: 修改
+  review_note: 空间上方因标高过高，二维平面表达跨层出现的建筑空间
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 本阶段暂缓启用
+  deferred_reason: 跨层或顶板开洞区域本阶段不新增用途语义；保留审核意见。
 - name: 消防水池二
   category: PLUMBING_ROOM
   reason: 消防水池属于给排水专业设施。
   confidence: 0.7
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 8fa6ab6008af8c5a167f72e205d075e397aa8298164ee42f58fd45afc843039b
+  model_proposed_category: PLUMBING_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 给排水房间
 - name: 消防泵房上空
   category: UNKNOWN
   reason: 上空区域用途不明确
@@ -393,54 +751,109 @@ entries:
   approved: false
   approved_by: null
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: UNKNOWN
+  review_response: 修改
+  review_note: 空间上方因标高过高，二维平面表达跨层出现的建筑空间
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 本阶段暂缓启用
+  deferred_reason: 跨层或顶板开洞区域本阶段不新增用途语义；保留审核意见。
 - name: 物业管理及服务用房(人数不超30人)
   category: ARCHITECTURAL_ROOM
   reason: 属建筑功能房间
   confidence: 0.7
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 电井
   category: ELECTRICAL_SHAFT
   reason: 电井属电气竖井
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: ELECTRICAL_SHAFT
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 电气竖井
 - name: 电气间兼充电桩电表间
-  category: DISTRIBUTION_ROOM
+  category: SMALL_ELECTRICAL_ROOM
   reason: 电气间属配电室
   confidence: 0.75
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: DISTRIBUTION_ROOM
+  review_response: 修改
+  review_note: 主要放置小型配电箱。要求比配电室略低
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 属于配电小间；主要放置小型配电箱。要求比配电室略低
 - name: 男卫
   category: ARCHITECTURAL_ROOM
   reason: 卫生间属建筑功能房间
   confidence: 0.85
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 简易洗消区
-  category: UNKNOWN
+  category: ARCHITECTURAL_ROOM
   reason: 用途不明确
   confidence: 0.3
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: UNKNOWN
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 属建筑功能房间
 - name: 补风井
   category: HVAC_SHAFT
   reason: 补风井属暖通井道
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: HVAC_SHAFT
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 暖通井道
 - name: 表间上空
   category: UNKNOWN
   reason: 上空区域用途不明确
@@ -449,30 +862,61 @@ entries:
   approved: false
   approved_by: null
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: UNKNOWN
+  review_response: 修改
+  review_note: 空间上方因标高过高，二维平面表达跨层出现的建筑空间
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 本阶段暂缓启用
+  deferred_reason: 跨层或顶板开洞区域本阶段不新增用途语义；保留审核意见。
 - name: 进线间
-  category: DISTRIBUTION_ROOM
+  category: SMALL_ELECTRICAL_ROOM
   reason: 进线间属配电室
   confidence: 0.7
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: DISTRIBUTION_ROOM
+  review_response: 修改
+  review_note: 主要放置小型配电箱。要求比配电室略低
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 属于配电小间；主要放置小型配电箱。要求比配电室略低
 - name: 进风井
   category: HVAC_SHAFT
   reason: 进风井属暖通井道
   confidence: 0.9
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2
+  model_proposed_category: HVAC_SHAFT
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 暖通井道
 - name: 通道
   category: ARCHITECTURAL_ROOM
   reason: 通用通行空间，属建筑房间
   confidence: 0.6
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 2f6948b17fe522138fc68bc6c95ded89fa421a8a21c15dbd949a0e63d8c34d61
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 采光天井
   category: ARCHITECTURAL_ROOM
   reason: 采光用天井，属建筑空间
@@ -481,43 +925,90 @@ entries:
   approved: false
   approved_by: null
   cache_id: 2f6948b17fe522138fc68bc6c95ded89fa421a8a21c15dbd949a0e63d8c34d61
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 修改
+  review_note: 采光井、露天井等顶板开洞区域可能需要单独列一组语义
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 本阶段暂缓启用
+  deferred_reason: 跨层或顶板开洞区域本阶段不新增用途语义；保留审核意见。
 - name: 防毒通道
   category: ARCHITECTURAL_ROOM
   reason: 人防通行空间，属建筑房间
   confidence: 0.5
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 2f6948b17fe522138fc68bc6c95ded89fa421a8a21c15dbd949a0e63d8c34d61
+  model_proposed_category: ARCHITECTURAL_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 建筑房间
 - name: 防火单元自然补风井
   category: HVAC_SHAFT
   reason: 补风井属暖通井道
   confidence: 0.6
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 2f6948b17fe522138fc68bc6c95ded89fa421a8a21c15dbd949a0e63d8c34d61
+  model_proposed_category: HVAC_SHAFT
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 暖通井道
 - name: 除尘滤毒室
   category: HVAC_ROOM
   reason: 通风滤毒功能房间，属暖通房间
   confidence: 0.5
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 2f6948b17fe522138fc68bc6c95ded89fa421a8a21c15dbd949a0e63d8c34d61
+  model_proposed_category: HVAC_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 暖通房间
 - name: 集气室
-  category: UNKNOWN
+  category: HVAC_ROOM
   reason: 用途不明确，无法归类
   confidence: 0.3
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 2f6948b17fe522138fc68bc6c95ded89fa421a8a21c15dbd949a0e63d8c34d61
+  model_proposed_category: UNKNOWN
+  review_response: 修改
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 集气室属于暖通房间
 - name: 预留水泵房
   category: PLUMBING_ROOM
   reason: 水泵房属给排水房间
   confidence: 0.7
   needs_review: true
-  approved: false
-  approved_by: null
+  approved: true
+  approved_by: 张田
   cache_id: 2f6948b17fe522138fc68bc6c95ded89fa421a8a21c15dbd949a0e63d8c34d61
+  model_proposed_category: PLUMBING_ROOM
+  review_response: 采纳
+  review_note: ''
+  reviewed_by: 张田
+  reviewed_at: '2026-10-14'
+  review_state: 已审核
+  approved_at: '2026-10-14'
+  engineer_note: 给排水房间

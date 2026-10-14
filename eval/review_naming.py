@@ -29,9 +29,13 @@ counts={'model_returned_unique_names':len(records),'experiment_input_names':len(
         'approved':sum(r['name'] in approved for r in rows),
         'basis':'REAL_API valid answer rows intersected with experiment input; baseline uses only original exact/contains rules; no prompt tuning; no adoption rate'}
 (root/'eval/naming-coverage.json').write_text(json.dumps(counts,ensure_ascii=False,indent=2),encoding='utf-8')
-with (root/'eval/naming-review.csv').open('w',encoding='utf-8-sig',newline='') as f:
+existing={}
+review_path=root/'eval/naming-review.csv'
+if review_path.is_file():
+    with review_path.open(encoding='utf-8-sig',newline='') as f:existing={r['房名']:r for r in csv.DictReader(f)}
+with review_path.open('w',encoding='utf-8-sig',newline='') as f:
     writer=csv.writer(f)
     writer.writerow(['房名','现有词表结果','模型提议','模型理由','模型信心','已批准类别','核对：采纳/修改/不采纳','修改后的用途','备注'])
     for r in rows:
-        writer.writerow([r['name'],labels.get(baseline(r['name']),'未命中原关键词'),labels[r['category']],r['reason'],r['confidence'],labels.get(approved.get(r['name'],{}).get('category'),''),'','',''])
+        writer.writerow([r['name'],labels.get(baseline(r['name']),'未命中原关键词'),labels[r['category']],r['reason'],r['confidence'],labels.get(approved.get(r['name'],{}).get('category'),''),*[existing.get(r['name'],{}).get(key,'') for key in ['核对：采纳/修改/不采纳','修改后的用途','备注']]])
 print(json.dumps(counts,ensure_ascii=False,indent=2))

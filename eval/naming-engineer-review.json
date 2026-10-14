@@ -1,0 +1,591 @@
+{
+  "reviewed": 63,
+  "responses": {
+    "采纳": 43,
+    "修改": 20
+  },
+  "activation": {
+    "approved": 56,
+    "deferred": 7
+  },
+  "reviewer": "张田",
+  "review_date": "2026-10-14",
+  "source_sha256": "313ab31ef30d7cb7ca6c30b7167bbbd15b14f7154ad035e83656e97fb2844cb6",
+  "rows": [
+    {
+      "name": "1#公变配电房",
+      "response": "采纳",
+      "model_category": "SUBSTATION",
+      "approved_category": "DISTRIBUTION_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "1-1楼梯",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "2-1楼梯",
+      "response": "修改",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "楼梯属于建筑交通空间",
+      "note": null
+    },
+    {
+      "name": "2-2楼梯",
+      "response": "修改",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "楼梯属于建筑交通空间",
+      "note": null
+    },
+    {
+      "name": "3-1楼梯",
+      "response": "修改",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "楼梯属于建筑交通空间",
+      "note": null
+    },
+    {
+      "name": "3-2楼梯",
+      "response": "修改",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "楼梯属于建筑交通空间",
+      "note": null
+    },
+    {
+      "name": "3-2楼梯上空",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": null,
+      "activation": "deferred",
+      "engineer_edit": null,
+      "note": "空间上方因标高过高，二维平面表达跨层出现的建筑空间"
+    },
+    {
+      "name": "5-1楼梯",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "5-2楼梯",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "6-1楼梯",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "6-2楼梯",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "7-1楼梯",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "8-1楼梯",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "9-1楼梯",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "B-1坡道",
+      "response": "修改",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "坡道属于建筑交通空间",
+      "note": null
+    },
+    {
+      "name": "B-2坡道",
+      "response": "修改",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "坡道属于建筑交通空间",
+      "note": null
+    },
+    {
+      "name": "P-1楼梯",
+      "response": "修改",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "楼梯属于建筑交通空间",
+      "note": null
+    },
+    {
+      "name": "P-2楼梯",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "P-3楼梯",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "井",
+      "response": "修改",
+      "model_category": "UNKNOWN",
+      "approved_category": "EXCLUDED",
+      "activation": "approved",
+      "engineer_edit": "排除",
+      "note": null
+    },
+    {
+      "name": "人防楼梯",
+      "response": "修改",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "楼梯属于建筑交通空间",
+      "note": null
+    },
+    {
+      "name": "储藏间",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "公变配电房上空",
+      "response": "采纳",
+      "model_category": "SUBSTATION",
+      "approved_category": null,
+      "activation": "deferred",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "冷媒井",
+      "response": "采纳",
+      "model_category": "HVAC_SHAFT",
+      "approved_category": "HVAC_SHAFT",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "卫生服务站",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "变配电室",
+      "response": "采纳",
+      "model_category": "SUBSTATION",
+      "approved_category": "SUBSTATION",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "图书室(人数不超30人)",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "地下室",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "地下室上空",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": null,
+      "activation": "deferred",
+      "engineer_edit": null,
+      "note": "空间上方因标高过高，二维平面表达跨层出现的建筑空间"
+    },
+    {
+      "name": "女卫",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "实施充电桩配电房",
+      "response": "采纳",
+      "model_category": "DISTRIBUTION_ROOM",
+      "approved_category": "DISTRIBUTION_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "密闭通道",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "封闭楼梯",
+      "response": "修改",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "楼梯属于建筑交通空间",
+      "note": null
+    },
+    {
+      "name": "弱电机房",
+      "response": "采纳",
+      "model_category": "WEAK_CURRENT_ROOM",
+      "approved_category": "WEAK_CURRENT_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "快递综合服务站(人数不超30人)",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "扩散室",
+      "response": "修改",
+      "model_category": "UNKNOWN",
+      "approved_category": "HVAC_ROOM",
+      "activation": "approved",
+      "engineer_edit": "扩散室属于暖通房间",
+      "note": null
+    },
+    {
+      "name": "排烟井",
+      "response": "采纳",
+      "model_category": "HVAC_SHAFT",
+      "approved_category": "HVAC_SHAFT",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "排烟机房",
+      "response": "采纳",
+      "model_category": "HVAC_ROOM",
+      "approved_category": "HVAC_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "无障碍卫生间",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "机动车坡道",
+      "response": "修改",
+      "model_category": "EXCLUDED",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "坡道属于建筑交通空间",
+      "note": null
+    },
+    {
+      "name": "水井",
+      "response": "采纳",
+      "model_category": "PLUMBING_ROOM",
+      "approved_category": "PLUMBING_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "水泵房",
+      "response": "采纳",
+      "model_category": "PLUMBING_ROOM",
+      "approved_category": "PLUMBING_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "消防水池",
+      "response": "采纳",
+      "model_category": "PLUMBING_ROOM",
+      "approved_category": "PLUMBING_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "消防水池一",
+      "response": "采纳",
+      "model_category": "PLUMBING_ROOM",
+      "approved_category": "PLUMBING_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "消防水池上空",
+      "response": "修改",
+      "model_category": "UNKNOWN",
+      "approved_category": null,
+      "activation": "deferred",
+      "engineer_edit": "给排水房间",
+      "note": "空间上方因标高过高，二维平面表达跨层出现的建筑空间"
+    },
+    {
+      "name": "消防水池二",
+      "response": "采纳",
+      "model_category": "PLUMBING_ROOM",
+      "approved_category": "PLUMBING_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "消防泵房上空",
+      "response": "修改",
+      "model_category": "UNKNOWN",
+      "approved_category": null,
+      "activation": "deferred",
+      "engineer_edit": "给排水房间",
+      "note": "空间上方因标高过高，二维平面表达跨层出现的建筑空间"
+    },
+    {
+      "name": "物业管理及服务用房(人数不超30人)",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "电井",
+      "response": "采纳",
+      "model_category": "ELECTRICAL_SHAFT",
+      "approved_category": "ELECTRICAL_SHAFT",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "电气间兼充电桩电表间",
+      "response": "修改",
+      "model_category": "DISTRIBUTION_ROOM",
+      "approved_category": "SMALL_ELECTRICAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "属于配电小间",
+      "note": "主要放置小型配电箱。要求比配电室略低"
+    },
+    {
+      "name": "男卫",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "简易洗消区",
+      "response": "修改",
+      "model_category": "UNKNOWN",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "属建筑功能房间",
+      "note": null
+    },
+    {
+      "name": "补风井",
+      "response": "采纳",
+      "model_category": "HVAC_SHAFT",
+      "approved_category": "HVAC_SHAFT",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "表间上空",
+      "response": "修改",
+      "model_category": "UNKNOWN",
+      "approved_category": null,
+      "activation": "deferred",
+      "engineer_edit": "属于配电小间",
+      "note": "空间上方因标高过高，二维平面表达跨层出现的建筑空间"
+    },
+    {
+      "name": "进线间",
+      "response": "修改",
+      "model_category": "DISTRIBUTION_ROOM",
+      "approved_category": "SMALL_ELECTRICAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": "属于配电小间",
+      "note": "主要放置小型配电箱。要求比配电室略低"
+    },
+    {
+      "name": "进风井",
+      "response": "采纳",
+      "model_category": "HVAC_SHAFT",
+      "approved_category": "HVAC_SHAFT",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "通道",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "采光天井",
+      "response": "修改",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": null,
+      "activation": "deferred",
+      "engineer_edit": "新增：顶板开洞区域",
+      "note": "采光井、露天井等顶板开洞区域可能需要单独列一组语义"
+    },
+    {
+      "name": "防毒通道",
+      "response": "采纳",
+      "model_category": "ARCHITECTURAL_ROOM",
+      "approved_category": "ARCHITECTURAL_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "防火单元自然补风井",
+      "response": "采纳",
+      "model_category": "HVAC_SHAFT",
+      "approved_category": "HVAC_SHAFT",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "除尘滤毒室",
+      "response": "采纳",
+      "model_category": "HVAC_ROOM",
+      "approved_category": "HVAC_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    },
+    {
+      "name": "集气室",
+      "response": "修改",
+      "model_category": "UNKNOWN",
+      "approved_category": "HVAC_ROOM",
+      "activation": "approved",
+      "engineer_edit": "集气室属于暖通房间",
+      "note": null
+    },
+    {
+      "name": "预留水泵房",
+      "response": "采纳",
+      "model_category": "PLUMBING_ROOM",
+      "approved_category": "PLUMBING_ROOM",
+      "activation": "approved",
+      "engineer_edit": null,
+      "note": null
+    }
+  ],
+  "keyword_uncovered_review": {
+    "total": 46,
+    "accepted": 30,
+    "modified": 16,
+    "activated": 45,
+    "deferred": 1,
+    "meaning": "审核后可用覆盖，不是模型直接分类准确率"
+  }
+}

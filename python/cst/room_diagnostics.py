@@ -27,11 +27,13 @@ def targets_and_issues(l1,l2,l3):
     associated.update(e.source_handle for o in l3.objects if o.type in ('space','shaft','zone') for e in o.evidence if e.kind=='spatial_text')
     targets=[];issues=[]
     for f,x,y in label_rows(l2):
-        if f.source.handle in associated:continue
+        if f.source.handle in associated or f.raw_text.startswith('[REDACTED_'):continue
         # 房名图层混有门号、尺寸及说明；词典外只查房名形态，不推定专业用途。
         likely_room=bool(re.search(r'(?:房|室|间|井|池|厅|楼梯|通道|坡道|洗消区|男卫|女卫|服务站)(?:[（(][^）)]*[）)])?$',f.raw_text))
         if f.source.handle not in unresolved and not likely_room:continue
-        if '上空' in f.raw_text:
+        if f.raw_text in ('采光井','采光天井','露天井'):
+            row=issue(f,x,y,'顶板开洞区域本阶段暂不补充用途语义，不按实体房间自动补提取。','REGION_SEMANTICS_DEFERRED');row['downstream_action']='保留源文字位置；后续单独建立区域语义。';issues.append(row)
+        elif '上空' in f.raw_text:
             row=issue(f,x,y,'“上空”为跨层空间说明，本轮不把它自动新增为本层实体房间。','OVERHEAD_LABEL');row['downstream_action']='核对楼层与空间用途后再参与布置。';issues.append(row)
         else:targets.append((f.raw_text,f.source.handle))
     return targets,issues
@@ -103,13 +105,26 @@ def diagnose_label(l1,l2,l3,name,handle,error,radius=20000):
     return row
 
 
-def write_issues(output,issues,recovered):
+def write_issues(output,issues,recovered,snapshot=None):
     result={'scope':'原L3未解析房名，加名称图层中未关联的词典外房名候选；门号/尺寸/说明不按房间强补' ,
         'counts':dict(Counter(r['reason_code'] for r in issues)),'remaining':len(issues),
-        'recovered_count':len(recovered),'snapshot_sha256':hashlib.sha256((Path(output)/'building-semantics.v1.json.gz').read_bytes()).hexdigest(),'issues':issues,'recovered':recovered,
+        'recovered_count':len(recovered),'snapshot_sha256':hashlib.sha256((Path(snapshot) if snapshot else Path(output)/'building-semantics.v1.json.gz').read_bytes()).hexdigest(),'issues':issues,'recovered':recovered,
         'note':'端点与文字位置都是排查候选，不是已证实CAD错误；未自动补墙或挪文字。'}
     output=Path(output);(output/'room_issues.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
     with (output/'room_issues.csv').open('w',encoding='utf-8-sig',newline='') as f:
         writer=csv.writer(f);writer.writerow(['房名','文字Handle','问题类型','中文原因','端点候选数','文字位置候选','下游处理'])
         writer.writerows([r['room_name'],r['text_handle'],r['reason_code'],r['reason'],len(r['gap_candidates']),'有' if r['text_position_candidate'] else '无',r['downstream_action']] for r in issues)
     return {k:v for k,v in result.items() if k not in ('issues','recovered')}
+
+
+def diagnose_directory(directory, output):
+    """生成当前快照的问题定位侧车；不新增空间或修改三层数据。"""
+    from .model import load,L1,L2
+    directory=Path(directory);output=Path(output);output.mkdir(parents=True,exist_ok=True)
+    l1,l2,l3=load(directory,L1),load(directory,L2),load(directory)
+    targets,issues=targets_and_issues(l1,l2,l3)
+    for name,handle in targets:
+        issues.append(diagnose_label(l1,l2,l3,name,handle,'原扫描未关联有效房间围合；请核对房名位置和边界。'))
+    snapshot=directory/'building-semantics.v1.json.gz'
+    if not snapshot.is_file():snapshot=snapshot.with_suffix('')
+    return write_issues(output,issues,[],snapshot)

@@ -13,7 +13,7 @@ COLORS={'SUBSTATION':'#b77be8','DISTRIBUTION_ROOM':'#efb14c','ELECTRICAL_SHAFT':
         'WEAK_CURRENT_ROOM':'#60a6eb','SMALL_ELECTRICAL_ROOM':'#7bc6a8','NOT_INCLUDED':'#99c7cd','EXCLUDED':'#c5cbd0'}
 
 
-def write_view(directory,output=None,generated=None,changes=None,review=None):
+def write_view(directory,output=None,generated=None,changes=None,review=None,issues=None):
     directory=Path(directory);data=load(directory);l2=load(directory,L2);l1=load(directory,L1)
     if data.drawing.geometry_units!='mm':raise ValueError('查看器当前支持毫米WCS数据，请先核对单位')
     facts={f.geometry_id:f for f in l2.facts};primitives={p.primitive_id:p for p in l1.primitives}
@@ -171,7 +171,7 @@ def write_view(directory,output=None,generated=None,changes=None,review=None):
                         'type':ref['type'],'expression_count':0}
                     rows[tag]['expression_count']+=1
             if rows:o['门窗变更']=list(rows.values())
-    issue_path=directory/'room_issues.json'
+    issue_path=Path(issues) if issues else directory/'room_issues.json'
     if issue_path.is_file():
         import hashlib
         issues=json.loads(issue_path.read_text(encoding='utf-8-sig'))

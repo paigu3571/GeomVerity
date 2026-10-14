@@ -9,6 +9,7 @@ from .verify import verify
 from .l4 import check
 from .report import write_report
 from .ai import replay
+from .room_diagnostics import diagnose_directory
 from .draft import draft_rule
 
 def run(root=None,changes_only=False):
@@ -35,7 +36,8 @@ def run(root=None,changes_only=False):
             from .view import write_view
             lighting=lights(directory,output/label)
             neighbor_result=neighbors(directory,output/label)
-            viewed=write_view(directory,output/label/'semantic_view.html',output/label/'lighting_candidates.json')
+            diagnose_directory(directory,output/label)
+            viewed=write_view(directory,output/label/'semantic_view.html',output/label/'lighting_candidates.json',issues=output/label/'room_issues.json')
             manifest['samples'][label]={'objects':counts['objects_by_type'],'findings':checked['summary'],'verification_failures':0,'lighting_candidates':lighting['point_count'],'neighbor_pairs':neighbor_result['neighbor_pair_count'],'viewer':viewed['output']}
             print(label+'：读取完成，引用验证失败0项，审查'+json.dumps(checked['summary'],ensure_ascii=False))
         from .changes import diff
@@ -45,9 +47,10 @@ def run(root=None,changes_only=False):
             changed=diff(root/'samples/A',change_dir,output/'changes')
             cloud(output/'changes/diff.json',output/'changes/impact_cloud.dxf')
             from .view import write_view
-            write_view(change_dir,output/'changes/semantic_view.html',output/'changes/lighting_candidates.json',output/'changes/diff.json',root/'eval/change_test_results.json' if (root/'eval/change_test_results.json').is_file() else None)
+            manifest['drawing_issues']=diagnose_directory(change_dir,output/'changes')
+            write_view(change_dir,output/'changes/semantic_view.html',output/'changes/lighting_candidates.json',output/'changes/diff.json',root/'eval/change_test_results.json' if (root/'eval/change_test_results.json').is_file() else None,issues=output/'changes/room_issues.json')
             from .decisions import bundle,verify_bundle
-            manifest['bundle']=bundle(change_dir,output/'bundle',output/'changes/diff.json')
+            manifest['bundle']=bundle(change_dir,output/'bundle',output/'changes/diff.json',issues=output/'changes/room_issues.json')
             manifest['bundle_verification']=verify_bundle(output/'bundle')
             if manifest['bundle_verification']['failure_count']:raise ValueError('证据包哈希校验失败')
             from .light_calc import calculate_directory,synthetic_probe

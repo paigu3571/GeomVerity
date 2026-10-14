@@ -6,6 +6,6 @@
   "keyword_uncovered": 46,
   "model_unknown": 7,
   "proposals_for_keyword_uncovered": 42,
-  "approved": 2,
+  "approved": 56,
   "basis": "REAL_API valid answer rows intersected with experiment input; baseline uses only original exact/contains rules; no prompt tuning; no adoption rate"
 }

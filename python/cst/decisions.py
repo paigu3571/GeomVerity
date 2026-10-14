@@ -75,7 +75,7 @@ def inherit_decision(old,new,mapping):
     if None in expected or expected!=actual:return {'state':'原确认因输入变化失效，需复核','inherited':False}
     return {'state':'输入与规则未变化，可继承原范围确认','inherited':True,'engineer':old['engineer']}
 
-def bundle(directory,output='dist/bundle',changes=None):
+def bundle(directory,output='dist/bundle',changes=None,issues=None):
     from .l4 import check
     from .lighting import generate_directory
     output=Path(output)
@@ -109,6 +109,15 @@ def bundle(directory,output='dist/bundle',changes=None):
     save('classifications.json',classifications)
     save('findings.json',checks);save('lighting_candidates.json',lamps);save('decisions.json',{'schema_version':'decisions.v1','run_id':run_id,'decisions':decisions})
     if changes:save('changes.json',delta)
+    diagnostic_path=Path(issues) if issues else Path(directory)/'room_issues.json'
+    if diagnostic_path.is_file():
+        diagnostic=json.loads(diagnostic_path.read_bytes())
+        source_snapshot=Path(directory)/'building-semantics.v1.json.gz'
+        if not source_snapshot.is_file():source_snapshot=source_snapshot.with_suffix('')
+        if diagnostic.get('snapshot_sha256')!=hashlib.sha256(source_snapshot.read_bytes()).hexdigest():raise ValueError('图纸问题诊断与源扫描不对应')
+        diagnostic['source_snapshot_sha256']=diagnostic['snapshot_sha256']
+        diagnostic['snapshot_sha256']=exported_hash
+        save('room_issues.json',diagnostic)
     inputs={}
     for name in ('l4_confirmations.yaml','manifest.json'):
         path=Path(directory)/name
