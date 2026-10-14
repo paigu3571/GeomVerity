@@ -1,0 +1,13 @@
+id: LIGHT-DEMO-002
+title: 沿墙灯具布置候选（演示规则，非照度设计）
+rule_version: '0.3.0'
+approved: true
+approved_by: 张田（2026-10-12确认另加沿墙候选模式）
+applies_to: [SUBSTATION, DISTRIBUTION_ROOM]
+strategy: wall_surface
+max_spacing_m: 2.0
+wall_clearance_m: 0.0
+symbol_radius_mm: 150
+wall_match_tolerance_mm: 20
+opening_clearance_mm: 300
+scope: 灯具符号外缘贴已有L3墙体几何面，中心向室内偏移符号半径150mm，扣除开口外包范围并额外避让300mm（可调演示参数，非规范阈值）；仅生成候选，不作照度、设备避让、缺失门洞判断

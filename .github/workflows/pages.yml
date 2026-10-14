@@ -1,0 +1,33 @@
+name: 离线查看器发布
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e ".[dxf]"
+      - run: python -m cst.demo --changes-only
+      - run: |
+          mkdir -p dist/pages
+          cp dist/demo/changes/semantic_view.html dist/pages/index.html
+          cp dist/demo/notifications/notice.md dist/pages/notice.md
+          wc -c dist/pages/*
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/pages
+      - uses: actions/deploy-pages@v4
+        id: deployment

@@ -1,0 +1,14 @@
+{
+  "frozen_on": "2026-10-12",
+  "scope": "三层快照与人工R1记录；衍生报告可重新生成，不作任意图纸运行白名单",
+  "files": {
+    "samples/A/cad-primitives.v1.json.gz": "94d4ef6ba28c529fb11b8ea8cdd250950177c905acf53d9e6adf6b6d8ebc8387",
+    "samples/A/building-geometry.v1.json.gz": "fc3af314fc5ec3f8d40d0165d1f68b49fe80ce1bc075192135772a0497aa3dec",
+    "samples/A/building-semantics.v1.json.gz": "37124eb42daf0d98e5e0f990c08862f5870d973d2a3ebf4b2f49643347366009",
+    "samples/A/l4_confirmations.yaml": "2bb0d393ebca95b184dd84772aa4b1cd0ebb65adecae79240ec0947587afa468",
+    "samples/B/cad-primitives.v1.json.gz": "0c0f56bd98c95fcf0baa15b06f3658aab9328083516f47e3504f2dbe74bc9fbf",
+    "samples/B/building-geometry.v1.json.gz": "9e6493d285ac7f66ce55f3ef8d5dd80baad3e65899e330c561f0c309e4e5716a",
+    "samples/B/building-semantics.v1.json.gz": "23e8eec0e0b465406e5cee6fa6259c6d42a074e3da6cd1c503b14411a1d01b6c",
+    "samples/B/l4_confirmations.yaml": "53acb18cc7475d2dabb4f1389d58b63ca444e4313400d34512b35eb9f40d88d6"
+  }
+}

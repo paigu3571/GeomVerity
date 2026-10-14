@@ -1,0 +1,24 @@
+# SPDX-License-Identifier: MPL-2.0
+id: R3
+title: 变电所上方用水场所
+clauses:
+- code: GB 51348-2019
+  article: 4.2.1第6款
+  text: 变电所不应设在厕所、浴室、厨房或其他经常有水并可能漏水场所的正下方。
+  strength: 应
+  code_version: '2019'
+applies_to:
+- SUBSTATION
+- DISTRIBUTION_ROOM
+check:
+  predicate: directly_below_use
+  values:
+  - TOILET
+  - BATHROOM
+  - KITCHEN
+  expect: false
+on_missing: 缺少上一层语义
+scope: 张田于2026-10-12确认，按地区房名习惯将配电房与变配电房联合纳入辅助检查；不修改所引条文原文。；单层缺上一层语义时无法判定；不实现跨层配准
+approved: true
+approved_by: 张田
+rule_version: '1'

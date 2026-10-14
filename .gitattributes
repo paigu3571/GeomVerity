@@ -1,0 +1,4 @@
+# Preserve exact evidence and rule bytes across Windows/Linux checkouts.
+*.yaml -text
+*.json -text
+*.gz -text

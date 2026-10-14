@@ -1,0 +1,1461 @@
+{
+  "schema_version": "naming-eval.v1",
+  "names": [
+    "1#公变配电房",
+    "1-1楼梯",
+    "2#公变配电房",
+    "2-1楼梯",
+    "2-2楼梯",
+    "3#公变配电房",
+    "3-1楼梯",
+    "3-2楼梯",
+    "3-2楼梯上空",
+    "5-1楼梯",
+    "5-2楼梯",
+    "6-1楼梯",
+    "6-2楼梯",
+    "7-1楼梯",
+    "8-1楼梯",
+    "9-1楼梯",
+    "B-1坡道",
+    "B-2坡道",
+    "P-1楼梯",
+    "P-2楼梯",
+    "P-3楼梯",
+    "三网合一机房",
+    "三网合一机房上空",
+    "专变配电房",
+    "井",
+    "人防楼梯",
+    "信号覆盖机房",
+    "储藏间",
+    "充电桩电表间",
+    "充电桩配电房",
+    "光厅",
+    "公变配电房",
+    "公变配电房上空",
+    "冷媒井",
+    "前室",
+    "前室上空",
+    "加压送风井",
+    "加压送风机房",
+    "卫生服务站",
+    "变配电室",
+    "合用前室",
+    "商业电气间",
+    "商业电表间",
+    "商业配电房",
+    "图书室(人数不超30人)",
+    "地下室",
+    "地下室上空",
+    "女卫",
+    "实施充电桩配电房",
+    "密闭通道",
+    "封闭楼梯",
+    "广电机房",
+    "弱电机房",
+    "快递综合服务站(人数不超30人)",
+    "扩散室",
+    "报警阀间",
+    "排烟井",
+    "排烟机房",
+    "排风井",
+    "排风排烟井",
+    "排风排烟机房",
+    "排风机房",
+    "无障碍卫生间",
+    "机动车坡道",
+    "检修间",
+    "水井",
+    "水井上空",
+    "水泵房",
+    "消防控制室",
+    "消防水池",
+    "消防水池一",
+    "消防水池上空",
+    "消防水池二",
+    "消防泵房",
+    "消防泵房上空",
+    "物业管理及服务用房(人数不超30人)",
+    "生活水泵房",
+    "电井",
+    "电井上空",
+    "电梯井上空",
+    "电梯厅",
+    "电梯厅上空",
+    "电气进线间",
+    "电气间",
+    "电气间上空",
+    "电气间兼充电桩电表间",
+    "电表间",
+    "男卫",
+    "穿管电气间",
+    "简易洗消区",
+    "老年人日间照料中心",
+    "补风井",
+    "表间上空",
+    "设备用房",
+    "走道",
+    "进线间",
+    "进风井",
+    "送风井",
+    "送风机房",
+    "通道",
+    "采光井",
+    "采光天井",
+    "防毒通道",
+    "防火单元自然补风井",
+    "除尘滤毒室",
+    "集气室",
+    "面积",
+    "预留充电桩配电房",
+    "预留水泵房",
+    "预留设备用房",
+    "预留设备间",
+    "风井"
+  ],
+  "gold_total": 49,
+  "compared": 49,
+  "agree": 35,
+  "disagreements": [
+    {
+      "name": "三网合一机房上空",
+      "category": "WEAK_CURRENT_ROOM",
+      "reason": "三网合一机房上空属于弱电房间空间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "光厅",
+      "category": "UNKNOWN",
+      "reason": "名称含义不明确，无法判断用途",
+      "confidence": 0.2,
+      "needs_review": true
+    },
+    {
+      "name": "前室上空",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "前室上空空间，属建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "检修间",
+      "category": "UNKNOWN",
+      "reason": "检修间用途不明确，无法判断",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "水井上空",
+      "category": "PLUMBING_ROOM",
+      "reason": "水井上空，属给排水房间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "消防控制室",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "消防控制室属于建筑功能房间，非电气竖井或配电室。",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "电井上空",
+      "category": "ELECTRICAL_SHAFT",
+      "reason": "电井上空属于电气竖井的投影空间。",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "电梯井上空",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "电梯井上空属于建筑电梯井道空间。",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "电梯厅上空",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "电梯厅上空属于建筑公共空间投影。",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "电气进线间",
+      "category": "DISTRIBUTION_ROOM",
+      "reason": "电气进线间属于配电相关房间。",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "电气间上空",
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "reason": "电气间上空属于电气间投影空间。",
+      "confidence": 0.4,
+      "needs_review": true
+    },
+    {
+      "name": "采光井",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "采光井属于建筑采光空间。",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "预留设备用房",
+      "category": "UNKNOWN",
+      "reason": "设备类型不明确，无法归类",
+      "confidence": 0.4,
+      "needs_review": true
+    },
+    {
+      "name": "预留设备间",
+      "category": "UNKNOWN",
+      "reason": "设备类型不明确，无法归类",
+      "confidence": 0.4,
+      "needs_review": true
+    }
+  ],
+  "new_proposals": [
+    {
+      "name": "1#公变配电房",
+      "category": "SUBSTATION",
+      "reason": "名称含公变配电房，属变电所",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "1-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "2-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "2-2楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "3-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "3-2楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "3-2楼梯上空",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯上空属于建筑空间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "5-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "5-2楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "6-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "6-2楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "7-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "8-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "9-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "B-1坡道",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "坡道为建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "B-2坡道",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "坡道为建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "P-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "P-2楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "P-3楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "井",
+      "category": "UNKNOWN",
+      "reason": "井用途无法判断",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "人防楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "人防楼梯为建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "储藏间",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "储藏间属于建筑使用房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "公变配电房上空",
+      "category": "SUBSTATION",
+      "reason": "公变配电房上空，属变电所",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "冷媒井",
+      "category": "HVAC_SHAFT",
+      "reason": "冷媒井属暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "卫生服务站",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "卫生服务站为建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "变配电室",
+      "category": "SUBSTATION",
+      "reason": "变配电室，属变电所",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "图书室(人数不超30人)",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "图书室为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "地下室",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "地下室为建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "地下室上空",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "地下室上空为建筑房间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "女卫",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "女卫为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "实施充电桩配电房",
+      "category": "DISTRIBUTION_ROOM",
+      "reason": "充电桩配电房属配电室",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "密闭通道",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "密闭通道为建筑房间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "封闭楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "封闭楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "弱电机房",
+      "category": "WEAK_CURRENT_ROOM",
+      "reason": "名称明确为弱电机房",
+      "confidence": 0.95,
+      "needs_review": true
+    },
+    {
+      "name": "快递综合服务站(人数不超30人)",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "属建筑功能房间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "扩散室",
+      "category": "UNKNOWN",
+      "reason": "用途不明确",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "排烟井",
+      "category": "HVAC_SHAFT",
+      "reason": "排烟井属暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "排烟机房",
+      "category": "HVAC_ROOM",
+      "reason": "排烟机房属暖通房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "无障碍卫生间",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "属建筑功能房间",
+      "confidence": 0.85,
+      "needs_review": true
+    },
+    {
+      "name": "机动车坡道",
+      "category": "EXCLUDED",
+      "reason": "坡道非房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "水井",
+      "category": "PLUMBING_ROOM",
+      "reason": "水井属给排水井道",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "水泵房",
+      "category": "PLUMBING_ROOM",
+      "reason": "水泵房，属给排水房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "消防水池",
+      "category": "PLUMBING_ROOM",
+      "reason": "消防水池属给排水设施",
+      "confidence": 0.85,
+      "needs_review": true
+    },
+    {
+      "name": "消防水池一",
+      "category": "PLUMBING_ROOM",
+      "reason": "消防水池属于给排水专业设施。",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "消防水池上空",
+      "category": "UNKNOWN",
+      "reason": "上空区域用途不明确",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "消防水池二",
+      "category": "PLUMBING_ROOM",
+      "reason": "消防水池属于给排水专业设施。",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "消防泵房上空",
+      "category": "UNKNOWN",
+      "reason": "上空区域用途不明确",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "物业管理及服务用房(人数不超30人)",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "属建筑功能房间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "电井",
+      "category": "ELECTRICAL_SHAFT",
+      "reason": "电井属电气竖井",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "电气间兼充电桩电表间",
+      "category": "DISTRIBUTION_ROOM",
+      "reason": "电气间属配电室",
+      "confidence": 0.75,
+      "needs_review": true
+    },
+    {
+      "name": "男卫",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "卫生间属建筑功能房间",
+      "confidence": 0.85,
+      "needs_review": true
+    },
+    {
+      "name": "简易洗消区",
+      "category": "UNKNOWN",
+      "reason": "用途不明确",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "补风井",
+      "category": "HVAC_SHAFT",
+      "reason": "补风井属暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "表间上空",
+      "category": "UNKNOWN",
+      "reason": "上空区域用途不明确",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "进线间",
+      "category": "DISTRIBUTION_ROOM",
+      "reason": "进线间属配电室",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "进风井",
+      "category": "HVAC_SHAFT",
+      "reason": "进风井属暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "通道",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "通用通行空间，属建筑房间",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "采光天井",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "采光用天井，属建筑空间",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "防毒通道",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "人防通行空间，属建筑房间",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "防火单元自然补风井",
+      "category": "HVAC_SHAFT",
+      "reason": "补风井属暖通井道",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "除尘滤毒室",
+      "category": "HVAC_ROOM",
+      "reason": "通风滤毒功能房间，属暖通房间",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "集气室",
+      "category": "UNKNOWN",
+      "reason": "用途不明确，无法归类",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "预留水泵房",
+      "category": "PLUMBING_ROOM",
+      "reason": "水泵房属给排水房间",
+      "confidence": 0.7,
+      "needs_review": true
+    }
+  ],
+  "missing_gold": [],
+  "rows": [
+    {
+      "name": "1#公变配电房",
+      "category": "SUBSTATION",
+      "reason": "名称含公变配电房，属变电所",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "1-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "2#公变配电房",
+      "category": "SUBSTATION",
+      "reason": "公变配电房属于变电所",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "2-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "2-2楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "3#公变配电房",
+      "category": "SUBSTATION",
+      "reason": "公变配电房属于变电所",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "3-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "3-2楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "3-2楼梯上空",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯上空属于建筑空间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "5-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "5-2楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "6-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "6-2楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "7-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "8-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "9-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "B-1坡道",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "坡道为建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "B-2坡道",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "坡道为建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "P-1楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "P-2楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "P-3楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "楼梯属于建筑交通空间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "三网合一机房",
+      "category": "WEAK_CURRENT_ROOM",
+      "reason": "三网合一机房属于弱电通信机房",
+      "confidence": 0.85,
+      "needs_review": true
+    },
+    {
+      "name": "三网合一机房上空",
+      "category": "WEAK_CURRENT_ROOM",
+      "reason": "三网合一机房上空属于弱电房间空间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "专变配电房",
+      "category": "SUBSTATION",
+      "reason": "专变配电房属于变电所",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "井",
+      "category": "UNKNOWN",
+      "reason": "井用途无法判断",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "人防楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "人防楼梯为建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "信号覆盖机房",
+      "category": "WEAK_CURRENT_ROOM",
+      "reason": "信号覆盖机房属于弱电通信机房",
+      "confidence": 0.85,
+      "needs_review": true
+    },
+    {
+      "name": "储藏间",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "储藏间属于建筑使用房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "充电桩电表间",
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "reason": "电表间属于配电小间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "充电桩配电房",
+      "category": "DISTRIBUTION_ROOM",
+      "reason": "配电房属于配电室",
+      "confidence": 0.85,
+      "needs_review": true
+    },
+    {
+      "name": "光厅",
+      "category": "UNKNOWN",
+      "reason": "名称含义不明确，无法判断用途",
+      "confidence": 0.2,
+      "needs_review": true
+    },
+    {
+      "name": "公变配电房",
+      "category": "SUBSTATION",
+      "reason": "公共变压器配电房，属变电所",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "公变配电房上空",
+      "category": "SUBSTATION",
+      "reason": "公变配电房上空，属变电所",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "冷媒井",
+      "category": "HVAC_SHAFT",
+      "reason": "冷媒井属暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "前室",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "建筑疏散前室，属建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "前室上空",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "前室上空空间，属建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "加压送风井",
+      "category": "HVAC_SHAFT",
+      "reason": "加压送风竖井，属暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "加压送风机房",
+      "category": "HVAC_ROOM",
+      "reason": "加压送风机房，属暖通房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "卫生服务站",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "卫生服务站为建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "变配电室",
+      "category": "SUBSTATION",
+      "reason": "变配电室，属变电所",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "合用前室",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "合用前室，属建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "商业电气间",
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "reason": "商业电气小间，属配电小间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "商业电表间",
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "reason": "商业电表间，属配电小间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "商业配电房",
+      "category": "DISTRIBUTION_ROOM",
+      "reason": "商业配电房，属配电室",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "图书室(人数不超30人)",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "图书室为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "地下室",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "地下室为建筑房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "地下室上空",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "地下室上空为建筑房间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "女卫",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "女卫为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "实施充电桩配电房",
+      "category": "DISTRIBUTION_ROOM",
+      "reason": "充电桩配电房属配电室",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "密闭通道",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "密闭通道为建筑房间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "封闭楼梯",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "封闭楼梯为建筑房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "广电机房",
+      "category": "WEAK_CURRENT_ROOM",
+      "reason": "广电机房，属弱电房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "弱电机房",
+      "category": "WEAK_CURRENT_ROOM",
+      "reason": "名称明确为弱电机房",
+      "confidence": 0.95,
+      "needs_review": true
+    },
+    {
+      "name": "快递综合服务站(人数不超30人)",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "属建筑功能房间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "扩散室",
+      "category": "UNKNOWN",
+      "reason": "用途不明确",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "报警阀间",
+      "category": "PLUMBING_ROOM",
+      "reason": "报警阀间，属给排水房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "排烟井",
+      "category": "HVAC_SHAFT",
+      "reason": "排烟井属暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "排烟机房",
+      "category": "HVAC_ROOM",
+      "reason": "排烟机房属暖通房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "排风井",
+      "category": "HVAC_SHAFT",
+      "reason": "排风竖井，属暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "排风排烟井",
+      "category": "HVAC_SHAFT",
+      "reason": "排风排烟竖井，属暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "排风排烟机房",
+      "category": "HVAC_ROOM",
+      "reason": "排风排烟机房，属暖通房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "排风机房",
+      "category": "HVAC_ROOM",
+      "reason": "排风机房，属暖通房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "无障碍卫生间",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "属建筑功能房间",
+      "confidence": 0.85,
+      "needs_review": true
+    },
+    {
+      "name": "机动车坡道",
+      "category": "EXCLUDED",
+      "reason": "坡道非房间",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "检修间",
+      "category": "UNKNOWN",
+      "reason": "检修间用途不明确，无法判断",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "水井",
+      "category": "PLUMBING_ROOM",
+      "reason": "水井属给排水井道",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "水井上空",
+      "category": "PLUMBING_ROOM",
+      "reason": "水井上空，属给排水房间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "水泵房",
+      "category": "PLUMBING_ROOM",
+      "reason": "水泵房，属给排水房间",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "消防控制室",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "消防控制室属于建筑功能房间，非电气竖井或配电室。",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "消防水池",
+      "category": "PLUMBING_ROOM",
+      "reason": "消防水池属给排水设施",
+      "confidence": 0.85,
+      "needs_review": true
+    },
+    {
+      "name": "消防水池一",
+      "category": "PLUMBING_ROOM",
+      "reason": "消防水池属于给排水专业设施。",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "消防水池上空",
+      "category": "UNKNOWN",
+      "reason": "上空区域用途不明确",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "消防水池二",
+      "category": "PLUMBING_ROOM",
+      "reason": "消防水池属于给排水专业设施。",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "消防泵房",
+      "category": "PLUMBING_ROOM",
+      "reason": "消防泵房属于给排水专业泵房。",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "消防泵房上空",
+      "category": "UNKNOWN",
+      "reason": "上空区域用途不明确",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "物业管理及服务用房(人数不超30人)",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "属建筑功能房间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "生活水泵房",
+      "category": "PLUMBING_ROOM",
+      "reason": "生活水泵房属于给排水专业泵房。",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "电井",
+      "category": "ELECTRICAL_SHAFT",
+      "reason": "电井属电气竖井",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "电井上空",
+      "category": "ELECTRICAL_SHAFT",
+      "reason": "电井上空属于电气竖井的投影空间。",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "电梯井上空",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "电梯井上空属于建筑电梯井道空间。",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "电梯厅",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "电梯厅属于建筑公共空间。",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "电梯厅上空",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "电梯厅上空属于建筑公共空间投影。",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "电气进线间",
+      "category": "DISTRIBUTION_ROOM",
+      "reason": "电气进线间属于配电相关房间。",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "电气间",
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "reason": "电气间通常为小型配电房间。",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "电气间上空",
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "reason": "电气间上空属于电气间投影空间。",
+      "confidence": 0.4,
+      "needs_review": true
+    },
+    {
+      "name": "电气间兼充电桩电表间",
+      "category": "DISTRIBUTION_ROOM",
+      "reason": "电气间属配电室",
+      "confidence": 0.75,
+      "needs_review": true
+    },
+    {
+      "name": "电表间",
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "reason": "电表间属于小型电气计量房间。",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "男卫",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "卫生间属建筑功能房间",
+      "confidence": 0.85,
+      "needs_review": true
+    },
+    {
+      "name": "穿管电气间",
+      "category": "SMALL_ELECTRICAL_ROOM",
+      "reason": "穿管电气间属于电气穿管小间。",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "简易洗消区",
+      "category": "UNKNOWN",
+      "reason": "用途不明确",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "老年人日间照料中心",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "老年人日间照料中心属于建筑功能房间。",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "补风井",
+      "category": "HVAC_SHAFT",
+      "reason": "补风井属暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "表间上空",
+      "category": "UNKNOWN",
+      "reason": "上空区域用途不明确",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "设备用房",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "设备用房为通用建筑设备房间。",
+      "confidence": 0.4,
+      "needs_review": true
+    },
+    {
+      "name": "走道",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "走道属于建筑交通空间。",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "进线间",
+      "category": "DISTRIBUTION_ROOM",
+      "reason": "进线间属配电室",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "进风井",
+      "category": "HVAC_SHAFT",
+      "reason": "进风井属暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "送风井",
+      "category": "HVAC_SHAFT",
+      "reason": "送风井属于暖通井道。",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "送风机房",
+      "category": "HVAC_ROOM",
+      "reason": "送风机房属于暖通房间。",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "通道",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "通用通行空间，属建筑房间",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "采光井",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "采光井属于建筑采光空间。",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "采光天井",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "采光用天井，属建筑空间",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "防毒通道",
+      "category": "ARCHITECTURAL_ROOM",
+      "reason": "人防通行空间，属建筑房间",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "防火单元自然补风井",
+      "category": "HVAC_SHAFT",
+      "reason": "补风井属暖通井道",
+      "confidence": 0.6,
+      "needs_review": true
+    },
+    {
+      "name": "除尘滤毒室",
+      "category": "HVAC_ROOM",
+      "reason": "通风滤毒功能房间，属暖通房间",
+      "confidence": 0.5,
+      "needs_review": true
+    },
+    {
+      "name": "集气室",
+      "category": "UNKNOWN",
+      "reason": "用途不明确，无法归类",
+      "confidence": 0.3,
+      "needs_review": true
+    },
+    {
+      "name": "面积",
+      "category": "EXCLUDED",
+      "reason": "面积是计量属性，不是房间名称",
+      "confidence": 0.9,
+      "needs_review": true
+    },
+    {
+      "name": "预留充电桩配电房",
+      "category": "DISTRIBUTION_ROOM",
+      "reason": "名称含配电房，用于充电桩配电",
+      "confidence": 0.8,
+      "needs_review": true
+    },
+    {
+      "name": "预留水泵房",
+      "category": "PLUMBING_ROOM",
+      "reason": "水泵房属给排水房间",
+      "confidence": 0.7,
+      "needs_review": true
+    },
+    {
+      "name": "预留设备用房",
+      "category": "UNKNOWN",
+      "reason": "设备类型不明确，无法归类",
+      "confidence": 0.4,
+      "needs_review": true
+    },
+    {
+      "name": "预留设备间",
+      "category": "UNKNOWN",
+      "reason": "设备类型不明确，无法归类",
+      "confidence": 0.4,
+      "needs_review": true
+    },
+    {
+      "name": "风井",
+      "category": "HVAC_SHAFT",
+      "reason": "风井属于暖通井道",
+      "confidence": 0.9,
+      "needs_review": true
+    }
+  ],
+  "cache_ids": [
+    "2f6948b17fe522138fc68bc6c95ded89fa421a8a21c15dbd949a0e63d8c34d61",
+    "3739b105144504b4c0272414bd55d0fe2b43041f3b326234734ce854855c371c",
+    "5636e599280bf9cf047af12d49b60e213d185698623146465c33c50e4c462e19",
+    "69380345c5db728f177b4fa08d7d72ea2f385f88db1e63e2bfb1eb1afdb811a9",
+    "8fa6ab6008af8c5a167f72e205d075e397aa8298164ee42f58fd45afc843039b",
+    "d025481eba3ac79dcd22de034f0975f7f221d055a6d05ede2a3d975c716656b2",
+    "e4103d822a601f10ebfa89d15853258ea2df008a26f2c2299eb9fbc12cf60825"
+  ],
+  "model": "deepseek-flash",
+  "request_count": 7
+}

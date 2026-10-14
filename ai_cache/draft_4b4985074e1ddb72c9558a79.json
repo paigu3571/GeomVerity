@@ -1,0 +1,71 @@
+{
+  "origin": "REAL_API",
+  "kind": "RULE_DRAFT",
+  "model": "deepseek-flash",
+  "source": {
+    "text": "应根据系统阻抗及电源容量计算短路电流，并校验断路器的额定短路分断能力。",
+    "code": "SYNTHETIC能力边界示例",
+    "article": "非规范条文"
+  },
+  "transcript": [
+    {
+      "request": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "只能将一条规范起草为JSON规则，不审批。输出{status:'draft'或'needs_new_predicate',reason:'原因',rule:对象或null}。\n规则对象：id,title,approved:false,approved_by:null,clauses:[{code,article,text,strength:'应'或'宜'}],applies_to:[用途],check,on_missing,scope。\n规范号/条号/正文必须原样使用用户source，不猜待核引用。用途仅SUBSTATION,DISTRIBUTION_ROOM,ELECTRICAL_SHAFT,ELEVATOR_SHAFT,OTHER_SERVICE_SHAFT,HOT_FLUE,HEAT_ROOM,TOILET,BATHROOM,KITCHEN。\n只有六个条件：space_use_in(values用途列表),long_side_gt(threshold房间净长米),opening_count_ge(value出入口整数),adjacent_to_use(values贴邻用途),directly_below_use(values上一层用途),shaft_shared_with(values共井用途)。不能用房间长度条件去判断电流/电压/温度。否定关系用expect:false。\ncheck为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}；禁止任意代码、多个未知条件或含糊地用相邻代替共井。\n已有条件表达不了必须needs_new_predicate并rule:null。有可表达条件但缺输入属于on_missing，不新增识别模块。scope说明只是条件初查，缺资料不推定通过。"
+          },
+          {
+            "role": "user",
+            "content": "{\"text\": \"应根据系统阻抗及电源容量计算短路电流，并校验断路器的额定短路分断能力。\", \"code\": \"SYNTHETIC能力边界示例\", \"article\": \"非规范条文\"}"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 1800,
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "response": {
+        "id": "62cf301a-4fb4-42ff-a7e7-5f82d1ed04fb",
+        "object": "chat.completion",
+        "created": 1791738016,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"status\":\"needs_new_predicate\",\"reason\":\"该条文要求依据系统阻抗与电源容量计算短路电流并校验断路器额定短路分断能力，属于电气计算与设备参数校验，现有六个条件（space_use_in、long_side_gt、opening_count_ge、adjacent_to_use、directly_below_use、shaft_shared_with）均无法表达电流、阻抗、容量或分断能力等参数关系，且不得用房间净长等几何条件替代电气量判断；同时来源编号为“SYNTHETIC能力边界示例”、条号为“非规范条文”，非可引用的正式规范条文，故不生成规则。\",\"rule\":null}",
+              "reasoning_content": "The user gives a text that is a technical requirement about short circuit current calculation and breaker rated short-circuit breaking capacity. We need to draft a rule using only the six allowed conditions: space_use_in, long_side_gt, opening_count_ge, adjacent_to_use, directly_below_use, shaft_shared_with. The text is about electrical calculation — cannot be expressed. So needs_new_predicate, rule:null.\n\nAlso the code is \"SYNTHETIC能力边界示例\" article \"非规范条文\" — not a real standard clause. So status needs_new_predicate with reason.\n\nOutput JSON."
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 424,
+          "completion_tokens": 278,
+          "total_tokens": 702,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 296
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      }
+    }
+  ],
+  "answer": {
+    "status": "needs_new_predicate",
+    "reason": "该条文要求依据系统阻抗与电源容量计算短路电流并校验断路器额定短路分断能力，属于电气计算与设备参数校验，现有六个条件（space_use_in、long_side_gt、opening_count_ge、adjacent_to_use、directly_below_use、shaft_shared_with）均无法表达电流、阻抗、容量或分断能力等参数关系，且不得用房间净长等几何条件替代电气量判断；同时来源编号为“SYNTHETIC能力边界示例”、条号为“非规范条文”，非可引用的正式规范条文，故不生成规则。",
+    "rule": null
+  },
+  "validation_errors": [],
+  "valid": true
+}

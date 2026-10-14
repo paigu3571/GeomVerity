@@ -1,0 +1,37 @@
+id: LIGHT-CALC-001
+title: 壁灯照度数量估算（演示参数）
+rule_version: '0.1.0'
+approved: true
+approved_by: 张田（2026-10-13演示近似授权）
+applies_to: [SUBSTATION, DISTRIBUTION_ROOM]
+min_rectangle_ratio: 0.95
+normative_values_verified: false
+clauses:
+- code: GB/T 50034-2024
+  code_version: '2024'
+  article: 表5.5.1
+  text: 通用房间或场所的照明标准值见表5.5.1。
+  strength: 应
+  source_url: https://gf.cabr-fire.com/article-67007.htm
+  verification: 章节已核；配电室具体表格值尚未独立核验，本次200lx按用户给定演示值
+- code: GB/T 50034-2024
+  code_version: '2024'
+  article: 6.3.15、6.3.16
+  text: 通用房间现行照明功率密度限值应符合GB55015，室形指数不大于1时应修正。
+  strength: 应
+  source_url: https://gf.cabr-fire.com/m/article-67011.htm
+  verification: 章节已核；6.0W每平方米的对应现行表格待核，不误记为表5.5.1
+parameters:
+  target_illuminance_lx: 200.0
+  lpd_limit_w_m2: 6.0
+  flux_per_source_lm: 1500.0
+  sources_per_fixture: 1
+  power_per_source_w: 20.0
+  utilization: 0.7
+  maintenance: 0.8
+  mounting_type: 壁灯
+  mounting_bottom_m: 2.4
+  effective_height_m: 2.4
+  height_source: 张田允许h等效取2.4米作为演示近似；未取得灯具尺寸和实际发光中心
+  parameter_source: 2026-10-13张田提供演示参数；U不是由RI查表得到，20W未含另行未知的驱动损耗
+scope: 仅规整矩形的有条件流明法估算；不验证照度均匀度、眩光、配光或真实驱动功耗，不作为照明设计签字

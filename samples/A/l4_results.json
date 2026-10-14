@@ -1,0 +1,2588 @@
+{
+  "status": "partial",
+  "origin": "REAL",
+  "drawing_hash": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+  "producer_version": "0.2.11",
+  "summary": {
+    "通过": 2,
+    "无法判定": 8
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "approved": true
+    },
+    {
+      "id": "R2",
+      "approved": true
+    },
+    {
+      "id": "R3",
+      "approved": true
+    },
+    {
+      "id": "R4",
+      "approved": true
+    },
+    {
+      "id": "DRAFT_88e437765ce8",
+      "approved": true
+    }
+  ],
+  "findings": [
+    {
+      "rule_id": "R1",
+      "object_ids": [
+        "sem_6e1dc941f8f3293c2293772a"
+      ],
+      "result": "通过",
+      "reason": "依据张田人工核对：净长超过7米=True，出入口2处；本条已实现条件判定；仅本条数量辅助初查，原识别与候选Handle仍待复核",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "4F595",
+        "4F59B",
+        "4F5F4",
+        "4F71B"
+      ],
+      "values": {
+        "length_threshold_confirmation": {
+          "threshold": 7.0,
+          "value": true
+        },
+        "opening_count": 2,
+        "candidate_dimensions": {
+          "long_side_m": 15.606014,
+          "short_side_m": 11.10179,
+          "method": "二维凸包最小外包矩形；不是室内净长"
+        },
+        "raw_opening_relation_count": 6,
+        "coincident_opening_count": 3,
+        "candidate_opening_count": 2,
+        "candidate_opening_ids": [
+          "sem_42098b192fb5dccbf6f7491e",
+          "sem_6a9a7cf955b70a2a1e169515"
+        ],
+        "candidate_opening_handles": [
+          "4F595",
+          "4F71B"
+        ],
+        "opening_candidate_audit": [
+          {
+            "handle": "4F71B",
+            "object_ids": [
+              "sem_42098b192fb5dccbf6f7491e",
+              "sem_e885442139eb8cbbead4f63b"
+            ],
+            "stable_paths": [
+              "25465:BLOCK_0107/4F71B",
+              "25507:BLOCK_0140/519B5:BLOCK_0107/4F71B"
+            ],
+            "boundary_distance_mm": 0.033496,
+            "included": true,
+            "reason": "近边门洞候选，仍需确认出入口性质"
+          },
+          {
+            "handle": "4F595",
+            "object_ids": [
+              "sem_6a9a7cf955b70a2a1e169515",
+              "sem_83a5e4ae80ea790c02ef3cfc"
+            ],
+            "stable_paths": [
+              "25465:BLOCK_0107/4F595",
+              "25507:BLOCK_0140/519B5:BLOCK_0107/4F595"
+            ],
+            "boundary_distance_mm": 0.026339,
+            "included": true,
+            "reason": "近边门洞候选，仍需确认出入口性质"
+          },
+          {
+            "handle": "4F5F4",
+            "object_ids": [
+              "sem_e209d24f3d6107b14d4679e7",
+              "sem_227ff5c4211a1a7c6c607209"
+            ],
+            "stable_paths": [
+              "25465:BLOCK_0107/4F5F4",
+              "25507:BLOCK_0140/519B5:BLOCK_0107/4F5F4"
+            ],
+            "boundary_distance_mm": 1348.729313,
+            "included": false,
+            "reason": "距房间实际轮廓超过容差或缺闭合轮廓"
+          }
+        ],
+        "opening_boundary_tolerance_mm": 5.0,
+        "opening_method": "L4同源同位置几何重合去重；路径点距闭合房间轮廓不超过5mm的候选；不证明有效出入口",
+        "manual_confirmation": {
+          "origin": "ENGINEER_REVIEW",
+          "reviewed_by": "张田",
+          "reviewed_date": "2026-10-12",
+          "net_length_gt_7": true,
+          "entrance_count": 2,
+          "snapshot_sha256": "37124eb42daf0d98e5e0f990c08862f5870d973d2a3ebf4b2f49643347366009",
+          "screenshot_sha256": [
+            "8b8cf4f85a4fcfe0351868f54274f5f8a58506c88ce02582e464530334eb728d",
+            "e2d6c093698aefdda4df63b78d95707886da9700bc6ef8738e387e9a38b45ab7"
+          ],
+          "note": "工程师确认净长阈值与总出入口数量；具体候选Handle映射仍为自动待复核"
+        }
+      },
+      "clauses": [
+        {
+          "code": "GB 55024-2022",
+          "article": "3.2.1第1款",
+          "text": "配电室、电容器室长度大于7m时，应至少设置两个出入口。",
+          "strength": "应"
+        }
+      ],
+      "scope": "仅配电室数量辅助初查；轮廓尺寸与门洞为候选，未确认有效出入口/净长不得据此宣称合规，不查两端布置",
+      "origin": "REAL",
+      "engineer_reviewed": {
+        "reviewed_by": "张田",
+        "reviewed_date": "2026-10-12",
+        "record_file": "samples/A/l4_confirmations.yaml"
+      },
+      "id": "finding_R1_sem_6e1dc941f8f3293c2293772a",
+      "object_name": "预留充电桩配电房",
+      "rule_approved": true,
+      "rule_title": "长度大于7m配电室的出入口数量",
+      "evidence": [
+        {
+          "object_id": "sem_6e1dc941f8f3293c2293772a",
+          "source_handle": "4F59B",
+          "chains": [
+            {
+              "l3_id": "sem_6e1dc941f8f3293c2293772a",
+              "l2_id": "geometry_d516e7375ff9dde15bcfdfaa",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_016f030cf0d4b735806002ed",
+                  "handle": "4F59B",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F59B"
+                },
+                {
+                  "l1_id": "primitive_045ed87ce97ff431ef0c8374",
+                  "handle": "512AF",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA9:BLOCK_0212/512AF"
+                },
+                {
+                  "l1_id": "primitive_0b38992cda907d380588f915",
+                  "handle": "4FA0E",
+                  "stable_path": "25465:BLOCK_0107/4FA0E"
+                },
+                {
+                  "l1_id": "primitive_10a9b570fcc65ab98e43300a",
+                  "handle": "4F71F",
+                  "stable_path": "25465:BLOCK_0107/4F71F"
+                },
+                {
+                  "l1_id": "primitive_17a365fb4340fffb51a5fb4a",
+                  "handle": "4F5F0",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F5F0"
+                },
+                {
+                  "l1_id": "primitive_2c111fc46177d920512c5dc9",
+                  "handle": "4F5ED",
+                  "stable_path": "25465:BLOCK_0107/4F5ED"
+                },
+                {
+                  "l1_id": "primitive_334257a1239d06e230000468",
+                  "handle": "4F5F0",
+                  "stable_path": "25465:BLOCK_0107/4F5F0"
+                },
+                {
+                  "l1_id": "primitive_37f4cf96619ea76c4260bf85",
+                  "handle": "4F731",
+                  "stable_path": "25465:BLOCK_0107/4F731"
+                },
+                {
+                  "l1_id": "primitive_40db1eedaf26a724f72989a0",
+                  "handle": "4F71C",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F71C"
+                },
+                {
+                  "l1_id": "primitive_41f79a6bf3e2740d4accfbfb",
+                  "handle": "4F648",
+                  "stable_path": "25465:BLOCK_0107/4F648"
+                },
+                {
+                  "l1_id": "primitive_452c72be2d4068bed9893659",
+                  "handle": "508DA",
+                  "stable_path": "25465:BLOCK_0107/508DA"
+                },
+                {
+                  "l1_id": "primitive_5421d2a1eae3dc6858d5a127",
+                  "handle": "4F8FD",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F8FD"
+                },
+                {
+                  "l1_id": "primitive_5da612afd69e27ebcd66def8",
+                  "handle": "512A6",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA9:BLOCK_0212/512A6"
+                },
+                {
+                  "l1_id": "primitive_61a707034b8258db9f5b8756",
+                  "handle": "4F59B",
+                  "stable_path": "25465:BLOCK_0107/4F59B"
+                },
+                {
+                  "l1_id": "primitive_7344cee0992a40508bb82db2",
+                  "handle": "4F648",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F648"
+                },
+                {
+                  "l1_id": "primitive_768730fa2794c37305a6601c",
+                  "handle": "50B2D",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50B2D"
+                },
+                {
+                  "l1_id": "primitive_7831923727a8d4877d07e9e5",
+                  "handle": "4F5ED",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F5ED"
+                },
+                {
+                  "l1_id": "primitive_8061f86b1f8a4fbd0c4e235f",
+                  "handle": "4F71C",
+                  "stable_path": "25465:BLOCK_0107/4F71C"
+                },
+                {
+                  "l1_id": "primitive_83167fb36181ad76674a57be",
+                  "handle": "4F8FD",
+                  "stable_path": "25465:BLOCK_0107/4F8FD"
+                },
+                {
+                  "l1_id": "primitive_9296f1b6faaafba161c88412",
+                  "handle": "4F731",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F731"
+                },
+                {
+                  "l1_id": "primitive_992684f6df9e4c72c0a675c6",
+                  "handle": "4F71F",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F71F"
+                },
+                {
+                  "l1_id": "primitive_994e5ccd5242c61fbadce935",
+                  "handle": "508DA",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/508DA"
+                },
+                {
+                  "l1_id": "primitive_a90b711b5f196ab10a2f5cea",
+                  "handle": "4F71E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F71E"
+                },
+                {
+                  "l1_id": "primitive_b69d2820f9271a52ab56d550",
+                  "handle": "4F71E",
+                  "stable_path": "25465:BLOCK_0107/4F71E"
+                },
+                {
+                  "l1_id": "primitive_b7696d881c60b46efe0cf543",
+                  "handle": "4F594",
+                  "stable_path": "25465:BLOCK_0107/4F594"
+                },
+                {
+                  "l1_id": "primitive_c4d40aba33e2e9dcfe800430",
+                  "handle": "512AF",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA9:BLOCK_0212/512AF"
+                },
+                {
+                  "l1_id": "primitive_ce1513db590a45771683100c",
+                  "handle": "512A5",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA9:BLOCK_0212/512A5"
+                },
+                {
+                  "l1_id": "primitive_daf91c0e37684a27d5f8330f",
+                  "handle": "512A5",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA9:BLOCK_0212/512A5"
+                },
+                {
+                  "l1_id": "primitive_dd0d3c31ba05a88bc7f97361",
+                  "handle": "4F594",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F594"
+                },
+                {
+                  "l1_id": "primitive_e17625d3adabefe08886b8fa",
+                  "handle": "4F5F1",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F5F1"
+                },
+                {
+                  "l1_id": "primitive_e1def076c94343465e3dc7b5",
+                  "handle": "4F5F1",
+                  "stable_path": "25465:BLOCK_0107/4F5F1"
+                },
+                {
+                  "l1_id": "primitive_e79eab6a109155d63fd46413",
+                  "handle": "512A6",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA9:BLOCK_0212/512A6"
+                },
+                {
+                  "l1_id": "primitive_e91f978802c6237554cc7cd8",
+                  "handle": "4FA0E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA0E"
+                },
+                {
+                  "l1_id": "primitive_ee25883ddeb5ae75bffc4d42",
+                  "handle": "50B2D",
+                  "stable_path": "25465:BLOCK_0107/50B2D"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "5162F",
+              "text": "预留充电桩配电房"
+            }
+          ]
+        },
+        {
+          "object_id": "sem_42098b192fb5dccbf6f7491e",
+          "source_handle": "4F71B",
+          "chains": [
+            {
+              "l3_id": "sem_42098b192fb5dccbf6f7491e",
+              "l2_id": "geometry_e9e1c40abb6b0ae7acefc120",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_f934dd6acf361b2f5e705e27",
+                  "handle": "4F71B",
+                  "stable_path": "25465:BLOCK_0107/4F71B"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_6a9a7cf955b70a2a1e169515",
+          "source_handle": "4F595",
+          "chains": [
+            {
+              "l3_id": "sem_6a9a7cf955b70a2a1e169515",
+              "l2_id": "geometry_dac3a2cc0ed4f6239ac63520",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_9a73717e939226c992616b18",
+                  "handle": "4F595",
+                  "stable_path": "25465:BLOCK_0107/4F595"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_e209d24f3d6107b14d4679e7",
+          "source_handle": "4F5F4",
+          "chains": [
+            {
+              "l3_id": "sem_e209d24f3d6107b14d4679e7",
+              "l2_id": "geometry_4fb738301412e50e091afcfc",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_90d7080df9089cfc1b6ec620",
+                  "handle": "4F5F4",
+                  "stable_path": "25465:BLOCK_0107/4F5F4"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_83a5e4ae80ea790c02ef3cfc",
+          "source_handle": "4F595",
+          "chains": [
+            {
+              "l3_id": "sem_83a5e4ae80ea790c02ef3cfc",
+              "l2_id": "geometry_da174284562d0e34a8450783",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_e2a0e809aba75eadc81e41aa",
+                  "handle": "4F595",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F595"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_e885442139eb8cbbead4f63b",
+          "source_handle": "4F71B",
+          "chains": [
+            {
+              "l3_id": "sem_e885442139eb8cbbead4f63b",
+              "l2_id": "geometry_2d6cf7352c164e57bbecb055",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_f8c4b1fd4c2aba8c6605d636",
+                  "handle": "4F71B",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F71B"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_227ff5c4211a1a7c6c607209",
+          "source_handle": "4F5F4",
+          "chains": [
+            {
+              "l3_id": "sem_227ff5c4211a1a7c6c607209",
+              "l2_id": "geometry_61a987749f1cca6c9710494c",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_030e4e944540613b222d87f0",
+                  "handle": "4F5F4",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F5F4"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        }
+      ],
+      "request_question": null
+    },
+    {
+      "rule_id": "R1",
+      "object_ids": [
+        "sem_89496a6626781569ee17a73a"
+      ],
+      "result": "通过",
+      "reason": "依据张田人工核对：净长超过7米=True，出入口2处；本条已实现条件判定；仅本条数量辅助初查，原识别与候选Handle仍待复核",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "4F58A",
+        "4F5F5",
+        "4FA46",
+        "4FA49"
+      ],
+      "values": {
+        "length_threshold_confirmation": {
+          "threshold": 7.0,
+          "value": true
+        },
+        "opening_count": 2,
+        "candidate_dimensions": {
+          "long_side_m": 9.302415,
+          "short_side_m": 6.849484,
+          "method": "二维凸包最小外包矩形；不是室内净长"
+        },
+        "raw_opening_relation_count": 6,
+        "coincident_opening_count": 3,
+        "candidate_opening_count": 2,
+        "candidate_opening_ids": [
+          "sem_45c5ff1cd153334e8ef165d7",
+          "sem_050137eb9235fc8d6e01d613"
+        ],
+        "candidate_opening_handles": [
+          "4F5F5",
+          "4FA46"
+        ],
+        "opening_candidate_audit": [
+          {
+            "handle": "4FA46",
+            "object_ids": [
+              "sem_45c5ff1cd153334e8ef165d7",
+              "sem_19bba107e34b47ac59030f8d"
+            ],
+            "stable_paths": [
+              "25465:BLOCK_0107/4FA46",
+              "25507:BLOCK_0140/519B5:BLOCK_0107/4FA46"
+            ],
+            "boundary_distance_mm": 0.248893,
+            "included": true,
+            "reason": "近边门洞候选，仍需确认出入口性质"
+          },
+          {
+            "handle": "4F5F5",
+            "object_ids": [
+              "sem_050137eb9235fc8d6e01d613",
+              "sem_b0a3eb8ae1c0aa01c8f51dc6"
+            ],
+            "stable_paths": [
+              "25507:BLOCK_0140/519B5:BLOCK_0107/4F5F5",
+              "25465:BLOCK_0107/4F5F5"
+            ],
+            "boundary_distance_mm": 0.377344,
+            "included": true,
+            "reason": "近边门洞候选，仍需确认出入口性质"
+          },
+          {
+            "handle": "4F58A",
+            "object_ids": [
+              "sem_358b994d9766f2b6c1a6afc3",
+              "sem_a0ddd4237cb862c082fcc973"
+            ],
+            "stable_paths": [
+              "25507:BLOCK_0140/519B5:BLOCK_0107/4F58A",
+              "25465:BLOCK_0107/4F58A"
+            ],
+            "boundary_distance_mm": 198.753168,
+            "included": false,
+            "reason": "距房间实际轮廓超过容差或缺闭合轮廓"
+          }
+        ],
+        "opening_boundary_tolerance_mm": 5.0,
+        "opening_method": "L4同源同位置几何重合去重；路径点距闭合房间轮廓不超过5mm的候选；不证明有效出入口",
+        "manual_confirmation": {
+          "origin": "ENGINEER_REVIEW",
+          "reviewed_by": "张田",
+          "reviewed_date": "2026-10-12",
+          "net_length_gt_7": true,
+          "entrance_count": 2,
+          "snapshot_sha256": "37124eb42daf0d98e5e0f990c08862f5870d973d2a3ebf4b2f49643347366009",
+          "screenshot_sha256": [
+            "8b8cf4f85a4fcfe0351868f54274f5f8a58506c88ce02582e464530334eb728d",
+            "e2d6c093698aefdda4df63b78d95707886da9700bc6ef8738e387e9a38b45ab7"
+          ],
+          "note": "工程师确认净长阈值与总出入口数量；具体候选Handle映射仍为自动待复核"
+        }
+      },
+      "clauses": [
+        {
+          "code": "GB 55024-2022",
+          "article": "3.2.1第1款",
+          "text": "配电室、电容器室长度大于7m时，应至少设置两个出入口。",
+          "strength": "应"
+        }
+      ],
+      "scope": "仅配电室数量辅助初查；轮廓尺寸与门洞为候选，未确认有效出入口/净长不得据此宣称合规，不查两端布置",
+      "origin": "REAL",
+      "engineer_reviewed": {
+        "reviewed_by": "张田",
+        "reviewed_date": "2026-10-12",
+        "record_file": "samples/A/l4_confirmations.yaml"
+      },
+      "id": "finding_R1_sem_89496a6626781569ee17a73a",
+      "object_name": "商业配电房",
+      "rule_approved": true,
+      "rule_title": "长度大于7m配电室的出入口数量",
+      "evidence": [
+        {
+          "object_id": "sem_89496a6626781569ee17a73a",
+          "source_handle": "4FA49",
+          "chains": [
+            {
+              "l3_id": "sem_89496a6626781569ee17a73a",
+              "l2_id": "geometry_17963d1dfa9dde0efd24076e",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_277626c4c4d9e71d863bb16c",
+                  "handle": "4FA49",
+                  "stable_path": "25465:BLOCK_0107/4FA49"
+                },
+                {
+                  "l1_id": "primitive_3ffbab40a87c0982e6c972c3",
+                  "handle": "4FA45",
+                  "stable_path": "25465:BLOCK_0107/4FA45"
+                },
+                {
+                  "l1_id": "primitive_529d58b4b82dec7c1bff7d76",
+                  "handle": "4F62D",
+                  "stable_path": "25465:BLOCK_0107/4F62D"
+                },
+                {
+                  "l1_id": "primitive_6b23f836cd59f34c9b980b85",
+                  "handle": "4F64B",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F64B"
+                },
+                {
+                  "l1_id": "primitive_7307cf452ea4b878438133e9",
+                  "handle": "4F62D",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F62D"
+                },
+                {
+                  "l1_id": "primitive_7e345fdca20a6b27823f9c45",
+                  "handle": "4F64B",
+                  "stable_path": "25465:BLOCK_0107/4F64B"
+                },
+                {
+                  "l1_id": "primitive_86f40eab930fef78f594e70c",
+                  "handle": "4FA48",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA48"
+                },
+                {
+                  "l1_id": "primitive_8c659638cb00364cf753eec1",
+                  "handle": "4FA43",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA43"
+                },
+                {
+                  "l1_id": "primitive_a1817e6822894d408c36b97c",
+                  "handle": "4FA48",
+                  "stable_path": "25465:BLOCK_0107/4FA48"
+                },
+                {
+                  "l1_id": "primitive_a66e4a816d4206171d98dbe5",
+                  "handle": "4F64C",
+                  "stable_path": "25465:BLOCK_0107/4F64C"
+                },
+                {
+                  "l1_id": "primitive_a7cd46238c144f413ba15cb9",
+                  "handle": "4FA45",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA45"
+                },
+                {
+                  "l1_id": "primitive_c87376c81452d5e1f7b6bf4f",
+                  "handle": "4FA43",
+                  "stable_path": "25465:BLOCK_0107/4FA43"
+                },
+                {
+                  "l1_id": "primitive_df15bdf23173bd06755a24b0",
+                  "handle": "4FA49",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA49"
+                },
+                {
+                  "l1_id": "primitive_e7d8fea325b369751b54e00b",
+                  "handle": "4F587",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F587"
+                },
+                {
+                  "l1_id": "primitive_e9b097ea916e0a2acd5a6317",
+                  "handle": "4F64C",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F64C"
+                },
+                {
+                  "l1_id": "primitive_faae6b750babf353197ac12e",
+                  "handle": "4F587",
+                  "stable_path": "25465:BLOCK_0107/4F587"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "51665",
+              "text": "商业配电房"
+            }
+          ]
+        },
+        {
+          "object_id": "sem_45c5ff1cd153334e8ef165d7",
+          "source_handle": "4FA46",
+          "chains": [
+            {
+              "l3_id": "sem_45c5ff1cd153334e8ef165d7",
+              "l2_id": "geometry_e18fbb8c6dc6a4fbc665fc47",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_9ef893093de2ddcafe015d80",
+                  "handle": "4FA46",
+                  "stable_path": "25465:BLOCK_0107/4FA46"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_050137eb9235fc8d6e01d613",
+          "source_handle": "4F5F5",
+          "chains": [
+            {
+              "l3_id": "sem_050137eb9235fc8d6e01d613",
+              "l2_id": "geometry_68dde262cf87d6e1856272c7",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_ea508bc61e373a31c8319e00",
+                  "handle": "4F5F5",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F5F5"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_358b994d9766f2b6c1a6afc3",
+          "source_handle": "4F58A",
+          "chains": [
+            {
+              "l3_id": "sem_358b994d9766f2b6c1a6afc3",
+              "l2_id": "geometry_89eeb23485601ca54949eccf",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_0a38e5d65cb8a8bfd2fb92c6",
+                  "handle": "4F58A",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F58A"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_a0ddd4237cb862c082fcc973",
+          "source_handle": "4F58A",
+          "chains": [
+            {
+              "l3_id": "sem_a0ddd4237cb862c082fcc973",
+              "l2_id": "geometry_7dac93f9f5f4e8246e8682b6",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_26dc8fb993acbc4072282243",
+                  "handle": "4F58A",
+                  "stable_path": "25465:BLOCK_0107/4F58A"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_b0a3eb8ae1c0aa01c8f51dc6",
+          "source_handle": "4F5F5",
+          "chains": [
+            {
+              "l3_id": "sem_b0a3eb8ae1c0aa01c8f51dc6",
+              "l2_id": "geometry_19c0cf26904dd5f75f820910",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_80fd6464f57431913b7311bd",
+                  "handle": "4F5F5",
+                  "stable_path": "25465:BLOCK_0107/4F5F5"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_19bba107e34b47ac59030f8d",
+          "source_handle": "4FA46",
+          "chains": [
+            {
+              "l3_id": "sem_19bba107e34b47ac59030f8d",
+              "l2_id": "geometry_b697773729f59578a209b21b",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_9edb3ebd17bcdf7e12932d28",
+                  "handle": "4FA46",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA46"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        }
+      ],
+      "request_question": null
+    },
+    {
+      "id": "finding_R2_no_target",
+      "rule_id": "R2",
+      "rule_title": "电气竖井贴邻热源",
+      "object_ids": [],
+      "result": "无法判定",
+      "reason": "未识别到纳入本条的对象；不能据此说明图中没有",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [],
+      "values": {},
+      "evidence": [],
+      "clauses": [
+        {
+          "code": "GB 55024-2022",
+          "article": "6.2.8第2款",
+          "text": "电气竖井不应贴邻热烟道、热力管道及其他散热量大的场所。",
+          "strength": "应"
+        }
+      ],
+      "origin": "REAL",
+      "scope": "共边贴邻候选风险辅助检查，不计算隔热效果；缺热源用途/完整边界不从未发现推定通过",
+      "rule_approved": true,
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“未识别到的适用房间”（Handle：尚无对应Handle）的资料：未识别到纳入本条的对象；不能据此说明图中没有。"
+    },
+    {
+      "rule_id": "R3",
+      "object_ids": [
+        "sem_14e806b83722249258c16b0b"
+      ],
+      "result": "无法判定",
+      "reason": "缺少上一层语义",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "4F722"
+      ],
+      "values": {},
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不应设在厕所、浴室、厨房或其他经常有水并可能漏水场所的正下方。",
+          "strength": "应"
+        }
+      ],
+      "scope": "单层缺上一层语义时无法判定；不实现跨层配准",
+      "origin": "REAL",
+      "id": "finding_R3_sem_14e806b83722249258c16b0b",
+      "object_name": "2#公变配电房",
+      "rule_approved": true,
+      "rule_title": "变电所上方用水场所",
+      "evidence": [
+        {
+          "object_id": "sem_14e806b83722249258c16b0b",
+          "source_handle": "4F722",
+          "chains": [
+            {
+              "l3_id": "sem_14e806b83722249258c16b0b",
+              "l2_id": "geometry_8f11406df9faf9e4d02da213",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_04bcb1f193ab49476974dedf",
+                  "handle": "4F722",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F722"
+                },
+                {
+                  "l1_id": "primitive_081328a1a4b4cfa7ff8b893b",
+                  "handle": "4F720",
+                  "stable_path": "25465:BLOCK_0107/4F720"
+                },
+                {
+                  "l1_id": "primitive_0a06491a052a741b00f52533",
+                  "handle": "5120E",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/5120E"
+                },
+                {
+                  "l1_id": "primitive_0b6a03b96d24580bcac89e05",
+                  "handle": "508C4",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/508C4"
+                },
+                {
+                  "l1_id": "primitive_0fcbd20985fb407e5f9d052f",
+                  "handle": "4FA82",
+                  "stable_path": "25465:BLOCK_0107/4FA82"
+                },
+                {
+                  "l1_id": "primitive_12debdd9f7447c4ebe73f3bd",
+                  "handle": "4F723",
+                  "stable_path": "25465:BLOCK_0107/4F723"
+                },
+                {
+                  "l1_id": "primitive_141915edb33da24bb4bc9448",
+                  "handle": "4F725",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F725"
+                },
+                {
+                  "l1_id": "primitive_29d540453bbd28e73de06259",
+                  "handle": "505AE",
+                  "stable_path": "25465:BLOCK_0107/50558:BLOCK_0128/505AE"
+                },
+                {
+                  "l1_id": "primitive_2de471c7964cc5f226bfcab3",
+                  "handle": "4F725",
+                  "stable_path": "25465:BLOCK_0107/4F725"
+                },
+                {
+                  "l1_id": "primitive_316165de98412e78076b20a6",
+                  "handle": "505AD",
+                  "stable_path": "25465:BLOCK_0107/50558:BLOCK_0128/505AD"
+                },
+                {
+                  "l1_id": "primitive_3a856a1b2602118bcc8dfd79",
+                  "handle": "51210",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51210"
+                },
+                {
+                  "l1_id": "primitive_3b4310a9e934547a0ff2468b",
+                  "handle": "4FA81",
+                  "stable_path": "25465:BLOCK_0107/4FA81"
+                },
+                {
+                  "l1_id": "primitive_3ca8d47e1225f457edc17e79",
+                  "handle": "505AF",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50558:BLOCK_0128/505AF"
+                },
+                {
+                  "l1_id": "primitive_40e0eeea3f6e2ae4e201418c",
+                  "handle": "51211",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51211"
+                },
+                {
+                  "l1_id": "primitive_430760ff90bdb6f0de63019a",
+                  "handle": "51210",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51210"
+                },
+                {
+                  "l1_id": "primitive_46dc4dca2170db444f551c90",
+                  "handle": "4FA81",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA81"
+                },
+                {
+                  "l1_id": "primitive_47b00b5a6b7e829358a0683f",
+                  "handle": "51206",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51206"
+                },
+                {
+                  "l1_id": "primitive_51e159effc31c1c357357bea",
+                  "handle": "505B8",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50558:BLOCK_0128/505B8"
+                },
+                {
+                  "l1_id": "primitive_5729bfd588d6e186dc7c5b0b",
+                  "handle": "505B1",
+                  "stable_path": "25465:BLOCK_0107/50558:BLOCK_0128/505B1"
+                },
+                {
+                  "l1_id": "primitive_5d31c3cc1bb945280757663d",
+                  "handle": "505B1",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50558:BLOCK_0128/505B1"
+                },
+                {
+                  "l1_id": "primitive_5ed100b6a1df0141138be481",
+                  "handle": "507D3",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/507D3"
+                },
+                {
+                  "l1_id": "primitive_611e2fc34440bc52385f17b9",
+                  "handle": "4F722",
+                  "stable_path": "25465:BLOCK_0107/4F722"
+                },
+                {
+                  "l1_id": "primitive_779600b5bc937cfbeb524392",
+                  "handle": "51206",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51206"
+                },
+                {
+                  "l1_id": "primitive_782239d2f679f08318b098f4",
+                  "handle": "4F723",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F723"
+                },
+                {
+                  "l1_id": "primitive_7d384c398a927956af607450",
+                  "handle": "51207",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51207"
+                },
+                {
+                  "l1_id": "primitive_81908ea3dbddf16b3e17b9ae",
+                  "handle": "508C5",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/508C5"
+                },
+                {
+                  "l1_id": "primitive_8b80fd047fcfb6c6f4b8a973",
+                  "handle": "505B8",
+                  "stable_path": "25465:BLOCK_0107/50558:BLOCK_0128/505B8"
+                },
+                {
+                  "l1_id": "primitive_8c06a8dcd5535d2ffdfdccc2",
+                  "handle": "505AE",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50558:BLOCK_0128/505AE"
+                },
+                {
+                  "l1_id": "primitive_94b7a18d26b84f9e3c1154f3",
+                  "handle": "51211",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51211"
+                },
+                {
+                  "l1_id": "primitive_a70af626c9e0d272a896c19d",
+                  "handle": "5120E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/5120E"
+                },
+                {
+                  "l1_id": "primitive_aa022c52d7d485ba1ed06983",
+                  "handle": "508C5",
+                  "stable_path": "25465:BLOCK_0107/508C5"
+                },
+                {
+                  "l1_id": "primitive_b49d60a8975593688199e0ed",
+                  "handle": "51207",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51207"
+                },
+                {
+                  "l1_id": "primitive_c2dd1262b388c34000e4a2b8",
+                  "handle": "4F75E",
+                  "stable_path": "25465:BLOCK_0107/4F75E"
+                },
+                {
+                  "l1_id": "primitive_d2c8a6c45ae09520e2e3f0b1",
+                  "handle": "4FA82",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA82"
+                },
+                {
+                  "l1_id": "primitive_d5434d2fa0ce3a038f32f3e9",
+                  "handle": "4F720",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F720"
+                },
+                {
+                  "l1_id": "primitive_d6abf520cc01f37303d2f3b0",
+                  "handle": "505AD",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50558:BLOCK_0128/505AD"
+                },
+                {
+                  "l1_id": "primitive_d86f9d03b6989edbf7afc442",
+                  "handle": "508C4",
+                  "stable_path": "25465:BLOCK_0107/508C4"
+                },
+                {
+                  "l1_id": "primitive_d8dd183d559b5c6f67064f69",
+                  "handle": "505AF",
+                  "stable_path": "25465:BLOCK_0107/50558:BLOCK_0128/505AF"
+                },
+                {
+                  "l1_id": "primitive_e9a3efc3118900e16b61fad7",
+                  "handle": "4F75E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F75E"
+                },
+                {
+                  "l1_id": "primitive_fb47453f79bccd23d57c3c4b",
+                  "handle": "507D3",
+                  "stable_path": "25465:BLOCK_0107/507D3"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "51631",
+              "text": "2#公变配电房"
+            }
+          ]
+        }
+      ],
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“2#公变配电房”（Handle：4F722）的资料：缺少上一层语义。"
+    },
+    {
+      "rule_id": "R3",
+      "object_ids": [
+        "sem_aba569429dac0fcd54a6f7d4"
+      ],
+      "result": "无法判定",
+      "reason": "缺少上一层语义",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "4F8D9"
+      ],
+      "values": {},
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不应设在厕所、浴室、厨房或其他经常有水并可能漏水场所的正下方。",
+          "strength": "应"
+        }
+      ],
+      "scope": "单层缺上一层语义时无法判定；不实现跨层配准",
+      "origin": "REAL",
+      "id": "finding_R3_sem_aba569429dac0fcd54a6f7d4",
+      "object_name": "3#公变配电房",
+      "rule_approved": true,
+      "rule_title": "变电所上方用水场所",
+      "evidence": [
+        {
+          "object_id": "sem_aba569429dac0fcd54a6f7d4",
+          "source_handle": "4F8D9",
+          "chains": [
+            {
+              "l3_id": "sem_aba569429dac0fcd54a6f7d4",
+              "l2_id": "geometry_9467a4a55b866846d738fc46",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_00f8acddfec24762c588923c",
+                  "handle": "4F8D9",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F8D9"
+                },
+                {
+                  "l1_id": "primitive_0c28a90b87694cf46dde85e4",
+                  "handle": "4F8D6",
+                  "stable_path": "25465:BLOCK_0107/4F8D6"
+                },
+                {
+                  "l1_id": "primitive_13668618d46576075351dadd",
+                  "handle": "503C7",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5037B:BLOCK_0130/503C7"
+                },
+                {
+                  "l1_id": "primitive_15d68cecfa58395961132ec6",
+                  "handle": "4F764",
+                  "stable_path": "25465:BLOCK_0107/4F764"
+                },
+                {
+                  "l1_id": "primitive_19090063d66deed313c6a0e0",
+                  "handle": "5082D",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5082D"
+                },
+                {
+                  "l1_id": "primitive_1a6780e5f3620687a96a2046",
+                  "handle": "4F5C6",
+                  "stable_path": "25465:BLOCK_0107/4F5C6"
+                },
+                {
+                  "l1_id": "primitive_23694c2e80c172b2db1891ba",
+                  "handle": "4F719",
+                  "stable_path": "25465:BLOCK_0107/4F719"
+                },
+                {
+                  "l1_id": "primitive_25ef4d5b6eab61264d888e36",
+                  "handle": "4F8D9",
+                  "stable_path": "25465:BLOCK_0107/4F8D9"
+                },
+                {
+                  "l1_id": "primitive_3a59e1534d71b48a572ac726",
+                  "handle": "4F719",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F719"
+                },
+                {
+                  "l1_id": "primitive_3ec337a86b579c9887c96015",
+                  "handle": "5082D",
+                  "stable_path": "25465:BLOCK_0107/5082D"
+                },
+                {
+                  "l1_id": "primitive_4b5d879becf1182acec3c304",
+                  "handle": "4F8D6",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F8D6"
+                },
+                {
+                  "l1_id": "primitive_4cb76822b624655442261385",
+                  "handle": "4FA17",
+                  "stable_path": "25465:BLOCK_0107/4FA17"
+                },
+                {
+                  "l1_id": "primitive_5ae6696e889bab65c0bcd47e",
+                  "handle": "4F8DA",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F8DA"
+                },
+                {
+                  "l1_id": "primitive_61299e5aabda7959ea897d9b",
+                  "handle": "4F8D8",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F8D8"
+                },
+                {
+                  "l1_id": "primitive_6eac987b1f3833282921ec31",
+                  "handle": "4FA17",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA17"
+                },
+                {
+                  "l1_id": "primitive_73dd14154c182e301684e12d",
+                  "handle": "4F5C6",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F5C6"
+                },
+                {
+                  "l1_id": "primitive_7bdda184c604c5d49015acd1",
+                  "handle": "4FA16",
+                  "stable_path": "25465:BLOCK_0107/4FA16"
+                },
+                {
+                  "l1_id": "primitive_7d7fed5fb04ab815a7d7a2e9",
+                  "handle": "5082B",
+                  "stable_path": "25465:BLOCK_0107/5082B"
+                },
+                {
+                  "l1_id": "primitive_8253039a339708a496df09e5",
+                  "handle": "503C5",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5037B:BLOCK_0130/503C5"
+                },
+                {
+                  "l1_id": "primitive_938b233eab9ef3514e2d24dd",
+                  "handle": "4FA16",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA16"
+                },
+                {
+                  "l1_id": "primitive_9c194db395be20f5b92b2532",
+                  "handle": "50382",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5037B:BLOCK_0130/50382"
+                },
+                {
+                  "l1_id": "primitive_aa398150a8b5d2a9744481e3",
+                  "handle": "5082C",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5082C"
+                },
+                {
+                  "l1_id": "primitive_af8e3b6353e7c461a1d271ca",
+                  "handle": "50382",
+                  "stable_path": "25465:BLOCK_0107/5037B:BLOCK_0130/50382"
+                },
+                {
+                  "l1_id": "primitive_b66bf8d4082f691f3c3667e9",
+                  "handle": "4F72B",
+                  "stable_path": "25465:BLOCK_0107/4F72B"
+                },
+                {
+                  "l1_id": "primitive_b943b9e29234d9d2c399dbb1",
+                  "handle": "4F8DA",
+                  "stable_path": "25465:BLOCK_0107/4F8DA"
+                },
+                {
+                  "l1_id": "primitive_c38447385cfd0f87ef7442a8",
+                  "handle": "4FA19",
+                  "stable_path": "25465:BLOCK_0107/4FA19"
+                },
+                {
+                  "l1_id": "primitive_c51830e80c13beaac22718ae",
+                  "handle": "4F765",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F765"
+                },
+                {
+                  "l1_id": "primitive_c5b796b402fa8e16b169ca86",
+                  "handle": "4F75A",
+                  "stable_path": "25465:BLOCK_0107/4F75A"
+                },
+                {
+                  "l1_id": "primitive_c822e1e22a362b87da317456",
+                  "handle": "503C7",
+                  "stable_path": "25465:BLOCK_0107/5037B:BLOCK_0130/503C7"
+                },
+                {
+                  "l1_id": "primitive_ca2c972596142ec2f19e1f81",
+                  "handle": "4F75A",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F75A"
+                },
+                {
+                  "l1_id": "primitive_d9dc7db90ddedaf5cae832a5",
+                  "handle": "4F72B",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F72B"
+                },
+                {
+                  "l1_id": "primitive_df26797a83f7531b79f679bf",
+                  "handle": "4F8D8",
+                  "stable_path": "25465:BLOCK_0107/4F8D8"
+                },
+                {
+                  "l1_id": "primitive_e59d3fa939efa5f0817f0805",
+                  "handle": "5082C",
+                  "stable_path": "25465:BLOCK_0107/5082C"
+                },
+                {
+                  "l1_id": "primitive_e85affae7019f08f0ba52c5b",
+                  "handle": "5082B",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5082B"
+                },
+                {
+                  "l1_id": "primitive_ead7dcd9f2acf5468516cd4b",
+                  "handle": "4F765",
+                  "stable_path": "25465:BLOCK_0107/4F765"
+                },
+                {
+                  "l1_id": "primitive_eb96157dac217b3ed56b471b",
+                  "handle": "4F764",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F764"
+                },
+                {
+                  "l1_id": "primitive_f1a34ac588d5ae59f64efdf8",
+                  "handle": "4FA19",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA19"
+                },
+                {
+                  "l1_id": "primitive_fdd9bd1faf29e6318ff64a11",
+                  "handle": "503C5",
+                  "stable_path": "25465:BLOCK_0107/5037B:BLOCK_0130/503C5"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "51623",
+              "text": "3#公变配电房"
+            }
+          ]
+        }
+      ],
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“3#公变配电房”（Handle：4F8D9）的资料：缺少上一层语义。"
+    },
+    {
+      "rule_id": "R3",
+      "object_ids": [
+        "sem_c60c4af3bd242dd174dd3905"
+      ],
+      "result": "无法判定",
+      "reason": "缺少上一层语义",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "4FA8E"
+      ],
+      "values": {},
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不应设在厕所、浴室、厨房或其他经常有水并可能漏水场所的正下方。",
+          "strength": "应"
+        }
+      ],
+      "scope": "单层缺上一层语义时无法判定；不实现跨层配准",
+      "origin": "REAL",
+      "id": "finding_R3_sem_c60c4af3bd242dd174dd3905",
+      "object_name": "专变配电房",
+      "rule_approved": true,
+      "rule_title": "变电所上方用水场所",
+      "evidence": [
+        {
+          "object_id": "sem_c60c4af3bd242dd174dd3905",
+          "source_handle": "4FA8E",
+          "chains": [
+            {
+              "l3_id": "sem_c60c4af3bd242dd174dd3905",
+              "l2_id": "geometry_0424abcfd498b0bc1e40641e",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_02c873f1c09ad26ffb5d7212",
+                  "handle": "4FA8E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA8E"
+                },
+                {
+                  "l1_id": "primitive_055e98ccbffd7c0aa9d43b46",
+                  "handle": "4F70E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F70E"
+                },
+                {
+                  "l1_id": "primitive_150a07764161c3294eebf71b",
+                  "handle": "4FA52",
+                  "stable_path": "25465:BLOCK_0107/4FA52"
+                },
+                {
+                  "l1_id": "primitive_1e9ad57d04b32654f3f3ddd8",
+                  "handle": "51013",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51013"
+                },
+                {
+                  "l1_id": "primitive_30625d6a6e5264bacb7d9551",
+                  "handle": "51034",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51034"
+                },
+                {
+                  "l1_id": "primitive_3b79f8e2bbb2f8da0484fb3d",
+                  "handle": "51049",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51049"
+                },
+                {
+                  "l1_id": "primitive_3e84dde3750ad3ca16cbf2c8",
+                  "handle": "51022",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51022"
+                },
+                {
+                  "l1_id": "primitive_3f6d0121602c1d7e41ed748c",
+                  "handle": "4F718",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F718"
+                },
+                {
+                  "l1_id": "primitive_4654c34965de7e72eb029079",
+                  "handle": "4FA8E",
+                  "stable_path": "25465:BLOCK_0107/4FA8E"
+                },
+                {
+                  "l1_id": "primitive_49c7d4af1aad4a50ba350efe",
+                  "handle": "4FA4E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA4E"
+                },
+                {
+                  "l1_id": "primitive_5056259858900caf16b9cd8d",
+                  "handle": "4FA51",
+                  "stable_path": "25465:BLOCK_0107/4FA51"
+                },
+                {
+                  "l1_id": "primitive_52a18a6c5a3c296982165e8f",
+                  "handle": "4FA8D",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA8D"
+                },
+                {
+                  "l1_id": "primitive_572bd2fad236dab5876fad29",
+                  "handle": "4F70E",
+                  "stable_path": "25465:BLOCK_0107/4F70E"
+                },
+                {
+                  "l1_id": "primitive_5ba27eb5b6e1edb5dedbce32",
+                  "handle": "4FA8D",
+                  "stable_path": "25465:BLOCK_0107/4FA8D"
+                },
+                {
+                  "l1_id": "primitive_5e681a25991c337a8643d27e",
+                  "handle": "4FA8C",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA8C"
+                },
+                {
+                  "l1_id": "primitive_5f3b937d209dcac2f6498e82",
+                  "handle": "51FB8",
+                  "stable_path": "28616:BLOCK_0072/51FB8"
+                },
+                {
+                  "l1_id": "primitive_632a65d738438553ac65a768",
+                  "handle": "51013",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51013"
+                },
+                {
+                  "l1_id": "primitive_636b83310b020a74350dd346",
+                  "handle": "51034",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51034"
+                },
+                {
+                  "l1_id": "primitive_71b94bf47bdb10b9f95e1a99",
+                  "handle": "51022",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51022"
+                },
+                {
+                  "l1_id": "primitive_72856f3a7886db926b369855",
+                  "handle": "51FC0",
+                  "stable_path": "28616:BLOCK_0072/51FC0"
+                },
+                {
+                  "l1_id": "primitive_7d01e5d1119c4abd4b2ea375",
+                  "handle": "51045",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51045"
+                },
+                {
+                  "l1_id": "primitive_7e4ea7f729ba4e1eab76433d",
+                  "handle": "4FA50",
+                  "stable_path": "25465:BLOCK_0107/4FA50"
+                },
+                {
+                  "l1_id": "primitive_80588465f3d208ee670236bb",
+                  "handle": "51049",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51049"
+                },
+                {
+                  "l1_id": "primitive_8447ddae4e7c9146fe5dca6c",
+                  "handle": "4F769",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F769"
+                },
+                {
+                  "l1_id": "primitive_851604fa0d8de7856ebc4177",
+                  "handle": "4FA52",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA52"
+                },
+                {
+                  "l1_id": "primitive_8f2474778880f0ff6ab4049d",
+                  "handle": "4F626",
+                  "stable_path": "25465:BLOCK_0107/4F626"
+                },
+                {
+                  "l1_id": "primitive_92807fed2b14546adccef932",
+                  "handle": "51FBA",
+                  "stable_path": "28616:BLOCK_0072/51FBA"
+                },
+                {
+                  "l1_id": "primitive_a66052b172e553110792155b",
+                  "handle": "4F769",
+                  "stable_path": "25465:BLOCK_0107/4F769"
+                },
+                {
+                  "l1_id": "primitive_b25126b69ba504b01bb4d149",
+                  "handle": "4F70F",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F70F"
+                },
+                {
+                  "l1_id": "primitive_b33f274dd604aec47f886a35",
+                  "handle": "4F626",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F626"
+                },
+                {
+                  "l1_id": "primitive_ba88e21afb38743b8370e518",
+                  "handle": "4FA51",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA51"
+                },
+                {
+                  "l1_id": "primitive_bb2046ccd2406dfa2ebb9ef9",
+                  "handle": "51045",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51045"
+                },
+                {
+                  "l1_id": "primitive_be37fc85dd95e35172896b21",
+                  "handle": "4F70F",
+                  "stable_path": "25465:BLOCK_0107/4F70F"
+                },
+                {
+                  "l1_id": "primitive_c23be833041e937c292b6ad3",
+                  "handle": "4FA50",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA50"
+                },
+                {
+                  "l1_id": "primitive_c42d727848935f5a3650a354",
+                  "handle": "51FB9",
+                  "stable_path": "28616:BLOCK_0072/51FB9"
+                },
+                {
+                  "l1_id": "primitive_cf017763bbbffb3aa808b3a8",
+                  "handle": "4FA8C",
+                  "stable_path": "25465:BLOCK_0107/4FA8C"
+                },
+                {
+                  "l1_id": "primitive_cfd85f2d7afcdeff70f9e9a0",
+                  "handle": "4F718",
+                  "stable_path": "25465:BLOCK_0107/4F718"
+                },
+                {
+                  "l1_id": "primitive_d36e28bb7d4a15b18f1dabde",
+                  "handle": "4FA4E",
+                  "stable_path": "25465:BLOCK_0107/4FA4E"
+                },
+                {
+                  "l1_id": "primitive_e46ca4e3a1b2bbf08e091eb1",
+                  "handle": "51021",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51021"
+                },
+                {
+                  "l1_id": "primitive_e79da08de1c7e6ea37b436b2",
+                  "handle": "4F627",
+                  "stable_path": "25465:BLOCK_0107/4F627"
+                },
+                {
+                  "l1_id": "primitive_e8a6d5fb2a1f2a2648821d85",
+                  "handle": "4F627",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F627"
+                },
+                {
+                  "l1_id": "primitive_f7ee90c864e652eade75e69d",
+                  "handle": "51021",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51021"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "51616",
+              "text": "专变配电房"
+            }
+          ]
+        }
+      ],
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“专变配电房”（Handle：4FA8E）的资料：缺少上一层语义。"
+    },
+    {
+      "rule_id": "R4",
+      "object_ids": [
+        "sem_14e806b83722249258c16b0b"
+      ],
+      "result": "无法判定",
+      "reason": "关系数据不完整，不能从未发现推定不存在；缺少完整且确认的贴邻关系；用水候选不等于漏水风险已确认",
+      "input_confidence": "输入待复核",
+      "level": "提示",
+      "source_handles": [
+        "4F722",
+        "51212"
+      ],
+      "values": {
+        "adjacent_uses": [],
+        "adjacent_candidates": [
+          {
+            "id": "sem_bb20f4a75c93d8a4f9cb546d",
+            "name": "走道",
+            "shared_boundary_mm": 1093.949268,
+            "use": "ARCHITECTURAL_ROOM",
+            "risk_use": null,
+            "water_candidate": false,
+            "water_needs_confirmation": false,
+            "handle": "51212"
+          }
+        ],
+        "candidate_source": "geometry_coedge_5mm",
+        "boundary_tolerance_mm": 5.0,
+        "adjacency_method": "原有轮廓共线重合候选，5mm继承原壁网捕捉尺度；不跨墙厚推定贴邻"
+      },
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不宜与上述场所贴邻。",
+          "strength": "宜"
+        }
+      ],
+      "scope": "不宜贴邻子项提示；防水子项缺资料时另列无法判定，不宣称整条合规",
+      "origin": "REAL",
+      "id": "finding_R4_sem_14e806b83722249258c16b0b",
+      "object_name": "2#公变配电房",
+      "rule_approved": true,
+      "rule_title": "变电所贴邻用水场所提示",
+      "evidence": [
+        {
+          "object_id": "sem_14e806b83722249258c16b0b",
+          "source_handle": "4F722",
+          "chains": [
+            {
+              "l3_id": "sem_14e806b83722249258c16b0b",
+              "l2_id": "geometry_8f11406df9faf9e4d02da213",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_04bcb1f193ab49476974dedf",
+                  "handle": "4F722",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F722"
+                },
+                {
+                  "l1_id": "primitive_081328a1a4b4cfa7ff8b893b",
+                  "handle": "4F720",
+                  "stable_path": "25465:BLOCK_0107/4F720"
+                },
+                {
+                  "l1_id": "primitive_0a06491a052a741b00f52533",
+                  "handle": "5120E",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/5120E"
+                },
+                {
+                  "l1_id": "primitive_0b6a03b96d24580bcac89e05",
+                  "handle": "508C4",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/508C4"
+                },
+                {
+                  "l1_id": "primitive_0fcbd20985fb407e5f9d052f",
+                  "handle": "4FA82",
+                  "stable_path": "25465:BLOCK_0107/4FA82"
+                },
+                {
+                  "l1_id": "primitive_12debdd9f7447c4ebe73f3bd",
+                  "handle": "4F723",
+                  "stable_path": "25465:BLOCK_0107/4F723"
+                },
+                {
+                  "l1_id": "primitive_141915edb33da24bb4bc9448",
+                  "handle": "4F725",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F725"
+                },
+                {
+                  "l1_id": "primitive_29d540453bbd28e73de06259",
+                  "handle": "505AE",
+                  "stable_path": "25465:BLOCK_0107/50558:BLOCK_0128/505AE"
+                },
+                {
+                  "l1_id": "primitive_2de471c7964cc5f226bfcab3",
+                  "handle": "4F725",
+                  "stable_path": "25465:BLOCK_0107/4F725"
+                },
+                {
+                  "l1_id": "primitive_316165de98412e78076b20a6",
+                  "handle": "505AD",
+                  "stable_path": "25465:BLOCK_0107/50558:BLOCK_0128/505AD"
+                },
+                {
+                  "l1_id": "primitive_3a856a1b2602118bcc8dfd79",
+                  "handle": "51210",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51210"
+                },
+                {
+                  "l1_id": "primitive_3b4310a9e934547a0ff2468b",
+                  "handle": "4FA81",
+                  "stable_path": "25465:BLOCK_0107/4FA81"
+                },
+                {
+                  "l1_id": "primitive_3ca8d47e1225f457edc17e79",
+                  "handle": "505AF",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50558:BLOCK_0128/505AF"
+                },
+                {
+                  "l1_id": "primitive_40e0eeea3f6e2ae4e201418c",
+                  "handle": "51211",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51211"
+                },
+                {
+                  "l1_id": "primitive_430760ff90bdb6f0de63019a",
+                  "handle": "51210",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51210"
+                },
+                {
+                  "l1_id": "primitive_46dc4dca2170db444f551c90",
+                  "handle": "4FA81",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA81"
+                },
+                {
+                  "l1_id": "primitive_47b00b5a6b7e829358a0683f",
+                  "handle": "51206",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51206"
+                },
+                {
+                  "l1_id": "primitive_51e159effc31c1c357357bea",
+                  "handle": "505B8",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50558:BLOCK_0128/505B8"
+                },
+                {
+                  "l1_id": "primitive_5729bfd588d6e186dc7c5b0b",
+                  "handle": "505B1",
+                  "stable_path": "25465:BLOCK_0107/50558:BLOCK_0128/505B1"
+                },
+                {
+                  "l1_id": "primitive_5d31c3cc1bb945280757663d",
+                  "handle": "505B1",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50558:BLOCK_0128/505B1"
+                },
+                {
+                  "l1_id": "primitive_5ed100b6a1df0141138be481",
+                  "handle": "507D3",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/507D3"
+                },
+                {
+                  "l1_id": "primitive_611e2fc34440bc52385f17b9",
+                  "handle": "4F722",
+                  "stable_path": "25465:BLOCK_0107/4F722"
+                },
+                {
+                  "l1_id": "primitive_779600b5bc937cfbeb524392",
+                  "handle": "51206",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51206"
+                },
+                {
+                  "l1_id": "primitive_782239d2f679f08318b098f4",
+                  "handle": "4F723",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F723"
+                },
+                {
+                  "l1_id": "primitive_7d384c398a927956af607450",
+                  "handle": "51207",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51207"
+                },
+                {
+                  "l1_id": "primitive_81908ea3dbddf16b3e17b9ae",
+                  "handle": "508C5",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/508C5"
+                },
+                {
+                  "l1_id": "primitive_8b80fd047fcfb6c6f4b8a973",
+                  "handle": "505B8",
+                  "stable_path": "25465:BLOCK_0107/50558:BLOCK_0128/505B8"
+                },
+                {
+                  "l1_id": "primitive_8c06a8dcd5535d2ffdfdccc2",
+                  "handle": "505AE",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50558:BLOCK_0128/505AE"
+                },
+                {
+                  "l1_id": "primitive_94b7a18d26b84f9e3c1154f3",
+                  "handle": "51211",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51211"
+                },
+                {
+                  "l1_id": "primitive_a70af626c9e0d272a896c19d",
+                  "handle": "5120E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/5120E"
+                },
+                {
+                  "l1_id": "primitive_aa022c52d7d485ba1ed06983",
+                  "handle": "508C5",
+                  "stable_path": "25465:BLOCK_0107/508C5"
+                },
+                {
+                  "l1_id": "primitive_b49d60a8975593688199e0ed",
+                  "handle": "51207",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51207"
+                },
+                {
+                  "l1_id": "primitive_c2dd1262b388c34000e4a2b8",
+                  "handle": "4F75E",
+                  "stable_path": "25465:BLOCK_0107/4F75E"
+                },
+                {
+                  "l1_id": "primitive_d2c8a6c45ae09520e2e3f0b1",
+                  "handle": "4FA82",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA82"
+                },
+                {
+                  "l1_id": "primitive_d5434d2fa0ce3a038f32f3e9",
+                  "handle": "4F720",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F720"
+                },
+                {
+                  "l1_id": "primitive_d6abf520cc01f37303d2f3b0",
+                  "handle": "505AD",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50558:BLOCK_0128/505AD"
+                },
+                {
+                  "l1_id": "primitive_d86f9d03b6989edbf7afc442",
+                  "handle": "508C4",
+                  "stable_path": "25465:BLOCK_0107/508C4"
+                },
+                {
+                  "l1_id": "primitive_d8dd183d559b5c6f67064f69",
+                  "handle": "505AF",
+                  "stable_path": "25465:BLOCK_0107/50558:BLOCK_0128/505AF"
+                },
+                {
+                  "l1_id": "primitive_e9a3efc3118900e16b61fad7",
+                  "handle": "4F75E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F75E"
+                },
+                {
+                  "l1_id": "primitive_fb47453f79bccd23d57c3c4b",
+                  "handle": "507D3",
+                  "stable_path": "25465:BLOCK_0107/507D3"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "51631",
+              "text": "2#公变配电房"
+            }
+          ]
+        },
+        {
+          "object_id": "sem_bb20f4a75c93d8a4f9cb546d",
+          "source_handle": "51212",
+          "chains": [
+            {
+              "l3_id": "sem_bb20f4a75c93d8a4f9cb546d",
+              "l2_id": "geometry_e2ad3ba372db676c274381c3",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_05f505602fee6737f0a88266",
+                  "handle": "51212",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51212"
+                },
+                {
+                  "l1_id": "primitive_07fae36d9f02a87756d10c0a",
+                  "handle": "51212",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51212"
+                },
+                {
+                  "l1_id": "primitive_12debdd9f7447c4ebe73f3bd",
+                  "handle": "4F723",
+                  "stable_path": "25465:BLOCK_0107/4F723"
+                },
+                {
+                  "l1_id": "primitive_24b13d79f5a071ffead6953f",
+                  "handle": "4F70B",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F70B"
+                },
+                {
+                  "l1_id": "primitive_3e82e5d170ed46439a87f6e2",
+                  "handle": "4F70B",
+                  "stable_path": "25465:BLOCK_0107/4F70B"
+                },
+                {
+                  "l1_id": "primitive_4696ad29e8fcc98bb57da71e",
+                  "handle": "4F6EC",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F6EC"
+                },
+                {
+                  "l1_id": "primitive_782239d2f679f08318b098f4",
+                  "handle": "4F723",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F723"
+                },
+                {
+                  "l1_id": "primitive_7951875cdddeee35b44a73f6",
+                  "handle": "4F6EC",
+                  "stable_path": "25465:BLOCK_0107/4F6EC"
+                },
+                {
+                  "l1_id": "primitive_7d384c398a927956af607450",
+                  "handle": "51207",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51207"
+                },
+                {
+                  "l1_id": "primitive_932263c1b3b2017a0bcf9b8b",
+                  "handle": "50059",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50059"
+                },
+                {
+                  "l1_id": "primitive_afd976aac395944192eba6d5",
+                  "handle": "50059",
+                  "stable_path": "25465:BLOCK_0107/50059"
+                },
+                {
+                  "l1_id": "primitive_b49d60a8975593688199e0ed",
+                  "handle": "51207",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FE4:BLOCK_0211/51207"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "51803",
+              "text": "走道"
+            }
+          ]
+        }
+      ],
+      "subchecks": [
+        {
+          "id": "waterproof",
+          "result": "无法判定",
+          "strength": "应",
+          "reason": "缺少隔墙防水资料；仅在贴邻适用条件成立后检查",
+          "request_question": "请建筑专业提供“2#公变配电房”（Handle：4F722, 51212）的资料：缺少隔墙防水资料；仅在贴邻适用条件成立后检查。"
+        }
+      ],
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“2#公变配电房”（Handle：4F722, 51212）的资料：关系数据不完整，不能从未发现推定不存在；缺少完整且确认的贴邻关系；用水候选不等于漏水风险已确认。"
+    },
+    {
+      "rule_id": "R4",
+      "object_ids": [
+        "sem_aba569429dac0fcd54a6f7d4"
+      ],
+      "result": "无法判定",
+      "reason": "关系数据不完整，不能从未发现推定不存在；缺少完整且确认的贴邻关系；用水候选不等于漏水风险已确认",
+      "input_confidence": "输入待复核",
+      "level": "提示",
+      "source_handles": [
+        "4F5C6",
+        "4F8D9"
+      ],
+      "values": {
+        "adjacent_uses": [],
+        "adjacent_candidates": [
+          {
+            "id": "sem_91089ae3a3ad5a1160b1b451",
+            "name": "走道",
+            "shared_boundary_mm": 1097.565488,
+            "use": "ARCHITECTURAL_ROOM",
+            "risk_use": null,
+            "water_candidate": false,
+            "water_needs_confirmation": false,
+            "handle": "4F5C6"
+          }
+        ],
+        "candidate_source": "geometry_coedge_5mm",
+        "boundary_tolerance_mm": 5.0,
+        "adjacency_method": "原有轮廓共线重合候选，5mm继承原壁网捕捉尺度；不跨墙厚推定贴邻"
+      },
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不宜与上述场所贴邻。",
+          "strength": "宜"
+        }
+      ],
+      "scope": "不宜贴邻子项提示；防水子项缺资料时另列无法判定，不宣称整条合规",
+      "origin": "REAL",
+      "id": "finding_R4_sem_aba569429dac0fcd54a6f7d4",
+      "object_name": "3#公变配电房",
+      "rule_approved": true,
+      "rule_title": "变电所贴邻用水场所提示",
+      "evidence": [
+        {
+          "object_id": "sem_aba569429dac0fcd54a6f7d4",
+          "source_handle": "4F8D9",
+          "chains": [
+            {
+              "l3_id": "sem_aba569429dac0fcd54a6f7d4",
+              "l2_id": "geometry_9467a4a55b866846d738fc46",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_00f8acddfec24762c588923c",
+                  "handle": "4F8D9",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F8D9"
+                },
+                {
+                  "l1_id": "primitive_0c28a90b87694cf46dde85e4",
+                  "handle": "4F8D6",
+                  "stable_path": "25465:BLOCK_0107/4F8D6"
+                },
+                {
+                  "l1_id": "primitive_13668618d46576075351dadd",
+                  "handle": "503C7",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5037B:BLOCK_0130/503C7"
+                },
+                {
+                  "l1_id": "primitive_15d68cecfa58395961132ec6",
+                  "handle": "4F764",
+                  "stable_path": "25465:BLOCK_0107/4F764"
+                },
+                {
+                  "l1_id": "primitive_19090063d66deed313c6a0e0",
+                  "handle": "5082D",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5082D"
+                },
+                {
+                  "l1_id": "primitive_1a6780e5f3620687a96a2046",
+                  "handle": "4F5C6",
+                  "stable_path": "25465:BLOCK_0107/4F5C6"
+                },
+                {
+                  "l1_id": "primitive_23694c2e80c172b2db1891ba",
+                  "handle": "4F719",
+                  "stable_path": "25465:BLOCK_0107/4F719"
+                },
+                {
+                  "l1_id": "primitive_25ef4d5b6eab61264d888e36",
+                  "handle": "4F8D9",
+                  "stable_path": "25465:BLOCK_0107/4F8D9"
+                },
+                {
+                  "l1_id": "primitive_3a59e1534d71b48a572ac726",
+                  "handle": "4F719",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F719"
+                },
+                {
+                  "l1_id": "primitive_3ec337a86b579c9887c96015",
+                  "handle": "5082D",
+                  "stable_path": "25465:BLOCK_0107/5082D"
+                },
+                {
+                  "l1_id": "primitive_4b5d879becf1182acec3c304",
+                  "handle": "4F8D6",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F8D6"
+                },
+                {
+                  "l1_id": "primitive_4cb76822b624655442261385",
+                  "handle": "4FA17",
+                  "stable_path": "25465:BLOCK_0107/4FA17"
+                },
+                {
+                  "l1_id": "primitive_5ae6696e889bab65c0bcd47e",
+                  "handle": "4F8DA",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F8DA"
+                },
+                {
+                  "l1_id": "primitive_61299e5aabda7959ea897d9b",
+                  "handle": "4F8D8",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F8D8"
+                },
+                {
+                  "l1_id": "primitive_6eac987b1f3833282921ec31",
+                  "handle": "4FA17",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA17"
+                },
+                {
+                  "l1_id": "primitive_73dd14154c182e301684e12d",
+                  "handle": "4F5C6",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F5C6"
+                },
+                {
+                  "l1_id": "primitive_7bdda184c604c5d49015acd1",
+                  "handle": "4FA16",
+                  "stable_path": "25465:BLOCK_0107/4FA16"
+                },
+                {
+                  "l1_id": "primitive_7d7fed5fb04ab815a7d7a2e9",
+                  "handle": "5082B",
+                  "stable_path": "25465:BLOCK_0107/5082B"
+                },
+                {
+                  "l1_id": "primitive_8253039a339708a496df09e5",
+                  "handle": "503C5",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5037B:BLOCK_0130/503C5"
+                },
+                {
+                  "l1_id": "primitive_938b233eab9ef3514e2d24dd",
+                  "handle": "4FA16",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA16"
+                },
+                {
+                  "l1_id": "primitive_9c194db395be20f5b92b2532",
+                  "handle": "50382",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5037B:BLOCK_0130/50382"
+                },
+                {
+                  "l1_id": "primitive_aa398150a8b5d2a9744481e3",
+                  "handle": "5082C",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5082C"
+                },
+                {
+                  "l1_id": "primitive_af8e3b6353e7c461a1d271ca",
+                  "handle": "50382",
+                  "stable_path": "25465:BLOCK_0107/5037B:BLOCK_0130/50382"
+                },
+                {
+                  "l1_id": "primitive_b66bf8d4082f691f3c3667e9",
+                  "handle": "4F72B",
+                  "stable_path": "25465:BLOCK_0107/4F72B"
+                },
+                {
+                  "l1_id": "primitive_b943b9e29234d9d2c399dbb1",
+                  "handle": "4F8DA",
+                  "stable_path": "25465:BLOCK_0107/4F8DA"
+                },
+                {
+                  "l1_id": "primitive_c38447385cfd0f87ef7442a8",
+                  "handle": "4FA19",
+                  "stable_path": "25465:BLOCK_0107/4FA19"
+                },
+                {
+                  "l1_id": "primitive_c51830e80c13beaac22718ae",
+                  "handle": "4F765",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F765"
+                },
+                {
+                  "l1_id": "primitive_c5b796b402fa8e16b169ca86",
+                  "handle": "4F75A",
+                  "stable_path": "25465:BLOCK_0107/4F75A"
+                },
+                {
+                  "l1_id": "primitive_c822e1e22a362b87da317456",
+                  "handle": "503C7",
+                  "stable_path": "25465:BLOCK_0107/5037B:BLOCK_0130/503C7"
+                },
+                {
+                  "l1_id": "primitive_ca2c972596142ec2f19e1f81",
+                  "handle": "4F75A",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F75A"
+                },
+                {
+                  "l1_id": "primitive_d9dc7db90ddedaf5cae832a5",
+                  "handle": "4F72B",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F72B"
+                },
+                {
+                  "l1_id": "primitive_df26797a83f7531b79f679bf",
+                  "handle": "4F8D8",
+                  "stable_path": "25465:BLOCK_0107/4F8D8"
+                },
+                {
+                  "l1_id": "primitive_e59d3fa939efa5f0817f0805",
+                  "handle": "5082C",
+                  "stable_path": "25465:BLOCK_0107/5082C"
+                },
+                {
+                  "l1_id": "primitive_e85affae7019f08f0ba52c5b",
+                  "handle": "5082B",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/5082B"
+                },
+                {
+                  "l1_id": "primitive_ead7dcd9f2acf5468516cd4b",
+                  "handle": "4F765",
+                  "stable_path": "25465:BLOCK_0107/4F765"
+                },
+                {
+                  "l1_id": "primitive_eb96157dac217b3ed56b471b",
+                  "handle": "4F764",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F764"
+                },
+                {
+                  "l1_id": "primitive_f1a34ac588d5ae59f64efdf8",
+                  "handle": "4FA19",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA19"
+                },
+                {
+                  "l1_id": "primitive_fdd9bd1faf29e6318ff64a11",
+                  "handle": "503C5",
+                  "stable_path": "25465:BLOCK_0107/5037B:BLOCK_0130/503C5"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "51623",
+              "text": "3#公变配电房"
+            }
+          ]
+        },
+        {
+          "object_id": "sem_91089ae3a3ad5a1160b1b451",
+          "source_handle": "4F5C6",
+          "chains": [
+            {
+              "l3_id": "sem_91089ae3a3ad5a1160b1b451",
+              "l2_id": "geometry_7ab03f309cd3f2d0e240d761",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_1a6780e5f3620687a96a2046",
+                  "handle": "4F5C6",
+                  "stable_path": "25465:BLOCK_0107/4F5C6"
+                },
+                {
+                  "l1_id": "primitive_3bb78e7f2549cc73a75445e1",
+                  "handle": "4F6E5",
+                  "stable_path": "25465:BLOCK_0107/4F6E5"
+                },
+                {
+                  "l1_id": "primitive_6de4f0c7f643c9b105a471d2",
+                  "handle": "50830",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/50830"
+                },
+                {
+                  "l1_id": "primitive_73dd14154c182e301684e12d",
+                  "handle": "4F5C6",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F5C6"
+                },
+                {
+                  "l1_id": "primitive_7b2fa806580f0f555b9d8c0c",
+                  "handle": "4F6E5",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F6E5"
+                },
+                {
+                  "l1_id": "primitive_c38447385cfd0f87ef7442a8",
+                  "handle": "4FA19",
+                  "stable_path": "25465:BLOCK_0107/4FA19"
+                },
+                {
+                  "l1_id": "primitive_f1a34ac588d5ae59f64efdf8",
+                  "handle": "4FA19",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA19"
+                },
+                {
+                  "l1_id": "primitive_f497831a1be5d16a9c1b09e2",
+                  "handle": "50830",
+                  "stable_path": "25465:BLOCK_0107/50830"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "51622",
+              "text": "走道"
+            }
+          ]
+        }
+      ],
+      "subchecks": [
+        {
+          "id": "waterproof",
+          "result": "无法判定",
+          "strength": "应",
+          "reason": "缺少隔墙防水资料；仅在贴邻适用条件成立后检查",
+          "request_question": "请建筑专业提供“3#公变配电房”（Handle：4F5C6, 4F8D9）的资料：缺少隔墙防水资料；仅在贴邻适用条件成立后检查。"
+        }
+      ],
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“3#公变配电房”（Handle：4F5C6, 4F8D9）的资料：关系数据不完整，不能从未发现推定不存在；缺少完整且确认的贴邻关系；用水候选不等于漏水风险已确认。"
+    },
+    {
+      "rule_id": "R4",
+      "object_ids": [
+        "sem_c60c4af3bd242dd174dd3905"
+      ],
+      "result": "无法判定",
+      "reason": "关系数据不完整，不能从未发现推定不存在；缺少完整且确认的贴邻关系；用水候选不等于漏水风险已确认",
+      "input_confidence": "输入待复核",
+      "level": "提示",
+      "source_handles": [
+        "4FA8E"
+      ],
+      "values": {
+        "adjacent_uses": [],
+        "adjacent_candidates": [],
+        "candidate_source": "geometry_coedge_5mm",
+        "boundary_tolerance_mm": 5.0,
+        "adjacency_method": "原有轮廓共线重合候选，5mm继承原壁网捕捉尺度；不跨墙厚推定贴邻"
+      },
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不宜与上述场所贴邻。",
+          "strength": "宜"
+        }
+      ],
+      "scope": "不宜贴邻子项提示；防水子项缺资料时另列无法判定，不宣称整条合规",
+      "origin": "REAL",
+      "id": "finding_R4_sem_c60c4af3bd242dd174dd3905",
+      "object_name": "专变配电房",
+      "rule_approved": true,
+      "rule_title": "变电所贴邻用水场所提示",
+      "evidence": [
+        {
+          "object_id": "sem_c60c4af3bd242dd174dd3905",
+          "source_handle": "4FA8E",
+          "chains": [
+            {
+              "l3_id": "sem_c60c4af3bd242dd174dd3905",
+              "l2_id": "geometry_0424abcfd498b0bc1e40641e",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_02c873f1c09ad26ffb5d7212",
+                  "handle": "4FA8E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA8E"
+                },
+                {
+                  "l1_id": "primitive_055e98ccbffd7c0aa9d43b46",
+                  "handle": "4F70E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F70E"
+                },
+                {
+                  "l1_id": "primitive_150a07764161c3294eebf71b",
+                  "handle": "4FA52",
+                  "stable_path": "25465:BLOCK_0107/4FA52"
+                },
+                {
+                  "l1_id": "primitive_1e9ad57d04b32654f3f3ddd8",
+                  "handle": "51013",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51013"
+                },
+                {
+                  "l1_id": "primitive_30625d6a6e5264bacb7d9551",
+                  "handle": "51034",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51034"
+                },
+                {
+                  "l1_id": "primitive_3b79f8e2bbb2f8da0484fb3d",
+                  "handle": "51049",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51049"
+                },
+                {
+                  "l1_id": "primitive_3e84dde3750ad3ca16cbf2c8",
+                  "handle": "51022",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51022"
+                },
+                {
+                  "l1_id": "primitive_3f6d0121602c1d7e41ed748c",
+                  "handle": "4F718",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F718"
+                },
+                {
+                  "l1_id": "primitive_4654c34965de7e72eb029079",
+                  "handle": "4FA8E",
+                  "stable_path": "25465:BLOCK_0107/4FA8E"
+                },
+                {
+                  "l1_id": "primitive_49c7d4af1aad4a50ba350efe",
+                  "handle": "4FA4E",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA4E"
+                },
+                {
+                  "l1_id": "primitive_5056259858900caf16b9cd8d",
+                  "handle": "4FA51",
+                  "stable_path": "25465:BLOCK_0107/4FA51"
+                },
+                {
+                  "l1_id": "primitive_52a18a6c5a3c296982165e8f",
+                  "handle": "4FA8D",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA8D"
+                },
+                {
+                  "l1_id": "primitive_572bd2fad236dab5876fad29",
+                  "handle": "4F70E",
+                  "stable_path": "25465:BLOCK_0107/4F70E"
+                },
+                {
+                  "l1_id": "primitive_5ba27eb5b6e1edb5dedbce32",
+                  "handle": "4FA8D",
+                  "stable_path": "25465:BLOCK_0107/4FA8D"
+                },
+                {
+                  "l1_id": "primitive_5e681a25991c337a8643d27e",
+                  "handle": "4FA8C",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA8C"
+                },
+                {
+                  "l1_id": "primitive_5f3b937d209dcac2f6498e82",
+                  "handle": "51FB8",
+                  "stable_path": "28616:BLOCK_0072/51FB8"
+                },
+                {
+                  "l1_id": "primitive_632a65d738438553ac65a768",
+                  "handle": "51013",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51013"
+                },
+                {
+                  "l1_id": "primitive_636b83310b020a74350dd346",
+                  "handle": "51034",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51034"
+                },
+                {
+                  "l1_id": "primitive_71b94bf47bdb10b9f95e1a99",
+                  "handle": "51022",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51022"
+                },
+                {
+                  "l1_id": "primitive_72856f3a7886db926b369855",
+                  "handle": "51FC0",
+                  "stable_path": "28616:BLOCK_0072/51FC0"
+                },
+                {
+                  "l1_id": "primitive_7d01e5d1119c4abd4b2ea375",
+                  "handle": "51045",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51045"
+                },
+                {
+                  "l1_id": "primitive_7e4ea7f729ba4e1eab76433d",
+                  "handle": "4FA50",
+                  "stable_path": "25465:BLOCK_0107/4FA50"
+                },
+                {
+                  "l1_id": "primitive_80588465f3d208ee670236bb",
+                  "handle": "51049",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51049"
+                },
+                {
+                  "l1_id": "primitive_8447ddae4e7c9146fe5dca6c",
+                  "handle": "4F769",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F769"
+                },
+                {
+                  "l1_id": "primitive_851604fa0d8de7856ebc4177",
+                  "handle": "4FA52",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA52"
+                },
+                {
+                  "l1_id": "primitive_8f2474778880f0ff6ab4049d",
+                  "handle": "4F626",
+                  "stable_path": "25465:BLOCK_0107/4F626"
+                },
+                {
+                  "l1_id": "primitive_92807fed2b14546adccef932",
+                  "handle": "51FBA",
+                  "stable_path": "28616:BLOCK_0072/51FBA"
+                },
+                {
+                  "l1_id": "primitive_a66052b172e553110792155b",
+                  "handle": "4F769",
+                  "stable_path": "25465:BLOCK_0107/4F769"
+                },
+                {
+                  "l1_id": "primitive_b25126b69ba504b01bb4d149",
+                  "handle": "4F70F",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F70F"
+                },
+                {
+                  "l1_id": "primitive_b33f274dd604aec47f886a35",
+                  "handle": "4F626",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F626"
+                },
+                {
+                  "l1_id": "primitive_ba88e21afb38743b8370e518",
+                  "handle": "4FA51",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA51"
+                },
+                {
+                  "l1_id": "primitive_bb2046ccd2406dfa2ebb9ef9",
+                  "handle": "51045",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51045"
+                },
+                {
+                  "l1_id": "primitive_be37fc85dd95e35172896b21",
+                  "handle": "4F70F",
+                  "stable_path": "25465:BLOCK_0107/4F70F"
+                },
+                {
+                  "l1_id": "primitive_c23be833041e937c292b6ad3",
+                  "handle": "4FA50",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4FA50"
+                },
+                {
+                  "l1_id": "primitive_c42d727848935f5a3650a354",
+                  "handle": "51FB9",
+                  "stable_path": "28616:BLOCK_0072/51FB9"
+                },
+                {
+                  "l1_id": "primitive_cf017763bbbffb3aa808b3a8",
+                  "handle": "4FA8C",
+                  "stable_path": "25465:BLOCK_0107/4FA8C"
+                },
+                {
+                  "l1_id": "primitive_cfd85f2d7afcdeff70f9e9a0",
+                  "handle": "4F718",
+                  "stable_path": "25465:BLOCK_0107/4F718"
+                },
+                {
+                  "l1_id": "primitive_d36e28bb7d4a15b18f1dabde",
+                  "handle": "4FA4E",
+                  "stable_path": "25465:BLOCK_0107/4FA4E"
+                },
+                {
+                  "l1_id": "primitive_e46ca4e3a1b2bbf08e091eb1",
+                  "handle": "51021",
+                  "stable_path": "25465:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51021"
+                },
+                {
+                  "l1_id": "primitive_e79da08de1c7e6ea37b436b2",
+                  "handle": "4F627",
+                  "stable_path": "25465:BLOCK_0107/4F627"
+                },
+                {
+                  "l1_id": "primitive_e8a6d5fb2a1f2a2648821d85",
+                  "handle": "4F627",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F627"
+                },
+                {
+                  "l1_id": "primitive_f7ee90c864e652eade75e69d",
+                  "handle": "51021",
+                  "stable_path": "25507:BLOCK_0140/519B5:BLOCK_0107/4F4CA:BLOCK_0217/50FA3:BLOCK_0201/51021"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "51616",
+              "text": "专变配电房"
+            }
+          ]
+        }
+      ],
+      "subchecks": [
+        {
+          "id": "waterproof",
+          "result": "无法判定",
+          "strength": "应",
+          "reason": "缺少隔墙防水资料；仅在贴邻适用条件成立后检查",
+          "request_question": "请建筑专业提供“专变配电房”（Handle：4FA8E）的资料：缺少隔墙防水资料；仅在贴邻适用条件成立后检查。"
+        }
+      ],
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“专变配电房”（Handle：4FA8E）的资料：关系数据不完整，不能从未发现推定不存在；缺少完整且确认的贴邻关系；用水候选不等于漏水风险已确认。"
+    },
+    {
+      "id": "finding_DRAFT_88e437765ce8_no_target",
+      "rule_id": "DRAFT_88e437765ce8",
+      "rule_title": "电气竖井不应与电梯井、其他专业管道井共用同一竖井",
+      "object_ids": [],
+      "result": "无法判定",
+      "reason": "未识别到纳入本条的对象；不能据此说明图中没有",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [],
+      "values": {},
+      "evidence": [],
+      "clauses": [
+        {
+          "code": "GB 55024-2022",
+          "article": "6.2.8第1款",
+          "text": "电气竖井不应与电梯井、其他专业管道井共用同一竖井。",
+          "strength": "应"
+        }
+      ],
+      "origin": "REAL",
+      "scope": "仅依据空间用途及共井用途做条件初查，不涉及防火、构造等其他要求；缺资料不推定通过。",
+      "rule_approved": true,
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“未识别到的适用房间”（Handle：尚无对应Handle）的资料：未识别到纳入本条的对象；不能据此说明图中没有。"
+    }
+  ],
+  "note": "真实数据辅助审查；缺少确认资料不输出合规结论，候选数值供工程师定位复核"
+}

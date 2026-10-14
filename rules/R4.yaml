@@ -1,0 +1,24 @@
+# SPDX-License-Identifier: MPL-2.0
+id: R4
+title: 变电所贴邻用水场所提示
+clauses:
+- code: GB 51348-2019
+  article: 4.2.1第6款
+  text: 变电所不宜与上述场所贴邻。
+  strength: 宜
+  code_version: '2019'
+applies_to:
+- SUBSTATION
+- DISTRIBUTION_ROOM
+check:
+  predicate: adjacent_to_use
+  values:
+  - TOILET
+  - BATHROOM
+  - KITCHEN
+  expect: false
+on_missing: 缺少贴邻关系数据
+scope: 张田于2026-10-12确认，按地区房名习惯将配电房与变配电房联合纳入辅助检查；不修改所引条文原文。；不宜贴邻子项提示；防水子项缺资料时另列无法判定，不宣称整条合规
+approved: true
+approved_by: 张田
+rule_version: '1'

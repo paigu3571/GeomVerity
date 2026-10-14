@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "building-geometry.v1.schema.json",
+  "title": "Building geometry snapshot v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "producer",
+    "status",
+    "reason_codes",
+    "drawing",
+    "profile",
+    "integrity",
+    "source_primitive_content_hash",
+    "geometry_configuration_hash",
+    "fact_provider_id",
+    "deterministic_content_hash",
+    "facts",
+    "relations",
+    "provider_diagnostics",
+    "metrics"
+  ],
+  "properties": {
+    "schema_version": { "const": "building-geometry.v1" },
+    "producer": { "type": "string" },
+    "producer_version": { "type": "string" },
+    "producer_binary_sha256": { "type": "string" },
+    "generated_at_utc": { "type": "string" },
+    "status": { "enum": ["accepted", "review", "failed"] },
+    "reason_codes": { "type": "array", "items": { "type": "string" } },
+    "drawing": { "type": "object" },
+    "profile": { "type": "object" },
+    "integrity": { "type": "object" },
+    "source_primitive_content_hash": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+    "geometry_configuration_hash": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+    "fact_provider_id": { "type": "string" },
+    "deterministic_hash_algorithm": { "const": "canonical-binary-v2" },
+    "deterministic_content_hash": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+    "facts": { "type": "array", "items": { "$ref": "#/$defs/geometry_fact" } },
+    "relations": { "type": "array", "items": { "$ref": "#/$defs/relation" } },
+    "provider_diagnostics": { "type": "array", "items": { "type": "object" } },
+    "metrics": { "type": "object" }
+  },
+  "$defs": {
+    "geometry_fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geometry_id",
+        "source_primitive_ids",
+        "feature_kind",
+        "adapter_role_hint",
+        "is_semantic_candidate",
+        "source",
+        "geometry",
+        "measurements",
+        "raw_text",
+        "raw_properties",
+        "evidence",
+        "reason_codes"
+      ],
+      "properties": {
+        "geometry_id": { "type": "string" },
+        "compatibility_fact_id": { "type": "string" },
+        "source_primitive_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "feature_kind": { "enum": ["none", "point", "open_path", "closed_region", "multi_path", "bounds_only"] },
+        "adapter_role_hint": { "type": "string", "description": "Non-authoritative input hint; feature_kind remains geometry-only." },
+        "is_semantic_candidate": { "type": "boolean" },
+        "source": { "type": "object" },
+        "geometry": { "type": "object" },
+        "measurements": {
+          "type": "object",
+          "required": ["length_millimeters", "area_square_millimeters", "area_is_available", "area_method", "width_millimeters", "height_millimeters", "representative_point_wcs_millimeters"],
+          "properties": {
+            "length_millimeters": { "type": "number", "minimum": 0 },
+            "area_square_millimeters": { "type": "number", "minimum": 0 },
+            "area_is_available": { "type": "boolean", "description": "False means the numeric area is not a measured net area and must not be consumed." },
+            "area_method": { "enum": ["not_available", "planar_single_loop_polygon"] },
+            "width_millimeters": { "type": "number", "minimum": 0 },
+            "height_millimeters": { "type": "number", "minimum": 0 },
+            "representative_point_wcs_millimeters": { "type": "object" }
+          }
+        },
+        "raw_text": { "type": "string" },
+        "extraction_confidence": { "type": "number" },
+        "raw_properties": { "type": "object", "additionalProperties": { "type": "string" } },
+        "evidence": { "type": "array", "items": { "type": "object" } },
+        "reason_codes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relation_id", "type", "from_geometry_id", "to_geometry_id", "distance_millimeters", "confidence", "reason_codes"],
+      "properties": {
+        "relation_id": { "type": "string" },
+        "type": { "enum": ["contains", "touches", "intersects", "near"] },
+        "from_geometry_id": { "type": "string" },
+        "to_geometry_id": { "type": "string" },
+        "distance_millimeters": { "type": "number", "minimum": 0 },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "reason_codes": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

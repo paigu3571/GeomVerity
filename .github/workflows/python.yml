@@ -1,0 +1,26 @@
+name: Python离线验收
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e ".[dxf]"
+      - name: Python测试
+        run: python -m unittest discover -s python/tests -v
+      - name: 离线演示与证据验证
+        run: sh scripts/run_demo.sh --skip-install
+      - name: 术语实验缓存重放
+        run: python -m cst naming samples/A samples/B samples/A-change --replay
+      - name: 公开文件安全检查
+        run: python scripts/scan_secrets.py

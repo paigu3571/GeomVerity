@@ -1,0 +1,42 @@
+.local/
+dist/
+.env
+.env.*
+!.env.example
+**/bin/
+**/obj/
+**/__pycache__/
+.pytest_cache/
+.venv/
+*.dll
+*.pdb
+*.dwg
+*.bak
+*.dwl
+*.dwl2
+*.log
+*.zip
+# 原始工程图与二进制不提交
+
+*.egg-info/
+
+# 工程师填写的Excel保留本地，公开对应CSV/YAML，避免隐藏属性携带本机路径
+eval/room-use-review.xlsx
+
+# 安装和桌面打包产物
+build/
+*.spec
+
+# 私人配置与内部协作资料
+/agent.md
+/.codex/
+/.claude/
+/.agents/
+/.mcp.json
+/.internal/
+/internal/
+/private/
+/docs/dev-process/
+/docs/review/
+/docs/handoff/
+/docs/governance/

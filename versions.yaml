@@ -1,0 +1,21 @@
+schema_version: versions.v1
+time_note: 时间来自扫描元数据，逐项编辑时间未记录；提资方待补登记。
+versions:
+- version: C01初版
+  drawing_saved_at: '2026-10-11T09:22:24.1460000Z'
+  scanned_at: '2026-10-11T09:23:26.7779322Z'
+  issued_by: 未登记
+  data_directory: samples/A
+  drawing_sha256: 021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1
+- version: C03初版
+  drawing_saved_at: '2026-10-11T09:29:39.9040000Z'
+  scanned_at: '2026-10-11T09:59:45.6707430Z'
+  issued_by: 未登记
+  data_directory: samples/B
+  drawing_sha256: 69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F
+- version: C01提资v2
+  drawing_saved_at: '2026-10-12T16:11:54.1530000Z'
+  scanned_at: '2026-10-12T16:27:53.4350876Z'
+  issued_by: 未登记
+  data_directory: samples/A-change
+  drawing_sha256: 39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7

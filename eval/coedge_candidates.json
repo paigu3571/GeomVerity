@@ -1,0 +1,18 @@
+[
+  {
+    "sample": "A",
+    "origin": "REAL",
+    "target_count": 5,
+    "candidate_count": 0,
+    "candidates": [],
+    "note": "原轮廓共边候选；无命中不证明没有贴邻；泵房/水箱/水池只列人工风险候选"
+  },
+  {
+    "sample": "B",
+    "origin": "REAL",
+    "target_count": 3,
+    "candidate_count": 0,
+    "candidates": [],
+    "note": "原轮廓共边候选；无命中不证明没有贴邻；泵房/水箱/水池只列人工风险候选"
+  }
+]

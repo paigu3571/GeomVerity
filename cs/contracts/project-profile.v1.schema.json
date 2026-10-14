@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:geomverity:building-semantics-project-profile:v1",
+  "title": "Building Semantics Project Profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "project_id", "profile_version", "units",
+    "unit_scale_to_millimeters", "rule_state", "rules_frozen_by", "rules_frozen_at_utc",
+    "adapter_priority", "drawings",
+    "layer_normalization", "room_use_dictionary", "thresholds", "observation_regions"
+  ],
+  "properties": {
+    "schema_version": { "const": "building-semantics-project-profile.v1" },
+    "project_id": { "type": "string", "minLength": 1 },
+    "profile_version": { "type": "string", "minLength": 1 },
+    "display_name": { "type": "string" },
+    "units": { "const": "mm" },
+    "unit_scale_to_millimeters": { "const": 1.0 },
+    "output_root": { "type": "string" },
+    "allow_unlisted_drawings": { "type": "boolean" },
+    "rule_state": { "enum": ["calibration", "frozen"] },
+    "rules_frozen_by": { "type": "string" },
+    "rules_frozen_at_utc": { "type": "string" },
+    "adapter_priority": {
+      "type": "array",
+      "minItems": 2,
+      "prefixItems": [{ "const": "T20" }],
+      "items": { "type": "string" }
+    },
+    "drawings": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/drawing" }
+    },
+    "layer_normalization": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/layer_rule" }
+    },
+    "geometry_semantic_rules": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/geometry_semantic_rule" }
+    },
+    "room_use_dictionary": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/use_rule" }
+    },
+    "thresholds": { "$ref": "#/$defs/thresholds" },
+    "observation_regions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/region" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "rule_state": { "const": "calibration" } } },
+      "then": {
+        "properties": {
+          "rules_frozen_by": { "maxLength": 0 },
+          "rules_frozen_at_utc": { "maxLength": 0 }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "rule_state": { "const": "frozen" } } },
+      "then": {
+        "properties": {
+          "rules_frozen_by": { "minLength": 1 },
+          "rules_frozen_at_utc": { "type": "string", "format": "date-time" },
+          "observation_regions": {
+            "items": {
+              "allOf": [
+                { "$ref": "#/$defs/region" },
+                { "properties": { "state": { "const": "frozen" } } }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "z"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" }
+      }
+    },
+    "drawing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["drawing_id", "file_name", "sha256", "role", "storey_code"],
+      "properties": {
+        "drawing_id": { "type": "string", "minLength": 1 },
+        "file_name": { "type": "string", "pattern": "(?i)\\.dwg$" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "role": { "type": "string", "minLength": 1 },
+        "storey_code": { "type": "string" }
+      }
+    },
+    "layer_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "pattern", "replacement", "ignore_case"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "pattern": { "type": "string" },
+        "replacement": { "type": "string" },
+        "ignore_case": { "type": "boolean" }
+      }
+    },
+    "use_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["use_code", "semantic_type", "keywords"],
+      "properties": {
+        "use_code": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
+        "rule_pack": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "semantic_type": {
+          "enum": ["Storey", "Space", "Wall", "Column", "Opening", "Door", "Window", "Shaft", "Stair", "Ramp", "Zone"]
+        },
+        "keywords": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "excluded_keywords": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "geometry_semantic_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "semantic_type", "normalized_layers", "native_class_names", "feature_kinds",
+        "require_closed", "require_exact", "minimum_area_square_millimeters",
+        "maximum_area_square_millimeters", "confidence", "label_mode", "label_layers",
+        "area_label_layers", "maximum_area_label_relative_difference"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "semantic_type": {
+          "enum": ["Storey", "Space", "Wall", "Column", "Opening", "Door", "Window", "Shaft", "Stair", "Ramp", "Zone"]
+        },
+        "classification": {
+          "enum": ["Ordinary", "Shear", "Fire", "CivilDefense", "Unknown", "Masonry"]
+        },
+        "normalized_layers": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "native_class_names": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "feature_kinds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "enum": ["point", "open_path", "closed_region", "multi_path", "bounds_only"] }
+        },
+        "required_properties": {
+          "type": "object",
+          "propertyNames": { "minLength": 1 },
+          "additionalProperties": { "type": "string", "minLength": 1 }
+        },
+        "require_closed": { "type": "boolean" },
+        "require_exact": { "type": "boolean" },
+        "minimum_area_square_millimeters": { "type": "number", "minimum": 0 },
+        "maximum_area_square_millimeters": { "type": "number", "exclusiveMinimum": 0 },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "label_mode": { "enum": ["none", "unique_contained_room_use", "unique_contained_room_use_and_area"] },
+        "label_layers": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "area_label_layers": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "maximum_area_label_relative_difference": { "type": "number", "minimum": 0, "maximum": 0.25 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "label_mode": { "const": "none" } } },
+          "then": {
+            "properties": {
+              "label_layers": { "maxItems": 0 },
+              "area_label_layers": { "maxItems": 0 },
+              "maximum_area_label_relative_difference": { "const": 0 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "label_mode": { "const": "unique_contained_room_use" } } },
+          "then": {
+            "properties": {
+              "semantic_type": { "const": "Space" },
+              "label_layers": { "minItems": 1 },
+              "area_label_layers": { "maxItems": 0 },
+              "maximum_area_label_relative_difference": { "const": 0 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "label_mode": { "const": "unique_contained_room_use_and_area" } } },
+          "then": {
+            "properties": {
+              "semantic_type": { "const": "Space" },
+              "label_layers": { "minItems": 1 },
+              "area_label_layers": { "minItems": 1 },
+              "maximum_area_label_relative_difference": { "exclusiveMinimum": 0, "maximum": 0.25 }
+            }
+          }
+        }
+      ]
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "accepted_confidence", "review_confidence", "relation_tolerance_millimeters",
+        "boundary_fallback_minimum_iou", "full_scan_maximum_seconds", "replay_maximum_seconds"
+      ],
+      "properties": {
+        "accepted_confidence": { "type": "number", "minimum": 0.5, "maximum": 1.0 },
+        "review_confidence": { "type": "number", "minimum": 0.0, "exclusiveMaximum": 0.5 },
+        "relation_tolerance_millimeters": { "type": "number", "exclusiveMinimum": 0 },
+        "boundary_fallback_minimum_iou": { "type": "number", "minimum": 0.95, "maximum": 1.0 },
+        "full_scan_maximum_seconds": { "type": "integer", "minimum": 1 },
+        "replay_maximum_seconds": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code", "name", "role", "state", "drawing_hash",
+        "polygon_wcs_millimeters", "frozen_by", "frozen_at_utc"
+      ],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "role": { "enum": ["calibration", "holdout"] },
+        "state": { "enum": ["awaiting_human_coordinates", "frozen"] },
+        "drawing_hash": { "$ref": "#/$defs/sha256" },
+        "polygon_wcs_millimeters": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/point" }
+        },
+        "frozen_by": { "type": "string" },
+        "frozen_at_utc": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "state": { "const": "awaiting_human_coordinates" } } },
+          "then": {
+            "properties": {
+              "polygon_wcs_millimeters": { "maxItems": 0 },
+              "frozen_by": { "maxLength": 0 },
+              "frozen_at_utc": { "maxLength": 0 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "state": { "const": "frozen" } } },
+          "then": {
+            "properties": {
+              "polygon_wcs_millimeters": { "minItems": 3 },
+              "frozen_by": { "minLength": 1 },
+              "frozen_at_utc": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

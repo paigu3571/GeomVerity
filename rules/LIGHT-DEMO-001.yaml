@@ -1,0 +1,12 @@
+id: LIGHT-DEMO-001
+title: 灯具布置候选（演示规则，非照度设计）
+rule_version: '0.1.0'
+approved: true
+approved_by: 张田（演示参数授权）
+applies_to: [SUBSTATION, DISTRIBUTION_ROOM]
+strategy: rectangular_grid
+min_rectangle_ratio: 0.95
+max_spacing_m: 3.0
+wall_clearance_m: 0.6
+on_missing: 异形房间需人工布置
+scope: 仅空间轮廓内几何布点，不计算照度，不确定灯具型号，不作门口和设备避让判断

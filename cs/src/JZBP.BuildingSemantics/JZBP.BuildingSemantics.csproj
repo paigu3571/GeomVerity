@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+    <AutoCAD2016Dir Condition="'$(AutoCAD2016Dir)' == '' and '$(ACAD2016_DIR)' != ''">$(ACAD2016_DIR)</AutoCAD2016Dir>
+    <AutoCAD2016Dir Condition="'$(AutoCAD2016Dir)' == ''">$(ProgramW6432)\Autodesk\AutoCAD 2016</AutoCAD2016Dir>
+    <UseWindowsForms>true</UseWindowsForms>
+    <OutputType>Library</OutputType>
+    <AssemblyName>JZBP.BuildingSemantics</AssemblyName>
+    <RootNamespace>JZBP.BuildingSemantics</RootNamespace>
+    <Version>0.3.0-dev</Version>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <Authors>张田</Authors>
+    <Copyright>Copyright (c) 2026 张田</Copyright>
+    <Product>JZBP Building Semantics</Product>
+    <Description>AutoCAD 2016 + T20 建筑平面只读语义识别插件</Description>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;ACAD2016</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="acmgd">
+      <HintPath>$(AutoCAD2016Dir)\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd">
+      <HintPath>$(AutoCAD2016Dir)\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="accoremgd">
+      <HintPath>$(AutoCAD2016Dir)\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\profiles\generic.project-profile.v1.json">
+      <Link>profiles\generic.project-profile.v1.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <Target Name="RequireAutoCADSdk" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(AutoCAD2016Dir)\acmgd.dll')" Text="找不到AutoCAD 2016开发程序集。请设置环境变量ACAD2016_DIR为合法安装目录。商业SDK不随仓库分发。" />
+  </Target>
+</Project>

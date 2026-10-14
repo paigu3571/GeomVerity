@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\src\JZBP.BuildingSemantics\Core\BuildingSemantics\BuildingSemanticContracts.cs" Link="Core\BuildingSemanticContracts.cs" />
+    <Compile Include="..\..\src\JZBP.BuildingSemantics\Core\BuildingSemantics\BuildingRecognitionLayers.cs" Link="Core\BuildingRecognitionLayers.cs" />
+    <Compile Include="..\..\src\JZBP.BuildingSemantics\Core\BuildingSemantics\BuildingSemanticUtilities.cs" Link="Core\BuildingSemanticUtilities.cs" />
+    <Compile Include="..\..\src\JZBP.BuildingSemantics\Core\BuildingSemantics\BuildingSemanticService.cs" Link="Core\BuildingSemanticService.cs" />
+    <Compile Include="..\..\src\JZBP.BuildingSemantics\Core\BuildingSemantics\BuildingSemanticSerialization.cs" Link="Core\BuildingSemanticSerialization.cs" />
+    <Compile Include="..\..\src\JZBP.BuildingSemantics\Core\BuildingSemantics\BuildingSemanticCorrections.cs" Link="Core\BuildingSemanticCorrections.cs" />
+    <Compile Include="..\..\src\JZBP.BuildingSemantics\Core\BuildingSemantics\WallLoopGeometryBuilder.cs" Link="Core\WallLoopGeometryBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+</Project>

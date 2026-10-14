@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: MPL-2.0
+id: R2
+title: 电气竖井贴邻热源
+clauses:
+- code: GB 55024-2022
+  article: 6.2.8第2款
+  text: 电气竖井不应贴邻热烟道、热力管道及其他散热量大的场所。
+  strength: 应
+  code_version: '2022'
+applies_to:
+- ELECTRICAL_SHAFT
+check:
+  predicate: adjacent_to_use
+  values:
+  - HOT_FLUE
+  - HEAT_ROOM
+  expect: false
+on_missing: 缺少贴邻关系数据
+scope: 共边贴邻候选风险辅助检查，不计算隔热效果；缺热源用途/完整边界不从未发现推定通过
+approved: true
+approved_by: 张田
+rule_version: '1'

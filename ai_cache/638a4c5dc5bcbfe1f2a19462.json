@@ -1,0 +1,477 @@
+{
+  "origin": "REAL_API",
+  "model": "deepseek-flash",
+  "dataset_sha256": "fd1bf3ebe7b34e6ef6a804fc6becd6e9172e17d76c6f13a599b9a9c57c098a51",
+  "changes_sha256": "3f1d405f9e9aff621c2b26a67e315f98a4fc7e03f071afc4e70d5fb0e89db567",
+  "question": "这份新版图识别出多少个房间？有多少工程对象仍需要人工复核？请读取summary，用values引用准确数字。",
+  "transcript": [
+    {
+      "request": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "只能依据只读工具。返回JSON对象，格式{claims:[{text,object_ids:[],values:{}}],reason:null}。values键为<对象ID>.<字段>或summary.space_count。对象或审查结果ID必须来自工具；可用list_findings得到结果id及result/reason等字段；get_changes(type=space)读取房间变更，get_impacts读取影响、旧确认和灯组失效；可引用change_或impact_change_结果id及其标量字段。Review只能说待复核，无法判定不能说通过。无法找到对象时claims为空并说明原因。"
+          },
+          {
+            "role": "user",
+            "content": "这份新版图识别出多少个房间？有多少工程对象仍需要人工复核？请读取summary，用values引用准确数字。"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_changes",
+              "description": "读取已有真实两版变更或影响；ID可引用，候选不能称已确认",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "offset": {
+                    "type": "integer"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "get_impacts",
+              "description": "读取已有真实两版变更或影响；ID可引用，候选不能称已确认",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "change_id": {
+                    "type": "string"
+                  },
+                  "offset": {
+                    "type": "integer"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "list_findings",
+              "description": "读取实际辅助审查结果与缺资料原因，result仅通过/不通过/无法判定；可引用结果id，不把候选当确认",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "rule_id": {
+                    "type": "string"
+                  },
+                  "result": {
+                    "type": "string",
+                    "enum": [
+                      "通过",
+                      "不通过",
+                      "无法判定",
+                      "不适用"
+                    ]
+                  },
+                  "offset": {
+                    "type": "integer"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "summary",
+              "description": "读取实际对象和状态统计",
+              "parameters": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "list_objects",
+              "description": "按L3类型/用途/状态读取分页对象",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "use": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "offset": {
+                    "type": "integer"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "get_object",
+              "description": "读取已有对象，不编造ID",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "get_evidence",
+              "description": "读取已有对象，不编造ID",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 4096,
+        "thinking": {
+          "type": "disabled"
+        },
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "response": {
+        "id": "417bd213-75db-40b1-b7e8-ea39c50406f7",
+        "object": "chat.completion",
+        "created": 1791824201,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "index": 0,
+                  "id": "call_00_52O90VpxGAYpO96n1CSu2790",
+                  "type": "function",
+                  "function": {
+                    "name": "summary",
+                    "arguments": "{}"
+                  }
+                }
+              ]
+            },
+            "logprobs": null,
+            "finish_reason": "tool_calls"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 903,
+          "completion_tokens": 20,
+          "total_tokens": 923,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 903
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      }
+    },
+    {
+      "request": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "只能依据只读工具。返回JSON对象，格式{claims:[{text,object_ids:[],values:{}}],reason:null}。values键为<对象ID>.<字段>或summary.space_count。对象或审查结果ID必须来自工具；可用list_findings得到结果id及result/reason等字段；get_changes(type=space)读取房间变更，get_impacts读取影响、旧确认和灯组失效；可引用change_或impact_change_结果id及其标量字段。Review只能说待复核，无法判定不能说通过。无法找到对象时claims为空并说明原因。"
+          },
+          {
+            "role": "user",
+            "content": "这份新版图识别出多少个房间？有多少工程对象仍需要人工复核？请读取summary，用values引用准确数字。"
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "index": 0,
+                "id": "call_00_52O90VpxGAYpO96n1CSu2790",
+                "type": "function",
+                "function": {
+                  "name": "summary",
+                  "arguments": "{}"
+                }
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "tool_call_id": "call_00_52O90VpxGAYpO96n1CSu2790",
+            "content": "{\"producer_version\": \"0.3.0-dev\", \"run_status\": \"review\", \"objects_by_type\": {\"column\": 884, \"opening\": 638, \"roof_line\": 26, \"shaft\": 12, \"space\": 73, \"stair\": 42, \"wall\": 3823, \"window\": 303, \"zone\": 2}, \"object_status\": {\"review\": 5803}, \"space_use_codes\": {\"ANTEROOM\": 7, \"ARRIVAL_LOBBY\": 11, \"ELECTRICAL_ROOM\": 15, \"EQUIPMENT_ROOM\": 12, \"EVACUATION_CORRIDOR\": 8, \"FAN_ROOM\": 12, \"FIRE_CONTROL_ROOM\": 1, \"MAINTENANCE_ROOM\": 1, \"PUMP_ROOM\": 1, \"SPRINKLER_ALARM_VALVE_ROOM\": 4, \"STORAGE\": 1}, \"shaft_use_codes\": {\"LIGHT_WELL\": 2, \"VENTILATION_SHAFT\": 10}, \"opening_space_relation_edges\": 520, \"opening_space_relation_status\": {\"review\": 520}, \"note\": \"对象和关系数量不是准确率；门洞关系边数不是安全出口数。\", \"space_count\": 73, \"review_object_count\": 5803}"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_changes",
+              "description": "读取已有真实两版变更或影响；ID可引用，候选不能称已确认",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "offset": {
+                    "type": "integer"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "get_impacts",
+              "description": "读取已有真实两版变更或影响；ID可引用，候选不能称已确认",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "change_id": {
+                    "type": "string"
+                  },
+                  "offset": {
+                    "type": "integer"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "list_findings",
+              "description": "读取实际辅助审查结果与缺资料原因，result仅通过/不通过/无法判定；可引用结果id，不把候选当确认",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "rule_id": {
+                    "type": "string"
+                  },
+                  "result": {
+                    "type": "string",
+                    "enum": [
+                      "通过",
+                      "不通过",
+                      "无法判定",
+                      "不适用"
+                    ]
+                  },
+                  "offset": {
+                    "type": "integer"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "summary",
+              "description": "读取实际对象和状态统计",
+              "parameters": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "list_objects",
+              "description": "按L3类型/用途/状态读取分页对象",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "use": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "offset": {
+                    "type": "integer"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "get_object",
+              "description": "读取已有对象，不编造ID",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "function",
+            "function": {
+              "name": "get_evidence",
+              "description": "读取已有对象，不编造ID",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 4096,
+        "thinking": {
+          "type": "disabled"
+        },
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "response": {
+        "id": "555055c3-0e76-4dc0-8b85-86641d706421",
+        "object": "chat.completion",
+        "created": 1791824202,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"claims\":[{\"text\":\"新版图识别出73个房间（space对象）。\",\"object_ids\":[],\"values\":{\"summary.space_count\":73}},{\"text\":\"仍有5803个工程对象处于待复核（review）状态。\",\"object_ids\":[],\"values\":{\"summary.review_object_count\":5803}}],\"reason\":null}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 1250,
+          "completion_tokens": 71,
+          "total_tokens": 1321,
+          "prompt_tokens_details": {
+            "cached_tokens": 896
+          },
+          "prompt_cache_hit_tokens": 896,
+          "prompt_cache_miss_tokens": 354
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      }
+    }
+  ],
+  "answer": {
+    "claims": [
+      {
+        "text": "新版图识别出73个房间（space对象）。",
+        "object_ids": [],
+        "values": {
+          "summary.space_count": 73
+        }
+      },
+      {
+        "text": "仍有5803个工程对象处于待复核（review）状态。",
+        "object_ids": [],
+        "values": {
+          "summary.review_object_count": 5803
+        }
+      }
+    ],
+    "reason": null
+  },
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "scope": "核查结构化引用/数值/状态及有限措辞，不能证明所有自然语言陈述正确"
+  },
+  "retry_count": 0
+}

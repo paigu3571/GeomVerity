@@ -1,0 +1,5 @@
+# L4几何候选参数，不是规范阈值，不改L3。
+min_overlap_m: 0.5
+thickness_tolerance_mm: 20.0
+parallel_angle_degrees: 1.0
+max_search_gap_mm: 2000.0

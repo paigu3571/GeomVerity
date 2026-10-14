@@ -1,0 +1,22 @@
+{
+  "sample": "A",
+  "sanitized": true,
+  "files": {
+    "building-geometry.v1.json.gz": {
+      "sha256": "fc3af314fc5ec3f8d40d0165d1f68b49fe80ce1bc075192135772a0497aa3dec",
+      "bytes": 11560736
+    },
+    "building-semantics.v1.json.gz": {
+      "sha256": "37124eb42daf0d98e5e0f990c08862f5870d973d2a3ebf4b2f49643347366009",
+      "bytes": 2898635
+    },
+    "cad-primitives.v1.json.gz": {
+      "sha256": "94d4ef6ba28c529fb11b8ea8cdd250950177c905acf53d9e6adf6b6d8ebc8387",
+      "bytes": 9222466
+    }
+  },
+  "replacement_count": 551598,
+  "source_dwg_included": false,
+  "original_producer_version": "0.2.11",
+  "notice": "元数据中的原扫描内容哈希只作原始记录；去标识化后文件摘要见本清单。不证明布局匿名或识别正确；原DWG未公开，字节未核验。"
+}

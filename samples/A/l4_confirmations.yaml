@@ -1,0 +1,18 @@
+schema_version: r1-confirmations.v1
+origin: ENGINEER_REVIEW
+drawing_sha256: 021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1
+snapshot_sha256: 37124eb42daf0d98e5e0f990c08862f5870d973d2a3ebf4b2f49643347366009
+reviewed_by: 张田
+reviewed_date: '2026-10-12'
+screenshot_sha256:
+- 8b8cf4f85a4fcfe0351868f54274f5f8a58506c88ce02582e464530334eb728d
+- e2d6c093698aefdda4df63b78d95707886da9700bc6ef8738e387e9a38b45ab7
+rooms:
+- object_id: sem_6e1dc941f8f3293c2293772a
+  name: 预留充电桩配电房
+  net_length_gt_7: true
+  entrance_count: 2
+- object_id: sem_89496a6626781569ee17a73a
+  name: 商业配电房
+  net_length_gt_7: true
+  entrance_count: 2

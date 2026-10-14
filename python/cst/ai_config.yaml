@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: MPL-2.0
+base_url: https://api.deepseek.com
+model: deepseek-flash
+temperature: 0
+max_tokens: 4096
+draft_max_tokens: 4096
+thinking: disabled
+max_tool_rounds: 4
+verified_on: '2026-10-12'
+model_source: https://api-docs.deepseek.com/api/create-chat-completion/

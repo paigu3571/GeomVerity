@@ -1,0 +1,1933 @@
+{
+  "schema_version": "room-name-corpus.v1",
+  "scope": "补回早期脱敏遮掉的房名候选；沿用既有房名形态筛选，不修改识别，不把文字候选当已围合房间。",
+  "annotation_records_filtered": 523,
+  "rows": [
+    {
+      "name": "1#公变配电房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51615"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "1-1楼梯",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "518D7"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "2#公变配电房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51631"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "3#公变配电房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51623"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "5-1楼梯",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51820"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "5-2楼梯",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "517F2"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "6-1楼梯",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "5179C"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "6-2楼梯",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "517CC"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "7-1楼梯",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51768"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "8-1楼梯",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51735"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "9-1楼梯",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "516FC"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "专变配电房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51616"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "信号覆盖机房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51664"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "充电桩电表间",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51644",
+        "5164D",
+        "516AC"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "光厅",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51618",
+        "5161C",
+        "51620",
+        "51625",
+        "51629",
+        "5162C",
+        "51632",
+        "51634",
+        "51638",
+        "5163B",
+        "5163C"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "合用前室",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51619",
+        "5161B",
+        "51621",
+        "51626",
+        "5162A",
+        "5162D",
+        "51633",
+        "51635",
+        "516BB"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "商业电表间",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51905"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "商业配电房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51665"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "实施充电桩配电房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51663"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "广电机房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "516A9"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "弱电机房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51636"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "报警阀间",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51709",
+        "517BC",
+        "5188A",
+        "5188C",
+        "51A20"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "排风井",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "5164C",
+        "5164E",
+        "5164F",
+        "51652",
+        "51655",
+        "517DF"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "排风机房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "5161A",
+        "51624",
+        "51630",
+        "51639",
+        "51A04"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "机动车坡道",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "518F9",
+        "518FB",
+        "518FD"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "检修间",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51691"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "消防控制室",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "5163A"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电气间",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51646",
+        "51650",
+        "51654",
+        "51686"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电气间兼充电桩电表间",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "5171E"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电表间",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "519F9",
+        "519FE",
+        "51A03"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "穿管电气间",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "516AA",
+        "516AB"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "补风井",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51796"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "设备用房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "516F6",
+        "516F7",
+        "51910",
+        "51913",
+        "51941",
+        "51968",
+        "51969",
+        "5196A",
+        "5196B",
+        "5196C",
+        "5196D",
+        "5196E",
+        "5196F",
+        "51970",
+        "51971",
+        "51972",
+        "51973"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "走道",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51617",
+        "51622",
+        "516A5",
+        "516BA",
+        "51762",
+        "51803",
+        "5195B",
+        "5195C",
+        "5195D",
+        "5195E",
+        "5195F"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "进线间",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51645"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "送风井",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "5164B",
+        "51651",
+        "51653",
+        "51656",
+        "516A7"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "送风机房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51613",
+        "5161D",
+        "5161F",
+        "51627",
+        "5162B",
+        "5162E",
+        "51637",
+        "51640",
+        "516A6",
+        "517F1"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "采光井",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "5161E",
+        "51628",
+        "516A2"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "预留充电桩配电房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "5162F"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "预留水泵房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51A62",
+        "51A64"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "预留设备用房",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "51951",
+        "51952",
+        "51953",
+        "51954"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "预留设备间",
+      "drawing_sha256": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "sample": "A",
+      "source_handles": [
+        "516A8",
+        "516B9"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "1#公变配电房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51615"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "1-1楼梯",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "518D7"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "2#公变配电房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51631"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "3#公变配电房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51623"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "5-1楼梯",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51820"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "5-2楼梯",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "517F2"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "6-1楼梯",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "5179C"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "6-2楼梯",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "517CC"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "7-1楼梯",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51768"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "8-1楼梯",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51735"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "9-1楼梯",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "516FC"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "专变配电房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51616"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "信号覆盖机房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51664"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "储藏间",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "5196A"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "充电桩电表间",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51644",
+        "5164D",
+        "516AC"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "光厅",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51618",
+        "5161C",
+        "51620",
+        "51625",
+        "51629",
+        "5162C",
+        "51632",
+        "51634",
+        "51638",
+        "5163B",
+        "5163C"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "变配电室",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "62478"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "合用前室",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51619",
+        "5161B",
+        "51621",
+        "51626",
+        "5162A",
+        "5162D",
+        "51633",
+        "51635",
+        "516BB"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "商业电表间",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51905"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "商业配电房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51665"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "实施充电桩配电房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51663"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "广电机房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "516A9"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "弱电机房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51636"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "报警阀间",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51709",
+        "517BC",
+        "5188A",
+        "5188C",
+        "51A20"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "排风井",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "5164C",
+        "5164E",
+        "5164F",
+        "51652",
+        "51655",
+        "517DF"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "排风机房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "5161A",
+        "51624",
+        "51630",
+        "51639",
+        "51A04"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "机动车坡道",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "518F9",
+        "518FB",
+        "518FD"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "检修间",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51691"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "水泵房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51970"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "消防控制室",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "5163A"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电气间",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51646",
+        "51650",
+        "51654",
+        "51686"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电气间兼充电桩电表间",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "5171E"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电表间",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "519F9",
+        "51A03"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "穿管电气间",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "516AA",
+        "516AB"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "补风井",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51796"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "设备用房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "516F6",
+        "516F7",
+        "51910",
+        "51913",
+        "51941",
+        "51968",
+        "51969",
+        "5196B",
+        "5196C",
+        "5196D",
+        "5196E",
+        "5196F",
+        "51971",
+        "51972",
+        "51973"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "走道",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51617",
+        "51622",
+        "516A5",
+        "516BA",
+        "51762",
+        "51803",
+        "5195B",
+        "5195C",
+        "5195D",
+        "5195E",
+        "5195F"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "进线间",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51645"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "送风井",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "5164B",
+        "51651",
+        "51653",
+        "51656",
+        "516A7"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "送风机房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51613",
+        "5161D",
+        "5161F",
+        "51627",
+        "5162B",
+        "5162E",
+        "51637",
+        "51640",
+        "516A6",
+        "517F1"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "采光井",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "5161E",
+        "51628",
+        "516A2"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "预留充电桩配电房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "5162F"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "预留水泵房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51A62",
+        "51A64"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "预留设备用房",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "51951",
+        "51952",
+        "51953",
+        "51954"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "预留设备间",
+      "drawing_sha256": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "sample": "A-change",
+      "source_handles": [
+        "516A8",
+        "516B9"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "1-1楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CD3"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "2-1楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CD1"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "2-2楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CD2"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "3-1楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CD4"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "3-2楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CD6"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "3-2楼梯上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FC5"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "5-1楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CD7"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "5-2楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CD8"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "B-1坡道",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CDA"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "B-2坡道",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CD9"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "P-1楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9EE4",
+        "9F0B"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "P-2楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9EE6",
+        "9F0E"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "P-3楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9EEE",
+        "9EEF"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "三网合一机房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9D2D"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "三网合一机房上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FC7"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "专变配电房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9EA8"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CCD",
+        "9DA6"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "人防楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "A105"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "信号覆盖机房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B18"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "充电桩电表间",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9D6A"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "充电桩配电房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B14"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "公变配电房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B21"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "公变配电房上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FCE"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "冷媒井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "2638"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "前室",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B19",
+        "9B24",
+        "9B69",
+        "9B6B",
+        "9B9A",
+        "9C81"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "前室上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FC3"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "加压送风井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9C24"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "加压送风机房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B1A",
+        "9B22",
+        "9B2D",
+        "9C23"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "卫生服务站",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9EE8",
+        "9EFF"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "合用前室",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9C6E"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "商业电气间",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CE8"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "商业电表间",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CE3"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "图书室(人数不超30人)",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "25A6"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "地下室",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "25B4",
+        "2626",
+        "262E"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "地下室上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FCC",
+        "9FCD"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "女卫",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "25C3",
+        "9F40",
+        "9F56",
+        "9F68"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "密闭通道",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "A082",
+        "A099"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "封闭楼梯",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9C2B",
+        "9CBE",
+        "9CBF",
+        "9CD5"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "广电机房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9D9F"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "快递综合服务站(人数不超30人)",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "25A0",
+        "2661"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "扩散室",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "A07D",
+        "A081",
+        "A094",
+        "A107"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "排烟井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "2652",
+        "A0C7"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "排烟机房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "2651",
+        "A0C1"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "排风井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B2A"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "排风排烟井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B15"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "排风排烟机房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B16"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "排风机房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B29",
+        "9B2C"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "无障碍卫生间",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9F2C",
+        "9F46",
+        "9F61"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "水井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B30",
+        "9B32",
+        "9B34",
+        "9B36",
+        "9B38",
+        "9B3A",
+        "9E4D"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "水井上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FCB"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "消防控制室",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B17"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "消防水池",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B1B"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "消防水池上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FC1"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "消防泵房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B1E"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "消防泵房上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FC2"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "物业管理及服务用房(人数不超30人)",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "25A8"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "生活水泵房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B23"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B28",
+        "9B31",
+        "9B33",
+        "9B35",
+        "9B37",
+        "9B39",
+        "9B3B"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电井上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FCA"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电梯井上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FC8",
+        "9FC9"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电梯厅",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "25AA",
+        "9B48",
+        "9B6A",
+        "9B6C",
+        "9B9C",
+        "9C73",
+        "9EDC",
+        "9F09"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电梯厅上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FC4"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电气进线间",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9F83"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电气间",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CDE",
+        "9D03",
+        "9D1C",
+        "9D3F",
+        "9D82",
+        "9FBB"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电气间上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FC0",
+        "9FC6"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "电表间",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9CFC",
+        "9D60",
+        "9D72",
+        "A05F"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "男卫",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "25C1",
+        "9F3B",
+        "9F53",
+        "9F6C"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "简易洗消区",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "A109"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "老年人日间照料中心",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9EF2",
+        "9EFB"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "表间上空",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9FBA"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "走道",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "261A",
+        "9B43",
+        "9B44",
+        "9EBE",
+        "9FD0"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "进风井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B2F"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "送风井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B26"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "送风机房",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B27"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "通道",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "A07F"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "采光天井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "A641"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "防毒通道",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "A108"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "防火单元自然补风井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B1D"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "除尘滤毒室",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "A07C",
+        "A080"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "集气室",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9B25",
+        "9B2B",
+        "9B2E",
+        "A0B9"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    },
+    {
+      "name": "风井",
+      "drawing_sha256": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+      "sample": "B",
+      "source_handles": [
+        "9C34",
+        "9EA6",
+        "9EA7"
+      ],
+      "evidence_kind": "原扫描房名图层文字",
+      "room_existence_confirmed": false
+    }
+  ]
+}

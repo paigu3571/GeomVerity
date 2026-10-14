@@ -1,0 +1,11 @@
+{
+  "model_returned_unique_names": 112,
+  "experiment_input_names": 112,
+  "outside_manual_names": 63,
+  "keyword_covered": 17,
+  "keyword_uncovered": 46,
+  "model_unknown": 7,
+  "proposals_for_keyword_uncovered": 42,
+  "approved": 2,
+  "basis": "counts derived from REAL_API valid answer rows intersected with experiment input names; no prompt tuning; no unreviewed adoption rate"
+}

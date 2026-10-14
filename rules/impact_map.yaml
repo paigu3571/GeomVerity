@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: MPL-2.0
+approved: false
+approved_by: null
+note: 工作建议草案；不作为规范结论或已批准派工
+items:
+  - room_use: DISTRIBUTION_ROOM
+    change_type: 出入口变化
+    work: [配电平面布置复核, 应急照明与疏散指示复核, 配电柜布置复核]
+  - room_use: DISTRIBUTION_ROOM
+    change_type: 几何变化
+    work: [设备布置与检修通道复核, 配电房条件重新核对]
+  - room_use: SUBSTATION
+    change_type: 几何变化
+    work: [变配电设备布置复核, 机房条件重新核对]
+  - room_use: SUBSTATION
+    change_type: 贴邻范围变化
+    work: [贴邻用水或热源风险复核, 建筑防水或隔热提资重新核对]
+  - room_use: ELECTRICAL_SHAFT
+    change_type: 几何变化
+    work: [竖井位置尺寸与专业共井条件复核]
+  - room_use: '*'
+    change_type: 名称或用途变化
+    work: [空间用途与相关电气任务范围重新核对]

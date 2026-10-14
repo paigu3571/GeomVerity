@@ -1,0 +1,100 @@
+{
+  "origin": "SYNTHETIC",
+  "ground_truth": {
+    "objects": {
+      "syn-room": {
+        "status": "review",
+        "area_m2": 30.0,
+        "result": "无法判定"
+      }
+    },
+    "summary": {
+      "space_count": 1,
+      "review_object_count": 1
+    }
+  },
+  "cases": [
+    {
+      "name": "正确引用",
+      "expected_valid": true,
+      "answer": {
+        "claims": [
+          {
+            "text": "空间面积30平方米，输入待复核",
+            "object_ids": [
+              "syn-room"
+            ],
+            "values": {
+              "syn-room.area_m2": 30.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "编造ID",
+      "expected_valid": false,
+      "answer": {
+        "claims": [
+          {
+            "text": "存在此空间",
+            "object_ids": [
+              "syn-missing"
+            ],
+            "values": {}
+          }
+        ]
+      }
+    },
+    {
+      "name": "错误数值",
+      "expected_valid": false,
+      "answer": {
+        "claims": [
+          {
+            "text": "面积80平方米",
+            "object_ids": [
+              "syn-room"
+            ],
+            "values": {
+              "syn-room.area_m2": 80.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Review说成已确认",
+      "expected_valid": false,
+      "answer": {
+        "claims": [
+          {
+            "text": "该空间已确认",
+            "object_ids": [
+              "syn-room"
+            ],
+            "values": {
+              "syn-room.status": "accepted"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "无法判定说成通过",
+      "expected_valid": false,
+      "answer": {
+        "claims": [
+          {
+            "text": "该空间审查通过",
+            "object_ids": [
+              "syn-room"
+            ],
+            "values": {}
+          }
+        ]
+      }
+    }
+  ],
+  "note": "人工构造测试，非DeepSeek请求或响应"
+}

@@ -1,0 +1,243 @@
+{
+  "origin": "REAL_API",
+  "kind": "NAMING_PROPOSAL",
+  "request_sha256": "8fa6ab6008af8c5a167f72e205d075e397aa8298164ee42f58fd45afc843039b",
+  "model": "deepseek-flash",
+  "source": {
+    "names": [
+      "消防控制室",
+      "消防水池一",
+      "消防水池二",
+      "消防泵房",
+      "生活水泵房",
+      "电井上空",
+      "电梯井上空",
+      "电梯厅",
+      "电梯厅上空",
+      "电气进线间",
+      "电气间",
+      "电气间上空",
+      "电表间",
+      "穿管电气间",
+      "老年人日间照料中心",
+      "设备用房",
+      "走道",
+      "送风井",
+      "送风机房",
+      "采光井"
+    ],
+    "categories": {
+      "EXCLUDED": "排除",
+      "SUBSTATION": "变电所",
+      "DISTRIBUTION_ROOM": "配电室",
+      "ELECTRICAL_SHAFT": "电气竖井",
+      "WEAK_CURRENT_ROOM": "弱电房间",
+      "SMALL_ELECTRICAL_ROOM": "配电小间",
+      "ARCHITECTURAL_ROOM": "建筑房间",
+      "HVAC_SHAFT": "暖通井道",
+      "HVAC_ROOM": "暖通房间",
+      "PLUMBING_ROOM": "给排水房间",
+      "NOT_INCLUDED": "未纳入",
+      "UNKNOWN": "用途无法判断"
+    }
+  },
+  "answer": {
+    "rows": [
+      {
+        "name": "消防控制室",
+        "category": "ARCHITECTURAL_ROOM",
+        "reason": "消防控制室属于建筑功能房间，非电气竖井或配电室。",
+        "confidence": 0.6,
+        "needs_review": true
+      },
+      {
+        "name": "消防水池一",
+        "category": "PLUMBING_ROOM",
+        "reason": "消防水池属于给排水专业设施。",
+        "confidence": 0.7,
+        "needs_review": true
+      },
+      {
+        "name": "消防水池二",
+        "category": "PLUMBING_ROOM",
+        "reason": "消防水池属于给排水专业设施。",
+        "confidence": 0.7,
+        "needs_review": true
+      },
+      {
+        "name": "消防泵房",
+        "category": "PLUMBING_ROOM",
+        "reason": "消防泵房属于给排水专业泵房。",
+        "confidence": 0.7,
+        "needs_review": true
+      },
+      {
+        "name": "生活水泵房",
+        "category": "PLUMBING_ROOM",
+        "reason": "生活水泵房属于给排水专业泵房。",
+        "confidence": 0.7,
+        "needs_review": true
+      },
+      {
+        "name": "电井上空",
+        "category": "ELECTRICAL_SHAFT",
+        "reason": "电井上空属于电气竖井的投影空间。",
+        "confidence": 0.6,
+        "needs_review": true
+      },
+      {
+        "name": "电梯井上空",
+        "category": "ARCHITECTURAL_ROOM",
+        "reason": "电梯井上空属于建筑电梯井道空间。",
+        "confidence": 0.5,
+        "needs_review": true
+      },
+      {
+        "name": "电梯厅",
+        "category": "ARCHITECTURAL_ROOM",
+        "reason": "电梯厅属于建筑公共空间。",
+        "confidence": 0.6,
+        "needs_review": true
+      },
+      {
+        "name": "电梯厅上空",
+        "category": "ARCHITECTURAL_ROOM",
+        "reason": "电梯厅上空属于建筑公共空间投影。",
+        "confidence": 0.5,
+        "needs_review": true
+      },
+      {
+        "name": "电气进线间",
+        "category": "DISTRIBUTION_ROOM",
+        "reason": "电气进线间属于配电相关房间。",
+        "confidence": 0.6,
+        "needs_review": true
+      },
+      {
+        "name": "电气间",
+        "category": "SMALL_ELECTRICAL_ROOM",
+        "reason": "电气间通常为小型配电房间。",
+        "confidence": 0.5,
+        "needs_review": true
+      },
+      {
+        "name": "电气间上空",
+        "category": "SMALL_ELECTRICAL_ROOM",
+        "reason": "电气间上空属于电气间投影空间。",
+        "confidence": 0.4,
+        "needs_review": true
+      },
+      {
+        "name": "电表间",
+        "category": "SMALL_ELECTRICAL_ROOM",
+        "reason": "电表间属于小型电气计量房间。",
+        "confidence": 0.6,
+        "needs_review": true
+      },
+      {
+        "name": "穿管电气间",
+        "category": "SMALL_ELECTRICAL_ROOM",
+        "reason": "穿管电气间属于电气穿管小间。",
+        "confidence": 0.5,
+        "needs_review": true
+      },
+      {
+        "name": "老年人日间照料中心",
+        "category": "ARCHITECTURAL_ROOM",
+        "reason": "老年人日间照料中心属于建筑功能房间。",
+        "confidence": 0.6,
+        "needs_review": true
+      },
+      {
+        "name": "设备用房",
+        "category": "ARCHITECTURAL_ROOM",
+        "reason": "设备用房为通用建筑设备房间。",
+        "confidence": 0.4,
+        "needs_review": true
+      },
+      {
+        "name": "走道",
+        "category": "ARCHITECTURAL_ROOM",
+        "reason": "走道属于建筑交通空间。",
+        "confidence": 0.6,
+        "needs_review": true
+      },
+      {
+        "name": "送风井",
+        "category": "HVAC_SHAFT",
+        "reason": "送风井属于暖通井道。",
+        "confidence": 0.7,
+        "needs_review": true
+      },
+      {
+        "name": "送风机房",
+        "category": "HVAC_ROOM",
+        "reason": "送风机房属于暖通房间。",
+        "confidence": 0.7,
+        "needs_review": true
+      },
+      {
+        "name": "采光井",
+        "category": "ARCHITECTURAL_ROOM",
+        "reason": "采光井属于建筑采光空间。",
+        "confidence": 0.5,
+        "needs_review": true
+      }
+    ]
+  },
+  "valid": true,
+  "validation_errors": [],
+  "transcript": [
+    {
+      "request": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "你是建筑术语提议助手，只分类房名，不判断几何或合规。类别只能选给定类别或UNKNOWN；不了解时选UNKNOWN。返回JSON对象rows，每项{name,category,reason,confidence,needs_review}。confidence为0到1数字，needs_review必须true。每个输入房名恰好一次，理由简短。不要自行批准。"
+          },
+          {
+            "role": "user",
+            "content": "{\"names\": [\"消防控制室\", \"消防水池一\", \"消防水池二\", \"消防泵房\", \"生活水泵房\", \"电井上空\", \"电梯井上空\", \"电梯厅\", \"电梯厅上空\", \"电气进线间\", \"电气间\", \"电气间上空\", \"电表间\", \"穿管电气间\", \"老年人日间照料中心\", \"设备用房\", \"走道\", \"送风井\", \"送风机房\", \"采光井\"], \"categories\": {\"EXCLUDED\": \"排除\", \"SUBSTATION\": \"变电所\", \"DISTRIBUTION_ROOM\": \"配电室\", \"ELECTRICAL_SHAFT\": \"电气竖井\", \"WEAK_CURRENT_ROOM\": \"弱电房间\", \"SMALL_ELECTRICAL_ROOM\": \"配电小间\", \"ARCHITECTURAL_ROOM\": \"建筑房间\", \"HVAC_SHAFT\": \"暖通井道\", \"HVAC_ROOM\": \"暖通房间\", \"PLUMBING_ROOM\": \"给排水房间\", \"NOT_INCLUDED\": \"未纳入\", \"UNKNOWN\": \"用途无法判断\"}}"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 8192,
+        "thinking": {
+          "type": "disabled"
+        },
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "response": {
+        "id": "e07b31c9-9522-4612-904a-9af7717f608a",
+        "object": "chat.completion",
+        "created": 1791887434,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"rows\": [\n    {\n      \"name\": \"消防控制室\",\n      \"category\": \"ARCHITECTURAL_ROOM\",\n      \"reason\": \"消防控制室属于建筑功能房间，非电气竖井或配电室。\",\n      \"confidence\": 0.6,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"消防水池一\",\n      \"category\": \"PLUMBING_ROOM\",\n      \"reason\": \"消防水池属于给排水专业设施。\",\n      \"confidence\": 0.7,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"消防水池二\",\n      \"category\": \"PLUMBING_ROOM\",\n      \"reason\": \"消防水池属于给排水专业设施。\",\n      \"confidence\": 0.7,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"消防泵房\",\n      \"category\": \"PLUMBING_ROOM\",\n      \"reason\": \"消防泵房属于给排水专业泵房。\",\n      \"confidence\": 0.7,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"生活水泵房\",\n      \"category\": \"PLUMBING_ROOM\",\n      \"reason\": \"生活水泵房属于给排水专业泵房。\",\n      \"confidence\": 0.7,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"电井上空\",\n      \"category\": \"ELECTRICAL_SHAFT\",\n      \"reason\": \"电井上空属于电气竖井的投影空间。\",\n      \"confidence\": 0.6,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"电梯井上空\",\n      \"category\": \"ARCHITECTURAL_ROOM\",\n      \"reason\": \"电梯井上空属于建筑电梯井道空间。\",\n      \"confidence\": 0.5,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"电梯厅\",\n      \"category\": \"ARCHITECTURAL_ROOM\",\n      \"reason\": \"电梯厅属于建筑公共空间。\",\n      \"confidence\": 0.6,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"电梯厅上空\",\n      \"category\": \"ARCHITECTURAL_ROOM\",\n      \"reason\": \"电梯厅上空属于建筑公共空间投影。\",\n      \"confidence\": 0.5,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"电气进线间\",\n      \"category\": \"DISTRIBUTION_ROOM\",\n      \"reason\": \"电气进线间属于配电相关房间。\",\n      \"confidence\": 0.6,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"电气间\",\n      \"category\": \"SMALL_ELECTRICAL_ROOM\",\n      \"reason\": \"电气间通常为小型配电房间。\",\n      \"confidence\": 0.5,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"电气间上空\",\n      \"category\": \"SMALL_ELECTRICAL_ROOM\",\n      \"reason\": \"电气间上空属于电气间投影空间。\",\n      \"confidence\": 0.4,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"电表间\",\n      \"category\": \"SMALL_ELECTRICAL_ROOM\",\n      \"reason\": \"电表间属于小型电气计量房间。\",\n      \"confidence\": 0.6,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"穿管电气间\",\n      \"category\": \"SMALL_ELECTRICAL_ROOM\",\n      \"reason\": \"穿管电气间属于电气穿管小间。\",\n      \"confidence\": 0.5,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"老年人日间照料中心\",\n      \"category\": \"ARCHITECTURAL_ROOM\",\n      \"reason\": \"老年人日间照料中心属于建筑功能房间。\",\n      \"confidence\": 0.6,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"设备用房\",\n      \"category\": \"ARCHITECTURAL_ROOM\",\n      \"reason\": \"设备用房为通用建筑设备房间。\",\n      \"confidence\": 0.4,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"走道\",\n      \"category\": \"ARCHITECTURAL_ROOM\",\n      \"reason\": \"走道属于建筑交通空间。\",\n      \"confidence\": 0.6,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"送风井\",\n      \"category\": \"HVAC_SHAFT\",\n      \"reason\": \"送风井属于暖通井道。\",\n      \"confidence\": 0.7,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"送风机房\",\n      \"category\": \"HVAC_ROOM\",\n      \"reason\": \"送风机房属于暖通房间。\",\n      \"confidence\": 0.7,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"采光井\",\n      \"category\": \"ARCHITECTURAL_ROOM\",\n      \"reason\": \"采光井属于建筑采光空间。\",\n      \"confidence\": 0.5,\n      \"needs_review\": true\n    }\n  ]\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 356,
+          "completion_tokens": 1180,
+          "total_tokens": 1536,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 356
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      }
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "origin": "SYNTHETIC",
+  "not_real_sample_findings": true,
+  "findings": [
+    {
+      "rule_id": "R1",
+      "object_ids": [
+        "syn-R1-pass"
+      ],
+      "result": "通过",
+      "reason": "本条已实现条件判定",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "SYNTHETIC-H1"
+      ],
+      "values": {
+        "long_side_m": 8.0,
+        "opening_count": 2
+      },
+      "clauses": [
+        {
+          "code": "GB 50053-2013",
+          "article": "6.2.6（待工程师核对）",
+          "text": "长度大于7m的配电室应设两个出口，并宜布置在配电室的两端。",
+          "strength": "应"
+        }
+      ],
+      "scope": "只做数量阈值；不审两端布置/出口有效性/不规则房净长",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "rule_id": "R1",
+      "object_ids": [
+        "syn-R1-fail"
+      ],
+      "result": "不通过",
+      "reason": "本条已实现条件判定",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "SYNTHETIC-H1"
+      ],
+      "values": {
+        "long_side_m": 8.0,
+        "opening_count": 1
+      },
+      "clauses": [
+        {
+          "code": "GB 50053-2013",
+          "article": "6.2.6（待工程师核对）",
+          "text": "长度大于7m的配电室应设两个出口，并宜布置在配电室的两端。",
+          "strength": "应"
+        }
+      ],
+      "scope": "只做数量阈值；不审两端布置/出口有效性/不规则房净长",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "rule_id": "R1",
+      "object_ids": [
+        "syn-R1-missing"
+      ],
+      "result": "无法判定",
+      "reason": "缺少完整出入口信息",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "SYNTHETIC-H1"
+      ],
+      "values": {
+        "long_side_m": 8.0
+      },
+      "clauses": [
+        {
+          "code": "GB 50053-2013",
+          "article": "6.2.6（待工程师核对）",
+          "text": "长度大于7m的配电室应设两个出口，并宜布置在配电室的两端。",
+          "strength": "应"
+        }
+      ],
+      "scope": "只做数量阈值；不审两端布置/出口有效性/不规则房净长",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "rule_id": "R3",
+      "object_ids": [
+        "syn-R3-pass"
+      ],
+      "result": "通过",
+      "reason": "本条已实现条件判定",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "SYNTHETIC-H1"
+      ],
+      "values": {
+        "above_uses": []
+      },
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款（待工程师核对）",
+          "text": "变电所不应设在厕所、浴室、厨房或其他经常有水并可能漏水场所的正下方。",
+          "strength": "应"
+        }
+      ],
+      "scope": "合成跨层关系；未实现楼层对齐与真实跨层判定",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "rule_id": "R3",
+      "object_ids": [
+        "syn-R3-fail"
+      ],
+      "result": "不通过",
+      "reason": "本条已实现条件判定",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "SYNTHETIC-H1"
+      ],
+      "values": {
+        "above_uses": [
+          "KITCHEN"
+        ]
+      },
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款（待工程师核对）",
+          "text": "变电所不应设在厕所、浴室、厨房或其他经常有水并可能漏水场所的正下方。",
+          "strength": "应"
+        }
+      ],
+      "scope": "合成跨层关系；未实现楼层对齐与真实跨层判定",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "rule_id": "R3",
+      "object_ids": [
+        "syn-R3-missing"
+      ],
+      "result": "无法判定",
+      "reason": "缺少上一层语义",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "SYNTHETIC-H1"
+      ],
+      "values": {},
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款（待工程师核对）",
+          "text": "变电所不应设在厕所、浴室、厨房或其他经常有水并可能漏水场所的正下方。",
+          "strength": "应"
+        }
+      ],
+      "scope": "合成跨层关系；未实现楼层对齐与真实跨层判定",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "rule_id": "R4",
+      "object_ids": [
+        "syn-R4-pass"
+      ],
+      "result": "通过",
+      "reason": "本条已实现条件判定",
+      "input_confidence": "输入待复核",
+      "level": "提示",
+      "source_handles": [
+        "SYNTHETIC-H1"
+      ],
+      "values": {
+        "adjacent_uses": []
+      },
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款（待工程师核对）",
+          "text": "变电所不宜与上述场所贴邻。",
+          "strength": "宜"
+        }
+      ],
+      "scope": "只做不宜贴邻风险提示，未审防水构造，不能据此宣称整条合规",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "rule_id": "R4",
+      "object_ids": [
+        "syn-R4-fail"
+      ],
+      "result": "不通过",
+      "reason": "本条已实现条件判定",
+      "input_confidence": "输入待复核",
+      "level": "提示",
+      "source_handles": [
+        "SYNTHETIC-H1"
+      ],
+      "values": {
+        "adjacent_uses": [
+          "KITCHEN"
+        ]
+      },
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款（待工程师核对）",
+          "text": "变电所不宜与上述场所贴邻。",
+          "strength": "宜"
+        }
+      ],
+      "scope": "只做不宜贴邻风险提示，未审防水构造，不能据此宣称整条合规",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "rule_id": "R4",
+      "object_ids": [
+        "syn-R4-missing"
+      ],
+      "result": "无法判定",
+      "reason": "缺少贴邻关系数据",
+      "input_confidence": "输入待复核",
+      "level": "提示",
+      "source_handles": [
+        "SYNTHETIC-H1"
+      ],
+      "values": {},
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款（待工程师核对）",
+          "text": "变电所不宜与上述场所贴邻。",
+          "strength": "宜"
+        }
+      ],
+      "scope": "只做不宜贴邻风险提示，未审防水构造，不能据此宣称整条合规",
+      "origin": "SYNTHETIC"
+    }
+  ]
+}

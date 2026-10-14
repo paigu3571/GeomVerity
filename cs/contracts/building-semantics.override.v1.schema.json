@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:geomverity:building-semantics:override:v1",
+  "title": "Approved Building Semantic Override v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "override_id", "status", "drawing_sha256", "source_semantics_hash",
+    "source_producer_version", "source_producer_binary_sha256", "project_id", "created_at_utc",
+    "created_by", "reviewed_at_utc", "reviewed_by", "reason", "changes"
+  ],
+  "properties": {
+    "schema_version": { "const": "building-semantics.override.v1" },
+    "override_id": { "type": "string", "pattern": "^override-[A-Za-z0-9._-]+$" },
+    "status": { "const": "approved" },
+    "drawing_sha256": { "$ref": "#/$defs/sha256" },
+    "source_semantics_hash": { "$ref": "#/$defs/sha256" },
+    "source_producer_version": { "type": "string", "minLength": 1 },
+    "source_producer_binary_sha256": { "$ref": "#/$defs/sha256" },
+    "project_id": { "type": "string", "minLength": 1 },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "created_by": { "type": "string", "minLength": 1 },
+    "reviewed_at_utc": { "type": "string", "format": "date-time" },
+    "reviewed_by": { "type": "string", "minLength": 1 },
+    "reason": { "type": "string", "minLength": 1 },
+    "changes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/change" }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "change_id", "semantic_id", "source_handle", "expected_classification", "expected_use_code",
+        "replacement_classification", "replacement_use_code", "reason"
+      ],
+      "properties": {
+        "change_id": { "type": "string", "pattern": "^change-[A-Za-z0-9._-]+$" },
+        "semantic_id": { "type": "string", "pattern": "^sem_[a-f0-9]{24}$" },
+        "source_handle": { "type": "string", "minLength": 1 },
+        "expected_classification": { "type": "string" },
+        "expected_use_code": { "type": "string" },
+        "replacement_classification": { "type": "string" },
+        "replacement_use_code": { "type": "string" },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:geomverity:building-semantics:l3-feedback:v1",
+  "title": "L4 to L3 Feedback v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "feedback_id", "created_at_utc", "reporter", "module_id", "drawing_sha256",
+    "source_semantics_hash", "source_producer_version", "source_producer_binary_sha256", "project_id", "issues"
+  ],
+  "properties": {
+    "schema_version": { "const": "l3-feedback.v1" },
+    "feedback_id": { "type": "string", "pattern": "^feedback-[A-Za-z0-9._-]+$" },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "reporter": { "type": "string", "minLength": 1 },
+    "module_id": { "type": "string", "minLength": 1 },
+    "drawing_sha256": { "$ref": "#/$defs/sha256" },
+    "source_semantics_hash": { "$ref": "#/$defs/sha256" },
+    "source_producer_version": { "type": "string", "minLength": 1 },
+    "source_producer_binary_sha256": { "$ref": "#/$defs/sha256" },
+    "project_id": { "type": "string", "minLength": 1 },
+    "issues": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/issue" } }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "issue_id", "issue_type", "severity", "observed", "expected", "evidence",
+        "l4_impact", "suggested_route"
+      ],
+      "properties": {
+        "issue_id": { "type": "string", "pattern": "^issue-[A-Za-z0-9._-]+$" },
+        "issue_type": {
+          "enum": [
+            "missing_object", "wrong_type", "wrong_classification", "wrong_use_code",
+            "wrong_geometry", "wrong_relation", "drafting_issue", "unknown"
+          ]
+        },
+        "severity": { "enum": ["information", "review", "blocking"] },
+        "semantic_id": { "type": "string", "pattern": "^sem_[a-f0-9]{24}$" },
+        "source_handle": { "type": "string" },
+        "observed": { "type": "string", "minLength": 1 },
+        "expected": { "type": "string", "minLength": 1 },
+        "evidence": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "l4_impact": { "type": "string", "minLength": 1 },
+        "suggested_route": { "enum": ["base_fix", "project_override", "drawing_correction", "needs_review"] }
+      }
+    }
+  }
+}

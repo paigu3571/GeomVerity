@@ -1,0 +1,655 @@
+{
+  "status": "partial",
+  "origin": "REAL",
+  "drawing_hash": "69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F",
+  "producer_version": "0.2.11",
+  "summary": {
+    "通过": 1,
+    "无法判定": 6
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "approved": true
+    },
+    {
+      "id": "R2",
+      "approved": true
+    },
+    {
+      "id": "R3",
+      "approved": true
+    },
+    {
+      "id": "R4",
+      "approved": true
+    },
+    {
+      "id": "DRAFT_88e437765ce8",
+      "approved": true
+    }
+  ],
+  "findings": [
+    {
+      "rule_id": "R1",
+      "object_ids": [
+        "sem_6719d247bfbe54b2d74710ec"
+      ],
+      "result": "通过",
+      "reason": "依据张田人工核对：净长超过7米=True，出入口2处；本条已实现条件判定；仅本条数量辅助初查，原识别与候选Handle仍待复核",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "93FC",
+        "9400",
+        "9401",
+        "94D9",
+        "94FE",
+        "95B5",
+        "9C52"
+      ],
+      "values": {
+        "length_threshold_confirmation": {
+          "threshold": 7.0,
+          "value": true
+        },
+        "opening_count": 2,
+        "candidate_dimensions": {
+          "long_side_m": 11.000225,
+          "short_side_m": 10.800011,
+          "method": "二维凸包最小外包矩形；不是室内净长"
+        },
+        "raw_opening_relation_count": 6,
+        "coincident_opening_count": 6,
+        "candidate_opening_count": 2,
+        "candidate_opening_ids": [
+          "sem_d6434d58ad65937fa25c52ba",
+          "sem_8145dc8533468255e61ab281"
+        ],
+        "candidate_opening_handles": [
+          "9400",
+          "9401"
+        ],
+        "opening_candidate_audit": [
+          {
+            "handle": "93FC",
+            "object_ids": [
+              "sem_d8e948e9533a6ba205cfa3fa"
+            ],
+            "stable_paths": [
+              "93FC"
+            ],
+            "boundary_distance_mm": 300.097944,
+            "included": false,
+            "reason": "距房间实际轮廓超过容差或缺闭合轮廓"
+          },
+          {
+            "handle": "9401",
+            "object_ids": [
+              "sem_d6434d58ad65937fa25c52ba"
+            ],
+            "stable_paths": [
+              "9401"
+            ],
+            "boundary_distance_mm": 0.0,
+            "included": true,
+            "reason": "近边门洞候选，仍需确认出入口性质"
+          },
+          {
+            "handle": "94FE",
+            "object_ids": [
+              "sem_c6946c53a7e2bcea0ac0fdd9"
+            ],
+            "stable_paths": [
+              "94FE"
+            ],
+            "boundary_distance_mm": 300.012592,
+            "included": false,
+            "reason": "距房间实际轮廓超过容差或缺闭合轮廓"
+          },
+          {
+            "handle": "94D9",
+            "object_ids": [
+              "sem_0db510ff5e7f204f024bdb88"
+            ],
+            "stable_paths": [
+              "94D9"
+            ],
+            "boundary_distance_mm": 1299.850612,
+            "included": false,
+            "reason": "距房间实际轮廓超过容差或缺闭合轮廓"
+          },
+          {
+            "handle": "95B5",
+            "object_ids": [
+              "sem_ff11642da3db5dfdd67e8ad3"
+            ],
+            "stable_paths": [
+              "95B5"
+            ],
+            "boundary_distance_mm": 1115.01811,
+            "included": false,
+            "reason": "距房间实际轮廓超过容差或缺闭合轮廓"
+          },
+          {
+            "handle": "9400",
+            "object_ids": [
+              "sem_8145dc8533468255e61ab281"
+            ],
+            "stable_paths": [
+              "9400"
+            ],
+            "boundary_distance_mm": 0.018986,
+            "included": true,
+            "reason": "近边门洞候选，仍需确认出入口性质"
+          }
+        ],
+        "opening_boundary_tolerance_mm": 5.0,
+        "opening_method": "L4同源同位置几何重合去重；路径点距闭合房间轮廓不超过5mm的候选；不证明有效出入口",
+        "manual_confirmation": {
+          "origin": "ENGINEER_REVIEW",
+          "reviewed_by": "张田",
+          "reviewed_date": "2026-10-12",
+          "net_length_gt_7": true,
+          "entrance_count": 2,
+          "snapshot_sha256": "23e8eec0e0b465406e5cee6fa6259c6d42a074e3da6cd1c503b14411a1d01b6c",
+          "screenshot_sha256": [
+            "8e819b846cf3c180fbffef9b1c5e2917da2233010e310dc73efda40398ae8561"
+          ],
+          "note": "工程师确认净长阈值与总出入口数量；具体候选Handle映射仍为自动待复核"
+        }
+      },
+      "clauses": [
+        {
+          "code": "GB 55024-2022",
+          "article": "3.2.1第1款",
+          "text": "配电室、电容器室长度大于7m时，应至少设置两个出入口。",
+          "strength": "应"
+        }
+      ],
+      "scope": "仅配电室数量辅助初查；轮廓尺寸与门洞为候选，未确认有效出入口/净长不得据此宣称合规，不查两端布置",
+      "origin": "REAL",
+      "engineer_reviewed": {
+        "reviewed_by": "张田",
+        "reviewed_date": "2026-10-12",
+        "record_file": "samples/B/l4_confirmations.yaml"
+      },
+      "id": "finding_R1_sem_6719d247bfbe54b2d74710ec",
+      "object_name": "充电桩配电房",
+      "rule_approved": true,
+      "rule_title": "长度大于7m配电室的出入口数量",
+      "evidence": [
+        {
+          "object_id": "sem_6719d247bfbe54b2d74710ec",
+          "source_handle": "9C52",
+          "chains": [
+            {
+              "l3_id": "sem_6719d247bfbe54b2d74710ec",
+              "l2_id": "geometry_b2ac9f23077db0eabd811afc",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_14a2b45f74cc9378f3f08c7d",
+                  "handle": "9C52",
+                  "stable_path": "9C52"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "9B14",
+              "text": "充电桩配电房"
+            }
+          ]
+        },
+        {
+          "object_id": "sem_d8e948e9533a6ba205cfa3fa",
+          "source_handle": "93FC",
+          "chains": [
+            {
+              "l3_id": "sem_d8e948e9533a6ba205cfa3fa",
+              "l2_id": "geometry_e1737ac0d38c94395a9e610e",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_bdce1b5c97a1c2399bb3da55",
+                  "handle": "93FC",
+                  "stable_path": "93FC"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_d6434d58ad65937fa25c52ba",
+          "source_handle": "9401",
+          "chains": [
+            {
+              "l3_id": "sem_d6434d58ad65937fa25c52ba",
+              "l2_id": "geometry_29c56c4638c631cada6080a9",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_6a0c204ed4c85285e40db69f",
+                  "handle": "9401",
+                  "stable_path": "9401"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_c6946c53a7e2bcea0ac0fdd9",
+          "source_handle": "94FE",
+          "chains": [
+            {
+              "l3_id": "sem_c6946c53a7e2bcea0ac0fdd9",
+              "l2_id": "geometry_29cb765dfbf4059eab7653e0",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_a8ed778538ae44f1585be0ef",
+                  "handle": "94FE",
+                  "stable_path": "94FE"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_0db510ff5e7f204f024bdb88",
+          "source_handle": "94D9",
+          "chains": [
+            {
+              "l3_id": "sem_0db510ff5e7f204f024bdb88",
+              "l2_id": "geometry_701b5bc2aeaf779596f448c2",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_4d5a8f8d9eff4f32bd91c315",
+                  "handle": "94D9",
+                  "stable_path": "94D9"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_ff11642da3db5dfdd67e8ad3",
+          "source_handle": "95B5",
+          "chains": [
+            {
+              "l3_id": "sem_ff11642da3db5dfdd67e8ad3",
+              "l2_id": "geometry_7cf626121e7fb98ce6b54617",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_9589e68b2f9ccfb21eb0ca9a",
+                  "handle": "95B5",
+                  "stable_path": "95B5"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        },
+        {
+          "object_id": "sem_8145dc8533468255e61ab281",
+          "source_handle": "9400",
+          "chains": [
+            {
+              "l3_id": "sem_8145dc8533468255e61ab281",
+              "l2_id": "geometry_ad3b5dc7bab293341e5ddeb3",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_7eb2ac2a888fd882eff41a35",
+                  "handle": "9400",
+                  "stable_path": "9400"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": []
+        }
+      ],
+      "request_question": null
+    },
+    {
+      "id": "finding_R2_no_target",
+      "rule_id": "R2",
+      "rule_title": "电气竖井贴邻热源",
+      "object_ids": [],
+      "result": "无法判定",
+      "reason": "未识别到纳入本条的对象；不能据此说明图中没有",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [],
+      "values": {},
+      "evidence": [],
+      "clauses": [
+        {
+          "code": "GB 55024-2022",
+          "article": "6.2.8第2款",
+          "text": "电气竖井不应贴邻热烟道、热力管道及其他散热量大的场所。",
+          "strength": "应"
+        }
+      ],
+      "origin": "REAL",
+      "scope": "共边贴邻候选风险辅助检查，不计算隔热效果；缺热源用途/完整边界不从未发现推定通过",
+      "rule_approved": true,
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“未识别到的适用房间”（Handle：尚无对应Handle）的资料：未识别到纳入本条的对象；不能据此说明图中没有。"
+    },
+    {
+      "rule_id": "R3",
+      "object_ids": [
+        "sem_11e57ca3b21fd2eee96580c2"
+      ],
+      "result": "无法判定",
+      "reason": "缺少上一层语义",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "9ECB"
+      ],
+      "values": {},
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不应设在厕所、浴室、厨房或其他经常有水并可能漏水场所的正下方。",
+          "strength": "应"
+        }
+      ],
+      "scope": "单层缺上一层语义时无法判定；不实现跨层配准",
+      "origin": "REAL",
+      "id": "finding_R3_sem_11e57ca3b21fd2eee96580c2",
+      "object_name": "公变配电房",
+      "rule_approved": true,
+      "rule_title": "变电所上方用水场所",
+      "evidence": [
+        {
+          "object_id": "sem_11e57ca3b21fd2eee96580c2",
+          "source_handle": "9ECB",
+          "chains": [
+            {
+              "l3_id": "sem_11e57ca3b21fd2eee96580c2",
+              "l2_id": "geometry_94aba2cde352c3f4ac1ddae8",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_b5f72688086a146106bac60d",
+                  "handle": "9ECB",
+                  "stable_path": "9ECB"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "9B21",
+              "text": "公变配电房"
+            }
+          ]
+        }
+      ],
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“公变配电房”（Handle：9ECB）的资料：缺少上一层语义。"
+    },
+    {
+      "rule_id": "R3",
+      "object_ids": [
+        "sem_ce507e8364be1d167ea7654b"
+      ],
+      "result": "无法判定",
+      "reason": "缺少上一层语义",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [
+        "9ECE"
+      ],
+      "values": {},
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不应设在厕所、浴室、厨房或其他经常有水并可能漏水场所的正下方。",
+          "strength": "应"
+        }
+      ],
+      "scope": "单层缺上一层语义时无法判定；不实现跨层配准",
+      "origin": "REAL",
+      "id": "finding_R3_sem_ce507e8364be1d167ea7654b",
+      "object_name": "专变配电房",
+      "rule_approved": true,
+      "rule_title": "变电所上方用水场所",
+      "evidence": [
+        {
+          "object_id": "sem_ce507e8364be1d167ea7654b",
+          "source_handle": "9ECE",
+          "chains": [
+            {
+              "l3_id": "sem_ce507e8364be1d167ea7654b",
+              "l2_id": "geometry_f15b83d9fdeb5f489fbe8d4b",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_069afb03c79c3b0cb90645cf",
+                  "handle": "9ECE",
+                  "stable_path": "9ECE"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "9EA8",
+              "text": "专变配电房"
+            }
+          ]
+        }
+      ],
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“专变配电房”（Handle：9ECE）的资料：缺少上一层语义。"
+    },
+    {
+      "rule_id": "R4",
+      "object_ids": [
+        "sem_11e57ca3b21fd2eee96580c2"
+      ],
+      "result": "无法判定",
+      "reason": "关系数据不完整，不能从未发现推定不存在；缺少完整且确认的贴邻关系；用水候选不等于漏水风险已确认",
+      "input_confidence": "输入待复核",
+      "level": "提示",
+      "source_handles": [
+        "9ECB"
+      ],
+      "values": {
+        "adjacent_uses": [],
+        "adjacent_candidates": [],
+        "candidate_source": "geometry_coedge_5mm",
+        "boundary_tolerance_mm": 5.0,
+        "adjacency_method": "原有轮廓共线重合候选，5mm继承原壁网捕捉尺度；不跨墙厚推定贴邻"
+      },
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不宜与上述场所贴邻。",
+          "strength": "宜"
+        }
+      ],
+      "scope": "不宜贴邻子项提示；防水子项缺资料时另列无法判定，不宣称整条合规",
+      "origin": "REAL",
+      "id": "finding_R4_sem_11e57ca3b21fd2eee96580c2",
+      "object_name": "公变配电房",
+      "rule_approved": true,
+      "rule_title": "变电所贴邻用水场所提示",
+      "evidence": [
+        {
+          "object_id": "sem_11e57ca3b21fd2eee96580c2",
+          "source_handle": "9ECB",
+          "chains": [
+            {
+              "l3_id": "sem_11e57ca3b21fd2eee96580c2",
+              "l2_id": "geometry_94aba2cde352c3f4ac1ddae8",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_b5f72688086a146106bac60d",
+                  "handle": "9ECB",
+                  "stable_path": "9ECB"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "9B21",
+              "text": "公变配电房"
+            }
+          ]
+        }
+      ],
+      "subchecks": [
+        {
+          "id": "waterproof",
+          "result": "无法判定",
+          "strength": "应",
+          "reason": "缺少隔墙防水资料；仅在贴邻适用条件成立后检查",
+          "request_question": "请建筑专业提供“公变配电房”（Handle：9ECB）的资料：缺少隔墙防水资料；仅在贴邻适用条件成立后检查。"
+        }
+      ],
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“公变配电房”（Handle：9ECB）的资料：关系数据不完整，不能从未发现推定不存在；缺少完整且确认的贴邻关系；用水候选不等于漏水风险已确认。"
+    },
+    {
+      "rule_id": "R4",
+      "object_ids": [
+        "sem_ce507e8364be1d167ea7654b"
+      ],
+      "result": "无法判定",
+      "reason": "关系数据不完整，不能从未发现推定不存在；缺少完整且确认的贴邻关系；用水候选不等于漏水风险已确认",
+      "input_confidence": "输入待复核",
+      "level": "提示",
+      "source_handles": [
+        "9ECE"
+      ],
+      "values": {
+        "adjacent_uses": [],
+        "adjacent_candidates": [],
+        "candidate_source": "geometry_coedge_5mm",
+        "boundary_tolerance_mm": 5.0,
+        "adjacency_method": "原有轮廓共线重合候选，5mm继承原壁网捕捉尺度；不跨墙厚推定贴邻"
+      },
+      "clauses": [
+        {
+          "code": "GB 51348-2019",
+          "article": "4.2.1第6款",
+          "text": "变电所不宜与上述场所贴邻。",
+          "strength": "宜"
+        }
+      ],
+      "scope": "不宜贴邻子项提示；防水子项缺资料时另列无法判定，不宣称整条合规",
+      "origin": "REAL",
+      "id": "finding_R4_sem_ce507e8364be1d167ea7654b",
+      "object_name": "专变配电房",
+      "rule_approved": true,
+      "rule_title": "变电所贴邻用水场所提示",
+      "evidence": [
+        {
+          "object_id": "sem_ce507e8364be1d167ea7654b",
+          "source_handle": "9ECE",
+          "chains": [
+            {
+              "l3_id": "sem_ce507e8364be1d167ea7654b",
+              "l2_id": "geometry_f15b83d9fdeb5f489fbe8d4b",
+              "l1_sources": [
+                {
+                  "l1_id": "primitive_069afb03c79c3b0cb90645cf",
+                  "handle": "9ECE",
+                  "stable_path": "9ECE"
+                }
+              ],
+              "complete": true
+            }
+          ],
+          "text_sources": [
+            {
+              "handle": "9EA8",
+              "text": "专变配电房"
+            }
+          ]
+        }
+      ],
+      "subchecks": [
+        {
+          "id": "waterproof",
+          "result": "无法判定",
+          "strength": "应",
+          "reason": "缺少隔墙防水资料；仅在贴邻适用条件成立后检查",
+          "request_question": "请建筑专业提供“专变配电房”（Handle：9ECE）的资料：缺少隔墙防水资料；仅在贴邻适用条件成立后检查。"
+        }
+      ],
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“专变配电房”（Handle：9ECE）的资料：关系数据不完整，不能从未发现推定不存在；缺少完整且确认的贴邻关系；用水候选不等于漏水风险已确认。"
+    },
+    {
+      "id": "finding_DRAFT_88e437765ce8_no_target",
+      "rule_id": "DRAFT_88e437765ce8",
+      "rule_title": "电气竖井不应与电梯井、其他专业管道井共用同一竖井",
+      "object_ids": [],
+      "result": "无法判定",
+      "reason": "未识别到纳入本条的对象；不能据此说明图中没有",
+      "input_confidence": "输入待复核",
+      "level": "辅助审查",
+      "source_handles": [],
+      "values": {},
+      "evidence": [],
+      "clauses": [
+        {
+          "code": "GB 55024-2022",
+          "article": "6.2.8第1款",
+          "text": "电气竖井不应与电梯井、其他专业管道井共用同一竖井。",
+          "strength": "应"
+        }
+      ],
+      "origin": "REAL",
+      "scope": "仅依据空间用途及共井用途做条件初查，不涉及防火、构造等其他要求；缺资料不推定通过。",
+      "rule_approved": true,
+      "engineer_reviewed": {
+        "reviewed_by": null,
+        "reviewed_date": null,
+        "record_file": null
+      },
+      "request_question": "请建筑专业补充或核对“未识别到的适用房间”（Handle：尚无对应Handle）的资料：未识别到纳入本条的对象；不能据此说明图中没有。"
+    }
+  ],
+  "note": "真实数据辅助审查；缺少确认资料不输出合规结论，候选数值供工程师定位复核"
+}

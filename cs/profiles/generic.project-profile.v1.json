@@ -1,0 +1,488 @@
+{
+  "schema_version": "building-semantics-project-profile.v1",
+  "project_id": "generic",
+  "profile_version": "1.9.0",
+  "display_name": "通用建筑语义配置",
+  "units": "mm",
+  "unit_scale_to_millimeters": 1.0,
+  "output_root": "",
+  "allow_unlisted_drawings": true,
+  "rule_state": "calibration",
+  "rules_frozen_by": "",
+  "rules_frozen_at_utc": "",
+  "adapter_priority": [
+    "T20",
+    "StandardCad"
+  ],
+  "drawings": [],
+  "layer_normalization": [
+    {
+      "id": "strip_nested_bound_xref_prefix",
+      "pattern": "^(?:[^$]*\\$0\\$)+",
+      "replacement": "",
+      "ignore_case": true
+    }
+  ],
+  "geometry_semantic_rules": [
+    {
+      "id": "column_from_structural_closed_outline",
+      "semantic_type": "Column",
+      "normalized_layers": [
+        "S-COLU",
+        "S-COLU-COGZ"
+      ],
+      "native_class_names": [
+        "AcDbPolyline"
+      ],
+      "feature_kinds": [
+        "closed_region"
+      ],
+      "require_closed": true,
+      "require_exact": true,
+      "minimum_area_square_millimeters": 20000.0,
+      "maximum_area_square_millimeters": 2000000.0,
+      "confidence": 0.96,
+      "label_mode": "none",
+      "label_layers": [],
+      "area_label_layers": [],
+      "maximum_area_label_relative_difference": 0.0
+    },
+    {
+      "id": "shear_wall_from_reinforced_concrete_hatch",
+      "semantic_type": "Wall",
+      "classification": "Shear",
+      "normalized_layers": [
+        "S-PATT-WALL"
+      ],
+      "native_class_names": [
+        "AcDbHatch"
+      ],
+      "feature_kinds": [
+        "closed_region"
+      ],
+      "required_properties": {
+        "hatch_pattern_name": "钢筋混凝土"
+      },
+      "require_closed": true,
+      "require_exact": true,
+      "minimum_area_square_millimeters": 10000.0,
+      "maximum_area_square_millimeters": 200000000.0,
+      "confidence": 0.96,
+      "label_mode": "none",
+      "label_layers": [],
+      "area_label_layers": [],
+      "maximum_area_label_relative_difference": 0.0
+    },
+    {
+      "id": "space_from_unique_name_and_area_text",
+      "semantic_type": "Space",
+      "normalized_layers": [
+        "X-Asst"
+      ],
+      "native_class_names": [
+        "AcDbPolyline"
+      ],
+      "feature_kinds": [
+        "closed_region"
+      ],
+      "require_closed": true,
+      "require_exact": true,
+      "minimum_area_square_millimeters": 2000000.0,
+      "maximum_area_square_millimeters": 500000000.0,
+      "confidence": 0.96,
+      "label_mode": "unique_contained_room_use_and_area",
+      "label_layers": [
+        "A-Spac-Iden-Auto"
+      ],
+      "area_label_layers": [
+        "A-Spac-Area-Auto"
+      ],
+      "maximum_area_label_relative_difference": 0.03
+    },
+    {
+      "id": "space_from_wall_bounded_region_and_unique_name",
+      "semantic_type": "Space",
+      "normalized_layers": [
+        "DERIVED-WALL-LOOP"
+      ],
+      "native_class_names": [
+        "WallBoundedRegion"
+      ],
+      "feature_kinds": [
+        "closed_region"
+      ],
+      "required_properties": {
+        "derived_geometry": "wall_bounded_region"
+      },
+      "require_closed": true,
+      "require_exact": false,
+      "minimum_area_square_millimeters": 2000000.0,
+      "maximum_area_square_millimeters": 500000000.0,
+      "confidence": 0.9,
+      "label_mode": "unique_contained_room_use",
+      "label_layers": [
+        "A-Spac-Iden-Auto"
+      ],
+      "area_label_layers": [],
+      "maximum_area_label_relative_difference": 0.0
+    }
+  ],
+  "room_use_dictionary": [
+    {
+      "use_code": "PARKING_GARAGE",
+      "rule_pack": "basement",
+      "semantic_type": "Space",
+      "keywords": [
+        "汽车库",
+        "停车库",
+        "地下车库",
+        "车库"
+      ]
+    },
+    {
+      "use_code": "EVACUATION_CORRIDOR",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "疏散通道",
+        "走道",
+        "过道"
+      ]
+    },
+    {
+      "use_code": "DRIVE_AISLE",
+      "rule_pack": "basement",
+      "semantic_type": "Space",
+      "keywords": [
+        "车道",
+        "行车道",
+        "通道"
+      ]
+    },
+    {
+      "use_code": "RAMP",
+      "rule_pack": "basement",
+      "semantic_type": "Ramp",
+      "keywords": [
+        "汽车坡道",
+        "车库坡道",
+        "坡道"
+      ]
+    },
+    {
+      "use_code": "FIRE_CONTROL_ROOM",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "消防控制室",
+        "消防控制中心"
+      ]
+    },
+    {
+      "use_code": "ELECTRICAL_ROOM",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "变配电",
+        "配电房",
+        "配电室",
+        "柴油发电机房",
+        "发电机房",
+        "电气间",
+        "电表间",
+        "进线间",
+        "弱电机房",
+        "广电机房",
+        "信号覆盖机房",
+        "信号机房",
+        "安防控制室"
+      ]
+    },
+    {
+      "use_code": "SPRINKLER_ALARM_VALVE_ROOM",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "报警阀间"
+      ]
+    },
+    {
+      "use_code": "PUMP_ROOM",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "水泵房",
+        "消防泵房",
+        "泵房"
+      ]
+    },
+    {
+      "use_code": "FAN_ROOM",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "风机房",
+        "送风机房",
+        "排风机房"
+      ]
+    },
+    {
+      "use_code": "EQUIPMENT_ROOM",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "设备用房",
+        "设备房",
+        "设备间",
+        "机房"
+      ]
+    },
+    {
+      "use_code": "MAINTENANCE_ROOM",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "检修间"
+      ]
+    },
+    {
+      "use_code": "FIRE_WATER_TANK",
+      "rule_pack": "basement",
+      "semantic_type": "Zone",
+      "keywords": [
+        "消防水池"
+      ]
+    },
+    {
+      "use_code": "ELECTRICAL_SHAFT",
+      "rule_pack": "common",
+      "semantic_type": "Shaft",
+      "keywords": [
+        "强电井",
+        "弱电井",
+        "电井"
+      ]
+    },
+    {
+      "use_code": "VENTILATION_SHAFT",
+      "rule_pack": "common",
+      "semantic_type": "Shaft",
+      "keywords": [
+        "加压送风井",
+        "排风井",
+        "排烟井",
+        "送风井",
+        "进风井",
+        "补风井",
+        "烟井",
+        "风井"
+      ]
+    },
+    {
+      "use_code": "LIGHT_WELL",
+      "rule_pack": "common",
+      "semantic_type": "Shaft",
+      "keywords": [
+        "采光井"
+      ]
+    },
+    {
+      "use_code": "PLUMBING_SHAFT",
+      "rule_pack": "common",
+      "semantic_type": "Shaft",
+      "keywords": [
+        "给水井",
+        "排水井",
+        "水井"
+      ]
+    },
+    {
+      "use_code": "ELEVATOR_SHAFT",
+      "rule_pack": "common",
+      "semantic_type": "Shaft",
+      "keywords": [
+        "消防电梯井",
+        "电梯井"
+      ]
+    },
+    {
+      "use_code": "SHAFT",
+      "rule_pack": "common",
+      "semantic_type": "Shaft",
+      "keywords": [
+        "管井",
+        "井道"
+      ]
+    },
+    {
+      "use_code": "STAIR",
+      "rule_pack": "common",
+      "semantic_type": "Stair",
+      "keywords": [
+        "楼梯间",
+        "楼梯"
+      ]
+    },
+    {
+      "use_code": "ANTEROOM",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "合用前室",
+        "消防电梯前室",
+        "前室"
+      ]
+    },
+    {
+      "use_code": "ARRIVAL_LOBBY",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "光厅"
+      ]
+    },
+    {
+      "use_code": "ELEVATOR_LOBBY",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "电梯厅"
+      ]
+    },
+    {
+      "use_code": "ELEVATOR",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "消防电梯",
+        "无障碍电梯",
+        "担架电梯",
+        "电梯"
+      ]
+    },
+    {
+      "use_code": "STORAGE",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "储藏",
+        "库房",
+        "储物"
+      ]
+    },
+    {
+      "use_code": "LIVING_DINING_ROOM",
+      "rule_pack": "ground_residential",
+      "semantic_type": "Space",
+      "keywords": [
+        "客餐厅"
+      ],
+      "excluded_keywords": [
+        "上空"
+      ]
+    },
+    {
+      "use_code": "LIVING_ROOM",
+      "rule_pack": "ground_residential",
+      "semantic_type": "Space",
+      "keywords": [
+        "客厅"
+      ],
+      "excluded_keywords": [
+        "上空"
+      ]
+    },
+    {
+      "use_code": "DINING_ROOM",
+      "rule_pack": "ground_residential",
+      "semantic_type": "Space",
+      "keywords": [
+        "餐厅"
+      ],
+      "excluded_keywords": [
+        "上空"
+      ]
+    },
+    {
+      "use_code": "BEDROOM",
+      "rule_pack": "ground_residential",
+      "semantic_type": "Space",
+      "keywords": [
+        "卧室"
+      ]
+    },
+    {
+      "use_code": "KITCHEN",
+      "rule_pack": "ground_residential",
+      "semantic_type": "Space",
+      "keywords": [
+        "厨房"
+      ]
+    },
+    {
+      "use_code": "ENTRANCE",
+      "rule_pack": "ground_residential",
+      "semantic_type": "Space",
+      "keywords": [
+        "玄关"
+      ]
+    },
+    {
+      "use_code": "STUDY",
+      "rule_pack": "ground_residential",
+      "semantic_type": "Space",
+      "keywords": [
+        "书房"
+      ]
+    },
+    {
+      "use_code": "BALCONY",
+      "rule_pack": "ground_residential",
+      "semantic_type": "Space",
+      "keywords": [
+        "阳台"
+      ],
+      "excluded_keywords": [
+        "屋面",
+        "上空"
+      ]
+    },
+    {
+      "use_code": "COMMERCIAL",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "商业",
+        "商铺"
+      ]
+    },
+    {
+      "use_code": "KINDERGARTEN",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "幼儿园",
+        "活动室",
+        "寝室"
+      ]
+    },
+    {
+      "use_code": "ELDERLY_DAY_CARE",
+      "rule_pack": "common",
+      "semantic_type": "Space",
+      "keywords": [
+        "老年人日间照料中心",
+        "日间照料中心"
+      ]
+    }
+  ],
+  "thresholds": {
+    "accepted_confidence": 0.97,
+    "review_confidence": 0.4,
+    "relation_tolerance_millimeters": 150.0,
+    "boundary_fallback_minimum_iou": 0.95,
+    "full_scan_maximum_seconds": 60,
+    "replay_maximum_seconds": 5
+  },
+  "observation_regions": []
+}

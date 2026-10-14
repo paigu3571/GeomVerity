@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:geomverity:building-semantics:v1",
+  "title": "Building Semantic Snapshot v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "producer", "producer_version", "producer_binary_sha256", "generated_at_utc", "status",
+    "reason_codes", "drawing", "profile", "integrity", "fact_provider_id",
+    "deterministic_content_hash", "objects", "relations", "findings", "proxy_ledger",
+    "metrics", "provider_diagnostics"
+  ],
+  "properties": {
+    "schema_version": { "const": "building-semantics.v1" },
+    "producer": { "type": "string", "minLength": 1 },
+    "producer_version": { "type": "string", "minLength": 1 },
+    "producer_binary_sha256": { "$ref": "#/$defs/sha256" },
+    "generated_at_utc": { "type": "string" },
+    "status": { "$ref": "#/$defs/run_status" },
+    "reason_codes": { "type": "array", "items": { "type": "string" } },
+    "drawing": { "$ref": "#/$defs/drawing" },
+    "profile": { "$ref": "#/$defs/profile" },
+    "integrity": { "$ref": "#/$defs/integrity" },
+    "fact_provider_id": { "type": "string" },
+    "deterministic_content_hash": { "$ref": "#/$defs/sha256" },
+    "objects": { "type": "array", "items": { "$ref": "#/$defs/object" } },
+    "relations": { "type": "array", "items": { "$ref": "#/$defs/relation" } },
+    "findings": { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+    "proxy_ledger": { "type": "array", "items": { "$ref": "#/$defs/proxy" } },
+    "metrics": { "$ref": "#/$defs/metrics" },
+    "provider_diagnostics": { "type": "array", "items": { "$ref": "#/$defs/diagnostic" } }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+    "run_status": { "enum": ["accepted", "review", "failed"] },
+    "decision": { "enum": ["accepted", "review", "rejected"] },
+    "severity": { "enum": ["information", "review", "error"] },
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "z"],
+      "properties": { "x": { "type": "number" }, "y": { "type": "number" }, "z": { "type": "number" } }
+    },
+    "bounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min_x", "min_y", "min_z", "max_x", "max_y", "max_z", "is_valid"],
+      "properties": {
+        "min_x": { "type": "number" }, "min_y": { "type": "number" }, "min_z": { "type": "number" },
+        "max_x": { "type": "number" }, "max_y": { "type": "number" }, "max_z": { "type": "number" },
+        "is_valid": { "type": "boolean" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "is_closed", "is_exact", "extraction_method", "paths", "bounds"],
+      "properties": {
+        "kind": { "enum": ["none", "point", "polyline", "polygon", "multi_path", "bounds"] },
+        "is_closed": { "type": "boolean" },
+        "is_exact": { "type": "boolean" },
+        "extraction_method": { "type": "string" },
+        "paths": {
+          "type": "array",
+          "items": { "type": "array", "items": { "$ref": "#/$defs/point" } }
+        },
+        "bounds": { "$ref": "#/$defs/bounds" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "drawing_hash", "handle", "stable_path", "raw_layer", "effective_layer", "normalized_layer",
+        "native_dxf_name", "native_class_name", "block_path", "xref_path", "xref_hashes", "wcs_transform"
+      ],
+      "properties": {
+        "drawing_hash": { "$ref": "#/$defs/sha256" },
+        "handle": { "type": "string", "minLength": 1 },
+        "stable_path": { "type": "string", "minLength": 1 },
+        "raw_layer": { "type": "string" },
+        "effective_layer": { "type": "string" },
+        "normalized_layer": { "type": "string" },
+        "native_dxf_name": { "type": "string" },
+        "native_class_name": { "type": "string" },
+        "block_path": { "type": "array", "items": { "type": "string" } },
+        "xref_path": { "type": "array", "items": { "type": "string" } },
+        "xref_hashes": { "type": "array", "items": { "anyOf": [{ "$ref": "#/$defs/sha256" }, { "const": "UNAVAILABLE" }] } },
+        "wcs_transform": { "type": "array", "items": { "type": "number" } }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "kind", "value", "source_handle", "weight"],
+      "properties": {
+        "code": { "type": "string" }, "kind": { "type": "string" }, "value": { "type": "string" },
+        "source_handle": { "type": "string" }, "weight": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semantic_id", "type", "classification", "raw_label", "use_code", "status", "confidence",
+        "source", "geometry", "evidence", "reason_codes"
+      ],
+      "properties": {
+        "semantic_id": { "type": "string", "pattern": "^sem_[a-f0-9]{24}$" },
+        "type": { "enum": ["storey", "space", "wall", "column", "opening", "door", "window", "shaft", "stair", "ramp", "zone", "roof_line"] },
+        "classification": { "type": "string" },
+        "raw_label": { "type": "string" },
+        "use_code": { "type": "string" },
+        "status": { "$ref": "#/$defs/decision" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "source": { "$ref": "#/$defs/source" },
+        "geometry": { "$ref": "#/$defs/geometry" },
+        "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidence" } },
+        "reason_codes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relation_id", "type", "from_semantic_id", "to_semantic_id", "status", "confidence", "evidence", "reason_codes"],
+      "properties": {
+        "relation_id": { "type": "string", "pattern": "^rel_[a-f0-9]{24}$" },
+        "type": { "enum": ["contains", "bounded_by", "hosted_by", "fills_opening", "adjacent_to", "connects", "overlaps"] },
+        "from_semantic_id": { "type": "string" }, "to_semantic_id": { "type": "string" },
+        "status": { "$ref": "#/$defs/decision" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+        "reason_codes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "finding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["finding_id", "severity", "reason_code", "message", "semantic_id", "source_handle"],
+      "properties": {
+        "finding_id": { "type": "string" }, "severity": { "$ref": "#/$defs/severity" },
+        "reason_code": { "type": "string" }, "message": { "type": "string" },
+        "semantic_id": { "type": "string" }, "source_handle": { "type": "string" }
+      }
+    },
+    "proxy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["stable_path", "handle", "original_dxf_name", "original_class_name", "application_description", "effective_layer", "disposition", "reason_code"],
+      "properties": {
+        "stable_path": { "type": "string" }, "handle": { "type": "string" },
+        "original_dxf_name": { "type": "string" }, "original_class_name": { "type": "string" },
+        "application_description": { "type": "string" }, "effective_layer": { "type": "string" },
+        "disposition": { "enum": ["supported_fact", "ignored_annotation", "ignored_out_of_scope", "review_unknown"] },
+        "reason_code": { "type": "string" }
+      }
+    },
+    "diagnostic": {
+      "type": "object", "additionalProperties": false,
+      "required": ["severity", "reason_code", "message", "stable_path"],
+      "properties": {
+        "severity": { "$ref": "#/$defs/severity" }, "reason_code": { "type": "string" },
+        "message": { "type": "string" }, "stable_path": { "type": "string" }
+      }
+    },
+    "drawing": {
+      "type": "object", "additionalProperties": false,
+      "required": ["drawing_id", "file_name", "sha256", "file_length", "source_last_write_utc", "coordinate_system", "geometry_units"],
+      "properties": {
+        "drawing_id": { "type": "string" }, "file_name": { "type": "string" }, "sha256": { "$ref": "#/$defs/sha256" },
+        "file_length": { "type": "integer", "minimum": 0 }, "source_last_write_utc": { "type": "string" },
+        "coordinate_system": { "const": "WCS" }, "geometry_units": { "const": "mm" }
+      }
+    },
+    "profile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["project_id", "profile_version", "sha256"],
+      "properties": { "project_id": { "type": "string" }, "profile_version": { "type": "string" }, "sha256": { "$ref": "#/$defs/sha256" } }
+    },
+    "integrity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_hash_before", "source_hash_after", "source_bytes_unchanged", "dbmod_before", "dbmod_after", "dbmod_clean_at_start", "dbmod_unchanged"],
+      "properties": {
+        "source_hash_before": { "$ref": "#/$defs/sha256" }, "source_hash_after": { "$ref": "#/$defs/sha256" },
+        "source_bytes_unchanged": { "type": "boolean" },
+        "scan_input_mode": { "enum": ["active_document", "disk_side_database"] },
+        "input_database_read_only": { "type": "boolean" },
+        "dbmod_before": { "type": "integer" },
+        "dbmod_after": { "type": "integer" }, "dbmod_clean_at_start": { "type": "boolean" }, "dbmod_unchanged": { "type": "boolean" }
+      }
+    },
+    "metrics": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "analysis_elapsed_milliseconds", "fact_count", "semantic_object_count", "accepted_object_count",
+        "review_object_count", "rejected_object_count", "relation_count", "proxy_count",
+        "top_level_proxy_object_count", "unique_proxy_handle_count", "reachable_proxy_instance_count",
+        "supported_proxy_count", "ignored_annotation_proxy_count", "ignored_out_of_scope_proxy_count", "review_unknown_proxy_count"
+      ],
+      "properties": {
+        "analysis_elapsed_milliseconds": { "type": "integer", "minimum": 0 },
+        "fact_count": { "type": "integer", "minimum": 0 }, "semantic_object_count": { "type": "integer", "minimum": 0 },
+        "accepted_object_count": { "type": "integer", "minimum": 0 }, "review_object_count": { "type": "integer", "minimum": 0 },
+        "rejected_object_count": { "type": "integer", "minimum": 0 }, "relation_count": { "type": "integer", "minimum": 0 },
+        "proxy_count": { "type": "integer", "minimum": 0 }, "top_level_proxy_object_count": { "type": "integer", "minimum": 0 },
+        "unique_proxy_handle_count": { "type": "integer", "minimum": 0 }, "reachable_proxy_instance_count": { "type": "integer", "minimum": 0 },
+        "supported_proxy_count": { "type": "integer", "minimum": 0 }, "ignored_annotation_proxy_count": { "type": "integer", "minimum": 0 },
+        "ignored_out_of_scope_proxy_count": { "type": "integer", "minimum": 0 },
+        "review_unknown_proxy_count": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

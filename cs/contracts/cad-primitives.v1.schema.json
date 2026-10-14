@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cad-primitives.v1.schema.json",
+  "title": "CAD primitive snapshot v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "producer",
+    "status",
+    "reason_codes",
+    "drawing",
+    "profile",
+    "integrity",
+    "extraction_configuration_hash",
+    "fact_provider_id",
+    "deterministic_content_hash",
+    "primitives",
+    "proxy_ledger",
+    "provider_diagnostics",
+    "metrics"
+  ],
+  "properties": {
+    "schema_version": { "const": "cad-primitives.v1" },
+    "producer": { "type": "string" },
+    "producer_version": { "type": "string" },
+    "producer_binary_sha256": { "type": "string" },
+    "generated_at_utc": { "type": "string" },
+    "status": { "enum": ["accepted", "review", "failed"] },
+    "reason_codes": { "type": "array", "items": { "type": "string" } },
+    "drawing": { "$ref": "#/$defs/drawing" },
+    "profile": { "$ref": "#/$defs/profile" },
+    "integrity": { "$ref": "#/$defs/integrity" },
+    "extraction_configuration_hash": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+    "fact_provider_id": { "type": "string" },
+    "deterministic_hash_algorithm": { "const": "canonical-binary-v2" },
+    "deterministic_content_hash": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+    "primitives": { "type": "array", "items": { "$ref": "#/$defs/primitive" } },
+    "proxy_ledger": { "type": "array", "items": { "type": "object" } },
+    "provider_diagnostics": { "type": "array", "items": { "type": "object" } },
+    "metrics": { "type": "object" }
+  },
+  "$defs": {
+    "drawing": {
+      "type": "object",
+      "required": ["drawing_id", "file_name", "sha256", "coordinate_system", "geometry_units"],
+      "properties": {
+        "drawing_id": { "type": "string" },
+        "file_name": { "type": "string" },
+        "sha256": { "type": "string" },
+        "coordinate_system": { "const": "WCS" },
+        "geometry_units": { "const": "mm" }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "required": ["project_id", "profile_version", "sha256"],
+      "properties": {
+        "project_id": { "type": "string" },
+        "profile_version": { "type": "string" },
+        "sha256": { "type": "string" }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "required": ["source_hash_before", "source_hash_after", "source_bytes_unchanged", "scan_input_mode", "input_database_read_only", "dbmod_unchanged"],
+      "properties": {
+        "source_hash_before": { "type": "string" },
+        "source_hash_after": { "type": "string" },
+        "source_bytes_unchanged": { "type": "boolean" },
+        "scan_input_mode": { "enum": ["active_document", "disk_side_database"] },
+        "input_database_read_only": { "type": "boolean" },
+        "dbmod_unchanged": { "type": "boolean" }
+      }
+    },
+    "point": {
+      "type": "object",
+      "required": ["x", "y", "z"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" }
+      }
+    },
+    "bounds": {
+      "type": "object",
+      "required": ["is_valid"],
+      "properties": {
+        "min_x": { "type": "number" },
+        "min_y": { "type": "number" },
+        "min_z": { "type": "number" },
+        "max_x": { "type": "number" },
+        "max_y": { "type": "number" },
+        "max_z": { "type": "number" },
+        "is_valid": { "type": "boolean" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "required": ["kind", "is_closed", "is_exact", "paths", "bounds"],
+      "properties": {
+        "kind": { "enum": ["none", "point", "polyline", "polygon", "multi_path", "bounds"] },
+        "is_closed": { "type": "boolean" },
+        "is_exact": { "type": "boolean" },
+        "extraction_method": { "type": "string" },
+        "paths": { "type": "array", "items": { "type": "array", "items": { "$ref": "#/$defs/point" } } },
+        "bounds": { "$ref": "#/$defs/bounds" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["drawing_hash", "handle", "stable_path", "raw_layer", "effective_layer", "normalized_layer", "native_dxf_name", "native_class_name"],
+      "properties": {
+        "drawing_hash": { "type": "string" },
+        "handle": { "type": "string" },
+        "stable_path": { "type": "string" },
+        "raw_layer": { "type": "string" },
+        "effective_layer": { "type": "string" },
+        "normalized_layer": { "type": "string" },
+        "native_dxf_name": { "type": "string" },
+        "native_class_name": { "type": "string" }
+      }
+    },
+    "primitive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primitive_id", "kind", "adapter_role_hint", "is_semantic_candidate", "source", "raw_text", "raw_geometry", "raw_properties", "evidence", "reason_codes"],
+      "properties": {
+        "primitive_id": { "type": "string" },
+        "source_fact_id": { "type": "string" },
+        "kind": { "enum": ["unknown", "line", "polyline", "arc", "circle", "text", "block_reference", "point", "hatch", "region", "proxy", "native_object"] },
+        "adapter_role_hint": { "type": "string", "description": "Non-authoritative adapter hint; not an accepted building semantic." },
+        "is_semantic_candidate": { "type": "boolean" },
+        "source": { "$ref": "#/$defs/source" },
+        "raw_text": { "type": "string" },
+        "raw_geometry": { "$ref": "#/$defs/geometry" },
+        "extraction_confidence": { "type": "number" },
+        "raw_properties": { "type": "object", "additionalProperties": { "type": "string" } },
+        "evidence": { "type": "array", "items": { "type": "object" } },
+        "reason_codes": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

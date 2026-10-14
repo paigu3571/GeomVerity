@@ -1,0 +1,251 @@
+# SPDX-License-Identifier: MPL-2.0
+approved: true
+approved_by: 张田
+classes:
+- code: EXCLUDED
+  label: 排除
+  contains:
+  - 上空
+  exact:
+  - 面积
+  reason: 上空或非房名标注，不作为实际房间
+- code: SUBSTATION
+  label: 变电所
+  contains:
+  - 变电所
+  - 变配电所
+  - 变配电室
+  - 变压器室
+  - 配变电所
+  - 变配电房
+- code: DISTRIBUTION_ROOM
+  label: 配电室
+  contains:
+  - 低压配电室
+  - 高压配电室
+  - 配电室
+  - 配电房
+  - 开关站
+  - 开闭所
+- code: ELECTRICAL_SHAFT
+  label: 电气竖井
+  contains:
+  - 强电井
+  - 电气竖井
+  - 电井
+- code: WEAK_CURRENT_ROOM
+  label: 弱电房间
+  confirmed_by: 张田
+  contains:
+  - 信号覆盖机房
+  - 广电机房
+  - 弱电机房
+  - 电信间
+  - 三网合一机房
+  - 消防控制室
+- code: SMALL_ELECTRICAL_ROOM
+  label: 配电小间
+  confirmed_by: 张田
+  contains:
+  - 电表间
+  - 电气间
+  - 配电间
+- code: ARCHITECTURAL_ROOM
+  label: 建筑房间
+  contains:
+  - 光厅
+  - 前室
+  - 检修间
+  - 电梯厅
+  - 老年人日间照料中心
+  - 设备用房
+  - 走道
+  confirmed_by: 张田
+- code: HVAC_SHAFT
+  label: 暖通井道
+  contains:
+  - 风井
+  confirmed_by: 张田
+- code: HVAC_ROOM
+  label: 暖通房间
+  contains:
+  - 风机房
+  confirmed_by: 张田
+- code: PLUMBING_ROOM
+  label: 给排水房间
+  contains:
+  - 报警阀间
+  - 水泵房
+  confirmed_by: 张田
+- code: NOT_INCLUDED
+  label: 未纳入
+  contains:
+  - 电气用房
+  - 弱电间
+water_candidates:
+  names:
+  - 厕所
+  - 卫生间
+  - 浴室
+  - 厨房
+  - 水泵房
+  - 生活水箱间
+  - 消防水池
+  needs_confirmation:
+  - 水泵房
+  - 生活水箱间
+  - 消防水池
+  approved: true
+  approved_by: 张田
+  scope: 仅用水风险候选，不等于经常有水且可能漏水的专业事实
+confirmed_names:
+  2#公变配电房:
+    category: SUBSTATION
+    secondary_label: 变配电房
+  3#公变配电房:
+    category: SUBSTATION
+    secondary_label: 变配电房
+  三网合一机房:
+    category: WEAK_CURRENT_ROOM
+    secondary_label: 三网合一机房
+  三网合一机房上空:
+    category: EXCLUDED
+    secondary_label: 上空
+  专变配电房:
+    category: SUBSTATION
+    secondary_label: 变配电房
+  信号覆盖机房:
+    category: WEAK_CURRENT_ROOM
+    secondary_label: 信号覆盖机房
+  充电桩电表间:
+    category: SMALL_ELECTRICAL_ROOM
+    secondary_label: 电表间
+  充电桩配电房:
+    category: DISTRIBUTION_ROOM
+    secondary_label: 配电房
+  光厅:
+    category: ARCHITECTURAL_ROOM
+    secondary_label: 光厅
+  公变配电房:
+    category: SUBSTATION
+    secondary_label: 变配电房
+  前室:
+    category: ARCHITECTURAL_ROOM
+    secondary_label: 前室
+  前室上空:
+    category: EXCLUDED
+    secondary_label: 上空
+  加压送风井:
+    category: HVAC_SHAFT
+    secondary_label: 风井
+  加压送风机房:
+    category: HVAC_ROOM
+    secondary_label: 风机房
+  合用前室:
+    category: ARCHITECTURAL_ROOM
+    secondary_label: 前室
+  商业电气间:
+    category: SMALL_ELECTRICAL_ROOM
+    secondary_label: 电气间
+  商业电表间:
+    category: SMALL_ELECTRICAL_ROOM
+    secondary_label: 电表间
+  商业配电房:
+    category: DISTRIBUTION_ROOM
+    secondary_label: 配电房
+  广电机房:
+    category: WEAK_CURRENT_ROOM
+    secondary_label: 广电机房
+  报警阀间:
+    category: PLUMBING_ROOM
+    secondary_label: 报警阀间
+  排风井:
+    category: HVAC_SHAFT
+    secondary_label: 风井
+  排风排烟井:
+    category: HVAC_SHAFT
+    secondary_label: 风井
+  排风排烟机房:
+    category: HVAC_ROOM
+    secondary_label: 风机房
+  排风机房:
+    category: HVAC_ROOM
+    secondary_label: 风机房
+  检修间:
+    category: ARCHITECTURAL_ROOM
+    secondary_label: 检修间
+  水井上空:
+    category: EXCLUDED
+    secondary_label: 上空
+  消防控制室:
+    category: WEAK_CURRENT_ROOM
+    secondary_label: 消防控制室
+  消防泵房:
+    category: PLUMBING_ROOM
+    secondary_label: 水泵房
+  生活水泵房:
+    category: PLUMBING_ROOM
+    secondary_label: 水泵房
+  电井上空:
+    category: EXCLUDED
+    secondary_label: 上空
+  电梯井上空:
+    category: EXCLUDED
+    secondary_label: 上空
+  电梯厅:
+    category: ARCHITECTURAL_ROOM
+    secondary_label: 电梯厅
+  电梯厅上空:
+    category: EXCLUDED
+    secondary_label: 上空
+  电气进线间:
+    category: SMALL_ELECTRICAL_ROOM
+    secondary_label: 电气间
+  电气间:
+    category: SMALL_ELECTRICAL_ROOM
+    secondary_label: 电气间
+  电气间上空:
+    category: EXCLUDED
+    secondary_label: 上空
+  电表间:
+    category: SMALL_ELECTRICAL_ROOM
+    secondary_label: 电表间
+  穿管电气间:
+    category: SMALL_ELECTRICAL_ROOM
+    secondary_label: 电气间
+  老年人日间照料中心:
+    category: ARCHITECTURAL_ROOM
+    secondary_label: 老年人日间照料中心
+  设备用房:
+    category: ARCHITECTURAL_ROOM
+    secondary_label: 设备用房
+  走道:
+    category: ARCHITECTURAL_ROOM
+    secondary_label: 走道
+  送风井:
+    category: HVAC_SHAFT
+    secondary_label: 风井
+  送风机房:
+    category: HVAC_ROOM
+    secondary_label: 风机房
+  采光井:
+    category: EXCLUDED
+    secondary_label: 上空
+  面积:
+    category: EXCLUDED
+    secondary_label: 面积
+  预留充电桩配电房:
+    category: DISTRIBUTION_ROOM
+    secondary_label: 配电房
+  预留设备用房:
+    category: ARCHITECTURAL_ROOM
+    secondary_label: 设备用房
+  预留设备间:
+    category: ARCHITECTURAL_ROOM
+    secondary_label: 设备用房
+  风井:
+    category: HVAC_SHAFT
+    secondary_label: 风井
+approval_scope: 房名一级/二级用途分类；不批准规范规则、几何或用水风险判定
+approval_source: eval/room-use-review.xlsx
+approval_source_sha256: 6ec1ef66020d85caa5bec9ebe24dea9da10b61f6ecf96629df5f0818b475a54a

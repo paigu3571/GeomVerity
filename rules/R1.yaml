@@ -1,0 +1,24 @@
+# SPDX-License-Identifier: MPL-2.0
+id: R1
+title: 长度大于7m配电室的出入口数量
+clauses:
+- code: GB 55024-2022
+  article: 3.2.1第1款
+  text: 配电室、电容器室长度大于7m时，应至少设置两个出入口。
+  strength: 应
+  code_version: '2022'
+applies_to:
+- DISTRIBUTION_ROOM
+- SUBSTATION
+check:
+  when:
+    predicate: long_side_gt
+    threshold: 7.0
+  require:
+    predicate: opening_count_ge
+    value: 2
+on_missing: 缺少可用房间长度或完整出入口信息
+scope: 张田于2026-10-12确认，按地区房名习惯将配电房与变配电房联合纳入辅助检查；不修改所引条文原文。；配电房与变配电房数量辅助初查；轮廓尺寸与门洞为候选，未确认有效出入口/净长不得据此宣称合规，不查两端布置
+approved: true
+approved_by: 张田
+rule_version: '1'

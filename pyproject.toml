@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cad-semantic-trace"
+version = "0.3.0"
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.13,<3", "PyYAML>=6,<7", "httpx>=0.28,<1", "shapely>=2.1,<3"]
+license = "MPL-2.0"
+authors = [{name = "张田"}]
+maintainers = [{name = "张田"}]
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.26,<2"]
+dxf = ["ezdxf>=1.4,<2"]
+desktop = ["pywebview>=6,<7"]
+
+[tool.setuptools.packages.find]
+where = ["python"]
+
+[tool.setuptools.package-data]
+cst = ["*.html", "*.yaml", "resources/rules/*.yaml", "resources/rules/drafts/*.yaml"]

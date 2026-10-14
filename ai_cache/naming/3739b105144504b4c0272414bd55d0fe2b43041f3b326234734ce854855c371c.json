@@ -1,0 +1,243 @@
+{
+  "origin": "REAL_API",
+  "kind": "NAMING_PROPOSAL",
+  "request_sha256": "3739b105144504b4c0272414bd55d0fe2b43041f3b326234734ce854855c371c",
+  "model": "deepseek-flash",
+  "source": {
+    "names": [
+      "光厅",
+      "公变配电房",
+      "前室",
+      "前室上空",
+      "加压送风井",
+      "加压送风机房",
+      "变配电室",
+      "合用前室",
+      "商业电气间",
+      "商业电表间",
+      "商业配电房",
+      "广电机房",
+      "报警阀间",
+      "排风井",
+      "排风排烟井",
+      "排风排烟机房",
+      "排风机房",
+      "检修间",
+      "水井上空",
+      "水泵房"
+    ],
+    "categories": {
+      "EXCLUDED": "排除",
+      "SUBSTATION": "变电所",
+      "DISTRIBUTION_ROOM": "配电室",
+      "ELECTRICAL_SHAFT": "电气竖井",
+      "WEAK_CURRENT_ROOM": "弱电房间",
+      "SMALL_ELECTRICAL_ROOM": "配电小间",
+      "ARCHITECTURAL_ROOM": "建筑房间",
+      "HVAC_SHAFT": "暖通井道",
+      "HVAC_ROOM": "暖通房间",
+      "PLUMBING_ROOM": "给排水房间",
+      "NOT_INCLUDED": "未纳入",
+      "UNKNOWN": "用途无法判断"
+    }
+  },
+  "answer": {
+    "rows": [
+      {
+        "name": "光厅",
+        "category": "UNKNOWN",
+        "reason": "名称含义不明确，无法判断用途",
+        "confidence": 0.2,
+        "needs_review": true
+      },
+      {
+        "name": "公变配电房",
+        "category": "SUBSTATION",
+        "reason": "公共变压器配电房，属变电所",
+        "confidence": 0.9,
+        "needs_review": true
+      },
+      {
+        "name": "前室",
+        "category": "ARCHITECTURAL_ROOM",
+        "reason": "建筑疏散前室，属建筑房间",
+        "confidence": 0.9,
+        "needs_review": true
+      },
+      {
+        "name": "前室上空",
+        "category": "ARCHITECTURAL_ROOM",
+        "reason": "前室上空空间，属建筑房间",
+        "confidence": 0.8,
+        "needs_review": true
+      },
+      {
+        "name": "加压送风井",
+        "category": "HVAC_SHAFT",
+        "reason": "加压送风竖井，属暖通井道",
+        "confidence": 0.9,
+        "needs_review": true
+      },
+      {
+        "name": "加压送风机房",
+        "category": "HVAC_ROOM",
+        "reason": "加压送风机房，属暖通房间",
+        "confidence": 0.9,
+        "needs_review": true
+      },
+      {
+        "name": "变配电室",
+        "category": "SUBSTATION",
+        "reason": "变配电室，属变电所",
+        "confidence": 0.9,
+        "needs_review": true
+      },
+      {
+        "name": "合用前室",
+        "category": "ARCHITECTURAL_ROOM",
+        "reason": "合用前室，属建筑房间",
+        "confidence": 0.9,
+        "needs_review": true
+      },
+      {
+        "name": "商业电气间",
+        "category": "SMALL_ELECTRICAL_ROOM",
+        "reason": "商业电气小间，属配电小间",
+        "confidence": 0.8,
+        "needs_review": true
+      },
+      {
+        "name": "商业电表间",
+        "category": "SMALL_ELECTRICAL_ROOM",
+        "reason": "商业电表间，属配电小间",
+        "confidence": 0.8,
+        "needs_review": true
+      },
+      {
+        "name": "商业配电房",
+        "category": "DISTRIBUTION_ROOM",
+        "reason": "商业配电房，属配电室",
+        "confidence": 0.9,
+        "needs_review": true
+      },
+      {
+        "name": "广电机房",
+        "category": "WEAK_CURRENT_ROOM",
+        "reason": "广电机房，属弱电房间",
+        "confidence": 0.8,
+        "needs_review": true
+      },
+      {
+        "name": "报警阀间",
+        "category": "PLUMBING_ROOM",
+        "reason": "报警阀间，属给排水房间",
+        "confidence": 0.8,
+        "needs_review": true
+      },
+      {
+        "name": "排风井",
+        "category": "HVAC_SHAFT",
+        "reason": "排风竖井，属暖通井道",
+        "confidence": 0.9,
+        "needs_review": true
+      },
+      {
+        "name": "排风排烟井",
+        "category": "HVAC_SHAFT",
+        "reason": "排风排烟竖井，属暖通井道",
+        "confidence": 0.9,
+        "needs_review": true
+      },
+      {
+        "name": "排风排烟机房",
+        "category": "HVAC_ROOM",
+        "reason": "排风排烟机房，属暖通房间",
+        "confidence": 0.9,
+        "needs_review": true
+      },
+      {
+        "name": "排风机房",
+        "category": "HVAC_ROOM",
+        "reason": "排风机房，属暖通房间",
+        "confidence": 0.9,
+        "needs_review": true
+      },
+      {
+        "name": "检修间",
+        "category": "UNKNOWN",
+        "reason": "检修间用途不明确，无法判断",
+        "confidence": 0.3,
+        "needs_review": true
+      },
+      {
+        "name": "水井上空",
+        "category": "PLUMBING_ROOM",
+        "reason": "水井上空，属给排水房间",
+        "confidence": 0.7,
+        "needs_review": true
+      },
+      {
+        "name": "水泵房",
+        "category": "PLUMBING_ROOM",
+        "reason": "水泵房，属给排水房间",
+        "confidence": 0.9,
+        "needs_review": true
+      }
+    ]
+  },
+  "valid": true,
+  "validation_errors": [],
+  "transcript": [
+    {
+      "request": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "你是建筑术语提议助手，只分类房名，不判断几何或合规。类别只能选给定类别或UNKNOWN；不了解时选UNKNOWN。返回JSON对象rows，每项{name,category,reason,confidence,needs_review}。confidence为0到1数字，needs_review必须true。每个输入房名恰好一次，理由简短。不要自行批准。"
+          },
+          {
+            "role": "user",
+            "content": "{\"names\": [\"光厅\", \"公变配电房\", \"前室\", \"前室上空\", \"加压送风井\", \"加压送风机房\", \"变配电室\", \"合用前室\", \"商业电气间\", \"商业电表间\", \"商业配电房\", \"广电机房\", \"报警阀间\", \"排风井\", \"排风排烟井\", \"排风排烟机房\", \"排风机房\", \"检修间\", \"水井上空\", \"水泵房\"], \"categories\": {\"EXCLUDED\": \"排除\", \"SUBSTATION\": \"变电所\", \"DISTRIBUTION_ROOM\": \"配电室\", \"ELECTRICAL_SHAFT\": \"电气竖井\", \"WEAK_CURRENT_ROOM\": \"弱电房间\", \"SMALL_ELECTRICAL_ROOM\": \"配电小间\", \"ARCHITECTURAL_ROOM\": \"建筑房间\", \"HVAC_SHAFT\": \"暖通井道\", \"HVAC_ROOM\": \"暖通房间\", \"PLUMBING_ROOM\": \"给排水房间\", \"NOT_INCLUDED\": \"未纳入\", \"UNKNOWN\": \"用途无法判断\"}}"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 8192,
+        "thinking": {
+          "type": "disabled"
+        },
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "response": {
+        "id": "903a4097-d3c6-411f-b59a-b95a4d2c256f",
+        "object": "chat.completion",
+        "created": 1791887429,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"rows\": [\n    {\n      \"name\": \"光厅\",\n      \"category\": \"UNKNOWN\",\n      \"reason\": \"名称含义不明确，无法判断用途\",\n      \"confidence\": 0.2,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"公变配电房\",\n      \"category\": \"SUBSTATION\",\n      \"reason\": \"公共变压器配电房，属变电所\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"前室\",\n      \"category\": \"ARCHITECTURAL_ROOM\",\n      \"reason\": \"建筑疏散前室，属建筑房间\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"前室上空\",\n      \"category\": \"ARCHITECTURAL_ROOM\",\n      \"reason\": \"前室上空空间，属建筑房间\",\n      \"confidence\": 0.8,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"加压送风井\",\n      \"category\": \"HVAC_SHAFT\",\n      \"reason\": \"加压送风竖井，属暖通井道\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"加压送风机房\",\n      \"category\": \"HVAC_ROOM\",\n      \"reason\": \"加压送风机房，属暖通房间\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"变配电室\",\n      \"category\": \"SUBSTATION\",\n      \"reason\": \"变配电室，属变电所\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"合用前室\",\n      \"category\": \"ARCHITECTURAL_ROOM\",\n      \"reason\": \"合用前室，属建筑房间\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"商业电气间\",\n      \"category\": \"SMALL_ELECTRICAL_ROOM\",\n      \"reason\": \"商业电气小间，属配电小间\",\n      \"confidence\": 0.8,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"商业电表间\",\n      \"category\": \"SMALL_ELECTRICAL_ROOM\",\n      \"reason\": \"商业电表间，属配电小间\",\n      \"confidence\": 0.8,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"商业配电房\",\n      \"category\": \"DISTRIBUTION_ROOM\",\n      \"reason\": \"商业配电房，属配电室\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"广电机房\",\n      \"category\": \"WEAK_CURRENT_ROOM\",\n      \"reason\": \"广电机房，属弱电房间\",\n      \"confidence\": 0.8,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"报警阀间\",\n      \"category\": \"PLUMBING_ROOM\",\n      \"reason\": \"报警阀间，属给排水房间\",\n      \"confidence\": 0.8,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"排风井\",\n      \"category\": \"HVAC_SHAFT\",\n      \"reason\": \"排风竖井，属暖通井道\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"排风排烟井\",\n      \"category\": \"HVAC_SHAFT\",\n      \"reason\": \"排风排烟竖井，属暖通井道\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"排风排烟机房\",\n      \"category\": \"HVAC_ROOM\",\n      \"reason\": \"排风排烟机房，属暖通房间\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"排风机房\",\n      \"category\": \"HVAC_ROOM\",\n      \"reason\": \"排风机房，属暖通房间\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"检修间\",\n      \"category\": \"UNKNOWN\",\n      \"reason\": \"检修间用途不明确，无法判断\",\n      \"confidence\": 0.3,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"水井上空\",\n      \"category\": \"PLUMBING_ROOM\",\n      \"reason\": \"水井上空，属给排水房间\",\n      \"confidence\": 0.7,\n      \"needs_review\": true\n    },\n    {\n      \"name\": \"水泵房\",\n      \"category\": \"PLUMBING_ROOM\",\n      \"reason\": \"水泵房，属给排水房间\",\n      \"confidence\": 0.9,\n      \"needs_review\": true\n    }\n  ]\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 360,
+          "completion_tokens": 1147,
+          "total_tokens": 1507,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 360
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      }
+    }
+  ]
+}

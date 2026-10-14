@@ -1,0 +1,239 @@
+{
+  "origin": "REAL_API",
+  "kind": "RULE_DRAFT",
+  "model": "deepseek-flash",
+  "source": {
+    "text": "电气竖井不应与电梯井、其他专业管道井共用同一竖井。",
+    "code": "GB 55024-2022",
+    "article": "6.2.8第1款"
+  },
+  "transcript": [
+    {
+      "request": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "只能将一条规范起草为JSON规则，不审批。输出{status:'draft'或'needs_new_predicate',reason:'原因',rule:对象或null}。\n规则对象：id,title,approved:false,approved_by:null,clauses:[{code,article,text,strength:'应'或'宜'}],applies_to:[用途],check,on_missing,scope。\n规范号/条号/正文必须原样使用用户source，不猜待核引用。用途仅SUBSTATION,DISTRIBUTION_ROOM,ELECTRICAL_SHAFT,ELEVATOR_SHAFT,OTHER_SERVICE_SHAFT,HOT_FLUE,HEAT_ROOM,TOILET,BATHROOM,KITCHEN。\n只有六个条件：space_use_in(values用途列表),long_side_gt(threshold房间净长米),opening_count_ge(value出入口整数),adjacent_to_use(values贴邻用途),directly_below_use(values上一层用途),shaft_shared_with(values共井用途)。不能用房间长度条件去判断电流/电压/温度。否定关系用expect:false。\ncheck为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}；禁止任意代码、多个未知条件或含糊地用相邻代替共井。\n已有条件表达不了必须needs_new_predicate并rule:null。有可表达条件但缺输入属于on_missing，不新增识别模块。scope说明只是条件初查，缺资料不推定通过。"
+          },
+          {
+            "role": "user",
+            "content": "{\"text\": \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\", \"code\": \"GB 55024-2022\", \"article\": \"6.2.8第1款\"}"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 1800,
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "response": {
+        "id": "b6ea7c0f-3dda-4cbf-a59c-519f02fc0b63",
+        "object": "chat.completion",
+        "created": 1791737844,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "reasoning_content": "We need answer user. Need parse request. They gave text, code, article. We need draft one specification as JSON rule, not approve. Output status draft or needs_new_predicate. Need use source exactly. Rule object fields id,title,approved:false,approved_by:null,clauses:[{code,article,text,strength:'应'或'宜'}],applies_to:[用途],check,on_missing,scope.\n\nWe need decide predicate. Text: 电气竖井不应与电梯井、其他专业管道井共用同一竖井。 Meaning electrical shaft should not share same shaft with elevator shaft or other professional pipe shafts. This is about ELECTRICAL_SHAFT sharing with ELEVATOR_SHAFT or other service shafts? Condition shaft_shared_with(values共井用途). Predicate exists: shaft_shared_with(values用途列表). Need express \"电气竖井不应与电梯井、其他专业管道井共用同一竖井.\" We need applies_to likely ELECTRICAL_SHAFT. check: when space_use_in? Hmm rule applies to electrical shaft? The condition is shaft_shared_with. We need define check. For a given space? The six conditions include space_use_in(values用途列表), shaft_shared_with(values共井用途). To evaluate for electrical shaft: maybe check {when:{space_use_in:[ELECTRICAL_SHAFT]}, require:{shaft_shared_with:{expect:false, values:[ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT]}}}. But we need know schema exactly. They said check为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}；否定关系用expect:false. Predicates: space_use_in(values用途列表), long_side_gt(threshold房间净长米), opening_count_ge(value出入口整数), adjacent_to_use(values贴邻用途), directly_below_use(values上一层用途), shaft_shared_with(values共井用途). Could do check: {predicate: \"shaft_shared_with\", values: [\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"], expect:false}? But applies to electrical shaft. Need maybe applies_to:[\"ELECTRICAL_SHAFT\"]. If the rule is for electrical shaft, check shaft_shared_with with expect false. But \"其他专业管道井\" maps to OTHER_SERVICE_SHAFT? There is OTHER_SERVICE_SHAFT in allowed uses. Could also include HEAT_ROOM? No, \"其他专业管道井\" generic. Allowed用途 includes OTHER_SERVICE_SHAFT. \"电气竖井\" is ELECTRICAL_SHAFT. \"电梯井\" is ELEVATOR_SHAFT. \"其他专业管道井\" = OTHER_SERVICE_SHAFT. Also maybe \"电气竖井不应与电梯井、其他专业管道井共用同一竖井\" means electrical shaft shouldn't share with elevator shaft or other professional pipe shafts. Values: [\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"]. If shared with any, violation. Use expect:false.\n\nNeed decide if needs_new_predicate? The condition shaft_shared_with can express \"共井用途\". Yes. Need no new predicate.\n\nNeed determine strength. Text \"不应\" maps to '应'? They said strength:'应'或'宜'. \"不应\" is equivalent to '应' with negative expectation. So strength:'应'. Clause text exactly: \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\" Code and article exactly. id? Need generate. Could be \"GB55024-2022-6.2.8-1\" or similar. title maybe \"电气竖井不应与电梯井、其他专业管道井共用同一竖井\". Need rule id. No specified format. Use code-article derived? e.g. \"GB55024-2022-6.2.8-1\". Title same text. approved false approved_by null. clauses array with code \"GB 55024-2022\", article \"6.2.8第1款\", text exact, strength '应'. applies_to [\"ELECTRICAL_SHAFT\"].\n\nCheck: Need choose structure. The condition can be direct: {\"predicate\":\"shaft_shared_with\",\"values\":[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"],\"expect\":false}. But does it need scope? The check applies to electrical shaft? applies_to handles subject. Or perhaps check with when space_use_in ELECTRICAL_SHAFT require shaft_shared_with expect false. The instruction: check为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}. We can use when/require to clarify: when space_use_in(values [\"ELECTRICAL_SHAFT\"]), require shaft_shared_with(values [\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"], expect:false). But then applies_to also ELECTRICAL_SHAFT. Is that redundant? Maybe okay. However \"when\" as condition on the same space? If evaluating an electrical shaft, when space_use_in ELECTRICAL_SHAFT, require it does not share with those. That's good. But if check direct shaft_shared_with, no mention subject; applies_to identifies. The schema says check为... Could have direct predicate. They also require applies_to. I think use when/require makes explicit. But \"when\" predicate should be space_use_in values [ELECTRICAL_SHAFT]. Then require shaft_shared_with values ... expect false.\n\nBut note: \"电气竖井不应与电梯井、其他专业管道井共用同一竖井\" If the subject is electrical shaft, require not shared with elevator/other service shaft. If the space is elevator shaft? Not applies. So when space_use_in ELECTRICAL_SHAFT is fine. However if evaluating the electrical shaft, shaft_shared_with means list of uses sharing that shaft. If shared with ELEVATOR_SHAFT or OTHER_SERVICE_SHAFT, violation. expect:false. Good.\n\nPotential issue: \"其他专业管道井\" generic might include water, HVAC, etc. Allowed uses only OTHER_SERVICE_SHAFT. Could map to OTHER_SERVICE_SHAFT. But also could include ELECTRICAL_SHAFT? \"其他专业管道井\" means non-electrical professional pipe shafts. Allowed OTHER_SERVICE_SHAFT. There is no separate \"water shaft\", \"HVAC shaft\". So use OTHER_SERVICE_SHAFT. Could also include all shaft types except ELECTRICAL_SHAFT? Allowed uses include DISTRIBUTION_ROOM? no. ELECTRICAL_SHAFT, ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT. Maybe also HOT_FLUE? That's flue. \"其他专业管道井\" could be OTHER_SERVICE_SHAFT. But if shared with HOT_FLUE? Not professional pipe shaft. No.\n\nNeed on_missing. Need define. \"on_missing\" maybe what to do if missing data. The instruction: \"有可表达条件但缺输入属于on_missing，不新增识别模块。scope说明只是条件初查，缺资料不推定通过。\" We need include on_missing value. Schema not specified exact type. Could be string? They said rule object fields ... check,on_missing,scope. Need decide. Maybe on_missing: \"missing_shaft_shared_with\" or \"needs_input\"? Need infer from prior tasks? This seems from some specification drafting schema. They likely expect on_missing string or object. We need be safe. The output schema only says JSON object. We can set on_missing: \"unknown\" maybe. But they might expect certain format. Let's examine wording: \"check,on_missing,scope。\" \"check为{...}...；...。scope说明只是条件初查，缺资料不推定通过。\" So on_missing likely describes behavior when missing data. Could be e.g. \"defer\" or \"manual_review\". Need decide.\n\nMaybe from system? They mention \"on_missing\" as field. Could be string like \"需人工确认\". But output schema not specified values. We can use \"needs_manual_review\" or \"unknown\". Need maybe include reason? They want JSON. We can set on_missing: \"missing_input\". But better: on_missing: \"无法判定，需补充电气竖井共井用途资料，不推定通过\". Scope: \"仅对电气竖井是否"
+            },
+            "logprobs": null,
+            "finish_reason": "length"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 425,
+          "completion_tokens": 1800,
+          "total_tokens": 2225,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1800
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 425
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      }
+    },
+    {
+      "request": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "只能将一条规范起草为JSON规则，不审批。输出{status:'draft'或'needs_new_predicate',reason:'原因',rule:对象或null}。\n规则对象：id,title,approved:false,approved_by:null,clauses:[{code,article,text,strength:'应'或'宜'}],applies_to:[用途],check,on_missing,scope。\n规范号/条号/正文必须原样使用用户source，不猜待核引用。用途仅SUBSTATION,DISTRIBUTION_ROOM,ELECTRICAL_SHAFT,ELEVATOR_SHAFT,OTHER_SERVICE_SHAFT,HOT_FLUE,HEAT_ROOM,TOILET,BATHROOM,KITCHEN。\n只有六个条件：space_use_in(values用途列表),long_side_gt(threshold房间净长米),opening_count_ge(value出入口整数),adjacent_to_use(values贴邻用途),directly_below_use(values上一层用途),shaft_shared_with(values共井用途)。不能用房间长度条件去判断电流/电压/温度。否定关系用expect:false。\ncheck为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}；禁止任意代码、多个未知条件或含糊地用相邻代替共井。\n已有条件表达不了必须needs_new_predicate并rule:null。有可表达条件但缺输入属于on_missing，不新增识别模块。scope说明只是条件初查，缺资料不推定通过。"
+          },
+          {
+            "role": "user",
+            "content": "{\"text\": \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\", \"code\": \"GB 55024-2022\", \"article\": \"6.2.8第1款\"}"
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "We need answer user. Need parse request. They gave text, code, article. We need draft one specification as JSON rule, not approve. Output status draft or needs_new_predicate. Need use source exactly. Rule object fields id,title,approved:false,approved_by:null,clauses:[{code,article,text,strength:'应'或'宜'}],applies_to:[用途],check,on_missing,scope.\n\nWe need decide predicate. Text: 电气竖井不应与电梯井、其他专业管道井共用同一竖井。 Meaning electrical shaft should not share same shaft with elevator shaft or other professional pipe shafts. This is about ELECTRICAL_SHAFT sharing with ELEVATOR_SHAFT or other service shafts? Condition shaft_shared_with(values共井用途). Predicate exists: shaft_shared_with(values用途列表). Need express \"电气竖井不应与电梯井、其他专业管道井共用同一竖井.\" We need applies_to likely ELECTRICAL_SHAFT. check: when space_use_in? Hmm rule applies to electrical shaft? The condition is shaft_shared_with. We need define check. For a given space? The six conditions include space_use_in(values用途列表), shaft_shared_with(values共井用途). To evaluate for electrical shaft: maybe check {when:{space_use_in:[ELECTRICAL_SHAFT]}, require:{shaft_shared_with:{expect:false, values:[ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT]}}}. But we need know schema exactly. They said check为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}；否定关系用expect:false. Predicates: space_use_in(values用途列表), long_side_gt(threshold房间净长米), opening_count_ge(value出入口整数), adjacent_to_use(values贴邻用途), directly_below_use(values上一层用途), shaft_shared_with(values共井用途). Could do check: {predicate: \"shaft_shared_with\", values: [\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"], expect:false}? But applies to electrical shaft. Need maybe applies_to:[\"ELECTRICAL_SHAFT\"]. If the rule is for electrical shaft, check shaft_shared_with with expect false. But \"其他专业管道井\" maps to OTHER_SERVICE_SHAFT? There is OTHER_SERVICE_SHAFT in allowed uses. Could also include HEAT_ROOM? No, \"其他专业管道井\" generic. Allowed用途 includes OTHER_SERVICE_SHAFT. \"电气竖井\" is ELECTRICAL_SHAFT. \"电梯井\" is ELEVATOR_SHAFT. \"其他专业管道井\" = OTHER_SERVICE_SHAFT. Also maybe \"电气竖井不应与电梯井、其他专业管道井共用同一竖井\" means electrical shaft shouldn't share with elevator shaft or other professional pipe shafts. Values: [\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"]. If shared with any, violation. Use expect:false.\n\nNeed decide if needs_new_predicate? The condition shaft_shared_with can express \"共井用途\". Yes. Need no new predicate.\n\nNeed determine strength. Text \"不应\" maps to '应'? They said strength:'应'或'宜'. \"不应\" is equivalent to '应' with negative expectation. So strength:'应'. Clause text exactly: \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\" Code and article exactly. id? Need generate. Could be \"GB55024-2022-6.2.8-1\" or similar. title maybe \"电气竖井不应与电梯井、其他专业管道井共用同一竖井\". Need rule id. No specified format. Use code-article derived? e.g. \"GB55024-2022-6.2.8-1\". Title same text. approved false approved_by null. clauses array with code \"GB 55024-2022\", article \"6.2.8第1款\", text exact, strength '应'. applies_to [\"ELECTRICAL_SHAFT\"].\n\nCheck: Need choose structure. The condition can be direct: {\"predicate\":\"shaft_shared_with\",\"values\":[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"],\"expect\":false}. But does it need scope? The check applies to electrical shaft? applies_to handles subject. Or perhaps check with when space_use_in ELECTRICAL_SHAFT require shaft_shared_with expect false. The instruction: check为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}. We can use when/require to clarify: when space_use_in(values [\"ELECTRICAL_SHAFT\"]), require shaft_shared_with(values [\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"], expect:false). But then applies_to also ELECTRICAL_SHAFT. Is that redundant? Maybe okay. However \"when\" as condition on the same space? If evaluating an electrical shaft, when space_use_in ELECTRICAL_SHAFT, require it does not share with those. That's good. But if check direct shaft_shared_with, no mention subject; applies_to identifies. The schema says check为... Could have direct predicate. They also require applies_to. I think use when/require makes explicit. But \"when\" predicate should be space_use_in values [ELECTRICAL_SHAFT]. Then require shaft_shared_with values ... expect false.\n\nBut note: \"电气竖井不应与电梯井、其他专业管道井共用同一竖井\" If the subject is electrical shaft, require not shared with elevator/other service shaft. If the space is elevator shaft? Not applies. So when space_use_in ELECTRICAL_SHAFT is fine. However if evaluating the electrical shaft, shaft_shared_with means list of uses sharing that shaft. If shared with ELEVATOR_SHAFT or OTHER_SERVICE_SHAFT, violation. expect:false. Good.\n\nPotential issue: \"其他专业管道井\" generic might include water, HVAC, etc. Allowed uses only OTHER_SERVICE_SHAFT. Could map to OTHER_SERVICE_SHAFT. But also could include ELECTRICAL_SHAFT? \"其他专业管道井\" means non-electrical professional pipe shafts. Allowed OTHER_SERVICE_SHAFT. There is no separate \"water shaft\", \"HVAC shaft\". So use OTHER_SERVICE_SHAFT. Could also include all shaft types except ELECTRICAL_SHAFT? Allowed uses include DISTRIBUTION_ROOM? no. ELECTRICAL_SHAFT, ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT. Maybe also HOT_FLUE? That's flue. \"其他专业管道井\" could be OTHER_SERVICE_SHAFT. But if shared with HOT_FLUE? Not professional pipe shaft. No.\n\nNeed on_missing. Need define. \"on_missing\" maybe what to do if missing data. The instruction: \"有可表达条件但缺输入属于on_missing，不新增识别模块。scope说明只是条件初查，缺资料不推定通过。\" We need include on_missing value. Schema not specified exact type. Could be string? They said rule object fields ... check,on_missing,scope. Need decide. Maybe on_missing: \"missing_shaft_shared_with\" or \"needs_input\"? Need infer from prior tasks? This seems from some specification drafting schema. They likely expect on_missing string or object. We need be safe. The output schema only says JSON object. We can set on_missing: \"unknown\" maybe. But they might expect certain format. Let's examine wording: \"check,on_missing,scope。\" \"check为{...}...；...。scope说明只是条件初查，缺资料不推定通过。\" So on_missing likely describes behavior when missing data. Could be e.g. \"defer\" or \"manual_review\". Need decide.\n\nMaybe from system? They mention \"on_missing\" as field. Could be string like \"需人工确认\". But output schema not specified values. We can use \"needs_manual_review\" or \"unknown\". Need maybe include reason? They want JSON. We can set on_missing: \"missing_input\". But better: on_missing: \"无法判定，需补充电气竖井共井用途资料，不推定通过\". Scope: \"仅对电气竖井是否"
+          },
+          {
+            "role": "user",
+            "content": "格式校验失败，请重答：3 validation errors for DraftAnswer\nstatus\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nreason\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrule\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 1800,
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "response": {
+        "id": "fdd7127c-b094-4983-8eed-027d64066f1f",
+        "object": "chat.completion",
+        "created": 1791737854,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "reasoning_content": "We need answer JSON only. Need draft rule. User provided text: \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\" code GB 55024-2022 article 6.2.8第1款. Need output status, reason, rule object or null.\n\nWe need decide if expressible with predicates. We have shaft_shared_with(values共井用途).用途 list includes ELECTRICAL_SHAFT, ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT. Rule: electrical shaft should not share same shaft with elevator shaft, other professional pipe shafts. Predicate: shaft_shared_with values [ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT] expect false? Need applies_to [ELECTRICAL_SHAFT]. Check: when space_use_in([ELECTRICAL_SHAFT]) require shaft_shared_with values? Hmm check can be {predicate,...} or {when, require}. We need express \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\" Could be direct predicate: shaft_shared_with(values [ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT], expect:false). But shaft_shared_with likely applies to a shaft; need maybe when space_use_in [ELECTRICAL_SHAFT] require shaft_shared_with values [ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT] expect false? Actually require expects predicate true? We need understand schema from prior tasks? It says 否定关系用expect:false. check为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}。 So we can do {predicate:{name:\"shaft_shared_with\", values:[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"], expect:false}}? But predicate key maybe name? In examples likely \"predicate\": \"space_use_in\". The object includes predicate,... The type not fully specified. We need construct valid. Usually check: {\"predicate\":\"shaft_shared_with\",\"values\":[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"],\"expect\":false}. But then applies_to [ELECTRICAL_SHAFT] scopes it.\n\nAlternatively use when: {\"predicate\":\"space_use_in\",\"values\":[\"ELECTRICAL_SHAFT\"]}, require: {\"predicate\":\"shaft_shared_with\",\"values\":[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"],\"expect\":false}. This is more explicit: if space is electrical shaft, require it does not share with elevator/other service shaft. But shaft_shared_with itself likely applies to shafts. The clause talks electrical shaft. So applies_to: [\"ELECTRICAL_SHAFT\"]. check could be direct. However, on_missing: if no shared shaft info? Need define.\n\nText uses \"不应\" normative strength: \"应\" (with 不). Clause text exactly. id? Need create id? Usually id might be \"GB 55024-2022-6.2.8-1\" or something. User gave code/article. Need not guess? \"规范号/条号/正文必须原样使用用户source，不猜待核引用。\" We can set id as \"GB 55024-2022-6.2.8第1款\" maybe. But id likely unique. Use article? We need include clauses with code, article, text, strength. code \"GB 55024-2022\", article \"6.2.8第1款\", text exact, strength \"应\". id maybe same as article? Could be \"GB 55024-2022-6.2.8第1款\". That's derived but okay? They said 规范号/条号/正文原样使用. id may be generated. We can use \"GB 55024-2022-6.2.8第1款\".\n\napplies_to: [\"ELECTRICAL_SHAFT\"]. check: maybe {predicate:...}? Need decide.\n\non_missing: something like \"缺少电气竖井、电梯井或其他专业管道井的共井关系资料时，不推定通过，需补充核实。\" scope: \"仅依据共井用途条件初查；未提供各竖井实际共用关系时不能判定合规。\"\n\nstatus: \"draft\". reason: \"该条可用 shaft_shared_with 条件表达，直接禁止电气竖井与电梯井、其他专业管道井共井。\"\n\nNeed ensure JSON valid and no extra. The final answer should be only JSON object. The schema? They specifically said output {status:'draft'或'needs_new_predicate',reason:'原因',rule:对象或null}. So final must be exactly that. We can output JSON.\n\nPotential issue: \"其他专业管道井\" maps to OTHER_SERVICE_SHAFT. Yes. \"电梯井\" maps to ELEVATOR_SHAFT. \"电气竖井\" applies_to ELECTRICAL_SHAFT. \"共用同一竖井\" maps shaft_shared_with values. Good.\n\nNeed choose check representation. Since applies_to restricts to electrical shaft, check can be direct: {\"predicate\":\"shaft_shared_with\",\"values\":[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"],\"expect\":false}. If predicate semantics is \"shaft_shared_with(values共井用途)\" maybe it checks whether current shaft shares with those uses. expect:false means should not. That works. Alternatively need when. The direct check with applies_to is fine. The prompt says check为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}；禁止任意代码、多个未知条件或含糊地用相邻代替共井。 Direct single predicate with expect:false is allowed. However, to be safe and express condition fully, use when-require: when space_use_in ELECTRICAL_SHAFT, require shaft_shared_with values ... expect false. That adds space_use_in and shaft_shared_with. Both known. It explicitly handles if current space is electrical shaft. applies_to also does. But does \"when\" require predicate true? For when it's trigger. For require it's expected condition. For negative relation use expect:false in require. That seems robust. But if applies_to already restricts, then check direct is enough. Which is better? Let's consider if check direct with expect:false might be interpreted as \"shaft_shared_with not true\" for any space in applies_to. That is exactly. I think direct is acceptable. But maybe the validation expects \"check\" to be either {predicate: ...} or {when: ..., require: ...}. Direct predicate with expect false is okay.\n\nNeed include \"strength\": \"应\". Text \"不应\" -> strength \"应\" because negative can be expressed in check. Yes.\n\nLet's draft:\n\n{\n  \"status\": \"draft\",\n  \"reason\": \"该条可用 shaft_shared_with 条件表达，禁止电气竖井与电梯井、其他专业管道井共用同一竖井。\",\n  \"rule\": {\n    \"id\": \"GB 55024-2022-6.2.8第1款\",\n    \"title\": \"电气竖井不应与电梯井、其他专业管道井共用同一竖井\",\n    \"approved\": false,\n    \"approved_by\": null,\n    \"clauses\": [\n      {\n        \"code\": \"GB 55024-2022\",\n        \"article\": \"6.2.8第1款\",\n        \"text\": \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\",\n        \"strength\": \"应\"\n      }\n    ],\n    \"applies_to\": [\"ELECTRICAL_SHAFT\"],\n    \"check\": {\n      \"predicate\": \"shaft_shared_with\",\n      \"values\": [\"ELEVATOR_SHAFT\", \"OTHER_SERVICE_SHAFT\"],\n      \"expect\": false\n    },\n    \"on_missing\": \"缺少电气竖井与电梯井、其他专业管道井的共井关系资料时，不推定通过，需补充核实。\",\n    \"scope\": \"仅依据共井用途条件初查；未提供实际共用关系资料时不能判定合规。\"\n  }\n}\n\nNeed ensure \"title\" maybe original text. Fine.\n\nPotential issue: \"其他专业管道井\" maybe not exactly OTHER_SERVICE_SHAFT? Prompt defines OTHER_SERVICE_SHAFT. Yes.\n\nPotential issue: \"电梯井\" vs"
+            },
+            "logprobs": null,
+            "finish_reason": "length"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 560,
+          "completion_tokens": 1800,
+          "total_tokens": 2360,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1800
+          },
+          "prompt_cache_hit_tokens": 384,
+          "prompt_cache_miss_tokens": 176
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      }
+    },
+    {
+      "request": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "只能将一条规范起草为JSON规则，不审批。输出{status:'draft'或'needs_new_predicate',reason:'原因',rule:对象或null}。\n规则对象：id,title,approved:false,approved_by:null,clauses:[{code,article,text,strength:'应'或'宜'}],applies_to:[用途],check,on_missing,scope。\n规范号/条号/正文必须原样使用用户source，不猜待核引用。用途仅SUBSTATION,DISTRIBUTION_ROOM,ELECTRICAL_SHAFT,ELEVATOR_SHAFT,OTHER_SERVICE_SHAFT,HOT_FLUE,HEAT_ROOM,TOILET,BATHROOM,KITCHEN。\n只有六个条件：space_use_in(values用途列表),long_side_gt(threshold房间净长米),opening_count_ge(value出入口整数),adjacent_to_use(values贴邻用途),directly_below_use(values上一层用途),shaft_shared_with(values共井用途)。不能用房间长度条件去判断电流/电压/温度。否定关系用expect:false。\ncheck为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}；禁止任意代码、多个未知条件或含糊地用相邻代替共井。\n已有条件表达不了必须needs_new_predicate并rule:null。有可表达条件但缺输入属于on_missing，不新增识别模块。scope说明只是条件初查，缺资料不推定通过。"
+          },
+          {
+            "role": "user",
+            "content": "{\"text\": \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\", \"code\": \"GB 55024-2022\", \"article\": \"6.2.8第1款\"}"
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "We need answer user. Need parse request. They gave text, code, article. We need draft one specification as JSON rule, not approve. Output status draft or needs_new_predicate. Need use source exactly. Rule object fields id,title,approved:false,approved_by:null,clauses:[{code,article,text,strength:'应'或'宜'}],applies_to:[用途],check,on_missing,scope.\n\nWe need decide predicate. Text: 电气竖井不应与电梯井、其他专业管道井共用同一竖井。 Meaning electrical shaft should not share same shaft with elevator shaft or other professional pipe shafts. This is about ELECTRICAL_SHAFT sharing with ELEVATOR_SHAFT or other service shafts? Condition shaft_shared_with(values共井用途). Predicate exists: shaft_shared_with(values用途列表). Need express \"电气竖井不应与电梯井、其他专业管道井共用同一竖井.\" We need applies_to likely ELECTRICAL_SHAFT. check: when space_use_in? Hmm rule applies to electrical shaft? The condition is shaft_shared_with. We need define check. For a given space? The six conditions include space_use_in(values用途列表), shaft_shared_with(values共井用途). To evaluate for electrical shaft: maybe check {when:{space_use_in:[ELECTRICAL_SHAFT]}, require:{shaft_shared_with:{expect:false, values:[ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT]}}}. But we need know schema exactly. They said check为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}；否定关系用expect:false. Predicates: space_use_in(values用途列表), long_side_gt(threshold房间净长米), opening_count_ge(value出入口整数), adjacent_to_use(values贴邻用途), directly_below_use(values上一层用途), shaft_shared_with(values共井用途). Could do check: {predicate: \"shaft_shared_with\", values: [\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"], expect:false}? But applies to electrical shaft. Need maybe applies_to:[\"ELECTRICAL_SHAFT\"]. If the rule is for electrical shaft, check shaft_shared_with with expect false. But \"其他专业管道井\" maps to OTHER_SERVICE_SHAFT? There is OTHER_SERVICE_SHAFT in allowed uses. Could also include HEAT_ROOM? No, \"其他专业管道井\" generic. Allowed用途 includes OTHER_SERVICE_SHAFT. \"电气竖井\" is ELECTRICAL_SHAFT. \"电梯井\" is ELEVATOR_SHAFT. \"其他专业管道井\" = OTHER_SERVICE_SHAFT. Also maybe \"电气竖井不应与电梯井、其他专业管道井共用同一竖井\" means electrical shaft shouldn't share with elevator shaft or other professional pipe shafts. Values: [\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"]. If shared with any, violation. Use expect:false.\n\nNeed decide if needs_new_predicate? The condition shaft_shared_with can express \"共井用途\". Yes. Need no new predicate.\n\nNeed determine strength. Text \"不应\" maps to '应'? They said strength:'应'或'宜'. \"不应\" is equivalent to '应' with negative expectation. So strength:'应'. Clause text exactly: \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\" Code and article exactly. id? Need generate. Could be \"GB55024-2022-6.2.8-1\" or similar. title maybe \"电气竖井不应与电梯井、其他专业管道井共用同一竖井\". Need rule id. No specified format. Use code-article derived? e.g. \"GB55024-2022-6.2.8-1\". Title same text. approved false approved_by null. clauses array with code \"GB 55024-2022\", article \"6.2.8第1款\", text exact, strength '应'. applies_to [\"ELECTRICAL_SHAFT\"].\n\nCheck: Need choose structure. The condition can be direct: {\"predicate\":\"shaft_shared_with\",\"values\":[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"],\"expect\":false}. But does it need scope? The check applies to electrical shaft? applies_to handles subject. Or perhaps check with when space_use_in ELECTRICAL_SHAFT require shaft_shared_with expect false. The instruction: check为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}. We can use when/require to clarify: when space_use_in(values [\"ELECTRICAL_SHAFT\"]), require shaft_shared_with(values [\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"], expect:false). But then applies_to also ELECTRICAL_SHAFT. Is that redundant? Maybe okay. However \"when\" as condition on the same space? If evaluating an electrical shaft, when space_use_in ELECTRICAL_SHAFT, require it does not share with those. That's good. But if check direct shaft_shared_with, no mention subject; applies_to identifies. The schema says check为... Could have direct predicate. They also require applies_to. I think use when/require makes explicit. But \"when\" predicate should be space_use_in values [ELECTRICAL_SHAFT]. Then require shaft_shared_with values ... expect false.\n\nBut note: \"电气竖井不应与电梯井、其他专业管道井共用同一竖井\" If the subject is electrical shaft, require not shared with elevator/other service shaft. If the space is elevator shaft? Not applies. So when space_use_in ELECTRICAL_SHAFT is fine. However if evaluating the electrical shaft, shaft_shared_with means list of uses sharing that shaft. If shared with ELEVATOR_SHAFT or OTHER_SERVICE_SHAFT, violation. expect:false. Good.\n\nPotential issue: \"其他专业管道井\" generic might include water, HVAC, etc. Allowed uses only OTHER_SERVICE_SHAFT. Could map to OTHER_SERVICE_SHAFT. But also could include ELECTRICAL_SHAFT? \"其他专业管道井\" means non-electrical professional pipe shafts. Allowed OTHER_SERVICE_SHAFT. There is no separate \"water shaft\", \"HVAC shaft\". So use OTHER_SERVICE_SHAFT. Could also include all shaft types except ELECTRICAL_SHAFT? Allowed uses include DISTRIBUTION_ROOM? no. ELECTRICAL_SHAFT, ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT. Maybe also HOT_FLUE? That's flue. \"其他专业管道井\" could be OTHER_SERVICE_SHAFT. But if shared with HOT_FLUE? Not professional pipe shaft. No.\n\nNeed on_missing. Need define. \"on_missing\" maybe what to do if missing data. The instruction: \"有可表达条件但缺输入属于on_missing，不新增识别模块。scope说明只是条件初查，缺资料不推定通过。\" We need include on_missing value. Schema not specified exact type. Could be string? They said rule object fields ... check,on_missing,scope. Need decide. Maybe on_missing: \"missing_shaft_shared_with\" or \"needs_input\"? Need infer from prior tasks? This seems from some specification drafting schema. They likely expect on_missing string or object. We need be safe. The output schema only says JSON object. We can set on_missing: \"unknown\" maybe. But they might expect certain format. Let's examine wording: \"check,on_missing,scope。\" \"check为{...}...；...。scope说明只是条件初查，缺资料不推定通过。\" So on_missing likely describes behavior when missing data. Could be e.g. \"defer\" or \"manual_review\". Need decide.\n\nMaybe from system? They mention \"on_missing\" as field. Could be string like \"需人工确认\". But output schema not specified values. We can use \"needs_manual_review\" or \"unknown\". Need maybe include reason? They want JSON. We can set on_missing: \"missing_input\". But better: on_missing: \"无法判定，需补充电气竖井共井用途资料，不推定通过\". Scope: \"仅对电气竖井是否"
+          },
+          {
+            "role": "user",
+            "content": "格式校验失败，请重答：3 validation errors for DraftAnswer\nstatus\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nreason\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrule\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+          },
+          {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "We need answer JSON only. Need draft rule. User provided text: \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\" code GB 55024-2022 article 6.2.8第1款. Need output status, reason, rule object or null.\n\nWe need decide if expressible with predicates. We have shaft_shared_with(values共井用途).用途 list includes ELECTRICAL_SHAFT, ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT. Rule: electrical shaft should not share same shaft with elevator shaft, other professional pipe shafts. Predicate: shaft_shared_with values [ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT] expect false? Need applies_to [ELECTRICAL_SHAFT]. Check: when space_use_in([ELECTRICAL_SHAFT]) require shaft_shared_with values? Hmm check can be {predicate,...} or {when, require}. We need express \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\" Could be direct predicate: shaft_shared_with(values [ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT], expect:false). But shaft_shared_with likely applies to a shaft; need maybe when space_use_in [ELECTRICAL_SHAFT] require shaft_shared_with values [ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT] expect false? Actually require expects predicate true? We need understand schema from prior tasks? It says 否定关系用expect:false. check为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}。 So we can do {predicate:{name:\"shaft_shared_with\", values:[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"], expect:false}}? But predicate key maybe name? In examples likely \"predicate\": \"space_use_in\". The object includes predicate,... The type not fully specified. We need construct valid. Usually check: {\"predicate\":\"shaft_shared_with\",\"values\":[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"],\"expect\":false}. But then applies_to [ELECTRICAL_SHAFT] scopes it.\n\nAlternatively use when: {\"predicate\":\"space_use_in\",\"values\":[\"ELECTRICAL_SHAFT\"]}, require: {\"predicate\":\"shaft_shared_with\",\"values\":[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"],\"expect\":false}. This is more explicit: if space is electrical shaft, require it does not share with elevator/other service shaft. But shaft_shared_with itself likely applies to shafts. The clause talks electrical shaft. So applies_to: [\"ELECTRICAL_SHAFT\"]. check could be direct. However, on_missing: if no shared shaft info? Need define.\n\nText uses \"不应\" normative strength: \"应\" (with 不). Clause text exactly. id? Need create id? Usually id might be \"GB 55024-2022-6.2.8-1\" or something. User gave code/article. Need not guess? \"规范号/条号/正文必须原样使用用户source，不猜待核引用。\" We can set id as \"GB 55024-2022-6.2.8第1款\" maybe. But id likely unique. Use article? We need include clauses with code, article, text, strength. code \"GB 55024-2022\", article \"6.2.8第1款\", text exact, strength \"应\". id maybe same as article? Could be \"GB 55024-2022-6.2.8第1款\". That's derived but okay? They said 规范号/条号/正文原样使用. id may be generated. We can use \"GB 55024-2022-6.2.8第1款\".\n\napplies_to: [\"ELECTRICAL_SHAFT\"]. check: maybe {predicate:...}? Need decide.\n\non_missing: something like \"缺少电气竖井、电梯井或其他专业管道井的共井关系资料时，不推定通过，需补充核实。\" scope: \"仅依据共井用途条件初查；未提供各竖井实际共用关系时不能判定合规。\"\n\nstatus: \"draft\". reason: \"该条可用 shaft_shared_with 条件表达，直接禁止电气竖井与电梯井、其他专业管道井共井。\"\n\nNeed ensure JSON valid and no extra. The final answer should be only JSON object. The schema? They specifically said output {status:'draft'或'needs_new_predicate',reason:'原因',rule:对象或null}. So final must be exactly that. We can output JSON.\n\nPotential issue: \"其他专业管道井\" maps to OTHER_SERVICE_SHAFT. Yes. \"电梯井\" maps to ELEVATOR_SHAFT. \"电气竖井\" applies_to ELECTRICAL_SHAFT. \"共用同一竖井\" maps shaft_shared_with values. Good.\n\nNeed choose check representation. Since applies_to restricts to electrical shaft, check can be direct: {\"predicate\":\"shaft_shared_with\",\"values\":[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"],\"expect\":false}. If predicate semantics is \"shaft_shared_with(values共井用途)\" maybe it checks whether current shaft shares with those uses. expect:false means should not. That works. Alternatively need when. The direct check with applies_to is fine. The prompt says check为{predicate,...}，或{when:{predicate,...},require:{predicate,...}}；禁止任意代码、多个未知条件或含糊地用相邻代替共井。 Direct single predicate with expect:false is allowed. However, to be safe and express condition fully, use when-require: when space_use_in ELECTRICAL_SHAFT, require shaft_shared_with values ... expect false. That adds space_use_in and shaft_shared_with. Both known. It explicitly handles if current space is electrical shaft. applies_to also does. But does \"when\" require predicate true? For when it's trigger. For require it's expected condition. For negative relation use expect:false in require. That seems robust. But if applies_to already restricts, then check direct is enough. Which is better? Let's consider if check direct with expect:false might be interpreted as \"shaft_shared_with not true\" for any space in applies_to. That is exactly. I think direct is acceptable. But maybe the validation expects \"check\" to be either {predicate: ...} or {when: ..., require: ...}. Direct predicate with expect false is okay.\n\nNeed include \"strength\": \"应\". Text \"不应\" -> strength \"应\" because negative can be expressed in check. Yes.\n\nLet's draft:\n\n{\n  \"status\": \"draft\",\n  \"reason\": \"该条可用 shaft_shared_with 条件表达，禁止电气竖井与电梯井、其他专业管道井共用同一竖井。\",\n  \"rule\": {\n    \"id\": \"GB 55024-2022-6.2.8第1款\",\n    \"title\": \"电气竖井不应与电梯井、其他专业管道井共用同一竖井\",\n    \"approved\": false,\n    \"approved_by\": null,\n    \"clauses\": [\n      {\n        \"code\": \"GB 55024-2022\",\n        \"article\": \"6.2.8第1款\",\n        \"text\": \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\",\n        \"strength\": \"应\"\n      }\n    ],\n    \"applies_to\": [\"ELECTRICAL_SHAFT\"],\n    \"check\": {\n      \"predicate\": \"shaft_shared_with\",\n      \"values\": [\"ELEVATOR_SHAFT\", \"OTHER_SERVICE_SHAFT\"],\n      \"expect\": false\n    },\n    \"on_missing\": \"缺少电气竖井与电梯井、其他专业管道井的共井关系资料时，不推定通过，需补充核实。\",\n    \"scope\": \"仅依据共井用途条件初查；未提供实际共用关系资料时不能判定合规。\"\n  }\n}\n\nNeed ensure \"title\" maybe original text. Fine.\n\nPotential issue: \"其他专业管道井\" maybe not exactly OTHER_SERVICE_SHAFT? Prompt defines OTHER_SERVICE_SHAFT. Yes.\n\nPotential issue: \"电梯井\" vs"
+          },
+          {
+            "role": "user",
+            "content": "格式校验失败，请重答：3 validation errors for DraftAnswer\nstatus\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nreason\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrule\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 1800,
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "response": {
+        "id": "fb748120-ad76-43d6-b423-8eb4707acdf5",
+        "object": "chat.completion",
+        "created": 1791737863,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"status\":\"draft\",\"reason\":\"该条可用既有共用井条件表达，无需新增谓词；按电气竖井用途触发，要求不得与电梯井或其他专业管道井共井。\",\"rule\":{\"id\":\"GB55024-2022-6.2.8-1\",\"title\":\"电气竖井不应与电梯井、其他专业管道井共用同一竖井\",\"approved\":false,\"approved_by\":null,\"clauses\":[{\"code\":\"GB 55024-2022\",\"article\":\"6.2.8第1款\",\"text\":\"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\",\"strength\":\"应\"}],\"applies_to\":[\"ELECTRICAL_SHAFT\"],\"check\":{\"when\":{\"predicate\":\"space_use_in\",\"values\":[\"ELECTRICAL_SHAFT\"]},\"require\":{\"predicate\":\"shaft_shared_with\",\"values\":[\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"],\"expect\":false}},\"on_missing\":\"缺少电气竖井共井用途资料时，应补充后可判定；不推定通过。\",\"scope\":\"仅依据空间用途及共井用途做条件初查，不涉及防火、构造等其他要求；缺资料不推定通过。\"}}",
+              "reasoning_content": "We need answer JSON only. Need draft rule? We need assess source: \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\" Code GB 55024-2022 article 6.2.8第1款. Need output status draft or needs_new_predicate. Conditions available include shaft_shared_with(values共井用途), space_use_in, adjacent_to_use etc. This is about electrical shaft not shared with elevator shaft, other professional pipe shafts. Use shaft_shared_with with values likely ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT? Need apply to electrical shaft? Applies_to purposes list includes ELECTRICAL_SHAFT? Wait list: SUBSTATION,DISTRIBUTION_ROOM,ELECTRICAL_SHAFT,ELEVATOR_SHAFT,OTHER_SERVICE_SHAFT,HOT_FLUE,HEAT_ROOM,TOILET,BATHROOM,KITCHEN. Yes ELECTRICAL_SHAFT. We need express rule: if space use is ELECTRICAL_SHAFT, require shaft_shared_with not contain ELEVATOR_SHAFT and not contain OTHER_SERVICE_SHAFT? But condition shaft_shared_with(values共井用途). We can express requirement: {predicate:'shaft_shared_with', values:[...], expect:false}? Need schema: check {predicate,...} or {when:{predicate,...},require:{predicate,...}}. For prohibition: when space_use_in [ELECTRICAL_SHAFT], require shaft_shared_with with values [ELEVATOR_SHAFT, OTHER_SERVICE_SHAFT]? But expect false on require? Need design. \"电气竖井不应与电梯井、其他专业管道井共用同一竖井。\" If current space is electrical shaft, then shared with elevator shaft or other professional pipe shaft is false. Use when space_use_in [ELECTRICAL_SHAFT], require {predicate:'shaft_shared_with', values:['ELEVATOR_SHAFT','OTHER_SERVICE_SHAFT'], expect:false}. Does require support expect false? User said 否定关系用expect:false. Likely yes. Need on_missing maybe \"补充共井用途资料后再判\". scope \"仅对电气竖井的共井用途做初查；共用情况未知时不推定通过。\" Clauses: code \"GB 55024-2022\", article \"6.2.8第1款\", text exact, strength '应'? Source says \"不应\". Clause strength allowed '应'或'宜'. \"不应\" is 应? The text includes 不应. strength likely '应'. Need id? Need invent id? Maybe \"GB55024-6.2.8-1\". title maybe \"电气竖井不应共用\". approved false etc.\n\nNeed ensure no multiple unknown conditions. Use shaft_shared_with. Applies_to: [\"ELECTRICAL_SHAFT\"]. Check when space_use_in values [\"ELECTRICAL_SHAFT\"], require shaft_shared_with values [\"ELEVATOR_SHAFT\",\"OTHER_SERVICE_SHAFT\"], expect false. Could this mean shaft_shared_with must be false for each? Need okay. Is \"其他专业管道井\" mapped to OTHER_SERVICE_SHAFT? The用途 list includes OTHER_SERVICE_SHAFT. Good. But \"其他专业管道井\" may include other professional pipe shafts. We can use OTHER_SERVICE_SHAFT. Is that too broad? It is exact category. Good.\n\nNeed output JSON object exactly. No markdown. Ensure fields. \n\nBut let's think if check requires when + require. If require with expect false, means if shared with either then violation. If data missing? on_missing. Good.\n\nPotential issue: user instruction: \"规范号/条号/正文必须原样使用用户source，不猜待核引用。\" We use exact text. Good.\n\nStatus draft, reason. Rule object id,title,approved:false,approved_by:null,clauses..., applies_to, check, on_missing, scope. Need maybe no extra top-level? DraftAnswer requires status, reason, rule. OK.\n\nNeed final only JSON."
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 695,
+          "completion_tokens": 1145,
+          "total_tokens": 1840,
+          "prompt_tokens_details": {
+            "cached_tokens": 512
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 878
+          },
+          "prompt_cache_hit_tokens": 512,
+          "prompt_cache_miss_tokens": 183
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      }
+    }
+  ],
+  "answer": {
+    "status": "draft",
+    "reason": "该条可用既有共用井条件表达，无需新增谓词；按电气竖井用途触发，要求不得与电梯井或其他专业管道井共井。",
+    "rule": {
+      "id": "GB55024-2022-6.2.8-1",
+      "title": "电气竖井不应与电梯井、其他专业管道井共用同一竖井",
+      "approved": false,
+      "approved_by": null,
+      "clauses": [
+        {
+          "code": "GB 55024-2022",
+          "article": "6.2.8第1款",
+          "text": "电气竖井不应与电梯井、其他专业管道井共用同一竖井。",
+          "strength": "应"
+        }
+      ],
+      "applies_to": [
+        "ELECTRICAL_SHAFT"
+      ],
+      "check": {
+        "when": {
+          "predicate": "space_use_in",
+          "values": [
+            "ELECTRICAL_SHAFT"
+          ]
+        },
+        "require": {
+          "predicate": "shaft_shared_with",
+          "values": [
+            "ELEVATOR_SHAFT",
+            "OTHER_SERVICE_SHAFT"
+          ],
+          "expect": false
+        }
+      },
+      "on_missing": "缺少电气竖井共井用途资料时，应补充后可判定；不推定通过。",
+      "scope": "仅依据空间用途及共井用途做条件初查，不涉及防火、构造等其他要求；缺资料不推定通过。"
+    }
+  },
+  "validation_errors": [
+    "3 validation errors for DraftAnswer\nstatus\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nreason\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrule\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing",
+    "3 validation errors for DraftAnswer\nstatus\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nreason\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrule\n  Field required [type=missing, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+  ],
+  "valid": true
+}

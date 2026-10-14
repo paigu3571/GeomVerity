@@ -1,0 +1,29 @@
+name: 发布验收与运行测量
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  ubuntu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e ".[dxf]"
+      - run: python -m unittest discover -s python/tests -v
+      - name: 完整演示峰值RSS与耗时
+        run: |
+          mkdir -p dist/bench
+          /usr/bin/time -v -o dist/bench/ubuntu-full.txt python -m cst.demo
+      - name: 缩减范围峰值RSS与耗时
+        run: /usr/bin/time -v -o dist/bench/ubuntu-changes-only.txt python -m cst.demo --changes-only
+      - run: python scripts/scan_secrets.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ubuntu-runtime
+          path: dist/bench/

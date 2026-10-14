@@ -1,0 +1,13 @@
+schema_version: r1-confirmations.v1
+origin: ENGINEER_REVIEW
+drawing_sha256: 69FB56550D5D8F247BC23DC10FA20A5F23705077AC6A40AC62F992FBA4DBD68F
+snapshot_sha256: 23e8eec0e0b465406e5cee6fa6259c6d42a074e3da6cd1c503b14411a1d01b6c
+reviewed_by: 张田
+reviewed_date: '2026-10-12'
+screenshot_sha256:
+- 8e819b846cf3c180fbffef9b1c5e2917da2233010e310dc73efda40398ae8561
+rooms:
+- object_id: sem_6719d247bfbe54b2d74710ec
+  name: 充电桩配电房
+  net_length_gt_7: true
+  entrance_count: 2
