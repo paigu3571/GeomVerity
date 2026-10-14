@@ -1,0 +1,10 @@
+{
+  "os": "Windows",
+  "mode": "full",
+  "seconds": 340.359,
+  "peak_rss_bytes": 4062162944,
+  "peak_rss_mib": 3873.98,
+  "exit_code": 0,
+  "python": "3.13.4",
+  "measurement": "single process sampled RSS at 50ms; browser/install excluded"
+}

@@ -13,6 +13,6 @@
 
 **缩减范围节省时间，未显著降低峰值内存。** `python -m cst.demo --changes-only`跳过A/B独立输出和全组AI重放，但仍重算A到A-change的几何、规则和证据。512MB环境应使用预生成HTML或Pages，不建议执行重算。
 
-[Ubuntu实测及验收](https://github.com/paigu3571/GeomVerity/actions/runs/38499689728)。机器配置、后台负载和软件版本会影响耗时。
+原单次测量的[完整日志](runtime-logs/)已公开，源提交c853a35保留。当前公开仓库[离线验收](https://github.com/paigu3571/GeomVerity/actions/runs/38509973953)。机器配置、后台负载和软件版本会影响耗时。
 
 峰值不代表常驻内存。正式版0.3.0仅将决策版本元数据从dev0更新为0.3.0；上述运行时数字保留实际测量提交，不伪装成新一轮测量。

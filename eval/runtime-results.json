@@ -38,5 +38,6 @@
     }
   ],
   "tested_source_commit": "c853a3516b07de0fdfc84d884e5936592d7f9610",
-  "ubuntu_run": "https://github.com/paigu3571/GeomVerity/actions/runs/38499689728"
+  "ubuntu_run": "archived measurement; public logs in eval/runtime-logs",
+  "public_validation_run": "https://github.com/paigu3571/GeomVerity/actions/runs/38509973953"
 }
