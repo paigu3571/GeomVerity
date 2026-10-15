@@ -35,6 +35,18 @@ GeomVerity将CAD图元转为带来源引用的工程对象。确定性几何算�
 
 <img src="docs/images/demo.gif" width="600" alt="真实查看器画面：识别前后、风险与证据，10秒循环" />
 
+## 输入适配与使用范围
+
+图层和制图习惯可以不同，接入时需要核对配置与样例。随附generic配置是默认示例，未穷举所有单位标准；其他宿主版本和制图标准须分别验证。社区可贡献图层配置、术语、小样例及宿主验证记录，逐步完善适配库。
+
+|使用目的|所需环境|当前范围|
+|---|---|---|
+|查看在线／离线演示|浏览器|无需CAD、天正、密钥|
+|重新计算公开样例|Python 3.11及依赖，内存要求见下方|读取配套JSON，无需CAD、天正、密钥|
+|扫描自己的DWG|支持的CAD／天正与适配配置|实测AutoCAD 2016＋T20 V8；其他组合未验证|
+
+未识别到对象不能当作图上没有该对象。遇到缺口，先核对宿主、单位、图层、围合和用途，补齐相关输入后再判断专业规则。[适配步骤与缺口处理](docs/guides/drawing-adaptation.md) · [填写适配Issue](https://github.com/paigu3571/GeomVerity/issues/new?template=adaptation.md) · [查看模板](.github/ISSUE_TEMPLATE/adaptation.md)。完整自动预检与配置推荐列为计划。
+
 ## 快速开始
 
 Python 3.11+。在仓库根目录运行：

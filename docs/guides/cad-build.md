@@ -22,3 +22,7 @@ powershell -ExecutionPolicy Bypass -File scripts/verify_cs.ps1
 JZBPREGION是预设观察区回执工具；通用配置未登记观察区时，日常扫描不需要它。Windows构建和核心测试通过不代替真实CAD加载验收。
 
 [历史宿主记录](../acceptance/cad-host-validation.md) · [原生契约](../api/schema.md)
+
+## 使用其他制图标准或版本
+
+AutoCAD 2016＋T20 V8是当前实测组合。默认generic配置包含具体图层和房名约定；换单位标准需核对映射、围合和样例，换宿主版本需另外验证插件加载与对象读取。配置可自定路径，使用步骤、已有诊断的补齐动作和社区贡献入口见[图纸适配指南](drawing-adaptation.md)。
