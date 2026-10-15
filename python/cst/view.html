@@ -39,16 +39,16 @@ function select(id,zoom=false){const o=DATA.objects[id];if(!o)return;selected=id
  if(linked.length)panel.innerHTML+='<h3>③ 布置调整（处理风险后查看）</h3>';
  for(const r of linked)panel.innerHTML+='<div class="card"><b>'+esc(r.state)+'</b><br>旧候选 '+(r.old_count??0)+' 个 → 新候选 '+r.new_count+' 个<br>'+esc(r.reason)+'</div>';
  bindOpeningChanges();options();return;}
- const generated=o['类型']==='generated_light',nested=o['定位字段']?.cad_target?.outer_block_handle||o['外层块Handle'],handles=o['源Handle列表']||[],location=o['定位字段']?.cad_target,target=location?.outer_block_handle||location?.handle||(o['类型']==='drawing_issue'?nested||o.source?.handle:null);
- const command=target&&/^[0-9a-f]+$/i.test(target)?`(sssetfirst nil (ssadd (handent "${target}")))`:null;
+ const generated=o['类型']==='generated_light';
+ const cad=o['CAD定位']||{},command=cad.command||null;
  if(o['类型']==='drawing_issue'){
  const r=o['图纸问题'],titles={EXISTING_ROOM_OVERLAP:'候选与已有房间重叠',MULTIPLE_LABELS:'一个围合中有多个房名',INNER_HOLES:'围合中有内孔',BELOW_AREA_THRESHOLD:'围合小于原面积门槛',ABOVE_AREA_THRESHOLD:'围合超出当前面积范围',SEARCH_EXTENT:'围合超出局部检索范围',TEXT_REGION_CONFLICT:'房名与已提取房间位置冲突',TEXT_POSITION_CANDIDATE:'文字位置候选',REGION_SEMANTICS_DEFERRED:'区域语义暂缓补充',OVERHEAD_LABEL:'上空说明需核对楼层',NO_WALL_DATA:'缺少可用墙边界',UNRESOLVED_BOUNDARY:'尚未形成可用围合'};
  highlight(o.view_bounds,o['问题高亮']||'');
  panel.innerHTML=`<small>图纸问题 / 给建筑专业的定位提示</small><h2>${esc(r.room_name)}</h2><span class="pill">${esc(titles[r.reason_code]||r.reason_code)}</span><div class="card">${esc(r.reason)}</div>`+rows('文字来源',r.text_handle)+`<p>红色叉点：程序房名定位点（文字外包框中心）。${r.gap_candidates.length?'橙色短线与端点：附近需查看的边界端点；可能是门洞或正常墙端，不代表已证实缺墙。':''}${r.text_position_candidate?'橙色虚线轮廓：附近无房名的闭合区域，连线指向建议放字位置；尚未认定属于本房间。':''}</p><h3>如何处理</h3><p>${r.reason_code==='REGION_SEMANTICS_DEFERRED'?'本阶段保留此区域的源文字位置，不要求挪动文字或补墙；后续另行定义区域语义。':'先看房名是否放在实际房间内，再看墙与门洞边界是否对应。确认是文字位置问题时，请在CAD里把房名放回房间内部、避免跨墙或与邻房房名混在一起；修改后重新扫描，不在查看器里修改源图。如果实际文字本来就在房间内，红点却偏出，请把截图交回；这也可能是程序取点问题，不要求为了程序挪动正确文字。'}</p><div class="card"><b>给下游的处理要求</b><br>${esc(r.downstream_action)}</div>`;
  if(r.gap_candidates.length)panel.innerHTML+='<h3>边界端点候选</h3>'+r.gap_candidates.map(g=>`<div class="card">间距 ${g.length_mm}mm；源Handle：${esc(g.source_handles.join('、'))}</div>`).join('');
  if(r.text_position_candidate)panel.innerHTML+=`<p>位置候选距原文字点到边界 ${r.text_position_candidate.distance_to_boundary_mm}mm；附近候选 ${r.text_position_candidate.nearby_empty_region_count} 处。程序未移动文字、未补墙。</p>`;
- if(nested)panel.innerHTML+=`<p>CAD定位只能选中外层块 ${esc(nested)}；可在块内按图查找房名。</p>`;
- if(command){panel.innerHTML+='<button class="command" id="copy">复制CAD定位命令</button><div id="copied" class="flash"></div>';el('copy').onclick=async()=>{try{await navigator.clipboard.writeText(command);el('copied').textContent='已复制，到对应源图CAD粘贴。'}catch(e){el('copied').textContent='请复制：'+command}};}
+ if(cad.message)panel.innerHTML+='<p>'+esc(cad.message)+'</p>';
+ if(command){panel.innerHTML+='<button class="command" id="copy">复制CAD定位命令（缩放到源图范围）</button><div id="copied" class="flash"></div>';el('copy').onclick=async()=>{try{await navigator.clipboard.writeText(command);el('copied').textContent='已复制。先按两次Esc，在对应源图的CAD命令行粘贴。'}catch(e){el('copied').textContent='请复制：'+command}};}
  panel.innerHTML+=detail('开发者 / AI：问题坐标与来源数据',r);options();return;
  }
  const reviews=o['工程师确认']||[],clean=o['门洞候选清洗']||[],manual=clean.find(c=>c.manual_confirmation)?.manual_confirmation;
@@ -72,10 +72,10 @@ function select(id,zoom=false){const o=DATA.objects[id];if(!o)return;selected=id
  const calculation=o['照度计算'];if(calculation){const p=calculation.parameters,v=calculation.existing_layout||calculation.estimated;panel.innerHTML+='<h3>灯具计算证据链</h3>'+rows('房间',generated?o['生成依据']?.room_name:o['房名'])+rows('获批用途',generated?DATA.objects[o['房间']]?.['L4分类']:o['L4分类'])+rows('标准值对照',p.target_illuminance_lx+' lx；LPD ≤ '+p.lpd_limit_w_m2+' W/㎡（演示对照值）')+rows('灯具演示参数',p.power_per_source_w+'W；'+p.flux_per_source_lm+'lm；U='+p.utilization+'；K='+p.maintenance+'；h='+p.effective_height_m+'m')+(v?`<div class="card"><b>当前布置：${v.fixture_count}盏</b><br>LPD = ${v.total_power_w}W ÷ ${calculation.area_m2.toFixed(3)}㎡ = ${v.lpd_w_m2.toFixed(3)} W/㎡，${v.demo_lpd_limit_met?'满足':'超出'}演示限值。<br>平均照度（估算）= ${v.eav_lx.toFixed(1)} lx，${v.illuminance_target_met?'达到':'低于'}${p.target_illuminance_lx}lx。<br>RI = 2A/(h·P) = ${calculation.room_index.toFixed(3)}；U使用已批准演示参数。</div>`:rows('计算资料',calculation.reason||'没有候选灯具数量'))+rows('规则版本',calculation.rule_id+' · '+calculation.rule_version)+rows('签字状态',calculation.sign_off_state)+ruleSource(calculation.decision?.rule)+detail('开发者 / AI：公式、参数来源和规范核查状态',calculation);}
  if(o['类型']==='opening')panel.innerHTML+='<p>出口条件确认属于关联房间的总数，不代表这个门洞已逐个核对。</p>';
  const refs=o['定位字段'];panel.innerHTML+='<h3>来源与定位</h3>'+rows('房间',generated?o['生成依据']?.room_name:o['房名'])+detail('开发者 / AI：类型明确的定位字段与完整证据链',{references:refs,chain:o['证据链']});
- if(nested)panel.innerHTML+='<p>CAD定位会选中外层块 '+esc(nested)+'。</p>';
- if(command)panel.innerHTML+='<button class="command" id="copy">复制CAD定位命令</button><div id="copied" class="flash"></div>';
+ if(cad.message)panel.innerHTML+='<p>'+esc(cad.message)+'</p>';
+ if(command)panel.innerHTML+='<button class="command" id="copy">复制CAD定位命令（缩放到源图范围）</button><div id="copied" class="flash"></div>';
  panel.innerHTML+=detail('开发者 / AI用数据：ID、证据链、哈希和完整字段',o);
- if(command)el('copy').onclick=async()=>{let ok=false;try{await navigator.clipboard.writeText(command);ok=true}catch(e){const t=document.createElement('textarea');t.value=command;panel.appendChild(t);t.select();ok=document.execCommand('copy');t.remove()}el('copied').textContent=ok?'已复制，到对应源图CAD粘贴。':'请手动复制：'+command};
+ if(command)el('copy').onclick=async()=>{let ok=false;try{await navigator.clipboard.writeText(command);ok=true}catch(e){const t=document.createElement('textarea');t.value=command;panel.appendChild(t);t.select();ok=document.execCommand('copy');t.remove()}el('copied').textContent=ok?'已复制。先按两次Esc，在对应源图的CAD命令行粘贴。':'请手动复制：'+command};
  if(generated)el('parentRoom').onclick=()=>select(o['房间'],true);
  const rs=relationRows(id);panel.querySelectorAll('[data-neighbor]').forEach(btn=>btn.onclick=()=>showNeighbor(id,rs[Number(btn.dataset.neighbor)]));bindOpeningChanges();options();}
 const reviewedItems=new Set();

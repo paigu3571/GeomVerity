@@ -22,4 +22,4 @@ class ReferenceIndex:
                 labels.append({'type':'房名文字Handle','handle':p.source.handle,'primitive_id':p.primitive_id,'stable_path':p.source.stable_path,'outer_block_handle':p.source.block_path[0].split(':')[0] if p.source.block_path else None,'instance_path':p.source.block_path})
         direct={'type':'围合参考墙Handle（非房间编号）' if derived else 'CAD原生对象Handle','handle':obj.source.handle,'stable_path':obj.source.stable_path}
         target=labels[0] if len(labels)==1 else direct if not derived else None
-        return {'space_id':obj.semantic_id,'space_id_type':'程序空间ID' if obj.type in ('space','shaft','zone') else '程序对象ID','room_texts':labels,'geometry_reference':direct,'cad_target':target,'cad_target_state':'嵌套对象定位外层块' if target and target.get('outer_block_handle') else '可定位源对象' if target else '缺少唯一文字来源；在查看器按轮廓定位'}
+        return {'space_id':obj.semantic_id,'space_id_type':'程序空间ID' if obj.type in ('space','shaft','zone') else '程序对象ID','room_texts':labels,'geometry_reference':direct,'cad_target':target,'cad_target_state':'嵌套对象按源坐标定位，未选中块内图元' if target and target.get('outer_block_handle') else '可定位源对象' if target else '缺少唯一文字来源；在查看器按轮廓定位'}

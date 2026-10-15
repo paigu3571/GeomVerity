@@ -226,6 +226,8 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
     from .adjacency import adjacency
     neighbors=adjacency(data,classes)['candidates']
     wall_paths={o.semantic_id:paths(o.geometry) for o in data.objects if o.type=='wall'}
+    from .cad_location import cad_location
+    for record in records.values():record['CAD定位']=cad_location(record,[ox,oy])
     payload={'change_summary':{k:delta[k] for k in ('change_count','change_types','review_inheritance','lighting_changes','times','checklist','engineer_comparison','lighting_calculation_changes') if k in delta} if delta else None,'neighbors':neighbors,'wall_paths':wall_paths,'objects':records,'rooms':room_options,'full_bounds':full,'default':default,'origin_wcs_mm':[ox,oy],
              'drawing_sha256':data.drawing.sha256,'raw_geometry_count':raw_geometry_count,
              'missing_geometry_records':missing_geometry,'rules_summary':results['summary']}
