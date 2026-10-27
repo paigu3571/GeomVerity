@@ -1,0 +1,21 @@
+{
+  "schema_version": "claims.v1",
+  "original_text": "当前扫描中存在这个对象，仍需专业复核。",
+  "claims": [
+    {
+      "id": "example",
+      "text": "当前扫描中存在这个对象，仍需专业复核。",
+      "span": {
+        "start": 0,
+        "end": 19
+      },
+      "refs": [
+        "sem_02f90bb604c7e87869b98d75"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "manual",
+      "generated_by": "SYNTHETIC人工主张，非模型响应"
+    }
+  ]
+}

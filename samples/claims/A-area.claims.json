@@ -1,0 +1,23 @@
+{
+  "schema_version": "claims.v1",
+  "original_text": "此空间的面积为21.250048平方米。",
+  "claims": [
+    {
+      "id": "example",
+      "text": "此空间的面积为21.250048平方米。",
+      "span": {
+        "start": 0,
+        "end": 20
+      },
+      "refs": [
+        "sem_02f90bb604c7e87869b98d75"
+      ],
+      "values": {
+        "sem_02f90bb604c7e87869b98d75.area_m2": 21.250048
+      },
+      "kind": "area",
+      "extraction": "manual",
+      "generated_by": "SYNTHETIC人工主张，非模型响应；claims-check.2默认容差预期支持/退出0"
+    }
+  ]
+}

@@ -12,6 +12,17 @@ from .l4 import envelope_dimensions
 from .resources import rules_directory
 RULE=rules_directory()/'LIGHT-CALC-001.yaml'
 
+def outline_polygon(geometry):
+    """复用现有单一闭合轮廓约束；不修复无效面，不臆造孔洞。"""
+    if not geometry.is_closed or len(geometry.paths) != 1:
+        raise ValueError('缺少单一闭合轮廓')
+    if len(geometry.paths[0]) < 3:
+        raise ValueError('轮廓无效')
+    polygon = Polygon([(p.x,p.y) for p in geometry.paths[0]])
+    if not polygon.is_valid or polygon.area <= 0:
+        raise ValueError('轮廓无效')
+    return polygon
+
 def calculate_room(room,category,rule,candidate_count=None):
     base={'room_semantic_id':room.semantic_id,'room_name':room.raw_label,'source_handles':[room.source.handle],'rule_id':rule['id'],'rule_version':rule['rule_version'],'parameters':rule['parameters'],'clauses':rule['clauses'],'normative_values_verified':rule['normative_values_verified'],'approved_by':rule['approved_by'],'sign_off_state':'待工程师签字','input_status':room.status,'formula':{'room_index':'RI=2A/(h×P)','required_count':'ceil(E×A/(Φ×光源数×U×K))','average':'Eav=灯具数×光源数×Φ×U×K/A','lpd':'LPD=灯具数×光源数×功率/A'}}
     if category not in rule['applies_to']:return dict(base,result='不适用')

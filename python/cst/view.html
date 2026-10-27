@@ -1,112 +1,141 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CAD工程语义 · 可追溯查看器</title><style>
-*{box-sizing:border-box}body{margin:0;font-family:'Microsoft YaHei',sans-serif;background:#ecf0f2;color:#172e3b}header{height:78px;background:#142d3a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 26px}h1{margin:0;font-size:23px;font-weight:650;letter-spacing:1px}.eyebrow{font-size:11px;letter-spacing:2px;color:#81b7c5;margin-bottom:6px}.tag{border:1px solid #496674;padding:8px 12px;border-radius:6px;font-size:12px}main{display:grid;grid-template-columns:minmax(0,1fr) 380px;height:calc(100vh - 78px)}.left{min-height:0;display:flex;flex-direction:column;min-width:0}.bar{padding:15px 20px;display:flex;align-items:center;gap:10px;background:white;border-bottom:1px solid #d8e1e5;flex-wrap:wrap}button,select,input{font:inherit;font-size:13px;border:1px solid #c4d3dc;border-radius:7px;background:#fff;padding:9px 12px;color:#203b4a}button{cursor:pointer}button:hover{border-color:#177b84}button.on{background:#126b74;border-color:#126b74;color:white}.bar input{width:130px}.bar select{max-width:230px}.canvas{flex:1;position:relative;min-height:250px;overflow:hidden;background:#f8fafb;background-image:radial-gradient(#d8e3e7 .7px,transparent .7px);background-size:20px 20px}svg{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}svg:active{cursor:grabbing}.gray path{stroke:#81929b;stroke-width:.65;vector-effect:non-scaling-stroke;fill:none;opacity:.52}.semantic{opacity:1;transition:opacity .55s}.before .semantic{opacity:0;pointer-events:none}.room-fill{opacity:.49}.outline{stroke:#4c7380;stroke-width:1;vector-effect:non-scaling-stroke}.room{cursor:pointer}.room:hover .room-fill,.selected .room-fill{opacity:.82}.selected .outline{stroke:#c624a1;stroke-width:1}.hatch{opacity:.6;pointer-events:none}.label{text-anchor:middle;font-size:.58px;fill:#183843;font-weight:600;pointer-events:none;paint-order:stroke;stroke:#f9fcfc;stroke-width:.1px}.label tspan{font-size:.45px;font-weight:400}.door{fill:#168cba;stroke:white;stroke-width:1.1;vector-effect:non-scaling-stroke;cursor:pointer}.door:hover,.door.selected{fill:#e06437;stroke:#173744;stroke-width:3}.shaft-box{fill:none;stroke:#c14473;stroke-width:1.4;stroke-dasharray:4 3;vector-effect:non-scaling-stroke;cursor:pointer}.lamp{fill:#fff9b0;stroke:#ad6500;stroke-width:1.3;vector-effect:non-scaling-stroke;cursor:pointer}svg [tabindex]:focus,svg [tabindex]:focus-visible{outline:none}.lamp.invalid{fill:#d9dee0;stroke:#d45d47;opacity:.55}.lamp circle{vector-effect:non-scaling-stroke}.lamp path{fill:none;vector-effect:non-scaling-stroke}.north{position:absolute;top:18px;left:20px;pointer-events:none;line-height:1.5;color:#60808e;font-size:12px}.north strong{font-size:23px;color:#294e5d}.legend{position:absolute;bottom:20px;left:20px;padding:12px 15px;border:1px solid #d5e0e5;border-radius:10px;background:#ffffffef;font-size:12px;display:flex;gap:13px;flex-wrap:wrap;max-width:90%}.legend i{display:inline-block;width:10px;height:10px;margin-right:5px;border-radius:2px}.hint{position:absolute;right:18px;top:16px;font-size:11px;color:#637f8b;background:#ffffffe0;padding:8px;border-radius:6px}.foot{background:white;padding:10px 20px;font-size:11px;color:#607988;border-top:1px solid #dae4e8}.panel{overflow:auto;background:#fff;border-left:1px solid #d4e0e5;padding:24px}h2{font-size:21px;margin:0 0 8px}h3{font-size:14px;margin:24px 0 10px}p{font-size:13px;line-height:1.75}small{color:#64808e;line-height:1.6}.pill{display:inline-block;padding:4px 8px;border-radius:5px;background:#fff2d9;color:#8a5a16;font-size:12px;margin-right:5px}.line{display:grid;grid-template-columns:84px 1fr;gap:10px;font-size:12px;margin-top:13px;line-height:1.6}.line span:first-child{color:#6c8692}.line code{word-break:break-all}.card{background:#f2f7f9;border-radius:8px;padding:12px;margin:9px 0;font-size:12px;line-height:1.8}.card b{color:#183943}pre{font-size:11px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f7f8;padding:10px;border-radius:5px}.command{width:100%;margin-top:10px;background:#e8f3f4;text-align:left}details{margin:12px 0;font-size:12px}summary{cursor:pointer;color:#246475;line-height:1.7}.note{border-left:3px solid #d9a24d;padding-left:12px;color:#79603a;font-size:12px}.empty{margin-top:25px;color:#78909c}.flash{color:#177e68;font-size:12px;margin:8px 0} @media(max-width:850px){main{grid-template-columns:minmax(0,1fr) 310px}.panel{padding:16px}.bar{padding:10px}header{padding:0 16px}h1{font-size:18px}}@media(prefers-reduced-motion:reduce){.semantic{transition:none}}
-.trace-step{padding:8px 10px;border-left:2px solid #67aab2;margin:5px 0;background:#f5f9fa;font-size:12px;line-height:1.7}.ok{background:#e3f3ec;color:#186249}.neighbor{display:block;width:100%;text-align:left;margin:6px 0}.focus-cloud{fill:none;stroke:#d121b6;stroke-width:1.4;vector-effect:non-scaling-stroke;pointer-events:none}.neighbor-wall{fill:none;stroke:#d121b6;stroke-width:1.8;vector-effect:non-scaling-stroke;pointer-events:none}.issue{fill:#fff;stroke:#d0444d;stroke-width:2;vector-effect:non-scaling-stroke;cursor:pointer}.issue circle,.issue path{vector-effect:non-scaling-stroke}.issue path{fill:none}.gap-marker,.text-suggestion{fill:none;stroke:#ef741e;stroke-width:2;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}.gap-end{fill:white;stroke:#ee7321;stroke-width:2;vector-effect:non-scaling-stroke}.text-region{fill:#edaa3622;stroke:#ef741e;stroke-width:1.7;stroke-dasharray:5 3;vector-effect:non-scaling-stroke}.change-shape{fill:none;stroke:#ea493c;stroke-width:2;vector-effect:non-scaling-stroke;cursor:pointer}.change-shape.derived{stroke:#be892e;stroke-dasharray:3 4}.change-shape.deleted,.confirmation-invalid{stroke:#87939b;stroke-dasharray:5 4}.change-shape.added{stroke:#16a875}.lamp.invalid{fill:none;stroke:#87939b;stroke-dasharray:3 2;opacity:.8}.lamp.revised{fill:#ffe4df;stroke:#df382b}.changes-off .change-shape,.changes-off .lamp.invalid{display:none}.changes-off .lamp.revised{fill:#ffed8e;stroke:#a57520}.before #change-clouds{display:none}.changes-room-only .change-shape[data-kind]:not([data-kind="space"]):not([data-kind="opening"]):not([data-kind="door"]):not([data-kind="window"]){display:none}.change-shape.focus-cloud{stroke:#d121b6;stroke-width:1.4;pointer-events:none}.change-list{background:white;border-bottom:1px solid #d8e2eb;padding:12px 18px;max-height:32vh;overflow:auto;font-size:13px}.change-list[hidden]{display:none}.check-row{display:flex;gap:9px;align-items:flex-start;border-top:1px solid #edf1f5;padding:8px 0}.check-row button{flex:1;text-align:left;background:#f5f8fc;line-height:1.6}.check-row input{margin-top:12px;flex-shrink:0}.check-time{color:#52677e;font-size:12px;line-height:1.6}.check-row .derived{color:#9c6715}.check-actions{display:flex;gap:8px;align-items:center;margin:7px 0}.priority-card{margin:14px 0 18px;padding:16px;border:1px solid #e7aa54;border-left:5px solid #dc8b18;border-radius:12px;background:#fff5df;line-height:1.75}.priority-card.urgent{background:#fff0ed;border-color:#e79787;border-left-color:#d44631}.priority-card h3{margin:5px 0 9px;font-size:18px;color:#833b13}.priority-tag{font-size:12px;font-weight:700;color:#984700}.priority-card p{margin:7px 0}.priority-secondary{color:#566878;font-size:12px}.check-row.priority-row button{background:#fff5df;border:1px solid #e7aa54}</style></head><body><header><div><div class="eyebrow">GEOMVERITY / REAL JSON</div><h1>从图纸到工程对象，每一步都有出处</h1></div><span class="tag">离线查看 · 源图只读</span></header><main><section class="left"><div class="bar"><button id="before">识别前</button><button id="after" class="on">识别后</button><button id="all">全图</button><button id="back">电气场景</button><button id="changes">变更模式</button><button id="allChanges">全部变更</button><button id="listToggle">变更清单</button><button id="issues">图纸问题</button><input id="search" aria-label="搜索房名" placeholder="搜索房名"><select id="rooms" aria-label="选择房间"></select></div><section id="changeList" class="change-list" hidden><b>逐项核对变更</b><div id="changeTimes" class="check-time"></div><div class="check-actions"><select id="listFilter" aria-label="筛选变更清单"><option value="all">全部核对项</option><option value="rooms" selected>房间</option><option value="source">墙、门、窗等源对象</option><option value="derived">派生围合差异</option></select><span id="listCount"></span></div><div id="answerComparison"></div><div id="changeRows"></div></section><div class="canvas"><svg id="drawing" class="changes-room-only" aria-label="真实CAD语义图"><defs><pattern id="review" width="1" height="1" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0,0V1" stroke="#285564" stroke-width=".07"/></pattern></defs><g class="gray">__GRAY__</g><g class="semantic">__SVG__</g><g id="change-clouds" pointer-events="none"></g><g id="focus" pointer-events="none"></g></svg><div class="north"><strong>↑</strong> WCS +Y<br>保持CAD方向</div><div class="hint">滚轮缩放 · 拖动平移 · 点击房间、灯具或邻房，看中文说明</div><div class="legend"><span><i style="background:#b77be8"></i>变电所</span><span><i style="background:#efb14c"></i>配电室</span><span><i style="background:#60a6eb"></i>弱电房间</span><span><i style="background:#f16c8f"></i>电气竖井</span><span><i style="background:#168cba"></i>门洞候选</span><span><i style="background:#ffed8e"></i>灯具候选</span><span>斜线＝自动提取对象</span><span>变更：绿＝新增，红＝变化与新灯，灰虚线＝删除或失效；橙虚线＝识别轮廓差异</span></div></div><div id="foot" class="foot"></div></section><aside class="panel" id="panel"></aside></main><script id="data" type="application/json">__PAYLOAD__</script><script>
-'use strict';const DATA=JSON.parse(document.getElementById('data').textContent),svg=document.getElementById('drawing'),panel=document.getElementById('panel');let selected=null,box=[],drag=null,issuesOnly=false;
-const el=id=>document.getElementById(id),esc=x=>String(x??'未提供').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),detail=(title,obj)=>`<details><summary>${esc(title)}</summary><pre>${esc(JSON.stringify(obj,null,2))}</pre></details>`;
-function fit(b,pad=3){if(!b)return;const w=Math.max(b[2],1),h=Math.max(b[3],1);box=[b[0]-pad,b[1]-pad,w+pad*2,h+pad*2];update()}
-function update(){svg.setAttribute('viewBox',box.join(' '))}
-function mode(after){svg.classList.toggle('before',!after);el('after').classList.toggle('on',after);el('before').classList.toggle('on',!after)}
-function options(){const q=el('search').value.trim();el('rooms').innerHTML=DATA.rooms.filter(r=>(!issuesOnly||r.type==='drawing_issue')&&(!q||r.name.includes(q))).map(r=>`<option value="${esc(r.id)}">${esc(r.name||'未命名空间')} · ${esc(DATA.objects[r.id]['定位字段']?.room_texts?.map(t=>t.handle).join('、')||'程序对象')}</option>`).join('');if(selected&&[...el('rooms').options].some(o=>o.value===selected))el('rooms').value=selected}
-function cloudPath(b){
- const pad=.7,x=b[0]-pad,y=b[1]-pad,w=b[2]+2*pad,h=b[3]+2*pad,step=Math.max(.7,Math.min(1.8,Math.max(w,h)/12));
- const corners=[[x,y],[x+w,y],[x+w,y+h],[x,y+h],[x,y]];let d=`M${x},${y}`;
- for(let k=0;k<4;k++){const [ax,ay]=corners[k],[bx,by]=corners[k+1],len=Math.hypot(bx-ax,by-ay),n=Math.ceil(len/step),ux=(bx-ax)/len,uy=(by-ay)/len;
- for(let i=0;i<n;i++){const tx=ax+(i+1)*len/n*ux,ty=ay+(i+1)*len/n*uy,cx=ax+(i+.5)*len/n*ux+uy*len/n*.4,cy=ay+(i+.5)*len/n*uy-ux*len/n*.4;d+=`Q${cx},${cy} ${tx},${ty}`;}}
- return d+'Z';}
-function highlight(bounds,extra=''){el('focus').innerHTML=(bounds&&!(DATA.change_summary&&!svg.classList.contains('changes-off'))?`<path class="focus-cloud" d="${cloudPath(bounds)}"/>`:'')+extra;}
-function rows(label,value){return `<div class="line"><span>${esc(label)}</span><b>${esc(value)}</b></div>`;}
-function relationRows(id){const o=DATA.objects[id],groups=new Map();for(const r of DATA.neighbors||[]){if(r.room_id!==id&&r.room_handle!==o?.source?.handle)continue;const key=r.other_handle+'|'+r.other_name;if(!groups.has(key))groups.set(key,r);}return [...groups.values()];}
-function showNeighbor(id,r){select(id);const o=DATA.objects[id],n=DATA.objects[r.other_id];if(!n?.view_bounds)return;const a=o.view_bounds,b=n.view_bounds,x=Math.min(a[0],b[0]),y=Math.min(a[1],b[1]),bounds=[x,y,Math.max(a[0]+a[2],b[0]+b[2])-x,Math.max(a[1]+a[3],b[1]+b[3])-y];
- const related=(DATA.neighbors||[]).filter(v=>(v.room_id===id||v.room_handle===o.source.handle)&&v.other_handle===r.other_handle&&v.other_name===r.other_name);
- const walls=[...new Set(related.map(v=>v.wall_id))];highlight(bounds,walls.map(w=>`<path class="neighbor-wall" d="${esc(DATA.wall_paths[w]||'')}"/>`).join(''));fit(bounds,3);
- panel.innerHTML=`<small>隔墙关系 / 图面核对</small><h2>${esc(o['房名'])}</h2><div class="card"><b>隔墙邻房：${esc(r.other_name)}</b><br>洋红云线圈住两间房，洋红细线标出中间墙体。<br>程序依据：同一墙体两面与两间房边界对应，重叠约 ${(r.overlap_mm/1000).toFixed(2)} 米。</div><h3>您只需要看这一件事</h3><p>两间房是否确实隔着这堵墙相邻？如果对不上，请告诉我们这两个房名，不用读代码或填写全部表格。</p><p>用途和风险由规则继续判断；隔墙相邻本身不代表违规。</p>`+rows('房间来源',r.room_handle+' / '+r.other_handle)+rows('墙体来源',[...new Set(related.map(v=>v.wall_handle))].join('、'))+`<button id="returnRoom">返回房间说明</button>`+detail('开发者数据：完整隔墙证据',related);el('returnRoom').onclick=()=>select(id,true);}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CAD工程语义 · 可追溯查看器</title>
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages/drawing.css" />
+  </head>
+  <body class="drawing-view">
+    <main>
+      <section class="left">
+        <div class="bar" aria-label="图面工具">
+          <button id="before">识别前</button
+          ><button id="after" class="on">识别后</button
+          ><button id="all">全图</button><button id="back">电气场景</button
+          ><button id="changes">变更模式</button
+          ><button id="allChanges">全部变更</button
+          ><button id="listToggle">变更清单</button
+          ><button id="issues">图纸问题</button
+          ><button id="focusCanvas" aria-pressed="false">收起详情</button>
+          <details class="layer-menu">
+            <summary>图层</summary>
+            <label><input type="checkbox" id="layerOld" />旧门／旧灯对照（已删除，不是新版）</label>
+            <label><input type="checkbox" id="layerGrid" />背景网格</label>
+            <label
+              ><input type="checkbox" id="layerSource" checked />原图线条</label
+            ><label
+              ><input
+                type="checkbox"
+                id="layerSemantic"
+                checked
+              />识别对象</label
+            ><label
+              ><input
+                type="checkbox"
+                id="layerChanges"
+                checked
+              />变化轮廓</label
+            >
+          </details>
+          <button id="toggleLights" aria-pressed="false">隐藏实验灯具</button>
+          <button id="themeToggle" aria-pressed="false">浅色画布</button
+          ><button id="drawingHelp" aria-label="图面帮助">?</button
+          ><input
+            id="search"
+            aria-label="搜索房名"
+            placeholder="搜索房名"
+          /><select id="rooms" aria-label="选择房间"></select>
+        </div>
+        <section id="changeList" class="change-list" hidden>
+          <b>逐项核对变更</b>
+          <div id="changeTimes" class="check-time"></div>
+          <div class="check-actions">
+            <select id="listFilter" aria-label="筛选变更清单">
+              <option value="all">全部核对项</option>
+              <option value="rooms" selected>房间</option>
+              <option value="source">墙、门、窗等源对象</option>
+              <option value="derived">派生围合差异</option></select
+            ><span id="listCount"></span>
+          </div>
+          <div id="answerComparison"></div>
+          <div id="changeRows"></div>
+        </section>
+        <div class="canvas">
+          <svg
+            id="drawing"
+            class="changes-room-only"
+            aria-label="真实CAD语义图"
+          >
+            <defs>
+              <pattern
+                id="review"
+                width="1"
+                height="1"
+                patternUnits="userSpaceOnUse"
+                patternTransform="rotate(45)"
+              >
+                <path d="M0,0V1" stroke="var(--text-body)" stroke-width=".07" />
+              </pattern>
+            </defs>
+            <g class="gray">__GRAY__</g>
+            <g class="semantic">__SVG__</g>
+            <g id="change-clouds" pointer-events="none"></g>
+            <g id="focus" pointer-events="none"></g>
+          </svg>
+          <div class="north"><strong>↑</strong> WCS +Y<br />保持CAD方向</div>
 
-function ruleSource(m){if(!m)return '';const origin=m.drafted_by||{};return '<details class="rule-source"><summary>规则出处、起草与审批</summary>'+rows('规范条号',(m.clauses||[]).map(c=>c.code+' · '+c.article).join('；'))+rows('规范版本',(m.clauses||[]).map(c=>c.code_version).join('、'))+rows('起草来源',origin.name||origin.type||'未登记')+(origin.model?rows('模型 / 缓存',origin.model+' / '+origin.cache_id):'')+rows('审批人',m.approved_by||'未批准')+rows('规则SHA256',m.sha256||'未取得')+detail('开发者 / AI：完整规则来源',m)+'</details>';}
-function priorities(o){return o?.priorities||[];}
- function priorityBanner(o){const a=priorities(o);if(!a.length)return '';return a.map((p,i)=>`<section class="priority-card ${p.rank===0?'urgent':''}"><span class="priority-tag">${i===0?'① 优先处理':'同样需要优先核对'}</span><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p><p><b>先做什么：</b>${esc(p.action)}</p><div class="priority-secondary">${esc(p.boundary)}</div></section>`).join('');}
-function rulePriority(f){return f.priority_rank??3;}
-
-function openingChangeCards(o){const changes=o['门窗变更']||[];if(!changes.length)return '';const note=DATA.change_summary?.engineer_comparison?.items.find(r=>r.engineer_correction&&r.target_name===(o['变更']?.new?.name||o['房名']));return (note?'<div class="card"><b>门位移动（张田已确认）</b><br>原记录房名已更正为本房间；旧、新门位如下，可分别点图核对。</div>':'')+'<h3>门窗位置变化</h3>'+changes.map(c=>`<div class="card"><b>${esc(c.kinds.includes('删除')?'旧门窗位置取消（灰虚线）':c.kinds.includes('新增')?'新版门窗位置（绿色）':'门窗位置或来源变化')}</b><br>旧图Handle：${esc(c.old_handle||'无旧对象')}；新图Handle：${esc(c.new_handle||'无新对象')}<br>${c.old_handle?'旧位置已经画出灰色虚线；':''}${c.new_handle?'新版位置已高亮。':''}<br><button data-opening-change="${esc(c.change_id)}">在图上看${c.kinds.includes('删除')?'旧位置':'新位置'}</button></div>`).join('')+'<p>这里显示关联房间的实际门窗变化；删门和新门分别保留来源，不自动认定为同一个实体，也不把门洞当已确认出口。</p>';}
-function bindOpeningChanges(){panel.querySelectorAll('[data-opening-change]').forEach(b=>b.onclick=()=>{svg.classList.remove('changes-off');el('changes').classList.add('on');mode(true);select(b.dataset.openingChange,true)});}
-
-function select(id,zoom=false){const o=DATA.objects[id];if(!o)return;selected=id;svg.querySelectorAll('.selected').forEach(e=>e.classList.remove('selected'));svg.querySelectorAll('[data-id="'+id+'"]').forEach(e=>e.classList.add('selected'));highlight(o.view_bounds);if(zoom)fit(o.view_bounds,Math.max(2,Math.max(o.view_bounds?.[2]||0,o.view_bounds?.[3]||0)*.18));
- if(o['类型']==='change'){
- const c=o['变更'];highlight(o.view_bounds);
- panel.innerHTML='<small>建筑提资 / 变更影响</small><h2>'+esc(o['房名'])+'</h2><span class="pill">'+esc(c.basis?.startsWith('房名文字仍在')?'新版未提取到房间':c.kinds.join('、'))+'</span>'+priorityBanner(o)+openingChangeCards(o)+'<h3>② 变更依据与确认状态</h3>'+rows('旧版房名',c.old?.name||'无旧对象')+rows('新版房名',c.new?.name||'对象已删除')+detail('开发者 / AI：新版房名文字Handle',DATA.objects[c.new?.id]?.['定位字段']?.room_texts||[])+detail('开发者 / AI：两版对象ID与源Handle类型',{old_object_id:c.old?.id,new_object_id:c.new?.id,old_handle:c.old?.handle,new_handle:c.new?.handle,handle_type:(c.new?.type||c.old?.type)==='space'?'围合参考墙Handle（非房间编号）':'CAD源对象Handle',note:'生成空间ID与CAD源Handle分别保留'})+'<div class="card">'+esc(c.basis||'源几何或名称变化候选')+'</div>'+rows('变化说明',DATA.change_summary.checklist?.find(r=>r.change_ids.includes(c.id))?.content||'见变化明细')+'<div class="card"><b>'+esc(c.impact.result)+'</b><br>'+esc([...new Set(c.impact.rooms.map(r=>r.name))].join('、')||'没有命中已识别电气房间')+'</div><p>'+esc(c.impact.scope)+'</p>'+detail('开发者 / AI：变更证据',c); const inputs=DATA.change_summary.rule_inputs;
- if(inputs){const after=inputs.new.find(f=>f.rule_id==='R1'&&f.object_ids.includes(c.new?.id));if(after?.candidate_opening_count!=null&&!priorities(o).some(a=>a.rank===0))panel.innerHTML+='<div class="card"><b>出口数量核对</b><br>新版门洞候选 '+after.candidate_opening_count+' 处；需结合室内净长及实际出口确认。</div>';}
- for(const r of DATA.change_summary.review_inheritance.filter(r=>(c.old?.id&&r.old_room===c.old.id)||(c.new?.id&&r.new_room===c.new.id)))panel.innerHTML+='<div class="card"><b>'+esc(r.state)+'</b><br>'+esc(r.reason)+'</div>';
- const linked=DATA.change_summary.lighting_changes.filter(r=>(c.old?.id&&r.old_room_id===c.old.id)||(c.new?.id&&r.new_room_id===c.new.id));
- if(linked.length)panel.innerHTML+='<h3>③ 布置调整（处理风险后查看）</h3>';
- for(const r of linked)panel.innerHTML+='<div class="card"><b>'+esc(r.state)+'</b><br>旧候选 '+(r.old_count??0)+' 个 → 新候选 '+r.new_count+' 个<br>'+esc(r.reason)+'</div>';
- bindOpeningChanges();options();return;}
- const generated=o['类型']==='generated_light';
- const cad=o['CAD定位']||{},command=cad.command||null;
- if(o['类型']==='drawing_issue'){
- const r=o['图纸问题'],titles={EXISTING_ROOM_OVERLAP:'候选与已有房间重叠',MULTIPLE_LABELS:'一个围合中有多个房名',INNER_HOLES:'围合中有内孔',BELOW_AREA_THRESHOLD:'围合小于原面积门槛',ABOVE_AREA_THRESHOLD:'围合超出当前面积范围',SEARCH_EXTENT:'围合超出局部检索范围',TEXT_REGION_CONFLICT:'房名与已提取房间位置冲突',TEXT_POSITION_CANDIDATE:'文字位置候选',REGION_SEMANTICS_DEFERRED:'区域语义暂缓补充',OVERHEAD_LABEL:'上空说明需核对楼层',NO_WALL_DATA:'缺少可用墙边界',UNRESOLVED_BOUNDARY:'尚未形成可用围合'};
- highlight(o.view_bounds,o['问题高亮']||'');
- panel.innerHTML=`<small>图纸问题 / 给建筑专业的定位提示</small><h2>${esc(r.room_name)}</h2><span class="pill">${esc(titles[r.reason_code]||r.reason_code)}</span><div class="card">${esc(r.reason)}</div>`+rows('文字来源',r.text_handle)+`<p>红色叉点：程序房名定位点（文字外包框中心）。${r.gap_candidates.length?'橙色短线与端点：附近需查看的边界端点；可能是门洞或正常墙端，不代表已证实缺墙。':''}${r.text_position_candidate?'橙色虚线轮廓：附近无房名的闭合区域，连线指向建议放字位置；尚未认定属于本房间。':''}</p><h3>如何处理</h3><p>${r.reason_code==='REGION_SEMANTICS_DEFERRED'?'本阶段保留此区域的源文字位置，不要求挪动文字或补墙；后续另行定义区域语义。':'先看房名是否放在实际房间内，再看墙与门洞边界是否对应。确认是文字位置问题时，请在CAD里把房名放回房间内部、避免跨墙或与邻房房名混在一起；修改后重新扫描，不在查看器里修改源图。如果实际文字本来就在房间内，红点却偏出，请把截图交回；这也可能是程序取点问题，不要求为了程序挪动正确文字。'}</p><div class="card"><b>给下游的处理要求</b><br>${esc(r.downstream_action)}</div>`;
- if(r.gap_candidates.length)panel.innerHTML+='<h3>边界端点候选</h3>'+r.gap_candidates.map(g=>`<div class="card">间距 ${g.length_mm}mm；源Handle：${esc(g.source_handles.join('、'))}</div>`).join('');
- if(r.text_position_candidate)panel.innerHTML+=`<p>位置候选距原文字点到边界 ${r.text_position_candidate.distance_to_boundary_mm}mm；附近候选 ${r.text_position_candidate.nearby_empty_region_count} 处。程序未移动文字、未补墙。</p>`;
- if(cad.message)panel.innerHTML+='<p>'+esc(cad.message)+'</p>';
- if(command){panel.innerHTML+='<button class="command" id="copy">复制CAD定位命令（缩放到源图范围）</button><div id="copied" class="flash"></div>';el('copy').onclick=async()=>{try{await navigator.clipboard.writeText(command);el('copied').textContent='已复制。先按两次Esc，在对应源图的CAD命令行粘贴。'}catch(e){el('copied').textContent='请复制：'+command}};}
- panel.innerHTML+=detail('开发者 / AI：问题坐标与来源数据',r);options();return;
- }
- const reviews=o['工程师确认']||[],clean=o['门洞候选清洗']||[],manual=clean.find(c=>c.manual_confirmation)?.manual_confirmation;
- const inputLabel=generated?'规则生成的布置候选':o['状态']==='review'?(o.geometry?.extraction_method?.startsWith('python_wall_polygonize')?'程序补提取':'程序自动提取'):o['状态']==='accepted'?'识别检查通过':o['状态']==='rejected'?'识别未采用':o['状态'];
- panel.innerHTML=`<small>${generated?'自动出图 / 来源说明':'工程对象 / 中文说明'}</small><h2>${esc(o['房名']||'门洞候选')}</h2><span class="pill">${esc(o['L4分类']||'灯具候选')}</span><span class="pill">${esc(inputLabel)}</span>`;
- panel.innerHTML+=`<p>${esc(generated?'此灯属于'+o['生成依据']?.room_name:priorities(o)[0]?.title||'用途与工程对象已整理，可查看规则和来源。')}<br>${generated?'按墙面布置并避让开口。':'本项随图纸与规则变化更新。'}<br>工程结论由工程师核对签字。</p>`;
- if(!generated)panel.innerHTML+=priorityBanner(o)+openingChangeCards(o)+rows('图纸用途',o['二级用途']||o['L4分类'])+rows('轮廓面积',o['L2面积(m²)']!=null?o['L2面积(m²)'].toFixed(1)+' m²':'本次未取得面积');
- const naming=o['用途解析来源'];if(naming?.model)panel.innerHTML+=`<h3>用途如何确认</h3><div class="card">模型 ${esc(naming.model)} 提出用途分类；${esc(naming.approved_by)}于${esc(naming.approved_at||'见批准记录')}确认采用${esc(o['L4分类'])}。<br>${esc(naming.engineer_note||'用途经工程师批准；空间几何与规范结论另行检查。')}<br>原提议与本次校正保存在术语记录，可展开来源数据查看。</div>`;
- if(generated){const g=o['生成依据']||{},p=o['生成对象']||{};panel.innerHTML+=`<div class="card"><b>${esc(g.room_name)}的${g.strategy==='wall_surface'?'墙上灯具候选':'网格灯具候选'}</b><br>${g.strategy==='wall_surface'?'安装依据：已有墙体几何面，按已提取开口避让。':'布置依据：规整矩形内均布。'}<br>按演示参数估算照度并计算功率密度，待工程师签字。</div>`+rows('来源房间',g.room_name)+detail('开发者 / AI：生成灯具ID与安装墙Handle',{generated_light_id:o.semantic_id,mounting_wall_handle:p.mounting_wall_handle,room_space_id:o['房间']})+rows('生成规则',g.rule_id+' · '+g.rule_version)+`<button id="parentRoom">查看来源房间</button>`;}
- else{
- if(reviews.length||manual){panel.innerHTML+=`<h3>已有人核对的内容</h3><div class="card"><b>出入口数量和净长条件已核对</b><br>复核人：${esc(reviews[0]?.reviewed_by||'张田')}；记录日期：${esc(reviews[0]?.reviewed_date||'见复核记录')}<br>${manual?esc('出口 '+manual.entrance_count+' 处；净长超过7米：'+(manual.net_length_gt_7?'是':'否')):'见来源记录'}<br>这是出口条件确认，不等同整间房所有设计均已确认。</div>`;}
- if((o['适用规则结果']||[]).length)panel.innerHTML+='<h3>② 规则依据与待补资料</h3>';
- for(const f of (o['适用规则结果']||[])){let label=f.result==='通过'?'本项初查满足':f.result==='无法判定'?'需要补充资料':f.result==='不适用'?'本项不适用':f.result==='不通过'?'发现需处理的问题':f.result;
- const titles={R1:'变配电房出口数量',R2:'电井热源贴邻',R3:'变配电房上方用水场所',R4:'变配电房同层用水贴邻'};
- let reason=f.rule_id==='R1'&&f.result==='通过'&&reviews.length?'工程师已核对净长和两个出入口，满足本次数量检查范围。':f.reason;
- if(f.result==='无法判定'){if(f.rule_id==='R3')reason='请补充上一层平面图，检查本房间上方是否有用水场所。';else if(f.rule_id==='R4')reason='同层邻房范围尚未完整核对；若确实贴邻用水房间，还需隔墙防水做法。';else if(f.rule_id==='R2')reason='本次没有提取到纳入检查的电井，不能据此说图上没有电井。';}
- const meta=f.decision?.rule;panel.innerHTML+=`<div class="card"><b>${esc(titles[f.rule_id]||f.rule_id)} · ${esc(label)}</b><br>${esc(reason)}${f.result==='无法判定'?'<br><small>补齐对应资料后可继续计算，本轮没有把缺资料项当通过。</small>':''}</div>`;if(meta)panel.innerHTML+=ruleSource(meta);}
- const groups=o['生成对象']||[];if(groups.length){panel.innerHTML+='<h3>③ 自动出图结果（布置候选）</h3>';for(const g of groups)panel.innerHTML+=`<div class="card"><b>${g.candidate_count||0} 个灯具候选</b><br>${g.strategy==='wall_surface'?'沿实际墙面布置，扣除开口避让范围':'按规整矩形网格布置'}<br>规则：${esc(g.rule_id)}；已有墙面 ${g.mounting_wall_count||0} 处。<br>黄色符号可点击查看来源，独立DXF不修改原图。</div>`;}
- const rs=relationRows(id);if(rs.length)panel.innerHTML+='<h3>隔墙邻房：点一项在图上核对</h3>'+rs.map((r,i)=>`<button class="neighbor" data-neighbor="${i}">${esc(r.other_name)} → 看共同隔墙</button>`).join('');
- }
- const calculation=o['照度计算'];if(calculation){const p=calculation.parameters,v=calculation.existing_layout||calculation.estimated;panel.innerHTML+='<h3>灯具计算证据链</h3>'+rows('房间',generated?o['生成依据']?.room_name:o['房名'])+rows('获批用途',generated?DATA.objects[o['房间']]?.['L4分类']:o['L4分类'])+rows('标准值对照',p.target_illuminance_lx+' lx；LPD ≤ '+p.lpd_limit_w_m2+' W/㎡（演示对照值）')+rows('灯具演示参数',p.power_per_source_w+'W；'+p.flux_per_source_lm+'lm；U='+p.utilization+'；K='+p.maintenance+'；h='+p.effective_height_m+'m')+(v?`<div class="card"><b>当前布置：${v.fixture_count}盏</b><br>LPD = ${v.total_power_w}W ÷ ${calculation.area_m2.toFixed(3)}㎡ = ${v.lpd_w_m2.toFixed(3)} W/㎡，${v.demo_lpd_limit_met?'满足':'超出'}演示限值。<br>平均照度（估算）= ${v.eav_lx.toFixed(1)} lx，${v.illuminance_target_met?'达到':'低于'}${p.target_illuminance_lx}lx。<br>RI = 2A/(h·P) = ${calculation.room_index.toFixed(3)}；U使用已批准演示参数。</div>`:rows('计算资料',calculation.reason||'没有候选灯具数量'))+rows('规则版本',calculation.rule_id+' · '+calculation.rule_version)+rows('签字状态',calculation.sign_off_state)+ruleSource(calculation.decision?.rule)+detail('开发者 / AI：公式、参数来源和规范核查状态',calculation);}
- if(o['类型']==='opening')panel.innerHTML+='<p>出口条件确认属于关联房间的总数，不代表这个门洞已逐个核对。</p>';
- const refs=o['定位字段'];panel.innerHTML+='<h3>来源与定位</h3>'+rows('房间',generated?o['生成依据']?.room_name:o['房名'])+detail('开发者 / AI：类型明确的定位字段与完整证据链',{references:refs,chain:o['证据链']});
- if(cad.message)panel.innerHTML+='<p>'+esc(cad.message)+'</p>';
- if(command)panel.innerHTML+='<button class="command" id="copy">复制CAD定位命令（缩放到源图范围）</button><div id="copied" class="flash"></div>';
- panel.innerHTML+=detail('开发者 / AI用数据：ID、证据链、哈希和完整字段',o);
- if(command)el('copy').onclick=async()=>{let ok=false;try{await navigator.clipboard.writeText(command);ok=true}catch(e){const t=document.createElement('textarea');t.value=command;panel.appendChild(t);t.select();ok=document.execCommand('copy');t.remove()}el('copied').textContent=ok?'已复制。先按两次Esc，在对应源图的CAD命令行粘贴。':'请手动复制：'+command};
- if(generated)el('parentRoom').onclick=()=>select(o['房间'],true);
- const rs=relationRows(id);panel.querySelectorAll('[data-neighbor]').forEach(btn=>btn.onclick=()=>showNeighbor(id,rs[Number(btn.dataset.neighbor)]));bindOpeningChanges();options();}
-const reviewedItems=new Set();
-function renderChangeList(){
- const rows=DATA.change_summary?.checklist||[],f=el('listFilter').value;
- const visible=rows.filter(r=>f==='all'||f==='rooms'&&r.type==='房间'||f==='source'&&r.type!=='房间'||f==='derived'&&r.basis.startsWith('派生'));
- el('listCount').textContent=`${visible.length} 项 · 已勾选 ${reviewedItems.size} 项（仅本页核对标记）`;
- el('changeRows').innerHTML=visible.map(r=>`<div class="check-row ${priorities(DATA.objects[r.id]).length?'priority-row':''}"><input type="checkbox" aria-label="已查看 ${esc(r.name)}" data-reviewed="${esc(r.id)}" ${reviewedItems.has(r.id)?'checked':''}><button data-change="${esc(r.id)}" ${DATA.objects[r.id]?'':'disabled'}><b>${priorities(DATA.objects[r.id]).length?'优先核对 · ':''}${esc(r.name)}</b><br>${priorities(DATA.objects[r.id])[0]?esc(priorities(DATA.objects[r.id])[0].title)+'<br>':''}${esc(r.content)}<br><small class="${r.basis.startsWith('派生')||r.basis.startsWith('房名文字仍在')?'derived':''}">${esc(r.basis)} · ${esc(r.impact)}<br>来源：${esc(r.handles.slice(0,6).join(' / '))}${r.handles.length>6?' 等 '+r.handles.length+' 个':''}${r.change_ids.length>1?'；重复表达合并 '+r.change_ids.length+' 条':''}</small></button></div>`).join('');
- el('changeRows').querySelectorAll('[data-change]').forEach(b=>b.onclick=()=>{svg.classList.remove('changes-off');el('changes').classList.add('on');if(DATA.objects[b.dataset.change]?.['变更']?.new?.type!=='space'){svg.classList.remove('changes-room-only');el('allChanges').classList.add('on')}mode(true);select(b.dataset.change,true)});
- el('changeRows').querySelectorAll('[data-reviewed]').forEach(b=>b.onchange=()=>{if(b.checked)reviewedItems.add(b.dataset.reviewed);else reviewedItems.delete(b.dataset.reviewed);el('listCount').textContent=`${visible.length} 项 · 已勾选 ${reviewedItems.size} 项（仅本页核对标记）`});
-}
-el('listToggle').disabled=!DATA.change_summary;el('listToggle').onclick=()=>{el('changeList').hidden=!el('changeList').hidden;el('listToggle').classList.toggle('on',!el('changeList').hidden)};
-el('listFilter').onchange=renderChangeList;
-if(DATA.change_summary){
- const t=DATA.change_summary.times;
- if(t)el('changeTimes').innerHTML=`旧版扫描：${esc(t.old_scan)} → 新版扫描：${esc(t.new_scan)}（北京时间）<br>新版图纸保存：${esc(t.new_file_saved)}；本次对比生成：${esc(t.comparison_generated)}<br>${esc(t.meaning)}`;
- const answer=DATA.change_summary.engineer_comparison;
- if(answer)el('answerComparison').innerHTML='<details><summary>与张田修改记录对照（'+answer.items.length+' 项）</summary>'+answer.items.map(r=>`<div class="card"><b>${esc(r.id)} · ${esc(r.name)}</b><br>实际修改：${esc(r.edit)}<br>当前对照：${esc(r.observed)}<br>期望输出：${esc(r.expected)}<br>${esc(r.status)}<br><button data-answer-handle="${esc(r.target_handle||'')}" data-answer-name="${esc(r.target_name||r.name)}">在图上查看</button></div>`).join('')+'</details>';
- el('answerComparison').querySelectorAll('[data-answer-handle]').forEach(b=>b.onclick=()=>{const id=Object.keys(DATA.objects).find(id=>DATA.objects[id]['类型']==='change'&&DATA.objects[id]['源Handle列表'].includes(b.dataset.answerHandle))||DATA.rooms.find(r=>r.type==='space'&&r.name===b.dataset.answerName)?.id;if(id){mode(true);select(id,true)}});
- el('changeList').hidden=false;el('listToggle').classList.add('on');renderChangeList();
-}
-el('allChanges').disabled=!DATA.change_summary;el('allChanges').onclick=()=>{svg.classList.toggle('changes-room-only');el('allChanges').classList.toggle('on',!svg.classList.contains('changes-room-only'))};
-el('changes').disabled=!DATA.change_summary;el('changes').classList.toggle('on',!!DATA.change_summary);el('changes').onclick=()=>{svg.classList.toggle('changes-off');el('changes').classList.toggle('on',!svg.classList.contains('changes-off'));const r=DATA.rooms.find(r=>r.type==='change');if(r)select(r.id,true)};
-el('issues').onclick=()=>{issuesOnly=!issuesOnly;el('issues').classList.toggle('on',issuesOnly);el('search').value='';options();if(issuesOnly){const r=DATA.rooms.find(r=>r.type==='drawing_issue'&&DATA.objects[r.id]['图纸问题'].reason_code!=='REGION_SEMANTICS_DEFERRED')||DATA.rooms.find(r=>r.type==='drawing_issue');if(r){mode(true);select(r.id,true)}}};
-el('before').onclick=()=>mode(false);el('after').onclick=()=>mode(true);el('all').onclick=()=>{fit(DATA.full_bounds,10);selected=null;highlight(null);panel.innerHTML='<small>整层图面 / 同一坐标</small><h2>识别前后总览</h2><p>灰线是源几何。<br>填色是提取后的工程对象。<br>点击房间或灯具查看规则、计算和来源。</p>'};el('back').onclick=()=>{issuesOnly=false;el('issues').classList.remove('on');options();mode(true);if(DATA.default)select(DATA.default,true)};el('search').oninput=options;el('rooms').onchange=()=>{mode(true);select(el('rooms').value,true)};
-svg.onclick=e=>{if(drag?.moved)return;const o=e.target.closest('[data-id]');if(o)select(o.dataset.id)};
-svg.onkeydown=e=>{if(e.key==='Enter'&&e.target.dataset.id)select(e.target.dataset.id)};
-svg.addEventListener('wheel',e=>{e.preventDefault();const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse()),factor=e.deltaY>0?1.15:1/1.15;box=[p.x+(box[0]-p.x)*factor,p.y+(box[1]-p.y)*factor,box[2]*factor,box[3]*factor];update()},{passive:false});
-svg.onpointerdown=e=>{if(e.button!==0)return;drag={x:e.clientX,y:e.clientY,b:[...box],moved:false,id:e.target.closest('[data-id]')?.dataset.id};svg.setPointerCapture(e.pointerId)};
-svg.onpointermove=e=>{if(!drag)return;const scale=svg.getScreenCTM().a,dx=(e.clientX-drag.x)/scale,dy=(e.clientY-drag.y)/scale;if(Math.abs(e.clientX-drag.x)+Math.abs(e.clientY-drag.y)>4)drag.moved=true;box=[drag.b[0]-dx,drag.b[1]-dy,drag.b[2],drag.b[3]];update()};svg.onpointerup=()=>{if(drag?.moved)setTimeout(()=>drag=null,0);else{const id=drag?.id;drag=null;if(id)select(id)}};
-el('foot').textContent=(DATA.change_summary?`${DATA.change_summary.change_count} 条对象变化候选 · ${DATA.change_summary.cloud_regions?.length||0} 处合并云线范围，细项用颜色和清单显示；默认显示房间变化；点“全部变更”查看墙/门等 · `:'')+`${DATA.rooms.filter(r=>r.type==='space').length} 个空间 · ${DATA.rooms.filter(r=>r.type==='shaft').length} 个井道 · ${DATA.rooms.filter(r=>r.type==='zone').length} 个区域 · ${DATA.rooms.filter(r=>r.type==='drawing_issue').length} 处图纸问题 · 点房间查规则，点灯具查来源，点邻房看隔墙；查看器不修改源图`;
-if(DATA.change_summary)el('change-clouds').innerHTML=(DATA.change_summary.cloud_regions||[]).map(r=>`<path class="focus-cloud change-shape" data-region="${esc(r.id)}" d="${cloudPath(r.view_bounds)}"/>`).join('');
-options();fit(DATA.full_bounds);if(DATA.default)select(DATA.default,true);else panel.innerHTML='<h2>点击对象查看来源</h2>';const params=new URLSearchParams(location.search);if(params.get('room')&&DATA.objects[params.get('room')])select(params.get('room'),true);if(params.get('mode')==='before')mode(false);
-</script></body></html>
+          <details class="legend" open>
+            <summary>图例</summary>
+            <div class="legend-content">
+              <span><i class="u1-view-inline-1"></i>变电所</span
+              ><span><i class="u1-view-inline-2"></i>配电室</span
+              ><span><i class="u1-view-inline-3"></i>弱电房间</span
+              ><span><i class="u1-view-inline-4"></i>电气竖井</span
+              ><span><i class="u1-view-inline-5"></i>门的位置</span
+              ><span><i class="u1-view-inline-6"></i>灯具〔实验〕</span
+              ><span><i class="legend-cloud"></i>洋红云线：改动范围</span
+              ><span><i class="legend-added"></i>新增</span
+              ><span><i class="legend-changed"></i>改动</span
+              ><span><i class="legend-deleted"></i>删除或失效</span
+              ><span><i class="legend-issue" aria-hidden="true">×</i>红叉圆圈：图纸识别缺口，点击查看原因；不表示设计违规</span
+              ><span>斜线＝软件识别区域</span
+              ><span>点图例对应的对象，在右侧查看说明</span>
+            </div>
+          </details>
+        </div>
+      </section>
+      <div class="object-panel" id="objectPanel">
+        <div class="object-panel-head">
+          <strong>对象与依据</strong
+          ><button id="closeObject" aria-label="收起对象详情">收起</button>
+        </div>
+        <aside class="panel" id="panel"></aside>
+      </div>
+    </main>
+    <dialog id="drawingHelpDialog" aria-labelledby="drawingHelpTitle">
+      <h3 id="drawingHelpTitle">图面操作与覆盖范围</h3>
+      <p>
+        滚轮缩放，拖动平移；点房间查规则、点灯具查来源、点邻房看隔墙。图纸保持
+        CAD 方向，查看器不修改源图。
+      </p>
+      <p>
+        识别前/后切换图元覆盖；图层控制只影响显示。变更、影响和旧确认均只展示核心已有结果，不代替工程师核对。
+      </p>
+      <div id="foot" class="foot"></div>
+      <button id="closeDrawingHelp">关闭帮助</button>
+    </dialog>
+    <script id="data" type="application/json">
+      __PAYLOAD__
+    </script>
+    __GV_ICON_SPRITE__
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/pages/view-core.js"></script>
+    <script src="assets/js/pages/view-objects.js"></script>
+    <script src="assets/js/pages/view-changes.js"></script>
+    <script src="assets/js/pages/view-events.js"></script>
+  </body>
+</html>

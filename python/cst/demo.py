@@ -12,8 +12,30 @@ from .ai import replay
 from .room_diagnostics import diagnose_directory
 from .draft import draft_rule
 
-def run(root=None,changes_only=False):
+def run_quick(root):
+    """日常烟测子集，输出独立目录，不能替代完整演示或冻结验收。"""
+    output=root/'dist/demo-quick';output.mkdir(parents=True,exist_ok=True)
+    result={'mode':'quick','network_used':False,'samples':{},'skipped':['完整换版','证据包导出/校验','灯具/邻接/计算导出','真实模型缓存重放','桌面/异机交互']}
+    with patch('httpx.Client',side_effect=RuntimeError('快速演示禁止联网')):
+        for label in ('A','B'):
+            directory=root/'samples'/label
+            verified=verify(directory)
+            if verified['failure_count']:raise ValueError(label+'引用检查失败，快速演示未通过')
+            result['samples'][label]={'objects':summary(load(directory))['objects_by_type'],'verification_failures':0}
+        controls=replay(root/'ai_cache/SYNTHETIC_validator.json')
+        if any(row['valid']!=row['expected_valid'] for row in controls['cases']):raise ValueError('合成控制失败')
+        from .claims import check_claims
+        claims=check_claims(root/'samples/A',json.loads((root/'samples/claims/A-supported.claims.json').read_bytes()))
+        if not claims['valid']:raise ValueError('主张引用正例未通过')
+        result['claims_supported']=len(claims['rows']);result['synthetic_control_count']=len(controls['cases'])
+    (output/'manifest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+    print('快速烟测通过（非完整演示）：A/B引用、合成控制、主张引用正例；输出dist/demo-quick。')
+    return result
+
+
+def run(root=None,quick=False,changes_only=False):
     root=Path(root) if root else Path(__file__).resolve().parents[2]
+    if quick:return run_quick(root)
     output=root/'dist/demo';output.mkdir(parents=True,exist_ok=True)
     manifest={'network_used':False,'samples':{},'ai_replays':[],'rule_replays':[]}
     def save(name,value):
@@ -82,8 +104,9 @@ def run(root=None,changes_only=False):
 
 if __name__=='__main__':
     import argparse
-    parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--changes-only',action='store_true',help='仅A到A-change，跳过A/B独立输出与全组AI重放')
+    parser=argparse.ArgumentParser(description='离线演示：默认完整，--quick仅为日常烟测子集')
+    parser.add_argument('--quick',action='store_true',help='快速子集，不替代完整演示与正式验收')
+    parser.add_argument('--changes-only',action='store_true',help='仅换版演示，不替代完整演示')
     args=parser.parse_args()
-    try:run(changes_only=args.changes_only)
+    try:run(quick=args.quick,changes_only=args.changes_only)
     except (OSError,ValueError,RuntimeError) as exc:raise SystemExit('演示未完成：'+str(exc))

@@ -1,0 +1,261 @@
+.gv-code {
+  font-family: var(--font-code);
+}
+.gv-numeric {
+  font-variant-numeric: tabular-nums;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+input,
+textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  min-height: var(--legacy-px-38);
+  padding: var(--legacy-px-9) var(--legacy-px-14);
+  border: var(--legacy-px-1) solid var(--border);
+  background: var(--surface-white);
+  color: var(--ink);
+}
+button:hover {
+  border-color: var(--accent);
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface-white);
+}
+.quiet {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-secondary);
+}
+.nav-note {
+  font-size: var(--legacy-px-13);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  padding: var(--legacy-px-18) var(--legacy-px-13);
+}
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--legacy-px-18);
+}
+h2 {
+  margin: 0 0 var(--legacy-px-6);
+}
+.sub {
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+}
+.toolbar {
+  display: flex;
+  gap: var(--legacy-px-8);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.path {
+  font-size: var(--legacy-px-13);
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+.tip {
+  font-size: var(--legacy-px-13);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: var(--legacy-px-22) 0;
+}
+.panel {
+  background: var(--surface-white);
+  padding: var(--legacy-px-22);
+  border: var(--legacy-px-1) solid var(--line);
+  border-radius: var(--legacy-px-9);
+}
+.panel p {
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-size: var(--legacy-px-14);
+}
+.error-panel {
+  color: var(--status-contradiction-color);
+  background: var(--surface-white);
+  border: var(--legacy-px-1) solid var(--border);
+  padding: var(--legacy-px-12) var(--legacy-px-15);
+  margin-bottom: var(--legacy-px-18);
+  border-radius: var(--legacy-px-6);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: var(--legacy-px-13);
+}
+.error-badge {
+  background: var(--surface-white);
+  color: var(--status-contradiction-color);
+  border-color: var(--border);
+  padding: var(--legacy-px-3) var(--legacy-px-8);
+  min-height: var(--legacy-px-25);
+  font-size: var(--legacy-px-13);
+  margin-left: auto;
+}
+dialog {
+  border: var(--legacy-px-1) solid var(--border);
+  border-radius: var(--legacy-px-12);
+  padding: var(--legacy-px-25);
+  box-shadow: 0 var(--legacy-px-25) var(--legacy-px-100) var(--shadow-panel);
+}
+dialog::backdrop {
+  background: var(--backdrop);
+}
+dialog h3 {
+  font-size: var(--legacy-px-20);
+  margin: 0 0 var(--legacy-px-18);
+}
+label {
+  display: grid;
+  gap: var(--legacy-px-7);
+  font-size: var(--legacy-px-13);
+  margin-bottom: var(--legacy-px-17);
+}
+input,
+textarea {
+  font: inherit;
+  border: var(--legacy-px-1) solid var(--border);
+  padding: var(--legacy-px-10) var(--legacy-px-12);
+  border-radius: var(--legacy-px-6);
+  width: 100%;
+  color: var(--text-body);
+  background: var(--surface-white);
+}
+input:focus,
+textarea:focus {
+  outline: var(--legacy-px-2) solid var(--border);
+  border-color: var(--brand-blue-700);
+}
+textarea {
+  height: var(--legacy-px-78);
+  resize: vertical;
+}
+.path-input {
+  display: flex;
+  gap: var(--legacy-px-8);
+}
+.path-input button {
+  white-space: nowrap;
+  font-size: var(--legacy-px-13);
+}
+.form-hint {
+  font-size: var(--legacy-px-13);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 var(--legacy-px-16);
+}
+.dialog-actions {
+  display: flex;
+  gap: var(--legacy-px-9);
+  justify-content: flex-end;
+  border-top: var(--legacy-px-1) solid var(--line);
+  padding-top: var(--legacy-px-17);
+}
+.form-error {
+  color: var(--status-contradiction-color);
+  font-size: var(--legacy-px-13);
+  margin-bottom: var(--legacy-px-12);
+  white-space: pre-wrap;
+}
+[hidden] {
+  display: none !important;
+}
+.page-head {
+  margin-bottom: var(--legacy-px-16);
+}
+.sub {
+  font-size: var(--legacy-px-13);
+}
+h2 {
+  font-size: var(--font-size-20);
+  font-weight: var(--weight-semibold);
+  letter-spacing: normal;
+}
+h3 {
+  font-size: var(--font-size-16);
+  font-weight: var(--weight-semibold);
+}
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+}
+button {
+  font-size: var(--font-size-13);
+  font-weight: var(--weight-semibold);
+  border-radius: var(--radius-control);
+}
+button.primary,
+.gv-button--primary {
+  background: var(--brand-blue-700);
+  border-color: var(--brand-blue-700);
+  color: var(--surface);
+}
+button.primary:hover,
+.gv-button--primary:hover {
+  background: var(--brand-blue-600);
+}
+button:focus-visible,
+input:focus,
+textarea:focus,
+select:focus-visible {
+  outline: var(--legacy-px-2) solid var(--brand-blue-700);
+  outline-offset: var(--legacy-px-2);
+  border-color: var(--brand-blue-700);
+}
+.quiet,
+a {
+  color: var(--brand-blue-700);
+}
+dialog {
+  max-width: calc(100vw - var(--space-32));
+  width: var(--dialog-width);
+  color: var(--gray-900);
+}
+.settings-list {
+  font-size: var(--font-size-14);
+  line-height: 1.7;
+}
+.settings-list dt {
+  font-weight: var(--weight-semibold);
+  margin-top: var(--space-12);
+}
+.settings-list dd {
+  margin: var(--space-4) 0;
+  color: var(--text-secondary);
+}
+.scan-help {
+  padding-left: var(--space-24);
+  line-height: 2;
+  font-size: var(--font-size-14);
+}
+
+/* 结论可直接选中复制；不把整页当作拖动区域。 */
+main p,
+main pre,
+main blockquote,
+.review-detail,
+.panel,
+.claim-highlight,
+.claim-result,
+.check-row button {
+  user-select: text;
+  -webkit-user-select: text;
+}

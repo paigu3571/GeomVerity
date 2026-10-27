@@ -1,0 +1,9 @@
+/* U1: 保留原级联次序与原值；按19号逐阶段迁移。 */
+.u1-workbench-inline-1 {
+  font-weight: var(--legacy-weight-400);
+  color: var(--text-muted);
+  font-size: var(--legacy-px-15);
+}
+.u1-workbench-inline-2 {
+  margin-top: var(--legacy-px-16);
+}

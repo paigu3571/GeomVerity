@@ -1,0 +1,257 @@
+#project .project-strip {
+  display: flex;
+  align-items: center;
+  border-bottom: var(--legacy-px-1) solid var(--line);
+}
+#project .project-strip .path {
+  max-width: 35%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#project .project-strip .quiet {
+  margin-left: 0;
+}
+#project #saveProject {
+  margin-left: auto;
+}
+#project .grid {
+  display: grid;
+}
+#project .version-card {
+  border-top: var(--legacy-px-4) solid var(--border-strong);
+}
+#project .card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#project .card-top h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+#project .chip {
+  border-radius: var(--legacy-px-4);
+  white-space: nowrap;
+}
+#project .conclusion {
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+#project .metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: var(--legacy-px-1) solid var(--surface-sunken);
+  border-bottom: var(--legacy-px-1) solid var(--surface-sunken);
+}
+#project .metric strong {
+  display: block;
+}
+#project .meta {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--legacy-px-13);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  padding: var(--legacy-px-13) 0;
+}
+#project .gaps {
+  line-height: 1.8;
+  border-radius: var(--legacy-px-5);
+}
+#project .version-note {
+  font-size: var(--legacy-px-13);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+#project .card-actions {
+  display: flex;
+}
+#project .card-actions button {
+  font-size: var(--legacy-px-13);
+  min-height: var(--legacy-px-33);
+  padding: var(--legacy-px-6) var(--legacy-px-10);
+}
+#project .page-head {
+  margin-bottom: var(--space-16);
+}
+#project .sub {
+  color: var(--text-secondary);
+  font-size: var(--font-size-13);
+}
+#project .project-strip {
+  gap: var(--space-12);
+  padding-bottom: var(--space-16);
+  margin-bottom: var(--space-24);
+}
+#project .project-strip strong {
+  font-size: var(--font-size-16);
+}
+#project .grid {
+  gap: var(--space-16);
+}
+#project .version-card {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  border: var(--border-width) solid var(--line);
+  border-top-width: var(--status-strip-width);
+  box-shadow: none;
+}
+#project .version-card.current {
+  outline: var(--border-width) solid var(--brand-blue-700);
+  outline-offset: 0;
+  box-shadow: none;
+}
+#project .version-card[data-state="support"] {
+  border-top-color: var(--status-support-strip);
+}
+#project .version-card[data-state="review"] {
+  border-top-color: var(--status-review-strip);
+}
+#project .version-card[data-state="contradiction"] {
+  border-top-color: var(--status-contradiction-strip);
+}
+#project .version-card[data-state="unknown"] {
+  border-top-color: var(--status-unknown-strip);
+}
+#project .card-top {
+  gap: var(--space-8);
+}
+#project .card-top h3 {
+  font-size: var(--font-size-16);
+}
+#project .chip {
+  font-size: var(--font-size-12);
+  background: var(--brand-blue-50);
+  color: var(--brand-blue-700);
+  padding: var(--space-4) var(--space-8);
+  letter-spacing: normal;
+}
+#project .conclusion {
+  min-height: 0;
+  font-size: var(--font-size-13);
+}
+#project .gv-status {
+  align-items: flex-start;
+  font-size: var(--font-size-13);
+  line-height: 1.7;
+  font-weight: var(--weight-regular);
+}
+#project .gv-status .gv-icon {
+  margin-top: var(--space-4);
+}
+#project .metrics {
+  padding: var(--space-12) 0;
+  gap: var(--space-4);
+  border-color: var(--line);
+}
+#project .metric strong {
+  color: var(--gray-900);
+  font-size: var(--font-size-28);
+  font-weight: var(--weight-semibold);
+  letter-spacing: normal;
+  font-variant-numeric: tabular-nums;
+}
+#project .metric span {
+  color: var(--text-secondary);
+  font-size: var(--font-size-12);
+}
+#project .version-note,
+#project .path,
+#project .meta {
+  color: var(--text-secondary);
+  font-size: var(--font-size-12);
+}
+#project .meta {
+  gap: var(--space-8);
+  padding-top: var(--space-12);
+}
+#project .gaps {
+  padding: var(--space-8);
+  margin-top: var(--space-12);
+  color: var(--gray-900);
+  background: var(--surface-secondary);
+  font-size: var(--font-size-12);
+}
+#project .card-actions {
+  margin-top: var(--space-16);
+  padding-top: var(--space-12);
+  gap: var(--space-8);
+  border-color: var(--line);
+}
+#project .tip {
+  font-size: var(--font-size-12);
+  color: var(--text-secondary);
+  margin-top: var(--space-16);
+}
+#project .empty-grid {
+  display: block;
+}
+#project .gv-empty {
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-card);
+  padding: var(--space-32);
+  background: var(--surface);
+  text-align: center;
+}
+#project .gv-empty-art {
+  height: var(--empty-art-height);
+  width: var(--empty-art-width);
+  border: var(--border-width) dashed var(--line);
+  border-radius: var(--radius-card);
+  margin: 0 auto var(--space-24);
+}
+#project .gv-empty p {
+  font-size: var(--font-size-14);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-24);
+}
+#project .gv-empty button {
+  margin: var(--space-4);
+}
+#project .gv-code {
+  font-family: var(--font-code);
+  font-size: var(--font-size-12);
+  overflow-wrap: anywhere;
+}
+#project .grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+#project .version-card {
+  padding: var(--space-16);
+}
+#project .conclusion {
+  margin: var(--space-12) 0;
+}
+#project .version-note {
+  margin: var(--space-8) 0;
+  min-height: 0;
+}
+#project .file-meta {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.7;
+}
+#project .project-explanation {
+  margin: var(--space-12) 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-12);
+  line-height: 1.7;
+}
+#project .card-actions {
+  justify-content: flex-end;
+}
+#project .current-label {
+  font-size: var(--font-size-12);
+  color: var(--text-secondary);
+  padding: var(--space-8);
+}
+@media (max-width: 850px) {
+  #project .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+#project .meta > span { white-space: nowrap; }

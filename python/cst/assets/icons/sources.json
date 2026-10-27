@@ -1,0 +1,102 @@
+{
+  "version": "3.35.0",
+  "license": "MIT",
+  "files": [
+    {
+      "file": "layout-grid.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/layout-grid.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "ffd8b56d33fa6fae430493bd0d5df4bf2ddabe91e32246197450d27b563d7409"
+    },
+    {
+      "file": "geometry.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/geometry.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "3b1024627803e8be26c61c3ff82d30a8b94ac013f1126fa04969706a4794547f"
+    },
+    {
+      "file": "arrows-exchange.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/arrows-exchange.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "4cf62653f4b11fdbf45fe476c21a9d51ea7a09f645bc21c92dfb67791191b39b"
+    },
+    {
+      "file": "shield-check.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/shield-check.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "535d6ffaf9be3692865f3e3676f13dd09fd7997439fcbe321628228eb3133768"
+    },
+    {
+      "file": "user-check.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/user-check.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "b4702ffc28d75119e0fba81550cb8c39cff2b05c328f8752ef6de3755f675555"
+    },
+    {
+      "file": "file-export.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/file-export.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "3bb93dbc4b00d4d419532bc65e4bd6b859baf8e7f9e10b2138f9832447614e8e"
+    },
+    {
+      "file": "circle-check.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/circle-check.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "67e11ca87c73f275e3bead4a982504abdacae8a5850cd730f8070f310f79b24c"
+    },
+    {
+      "file": "alert-triangle.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/alert-triangle.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "0ec8918d410ee445a06ca9fc72e1fc9a1b827717e731fdff07257652fd59a8be"
+    },
+    {
+      "file": "circle-x.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/circle-x.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "40b8af862d31ea08392efa37730d38a634ac817b5ff782db2221f3adca400325"
+    },
+    {
+      "file": "help-circle.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/help-circle.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "edd0c6c86299ee47888e91843130e9d63577a98293e88b7f3b1f0cc8bc0be6a7"
+    },
+    {
+      "file": "menu-2.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/menu-2.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "c113d8dfede45b94d606071c2703d7685844b0682ca6e5dc24e37db1a271ddd8"
+    },
+    {
+      "file": "settings.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/settings.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "0c4c3d55a9c5055a69730222b292db4b78cc3b251242f1ce6eaeed75135e05d5"
+    },
+    {
+      "file": "copy.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/copy.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "171963e84331a3c359350d45d10fa647314590b56fbc5de00c51161d54e07cea"
+    },
+    {
+      "file": "chevron-left.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/chevron-left.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "3e1494f280aeffb7f38f28fca8b325b3b77875994d113d869e9292429406b136"
+    },
+    {
+      "file": "chevron-right.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/chevron-right.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "d2cec66c16f2108e9f9b378ce83f66bd07c97108f183eaf95125bf99b8501827"
+    },
+    {
+      "file": "layers-intersect.svg",
+      "source": "https://raw.githubusercontent.com/tabler/tabler-icons/v3.35.0/icons/outline/layers-intersect.svg",
+      "modification": "根元素增加引用ID，线宽调整为1.75",
+      "sha256": "9ce251e67126143e0df65c27034ce82d3d64cfcf6c794c9303b9b8e5a75d47a3"
+    }
+  ]
+}

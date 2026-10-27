@@ -1,0 +1,12 @@
+schema_version: public-sample-lineage.v1
+notice: 仅登记已知公开样例的同图关系，不按文件名推断其他项目。
+samples:
+- sha256: 37124eb42daf0d98e5e0f990c08862f5870d973d2a3ebf4b2f49643347366009
+  label: A
+  group: public-A
+- sha256: fd1bf3ebe7b34e6ef6a804fc6becd6e9172e17d76c6f13a599b9a9c57c098a51
+  label: A-change
+  group: public-A
+- sha256: 23e8eec0e0b465406e5cee6fa6259c6d42a074e3da6cd1c503b14411a1d01b6c
+  label: B
+  group: public-B

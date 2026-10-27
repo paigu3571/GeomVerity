@@ -54,7 +54,11 @@ class ReadTools:
                 'area_m2':None if area == '' else area,'confidence':o.confidence}
     def get_evidence(self,id):
         o=self.objects.get(id)
-        if o is None:return {'error':'对象ID不存在','id':id}
+        if o is None:
+            from .evidence import default_registry
+            resolved=default_registry().resolve(self,id)
+            if not resolved.found:return {'id':id,'error':resolved.reason or '引用不存在','kind':resolved.kind}
+            return {'id':id,'kind':resolved.kind,'record':resolved.value,'raw':resolved.raw,'note':'读取比较/规则记录；旧版字段不证明新版存在，缺少的源几何不可补造'}
         return {'id':id,'source':o.source.model_dump(),'evidence':[e.model_dump() for e in o.evidence],
                 'note':'证据存在不证明识别正确；完整引用可用verify核对'}
     def _findings(self):
@@ -67,7 +71,7 @@ class ReadTools:
         rows=[f for f in self._findings().values() if (rule_id is None or f['rule_id']==rule_id) and (result is None or f['result']==result)]
         return {'total':len(rows),'offset':offset,'items':[self._finding_reference(f) for f in rows[offset:offset+limit]]}
     def _finding_reference(self,f):
-        return {k:f[k] for k in ('id','rule_id','result','reason','input_confidence','object_ids','source_handles','values')} | {'status':'accepted' if f['input_confidence']=='输入已确认' else 'review'}
+        return {k:f[k] for k in ('id','rule_id','result','reason','input_confidence','object_ids','source_handles','values')} | {'engineer':f.get('decision',{}).get('engineer',{}),'status':'accepted' if f['input_confidence']=='输入已确认' else 'review'}
     def get_changes(self,offset=0,limit=20,type=None):
         if not isinstance(offset,int) or not isinstance(limit,int) or offset<0 or not 1<=limit<=100:raise ValueError('分页参数无效')
         if self.changes_data is None:return {'total':0,'items':[],'reason':'未提供两版变更结果'}
@@ -75,6 +79,7 @@ class ReadTools:
         return {'total':len(rows),'offset':offset,'items':[self._change_reference(c) for c in rows[offset:offset+limit]]}
     def _change_reference(self,c):
         o=c['new'] or c['old']
+        if 'impact' not in c:return {'id':c['id'],'name':o['name'],'type':o['type'],'change_type':'、'.join(c['kinds']),'old':c['old'],'new':c['new'],'status':'review','note':'仅来源身份记录，未附专业影响结果'}
         return {'id':c['id'],'name':o['name'],'type':o['type'],'change_type':'、'.join(c['kinds']),
                 'old_handle':(c['old'] or {}).get('handle'),'new_handle':(c['new'] or {}).get('handle'),
                 'result':c['impact']['result'],'status':'review','old':c['old'],'new':c['new'],'priorities':c.get('priorities',[])}
@@ -90,21 +95,23 @@ class ReadTools:
             'suggested_work':c['suggested_work'],'status':'review'} for c in page_rows],
             'review_inheritance':[r for r in self.changes_data['review_inheritance'] if r.get('old_room') in room_ids or r.get('new_room') in room_ids],
             'lighting_changes':[r for r in self.changes_data['lighting_changes'] if r.get('old_room_id') in room_ids or r.get('new_room_id') in room_ids]}
+    def list_decision_inheritance(self,offset=0,limit=20,status=None):
+        if not isinstance(offset,int) or not isinstance(limit,int) or offset<0 or not 1<=limit<=100:raise ValueError('分页参数无效')
+        delta=self.changes_data or {}
+        rows=[r for r in delta.get('decision_inheritance',[]) if status is None or r.get('status')==status]
+        return {'total':len(rows),'offset':offset,'items':rows[offset:offset+limit],
+                'policy_version':delta.get('inheritance_version'),'basis':'提供的diff记录，旧版记录没有新策略字段时不能推定已采用新策略',
+                'reason':None if self.changes_data else '未提供两版变更结果'}
     def call(self,name,args):
-        if name not in {'summary','list_objects','get_object','get_evidence','list_findings','get_changes','get_impacts'}:raise ValueError('未授权工具')
+        if name not in {'summary','list_objects','get_object','get_evidence','list_findings','get_changes','get_impacts','list_decision_inheritance'}:raise ValueError('未授权工具')
         return getattr(self,name)(**args)
     def truth(self,answer):
-        objects={}
+        from .evidence import default_registry
+        registry=default_registry();objects={}
         for claim in answer.get('claims',[]):
-            for id in claim.get('object_ids',[]):
-                if id.startswith('change_') and self.changes_data:
-                    row=next((c for c in self.changes_data['changes'] if c['id']==id),None)
-                    if row:objects[id]=self._change_reference(row)
-                elif id.startswith('impact_change_') and self.changes_data:
-                    row=self.get_impacts(id.removeprefix('impact_'))['items']
-                    if row:objects[id]=row[0]
-                elif id in self.objects:objects[id]=self.get_object(id)
-                elif id.startswith('finding_') and id in self._findings():objects[id]=self._finding_reference(self._findings()[id])
+            for ref in claim.get('object_ids',[]):
+                resolved=registry.resolve(self,ref)
+                if resolved.found:objects[ref]=resolved.value
         return {'objects':objects,'summary':self.summary()}
 
 DEFINITIONS=[

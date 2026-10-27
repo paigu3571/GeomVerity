@@ -71,11 +71,17 @@ class ChangeTests(unittest.TestCase):
     def test_review_inheritance_requires_same_room_and_door_set(self):
         f={'rule_id':'R1','object_ids':['r'],'object_name':'配电室','engineer_reviewed':{'reviewed_by':'SYNTHETIC'},'source_handles':['A'],'values':{'candidate_opening_ids':['d']}}
         n={'rule_id':'R1','object_ids':['nr'],'values':{'candidate_opening_ids':['nd']}}
+        f['decision']={'id':'old','rule':{'sha256':'R'},'engineer':{'confirmed_by':'SYNTHETIC'},'inputs':[{'object_id':i,'content_fingerprint':i,'source_identity_sha256':i} for i in ('r','d')],'confirmation_scope':{'kind':'r1_input_conditions','candidate_opening_ids':['d']}}
+        from copy import deepcopy
+        n['decision']=deepcopy(f['decision']);n['decision']['id']='new'
+        for item in n['decision']['inputs']:item['object_id']={'r':'nr','d':'nd'}[item['object_id']]
+        n['decision']['confirmation_scope']['candidate_opening_ids']=['nd']
         confirmed=RoomConfirmation(object_id='r',name='配电室',net_length_gt_7=True,entrance_count=2)
         inherited,records=inherit_reviews([f],[n],{'r':'nr','d':'nd'},{'r','d'},{'r':(confirmed,S())})
         self.assertIn('nr',inherited);self.assertEqual(records[0]['state'],'继承')
-        for unchanged,doors in [({'r'},['nd']),({'r','d'},['nd','newdoor'])]:
+        for unchanged,doors in [({'r'},['changed']),({'r','d'},['nd','newdoor'])]:
             n['values']['candidate_opening_ids']=doors
+            n['decision']['confirmation_scope']['candidate_opening_ids']=doors
             inherited,records=inherit_reviews([f],[n],{'r':'nr','d':'nd'},unchanged,{'r':(confirmed,S())})
             self.assertFalse(inherited);self.assertIn('失效',records[0]['state'])
     def test_far_change_no_impact_and_in_room_change_hits(self):
@@ -96,3 +102,15 @@ class ChangeTests(unittest.TestCase):
         d=data([])
         out=impact_for({'old':{'id':'missing'},'new':None},d,d,{'old':{},'new':{}})
         self.assertEqual(out['result'],'无法判定影响')
+
+    def test_geometry_cache_is_scoped_and_does_not_confuse_reused_ids(self):
+        from unittest.mock import patch
+        from cst.changes import shape,geometry_session,_shape
+        a=obj('same','A',x=0);b=obj('same','A',x=100)
+        with patch('cst.changes._shape',wraps=_shape) as build:
+            with geometry_session():
+                first=shape(a);self.assertIs(shape(a),first)
+                self.assertNotEqual(shape(b).bounds,first.bounds)
+                self.assertEqual(build.call_count,2)
+            with geometry_session():shape(a)
+            self.assertEqual(build.call_count,3)

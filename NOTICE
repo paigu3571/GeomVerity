@@ -91,3 +91,6 @@ SDK依据：https://github.com/modelcontextprotocol/python-sdk/blob/v1.30.0/READ
 |PyInstaller|6.19.0|GPLv2-or-later及bootloader分发例外|
 
 桌面实验使用Windows/.NET及系统安装的Microsoft WebView2运行时，运行时不属于本项目MPL源码；保留微软组件自身条款。生成的EXE/DLL不进入Git，当前为本机实验构建，完整原许可证随本地打包目录保存。
+
+
+工作台图标使用Tabler Icons v3.35.0（MIT），逐文件来源和原许可见python/cst/assets/icons/sources.json与LICENSE.txt。品牌PNG由张田提供，保留原稿；尚无矢量源。

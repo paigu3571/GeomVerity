@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GeomVerity 工作台</title>
+    <link rel="icon" type="image/png" href="assets/brand/logo-original.png" />
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages/project.css" />
+    <link rel="stylesheet" href="assets/css/pages/changes.css" />
+    <link rel="stylesheet" href="assets/css/pages/shell.css" />
+    <link rel="stylesheet" href="assets/css/pages/claims.css" />
+    <link rel="stylesheet" href="assets/css/pages/workbench-inline.css" />
+  </head>
+  <body class="gv-workbench">
+    <header>
+      <button
+        id="navToggle"
+        class="gv-button gv-button--ghost icon-button"
+        data-ui-control
+        aria-label="收起导航"
+        aria-expanded="true"
+        aria-controls="workbenchNav"
+        title="收起导航"
+      >
+        <svg class="gv-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <use href="#ti-menu-2"></use>
+        </svg>
+      </button>
+      <div class="brand">
+        <img
+          class="brandmark"
+          src="assets/brand/logo-original.png"
+          alt="GeomVerity标志（位图占位）"
+        />
+        <h1>GeomVerity <span>几何求真</span></h1>
+      </div>
+      <span id="headerProject" class="header-project" aria-label="当前项目"
+        >正在读取项目…</span
+      >
+      <div class="local">本机工作台 · 数据不离开本机</div>
+      <button
+        id="openSettings"
+        class="gv-button gv-button--ghost icon-button"
+        data-ui-control
+        aria-label="查看本机设置"
+        title="查看本机设置"
+      >
+        <svg class="gv-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <use href="#ti-settings"></use>
+        </svg>
+      </button>
+    </header>
+    <div id="busyLine" class="busy" hidden></div>
+    <div class="layout">
+      <nav id="workbenchNav" aria-label="工作台页面">
+        <p class="nav-group">项目</p>
+        <button
+          data-page="project"
+          class="active"
+          aria-current="page"
+          title="项目与体检"
+          aria-label="项目与体检"
+        >
+          <svg class="gv-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <use href="#ti-layout-grid"></use></svg
+          ><span class="nav-label">项目与体检</span>
+        </button>
+        <button data-page="drawing" title="图面" aria-label="图面">
+          <svg class="gv-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <use href="#ti-geometry"></use></svg
+          ><span class="nav-label">图面</span>
+        </button>
+        <button data-page="changes" title="换版" aria-label="换版">
+          <svg class="gv-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <use href="#ti-arrows-exchange"></use></svg
+          ><span class="nav-label">换版</span>
+        </button>
+        <p class="nav-group">核验</p>
+        <button data-page="claims" title="AI核验" aria-label="AI核验">
+          <svg class="gv-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <use href="#ti-shield-check"></use></svg
+          ><span class="nav-label">AI核验</span>
+        </button>
+        <button data-page="review" title="人工复核" aria-label="人工复核">
+          <svg class="gv-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <use href="#ti-user-check"></use></svg
+          ><span class="nav-label">人工复核</span>
+        </button>
+        <button data-page="export" title="导出" aria-label="导出">
+          <svg class="gv-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <use href="#ti-file-export"></use></svg
+          ><span class="nav-label">导出</span>
+        </button>
+        <div class="nav-note">
+          读取已扫描的 JSON<br />本工作台不直接读取 DWG<br /><br />实验：灯具候选/照度<br />实验输出不自动产生设计确认。
+        </div>
+      </nav>
+      <main>
+        <div id="errorPanel" class="error-panel" role="alert" hidden></div>
+        <section id="project">
+          <div class="page-head">
+            <div>
+              <h2>项目与体检</h2>
+              <p class="sub">先看各版扫描是否可用于分析，再追问缺口与依据。</p>
+            </div>
+            <div class="toolbar">
+              <button id="newProject">新建项目</button
+              ><button id="openProject">打开项目</button
+              ><button id="addVersion" class="primary">添加版本</button>
+            </div>
+          </div>
+          <div class="project-strip">
+            <strong id="projectName">正在读取项目…</strong
+            ><span id="projectFile" class="path"></span
+            ><button id="saveProject" class="quiet">保存项目</button
+            ><button id="example" class="quiet">载入公开示例</button>
+          </div>
+          <div id="versions" class="grid"></div>
+          <p class="tip">
+            门窗洞口合计独立门对象、窗和洞口
+            记录，是对象记录数，不是实体门数量，不能相加推断识别准确率。缺口记录可能重叠；0个房间、扫描失败或资料未知都不表示专业通过。
+          </p>
+        </section>
+        <section id="drawing" hidden>
+          <div class="drawing-bar">
+            <strong class="sr-only">图纸工作区</strong
+            ><span id="drawingVersion">当前版本</span
+            ><button id="returnToChanges" hidden>返回换版</button
+            ><button id="view" title="重新生成当前版本的只读图面">
+              刷新图面
+            </button>
+          </div>
+          <div id="drawingEmpty" class="drawing-empty">
+            <h3>在图纸上核查每一处变化</h3>
+            <p>选择版本后打开图面；换版结果可直接定位旧、新轮廓。</p>
+            <button id="openDrawing" class="primary">打开当前版本图面</button>
+          </div>
+          <iframe id="viewer" title="工程图面" hidden></iframe>
+        </section>
+        <section id="changes" hidden>
+          <div class="page-head">
+            <div>
+              <h2>换版复核</h2>
+              <p class="sub">
+                先核对房间变化，再查影响依据与旧确认的适用范围。
+              </p>
+            </div>
+          </div>
+          <details class="panel compare-setup" id="compareSetup" open><summary>比较版本 · 展开更换</summary>
+            <div class="compare-inputs">
+              <label>旧版<select id="oldVersion"></select></label
+              ><label>新版<select id="newVersion"></select></label
+              ><button id="compare" class="primary">比较两版</button>
+            </div>
+            <label class="inline"
+              ><input
+                id="sameDrawing"
+                type="checkbox"
+              />确认是同一图纸的两个版本 · 公开示例用 A → A-change，B
+              是另一张图</label
+            >
+          </details><div id="comparisonResult" class="comparison-result"></div>
+        </section>
+        <section id="claims" hidden>
+          <div class="page-head">
+            <div>
+              <h2>工程意见与图纸核对</h2>
+              <p class="sub">
+                当前版本：<strong id="claimsVersion" class="claims-current-version"></strong> ·
+                人工/AI辅助划分，离线工具核验，不调用模型。
+              </p>
+            </div>
+            <button id="claimsSources">查看技术依据目录</button>
+          </div>
+          <div id="engineeringComparison" class="engineering-comparison" hidden></div>
+          <div class="engineering-intro">
+            <p>先看房间变化 → 再看意见提到了什么 → 在人工复核中记录处理结果。</p>
+            <button id="claimsDemo">载入公开改图复核示例</button>
+            <details><summary>使用自己的工程意见</summary>
+              <label>粘贴工程意见<textarea id="engineeringText" placeholder="例如：预留充电桩配电房门口有变化，请复核出口和配电柜检修通道。"></textarea></label>
+              <button id="engineeringExtract">提取工程相关段落</button>
+              <p>按已有房名和工程关键词本地提取、关联，不调用模型；没有关联到房间的段落单独列出，等待你指定。自贴内容仅在当前会话整理，不混用原导入文档的逐句技术结果；退出前请另存原文。</p>
+            </details>
+            <p id="claimsDirty" class="review-help"></p>
+          </div>
+          <div id="claimsEngineering" class="engineering-workspace"></div>
+          <details id="claimsTechnical" class="engineering-technical"><summary>原文、逐句技术核验与高级编辑</summary>
+          <div class="claims-layout gv-split" id="claimsSplit">
+            <div class="panel">
+              <h3>AI完整原文</h3>
+              <div id="claimsReading" class="claims-reading" tabindex="0"></div>
+              <details id="claimsTextEdit">
+                <summary>① 粘贴或编辑AI原文</summary>
+                <label
+                  >粘贴AI完整原文<textarea
+                    id="claimsOriginal"
+                    placeholder="保留全文，在此选中一句主张，然后点击下方按钮。"
+                  ></textarea></label
+                ><label
+                  >生成方（自报，可留空）<input
+                    id="claimsProducer"
+                    placeholder="例如：DeepSeek，真实样本保持原样"
+                /></label>
+                <details>
+                  <summary>载入AI辅助划分（Codex）</summary>
+                  <label
+                    >主张JSON路径<input
+                      id="claimsImportPath"
+                      placeholder="claims.v1 JSON的本机绝对路径" /></label
+                  ><label
+                    >依据diff路径（留空使用当前比较）<input
+                      id="claimsImportChanges" /></label
+                  ><label
+                    >状态核验依据<select id="claimsImportBasis">
+                      <option value="current">当前策略重核</option>
+                      <option value="frozen_record">
+                        生成时冻结记录（仅资料忠实度）
+                      </option>
+                    </select></label
+                  ><button id="claimsImport">载入并保留划分履历</button>
+                </details>
+                <button id="claimAdd">将选中文字列为主张</button>
+                <details>
+                  <summary>对象与依据目录（供人工填写引用）</summary>
+                  <div id="claimsCatalog"></div>
+                </details>
+              </details>
+            </div>
+            <div class="evidence-column">
+              <div
+                id="claimsFilters"
+                class="claims-filters"
+                aria-label="按工具结论筛选"
+              ></div>
+              <div id="claimsResults"></div>
+              <div id="claimsEditor"></div>
+              <div class="toolbar">
+                <button id="claimsSave">保存划分与编辑</button
+                ><button id="claimsCheck" class="primary">运行逐条核验</button>
+              </div>
+            </div>
+          </div>
+          </details>
+        </section>
+        <section id="review" hidden>
+          <div class="page-head">
+            <div>
+              <h2>房间复核</h2>
+              <p class="sub">
+                姓名为本机自报。仅记录所填范围，不替代整图设计签字。
+              </p>
+            </div>
+            <div class="review-navigation"><button id="reviewBack">返回房间清单</button><button id="reviewLoad">读取当前版规则结果</button></div>
+          </div>
+          <div id="reviewFeedback" role="status" hidden></div><div id="transferTarget" class="review-note" hidden></div>
+          <div class="gv-split review-layout" id="reviewSplit">
+            <aside
+              id="reviewQueue"
+              class="review-queue"
+              aria-label="待复核事项"
+            ></aside>
+            <div class="panel review-form">
+              <label id="reviewFindingLabel"
+                >核对事项<select id="reviewFinding"></select
+              ></label>
+              <div id="reviewFindingDetail" class="review-help"></div>
+              <div id="reviewPresets" aria-label="常用复核意见"></div>
+              <label>姓名<input id="reviewName" /></label
+              ><label>核对意见<textarea id="reviewComment"></textarea></label
+              ><label
+                >适用房间<input
+                  id="reviewScope"
+                  readonly placeholder="自动填写当前房间"
+                /></label
+              ><label id="transferAckLabel" class="inline" hidden
+                ><input
+                  type="checkbox"
+                  id="transferAck"
+                />我已看图核对，以上是我的复核意见；只用于这条事项</label
+              ><label id="reviewSyntheticLabel" class="inline" hidden
+                ><input
+                  type="checkbox"
+                  id="reviewSynthetic"
+                />本次为SYNTHETIC功能验收，不是真实签字</label
+              >
+              <div class="toolbar">
+                <button id="reviewConfirm" class="primary">确认本条</button
+                ><button id="reviewReject">驳回本条</button
+                ><button id="reviewCancelTransfer" hidden>返回，不做记录</button>
+              </div>
+            </div>
+          </div>
+          <div id="reviewHistory"></div>
+        </section>
+        <section id="export" hidden>
+          <h2>导出</h2>
+          <div class="panel">
+            <label
+              >导出文件夹
+              <div class="path-input">
+                <input id="outputPath" placeholder="填写本机目录" /><button
+                  data-pick="outputPath"
+                  disabled
+                >
+                  选择文件夹
+                </button>
+              </div></label
+            >
+            <p>
+              导出当前版扫描、已核验主张、人工复核履历及HTML/CSV复核清单。已有草稿尚未核验时先回AI核验页运行；请选择空的导出位置。
+            </p>
+            <button id="exportBundle" class="primary">导出当前版证据包</button>
+            <p id="exportResult"></p>
+          </div>
+          <div class="panel u1-workbench-inline-2">
+            <label
+              >打开已有证据包文件夹<input
+                id="bundlePath"
+                placeholder="含bundle-manifest.json的目录" /></label
+            ><button id="openBundle">校验并只读打开证据包</button>
+            <div id="openedBundle"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <span id="projectStatus">项目：—</span
+      ><span id="versionStatus">版本：—</span
+      ><span id="taskStatus" role="status">正在读取</span
+      ><button id="errorBadge" class="error-badge" hidden>错误详情</button>
+    </footer>
+    <dialog id="projectDialog">
+      <h3 id="projectDialogTitle">新建项目</h3>
+      <label id="nameLabel"
+        >项目名称<input
+          id="name"
+          placeholder="例如：方案复核"
+          autocomplete="off" /></label
+      ><label
+        >项目文件夹
+        <div class="path-input">
+          <input
+            id="projectPath"
+            placeholder="已有文件夹或项目文件的完整路径"
+            autocomplete="off"
+          /><button data-pick="projectPath" disabled>选择文件夹</button>
+        </div></label
+      >
+      <p class="form-hint folderHint">
+        可点选择文件夹或填写目录路径；项目仅保存扫描引用，不复制数据。
+      </p>
+      <div class="form-error"></div>
+      <div class="dialog-actions">
+        <button data-close="projectDialog">取消</button
+        ><button id="create" class="primary">新建项目</button
+        ><button id="open" class="primary" hidden>打开项目</button
+        ><button id="save" class="primary" hidden>保存项目</button>
+      </div>
+    </dialog>
+    <dialog id="versionDialog">
+      <h3>添加扫描版本</h3>
+      <label
+        >版本名称<input
+          id="versionName"
+          placeholder="例如：初版、改图版"
+          autocomplete="off" /></label
+      ><label
+        >扫描结果目录
+        <div class="path-input">
+          <input
+            id="scanPath"
+            placeholder="已有三层JSON结果的文件夹"
+            autocomplete="off"
+          /><button data-pick="scanPath" disabled>选择文件夹</button>
+        </div></label
+      ><label
+        >版本说明<textarea
+          id="note"
+          placeholder="这次改了什么，或有哪些需留意的地方"
+        ></textarea>
+      </label>
+      <p class="form-hint folderHint">
+        可点选择文件夹或填写目录路径；添加后自动进行只读体检。
+      </p>
+      <div class="form-error"></div>
+      <div class="dialog-actions">
+        <button data-close="versionDialog">取消</button
+        ><button id="add" class="primary">添加并体检</button>
+      </div>
+    </dialog>
+    <dialog id="settingsDialog" aria-labelledby="settingsTitle">
+      <h3 id="settingsTitle">本机设置</h3>
+      <dl class="settings-list">
+        <dt>运行方式</dt>
+        <dd id="runtimeMode">本机浏览器</dd>
+        <dt>数据位置</dt>
+        <dd>扫描与项目引用保存在本机；本页不会上传文件。</dd>
+        <dt>显示字体</dt>
+        <dd>使用本机字体；未安装 HarmonyOS Sans 时回退到微软雅黑。</dd>
+        <dt>导航</dt>
+        <dd>使用页头左侧按钮收起或展开；当前会话内保留选择。</dd>
+      </dl>
+      <div class="dialog-actions">
+        <button data-close="settingsDialog">关闭设置</button>
+      </div>
+    </dialog>
+    <dialog id="scanHelpDialog" aria-labelledby="scanHelpTitle">
+      <h3 id="scanHelpTitle">如何获得扫描结果</h3>
+      <ol class="scan-help">
+        <li>在已安装扫描插件的兼容 CAD 中打开图纸。</li>
+        <li>运行 JZBPSCAN，等待采集结束，记下扫描结果文件夹。</li>
+        <li>回到本工作台，添加扫描版本并选择该文件夹。</li>
+      </ol>
+      <p class="form-hint">
+        需要与图纸匹配的天正解释器；本工作台读取扫描 JSON，不直接读取
+        DWG。目前需手动切换 CAD，快捷启动与自动导入尚未实现。
+      </p>
+      <div class="dialog-actions">
+        <button data-close="scanHelpDialog">关闭说明</button>
+      </div>
+    </dialog>
+    <dialog id="folderBrowser" aria-labelledby="folderBrowserTitle"><h2 id="folderBrowserTitle">选择本机文件夹</h2><p>只选择保存位置，不上传文件。也可粘贴完整目录。</p><label>当前路径<input id="folderBrowsePath" /></label><div class="toolbar"><button id="folderBrowseGo">打开路径</button><button id="folderBrowseUp">上一级</button></div><div id="folderBrowseList"></div><p id="folderBrowseNotice"></p><div class="toolbar"><button id="folderBrowseUse" class="primary">使用此文件夹</button><button data-close="folderBrowser">取消</button></div></dialog>
+    __GV_ICON_SPRITE__
+    <script>
+      const token = __GV_TOKEN__;
+    </script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/pages/project.js"></script>
+    <script src="assets/js/pages/engineering.js"></script>
+    <script src="assets/js/pages/changes.js"></script>
+    <script src="assets/js/pages/claims.js"></script>
+    <script src="assets/js/pages/review.js"></script>
+    <script src="assets/js/pages/export.js"></script>
+    <script src="assets/js/pages/shell.js"></script>
+  </body>
+</html>

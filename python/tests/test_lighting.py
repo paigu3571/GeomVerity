@@ -41,6 +41,29 @@ class LightingTests(unittest.TestCase):
             self.assertTrue(p['mounting_wall_handle'])
             self.assertFalse(2200<=p['x']<=4800 and -400<=p['y']<=500)
         self.assertEqual(out['excluded_opening_handles'],['DOOR'])
+    def test_wall_match_tolerance_does_not_allow_lamp_circle_outside_room(self):
+        # SYNTHETIC：安装墙面与房间边界偏差10mm；匹配容差不能当成灯圈越界许可。
+        r=room([(0,0),(8000,0),(8000,4000),(0,4000)])
+        near=room([(0,-10),(8000,-10),(8000,4010),(0,4010)])
+        out=layout_room(r,G,W,'wall',context(near))
+        poly=Polygon([(p.x,p.y) for p in r.geometry.paths[0]])
+        for p in out['points']:
+            self.assertGreaterEqual(poly.boundary.distance(Point(p['x'],p['y'])),p['symbol_radius_mm']-.01)
+
+    def test_wall_fragmentation_does_not_restart_spacing(self):
+        # SYNTHETIC: splitting one straight mounting wall into CAD fragments keeps positions.
+        r=room([(0,0),(8000,0),(8000,4000),(0,4000)])
+        whole=context(r);faces=whole[0];first,seg=faces[0]
+        fragments=[]
+        for i in range(16):
+            a=(i*500.,0.);b=((i+1)*500.,0.)
+            fragments.append((S(semantic_id='fragment'+str(i),source=S(handle='F'+str(i))),(a,b,500.)))
+        fragments+=faces[1:]
+        split=(fragments,STRtree([LineString(v[:2]) for _,v in fragments]),[])
+        a=layout_room(r,G,W,'wall',whole);b=layout_room(r,G,W,'wall',split)
+        self.assertEqual([(v['x'],v['y']) for v in a['points']],[(v['x'],v['y']) for v in b['points']])
+        self.assertLessEqual(b['largest_candidate_spacing_mm'],2000.1)
+
     def test_dxf_block_attributes_and_xdata_and_invalidation(self):
         import ezdxf
         group={'group_id':'g','room_semantic_id':'old','room_name':'SYNTHETIC','room_source_handles':['ABC'],

@@ -9,8 +9,8 @@ from .uses import classify
 from .gold import area_m2
 from .l4 import check,evidence_chain
 
-COLORS={'SUBSTATION':'#b77be8','DISTRIBUTION_ROOM':'#efb14c','ELECTRICAL_SHAFT':'#f16c8f',
-        'WEAK_CURRENT_ROOM':'#60a6eb','SMALL_ELECTRICAL_ROOM':'#7bc6a8','NOT_INCLUDED':'#99c7cd','EXCLUDED':'#c5cbd0'}
+COLORS={'SUBSTATION':'var(--canvas-cat-substation)','DISTRIBUTION_ROOM':'var(--canvas-cat-distribution)','ELECTRICAL_SHAFT':'var(--canvas-cat-shaft)',
+        'WEAK_CURRENT_ROOM':'var(--canvas-cat-weak)','SMALL_ELECTRICAL_ROOM':'var(--canvas-cat-ordinary)','NOT_INCLUDED':'var(--canvas-cat-ordinary)','EXCLUDED':'var(--canvas-cat-ordinary)'}
 
 
 def write_view(directory,output=None,generated=None,changes=None,review=None,issues=None):
@@ -19,7 +19,9 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
     facts={f.geometry_id:f for f in l2.facts};primitives={p.primitive_id:p for p in l1.primitives}
     from .references import ReferenceIndex
     reference_index=ReferenceIndex(l1,l2)
-    classes={r['object_id']:r for r in (json.loads((directory/'classifications.json').read_bytes()) if (directory/'bundle-manifest.json').is_file() else classify(directory))['rows']};results=json.loads((directory/'findings.json').read_bytes()) if (directory/'bundle-manifest.json').is_file() else check(directory)
+    delta=json.loads(Path(changes).read_bytes()) if changes else None
+    if delta and delta['new_hash']!=data.drawing.sha256:raise ValueError('变更图不对应当前扫描')
+    classes={r['object_id']:r for r in (json.loads((directory/'classifications.json').read_bytes()) if (directory/'bundle-manifest.json').is_file() else classify(directory))['rows']};results=json.loads((directory/'findings.json').read_bytes()) if (directory/'bundle-manifest.json').is_file() else delta['new_check'] if delta else check(directory)
     for f in results['findings']:
         if f['engineer_reviewed']['record_file']:f['engineer_reviewed']['record_file']='l4_confirmations.yaml'
     visible=[o for o in data.objects if o.type in ('space','shaft','zone','opening','door','window')]
@@ -58,8 +60,6 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
             text_marks.append(f'<path d="M{x-.08:.3f},{y:.3f}h.16M{x:.3f},{y-.08:.3f}v.16"/>')
     gray+=''.join(text_marks)
     svg=[];records={};room_options=[]
-    delta=json.loads(Path(changes).read_bytes()) if changes else None
-    if delta and delta['new_hash']!=data.drawing.sha256:raise ValueError('变更图不对应当前扫描')
     revised={r.get('new_group_id') for r in delta.get('lighting_changes',[]) if r.get('state')!='保留候选灯组'} if delta else set()
     by_room={}
     for f in results['findings']:
@@ -91,7 +91,7 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
             '工程师确认':[f['engineer_reviewed'] for f in fs if f['engineer_reviewed']['reviewed_by']],
             '适用规则结果':fs,'生成对象':[],'view_bounds':b}
         if o.type in ('space','shaft','zone'):
-            color=COLORS.get(cls.get('category'),'#b4c9d5');room_options.append({'id':id,'name':o.raw_label,'type':o.type,'category':cls.get('category'),'bounds':b})
+            color=COLORS.get(cls.get('category'),'var(--border)');room_options.append({'id':id,'name':o.raw_label,'type':o.type,'category':cls.get('category'),'bounds':b})
             if path:
                 svg.append(f'<g class="room" data-id="{id}" tabindex="0" role="button" aria-label="{escape(o.raw_label,quote=True)}">'
                            f'<path d="{path}" fill="{color}" class="room-fill"/>'
@@ -132,7 +132,8 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
                     'L2面积(m²)':records.get(rid,{}).get('L2面积(m²)'),
                     '源Handle列表':group['room_source_handles'],'证据链':records.get(rid,{}).get('证据链'),
                     'view_bounds':[x-.4,y-.4,.8,.8]}
-                svg.append(f'<g class="lamp {"invalid" if stale else "revised" if group["group_id"] in revised else ""}" data-room="{rid}" data-id="{id}" tabindex="0" role="button" aria-label="灯具布置候选"><circle cx="{x:.3f}" cy="{y:.3f}" r=".15"/><path d="M{x-.10:.3f},{y-.10:.3f}l.20,.20M{x+.10:.3f},{y-.10:.3f}l-.20,.20"/></g>')
+                radius=lamp.get('symbol_radius_mm',150)/1000;cross=radius*.55
+                svg.append(f'<g class="lamp {"invalid" if stale else "revised" if group["group_id"] in revised else ""}" data-room="{rid}" data-id="{id}" tabindex="0" role="button" aria-label="灯具布置候选"><circle class="lamp-hit" cx="{x:.3f}" cy="{y:.3f}" r=".28"/><circle cx="{x:.3f}" cy="{y:.3f}" r="{radius:.3f}"/><path d="M{x-cross:.3f},{y-cross:.3f}l{cross*2:.3f},{cross*2:.3f}M{x+cross:.3f},{y-cross:.3f}l{-cross*2:.3f},{cross*2:.3f}"/></g>')
     if delta and review:
         reviewed=json.loads(Path(review).read_text(encoding='utf-8'))
         if (reviewed['old_hash'],reviewed['new_hash'])!=(delta['old_hash'],delta['new_hash']):raise ValueError('修改记录对照不对应这两版扫描；请使用对应记录或不加--review')
@@ -188,6 +189,16 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
         snapshot=directory/'building-semantics.v1.json.gz'
         if not snapshot.is_file():snapshot=snapshot.with_suffix('')
         if issues.get('snapshot_sha256')!=hashlib.sha256(snapshot.read_bytes()).hexdigest():raise ValueError('房名诊断不对应当前扫描，请重新运行recover --all-unresolved')
+    else:
+        # 没有详细恢复文件时也显示已有房名的定位，不补造围合或墙体。
+        from .room_diagnostics import targets_and_issues,issue
+        from .recovery import label_rows
+        targets,rows=targets_and_issues(l1,l2,data)
+        wanted={handle for _,handle in targets}
+        for f,x,y in label_rows(l2):
+            if f.source.handle in wanted:rows.append(issue(f,x,y,'已读到房名，但尚未形成可分析的房间范围；请在原图核对墙线、门口和文字位置。'))
+        issues={'issues':rows}
+    if issues:
         for row in issues['issues']:
             id=row['id'];x,y=xy(*row['point_wcs_mm']);issue_points=[(x-2,y-2),(x+2,y+2)]
             for gap in row['gap_candidates']:issue_points.extend([xy(*gap['a_wcs_mm']),xy(*gap['b_wcs_mm'])])
@@ -262,7 +273,8 @@ def write_view(directory,output=None,generated=None,changes=None,review=None,iss
                 if found is None:found=next((r for r in records.values() if r.get('类型')=='space' and r.get('房名')==row.get('target_name',row.get('name'))),{})
                 return (found.get('priorities') or [{'rank':99}])[0]['rank']
             comparison['items'].sort(key=answer_rank)
-    template=Path(__file__).with_name('view.html').read_text(encoding='utf-8')
+    from .ui_assets import render_ui
+    template=render_ui('view.html')
     content=template.replace('__SVG__',''.join(svg)).replace('__GRAY__',gray)
     content=content.replace('__PAYLOAD__',json.dumps(payload,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c'))
     output=Path(output) if output else Path('dist/view')/directory.name/'semantic_view.html'

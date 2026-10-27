@@ -1,0 +1,55 @@
+{
+  "old_hash": "021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+  "new_hash": "39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+  "notice": "张田提供的8项人工修改清单，仅事后对照，不是AI检测数，也不参与检测。",
+  "items": [
+    {
+      "id": "E1",
+      "name": "预留充电桩配电房",
+      "edit": "删除上方搬运通道门",
+      "target_handle": "59AA5"
+    },
+    {
+      "id": "E2",
+      "name": "设备用房",
+      "edit": "改为水泵房",
+      "target_handle": "599DC"
+    },
+    {
+      "id": "E3",
+      "name": "3#公变配电房",
+      "edit": "墙体往内收2.5m",
+      "target_handle": "59591"
+    },
+    {
+      "id": "E4",
+      "name": "充电桩电表间",
+      "edit": "房间扩大，房名改为“变配电室”",
+      "target_handle": "59D61"
+    },
+    {
+      "id": "E5",
+      "name": "专变配电房的一樘门",
+      "edit": "直接移到另一面墙体上",
+      "target_handle": "59554"
+    },
+    {
+      "id": "E6",
+      "name": "设备用房",
+      "edit": "改房间名为储藏间",
+      "target_handle": "503AC"
+    },
+    {
+      "id": "E7",
+      "name": "两个设备用房之间的隔墙",
+      "edit": "房间之间的隔墙往右平移约400mm",
+      "target_handle": "60214"
+    },
+    {
+      "id": "E8",
+      "name": "设备用房",
+      "edit": "左侧墙体加一扇门",
+      "target_handle": "512DC"
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+/* U4: complete original beside scoped claim evidence; no professional inference. */
+.gv-split {
+  display: grid;
+  grid-template-columns: minmax(0, var(--split-left, 55%)) 8px minmax(0, 1fr);
+  gap: 0;
+  min-height: 0;
+}
+.gv-split > :first-child,
+.gv-split > :last-child {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--space-16);
+}
+.gv-separator {
+  cursor: col-resize;
+  touch-action: none;
+  border-inline: 2px solid var(--surface-page);
+  background: var(--border);
+}
+.gv-separator:focus-visible {
+  outline: 2px solid var(--brand-blue-600);
+}
+#claims:not([hidden]),
+#review:not([hidden]) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+#claims .page-head,
+#review .page-head {
+  flex: none;
+  margin-bottom: var(--space-12);
+}
+#claims .review-note {
+  flex: none;
+  margin: 0 0 var(--space-12);
+  padding: var(--space-8) var(--space-12);
+}
+.claims-layout,
+.review-layout {
+  flex: 1;
+  min-height: 300px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  overflow: hidden;
+}
+.claims-layout .panel,
+.review-layout .panel {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+.claims-reading {
+  white-space: pre-wrap;
+  line-height: 2;
+  font-size: var(--font-size-16);
+  overflow-wrap: anywhere;
+}
+.claims-reading .claim-highlight {
+  display: inline;
+  font: inherit;
+  padding: 0 2px;
+  border: 0;
+  border-radius: 2px;
+  border-bottom: 2px solid;
+  cursor: pointer;
+  text-align: left;
+  white-space: pre-wrap;
+}
+.claim-highlight[data-state="support"] {
+  color: var(--status-support-color);
+  background: var(--status-support-bg);
+}
+.claim-highlight[data-state="review"] {
+  color: var(--status-review-color);
+  background: var(--status-review-bg);
+}
+.claim-highlight[data-state="contradiction"] {
+  color: var(--status-contradiction-color);
+  background: var(--status-contradiction-bg);
+}
+.claim-highlight[data-state="unknown"] {
+  color: var(--status-unknown-color);
+  background: var(--status-unknown-bg);
+}
+.claim-highlight:focus-visible,
+.claim-result:focus {
+  outline: 2px solid var(--brand-blue-600);
+  outline-offset: 2px;
+}
+.claims-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  z-index: 1;
+  padding-bottom: var(--space-8);
+}
+.claims-filters button[aria-pressed="true"] {
+  background: var(--brand-blue-50);
+  border-color: var(--brand-blue-700);
+  color: var(--brand-blue-700);
+}
+.claim-result {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  padding: var(--space-16);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border-strong);
+  border-radius: var(--radius-card);
+  margin-bottom: var(--space-12);
+}
+.claim-result[data-state="support"] {
+  border-left-color: var(--status-support-strip);
+}
+.claim-result[data-state="review"] {
+  border-left-color: var(--status-review-strip);
+}
+.claim-result[data-state="contradiction"] {
+  border-left-color: var(--status-contradiction-strip);
+}
+.claim-result[data-state="unknown"] {
+  border-left-color: var(--status-unknown-strip);
+}
+.claim-result .gv-status {
+  margin-left: var(--space-8);
+}
+.claim-result blockquote {
+  margin: var(--space-12) 0;
+  line-height: 1.8;
+}
+.claim-dimensions {
+  display: flex;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+  font-size: var(--font-size-12);
+  color: var(--text-secondary);
+}
+.claim-result p,
+.review-form p {
+  line-height: 1.7;
+  font-size: var(--font-size-14);
+}
+.claim-edit {
+  border: 1px solid var(--border);
+  padding: var(--space-12);
+  margin-top: var(--space-12);
+  border-radius: var(--radius-control);
+}
+.claim-edit summary {
+  cursor: pointer;
+  color: var(--brand-blue-700);
+}
+.claim-edit blockquote {
+  margin: var(--space-8) 0;
+  line-height: 1.8;
+}
+.claim-edit textarea {
+  height: 80px;
+  font-family: var(--font-code);
+}
+#claimsOriginal {
+  height: 280px;
+  line-height: 1.8;
+  resize: vertical;
+}
+#claimsTextEdit {
+  margin-top: var(--space-24);
+}
+.evidence-column > .toolbar {
+  position: sticky;
+  bottom: 0;
+  background: var(--surface);
+  padding: var(--space-8) 0;
+  margin-bottom: 0;
+}
+.review-queue {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+.review-queue button {
+  flex: 0 0 auto;
+  min-height: 104px;
+  border-color: var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: var(--space-8);
+  padding: var(--space-12);
+  white-space: normal;
+}
+.review-queue small {
+  color: var(--text-secondary);
+}
+#reviewFindingDetail {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-16);
+  margin-bottom: var(--space-16);
+}
+#reviewHistory {
+  flex: none;
+}
+.gv-toast {
+  position: fixed;
+  bottom: var(--space-48);
+  right: var(--space-24);
+  z-index: 20;
+  max-width: 400px;
+  padding: var(--space-12);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px var(--shadow-panel);
+  border-radius: var(--radius-card);
+}
+main:has(#claims:not([hidden])),
+main:has(#review:not([hidden])) {
+  overflow: hidden;
+}
+@media (max-width: 800px) {
+  .gv-split {
+    grid-template-columns: 1fr;
+    overflow: auto;
+  }
+  .gv-separator {
+    display: none;
+  }
+  .gv-split > :first-child,
+  .gv-split > :last-child {
+    overflow: visible;
+  }
+}
+
+.evidence-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+#claimsResults {
+  min-height: 0;
+  overflow: auto;
+  flex: 1;
+}
+#claimsResults:empty {
+  display: none;
+}
+#claimsEditor {
+  min-height: 0;
+  overflow: auto;
+}
+#claimsEditor:empty {
+  display: none;
+}
+.evidence-column > .toolbar {
+  flex: none;
+  position: static;
+}
+
+.review-queue button[aria-pressed="true"] {
+  background: var(--brand-blue-50);
+  border-color: var(--brand-blue-700);
+}
+
+.claims-current-version {
+  display: inline-block;
+  padding: var(--space-4) var(--space-8);
+  background: var(--surface-sunken);
+  color: var(--text-secondary);
+  border-radius: var(--radius-tag);
+  font-size: var(--font-size-13);
+  font-weight: var(--weight-regular);
+}

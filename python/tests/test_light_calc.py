@@ -14,3 +14,12 @@ class LightCalculationTests(unittest.TestCase):
   self.assertEqual(value['result'],'演示参数回算完成');self.assertAlmostEqual(value['existing_layout']['lpd_w_m2'],200/39);self.assertAlmostEqual(value['room_index'],2*39/(2.4*32),places=5)
   room=self.room([(0,0),(9000,0),(9000,7000),(0,7000)]);rule=copy.deepcopy(rule);rule['parameters']['flux_per_source_lm']=0
   with self.assertRaises(ValueError):calculate_room(room,'SUBSTATION',rule)
+
+ def test_public_hole_area_is_preserved_but_claim_geometry_stays_conservative(self):
+  from cst.light_calc import outline_polygon
+  rule=yaml.safe_load(RULE.read_text(encoding='utf-8'))
+  room=self.room([(0,0),(10000,0),(10000,10000),(0,10000)])
+  room.geometry.paths.append([S(x=x,y=y) for x,y in [(4000,4000),(4000,6000),(6000,6000),(6000,4000)]])
+  value=calculate_room(room,'SUBSTATION',rule,10)
+  self.assertAlmostEqual(value['existing_layout']['lpd_w_m2'],200/96)
+  with self.assertRaises(ValueError):outline_polygon(room.geometry)

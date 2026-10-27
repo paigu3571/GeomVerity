@@ -33,64 +33,95 @@ def mounting_context(data):
 
 
 def wall_points(room,rule,context):
+    """把墙体碎段投影到同一房间周长轴，合并后布点，避免每个CAD碎段重启间距。"""
     if context is None:return [],{'placement_surface':'缺少墙体几何，未生成壁灯','mounting_wall_count':0}
     faces,tree,openings=context;tol=rule.get('wall_match_tolerance_mm',20)
     margin=rule.get('opening_clearance_mm',300);spacing=rule['max_spacing_m']*1000
-    points={};excluded=set();walls=set()
-    radius=rule.get('symbol_radius_mm',150)
-    opening_tree=STRtree([box(o.geometry.bounds.min_x-margin,o.geometry.bounds.min_y-margin,o.geometry.bounds.max_x+margin,o.geometry.bounds.max_y+margin) for o in openings])
-    poly=Polygon([(p.x,p.y) for p in room.geometry.paths[0]])
+    radius=rule.get('symbol_radius_mm',150);poly=Polygon([(p.x,p.y) for p in room.geometry.paths[0]])
+    boxes=[box(o.geometry.bounds.min_x-margin,o.geometry.bounds.min_y-margin,o.geometry.bounds.max_x+margin,o.geometry.bounds.max_y+margin) for o in openings]
+    opening_tree=STRtree(boxes);spans=[];blocked=[];excluded=set();offset=0.0
     for boundary in segments(room):
         line=LineString(boundary[:2]);u=((boundary[1][0]-boundary[0][0])/boundary[2],(boundary[1][1]-boundary[0][1])/boundary[2])
-        for idx in tree.query(line.buffer(tol)):
-            wall,face=faces[int(idx)]
+        for idx in sorted(int(i) for i in tree.query(line.buffer(tol))):
+            wall,face=faces[idx]
             if not parallel(boundary,face,1):continue
             ts,ns=project(face,boundary[0],u)
             if max(abs(n) for n in ns)>tol:continue
             lo=max(0,ts[0]);hi=min(boundary[2],ts[1])
-            if hi-lo<300:continue
-            # 采用实际墙面直线，不把内缩线冒充挂壁面。
+            if hi-lo<1:continue
+            spans.append((offset+lo,offset+hi,offset,boundary,u,wall,face))
+            for oi in sorted(int(i) for i in opening_tree.query(line,predicate='intersects')):
+                corners=list(boxes[oi].exterior.coords)
+                projections=[(x-boundary[0][0])*u[0]+(y-boundary[0][1])*u[1] for x,y in corners]
+                left=max(lo,min(projections));right=min(hi,max(projections))
+                if right>left:blocked.append((offset+left,offset+right));excluded.add(openings[oi].source.handle)
+        offset+=boundary[2]
+    def union(intervals):
+        merged=[]
+        for left,right in sorted(intervals):
+            if merged and left<=merged[-1][1]+.01:merged[-1]=(merged[-1][0],max(right,merged[-1][1]))
+            else:merged.append((left,right))
+        return merged
+    available=union((a,b) for a,b,*_ in spans)
+    for a,b in union(blocked):
+        cut=[]
+        for left,right in available:
+            if b<=left or a>=right:cut.append((left,right));continue
+            if a>left:cut.append((left,a))
+            if b<right:cut.append((b,right))
+        available=cut
+    # 接缝不是墙体中断：闭合周长起终点的可安装区合成同一段再均布。
+    if len(available)>1 and available[0][0]<.01 and available[-1][1]>offset-.01:
+        available=[(available[-1][0],available[0][1]+offset),*available[1:-1]]
+    points=[];walls=set();rejected=0;largest_gap=0.0
+    def place(distance):
+        t=distance%offset
+        for left,right,start,boundary,u,wall,face in spans:
+            if not left-.001<=t<=right+.001:continue
+            q=(boundary[0][0]+u[0]*(t-start),boundary[0][1]+u[1]*(t-start))
             fu=((face[1][0]-face[0][0])/face[2],(face[1][1]-face[0][1])/face[2])
-            def on_face(t):
-                q=(boundary[0][0]+u[0]*t,boundary[0][1]+u[1]*t)
-                along=max(0,min(face[2],(q[0]-face[0][0])*fu[0]+(q[1]-face[0][1])*fu[1]))
-                return (face[0][0]+fu[0]*along,face[0][1]+fu[1]*along)
-            span=LineString([on_face(lo),on_face(hi)]);available=[(lo,hi)]
-            for opening in openings:
-                b=opening.geometry.bounds
-                cut=box(b.min_x-margin,b.min_y-margin,b.max_x+margin,b.max_y+margin)
-                if not span.intersects(cut):continue
-                corners=[(b.min_x-margin,b.min_y-margin),(b.min_x-margin,b.max_y+margin),(b.max_x+margin,b.min_y-margin),(b.max_x+margin,b.max_y+margin)]
-                projection=[(x-boundary[0][0])*u[0]+(y-boundary[0][1])*u[1] for x,y in corners]
-                a,z=min(projection),max(projection);new=[]
-                for left,right in available:
-                    if z<=left or a>=right:new.append((left,right));continue
-                    if a>left:new.append((left,min(a,right)))
-                    if z<right:new.append((max(z,left),right))
-                available=new;excluded.add(opening.source.handle)
-            for left,right in available:
-                if right-left<300:continue
-                n=max(1,math.ceil((right-left)/spacing))
-                for i in range(n):
-                    ax,ay=on_face(left+(i+.5)*(right-left)/n)
-                    # 图示外缘贴墙，中心沿墙面法线向房间内部移动半径。
-                    normal=(-fu[1],fu[0])
-                    choices=[(ax+sign*normal[0]*radius,ay+sign*normal[1]*radius) for sign in (1,-1)]
-                    inside=[q for q in choices if poly.contains(Point(q)) and poly.boundary.distance(Point(q))>=radius-tol-.01]
-                    if not inside:continue
-                    x,y=inside[0]
-                    if len(opening_tree.query(Point(x,y).buffer(radius),predicate='intersects')):continue
-                    key=(round(x,3),round(y,3))
-                    # 多墙重合只保留一个符号；仍保留实际安装墙来源。
-                    points.setdefault(key,{'x':key[0],'y':key[1],'z':0.0,'mounting_wall_id':wall.semantic_id,'mounting_wall_handle':wall.source.handle,'wall_anchor_x':round(ax,3),'wall_anchor_y':round(ay,3),'symbol_radius_mm':radius})
-                    walls.add(wall.source.handle)
-    unique=[]
-    for p in sorted(points.values(),key=lambda p:(p['x'],p['y'],p['mounting_wall_handle'])):
-        if any(math.dist((p['x'],p['y']),(q['x'],q['y']))<300 for q in unique):continue
-        unique.append(p)
-    return unique,{'placement_surface':'L3墙体几何面；符号外缘贴墙，中心位于室内','mounting_wall_count':len(walls),
+            along=max(0,min(face[2],(q[0]-face[0][0])*fu[0]+(q[1]-face[0][1])*fu[1]))
+            anchor=(face[0][0]+fu[0]*along,face[0][1]+fu[1]*along);normal=(-fu[1],fu[0])
+            for sign in (1,-1):
+                for inset in (radius,radius+tol+.02):
+                    centre=(anchor[0]+sign*normal[0]*inset,anchor[1]+sign*normal[1]*inset)
+                    if not poly.contains(Point(centre)) or poly.boundary.distance(Point(centre))<radius-.001:continue
+                    # 用最小必要内移修正墙/房间容差差异，不以丢点掩盖10~20mm的偏差。
+                    if inset>radius:
+                        low,high=radius,inset
+                        for _ in range(18):
+                            mid=(low+high)/2;c=Point(anchor[0]+sign*normal[0]*mid,anchor[1]+sign*normal[1]*mid)
+                            if poly.contains(c) and poly.boundary.distance(c)>=radius:high=mid
+                            else:low=mid
+                        inset=high;centre=(anchor[0]+sign*normal[0]*inset,anchor[1]+sign*normal[1]*inset)
+                    if len(opening_tree.query(Point(centre).buffer(radius),predicate='intersects')):continue
+                    if any(math.dist(centre,(p['x'],p['y']))<radius*2 for p in points):continue
+                    return {'x':round(centre[0],3),'y':round(centre[1],3),'z':0.0,'mounting_wall_id':wall.semantic_id,
+                        'mounting_wall_handle':wall.source.handle,'wall_anchor_x':round(anchor[0],3),'wall_anchor_y':round(anchor[1],3),
+                        'symbol_radius_mm':radius,'inset_from_wall_mm':round(inset,3)}
+        return None
+    for left,right in available:
+        if right-left<radius*2:continue
+        n=max(1,math.ceil((right-left)/spacing));step=(right-left)/n;placed=[]
+        for i in range(n):
+            target=left+(i+.5)*step;found=None;at=target
+            for shift in (0,radius,-radius,2*radius,-2*radius):
+                at=target+shift
+                if left+radius<=at<=right-radius:found=place(at)
+                if found:break
+            if found:points.append(found);walls.add(found['mounting_wall_handle']);placed.append(at)
+            else:rejected+=1
+        placed.sort()
+        gaps=[b-a for a,b in zip(placed,placed[1:])]
+        if placed:gaps.extend((2*(placed[0]-left),2*(right-placed[-1])))
+        else:gaps.append(right-left)
+        largest_gap=max(largest_gap,max(gaps,default=0))
+    return sorted(points,key=lambda p:(p['x'],p['y'],p['mounting_wall_handle'])),{
+        'placement_surface':'合并同一周长轴上的已有墙面；连续可安装区均布，开口处断开','mounting_wall_count':len(walls),
         'opening_clearance_mm':margin,'excluded_opening_handles':sorted(excluded),'wall_match_tolerance_mm':tol,
-        'spacing_scope':'每段可安装墙线均布；门洞断开处不要求连续间距'}
+        'available_wall_length_mm':round(sum(b-a for a,b in available),3),'rejected_placement_count':rejected,
+        'largest_candidate_spacing_mm':round(largest_gap,3),'needs_manual_spacing_review':largest_gap>spacing+.1,
+        'spacing_scope':'按连续可安装墙段均布；圆角/缺墙/避让造成缺点时明确标记间距待复核，不能作为照明设计通过'}
 
 
 def layout_room(room,grid,wall,mode='auto',context=None):

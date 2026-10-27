@@ -1,0 +1,75 @@
+/* U1组件基础；逐页接入在U2-U5，旧页面状态暂不重构。 */
+.gv-icon-sprite {
+  display: none;
+}
+.gv-icon {
+  position: static;
+  inset: auto;
+  display: inline-block;
+  width: var(--icon-small);
+  height: var(--icon-small);
+  vertical-align: middle;
+  flex-shrink: 0;
+  stroke-width: var(--icon-stroke);
+}
+.gv-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-tag);
+  font-family: var(--font-body);
+  font-size: var(--font-size-12);
+  font-weight: var(--weight-semibold);
+}
+.gv-status--support {
+  color: var(--status-support-color);
+  background: var(--status-support-bg);
+}
+.gv-status--review {
+  color: var(--status-review-color);
+  background: var(--status-review-bg);
+}
+.gv-status--contradiction {
+  color: var(--status-contradiction-color);
+  background: var(--status-contradiction-bg);
+}
+.gv-status--unknown {
+  color: var(--status-unknown-color);
+  background: var(--status-unknown-bg);
+}
+
+/* U2通用控件；四色含义仍仅由StatusBadge解析。 */
+.gv-button {
+  min-height: var(--control-height);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-control);
+  font-size: var(--font-size-13);
+  font-weight: var(--weight-semibold);
+}
+.gv-button--secondary {
+  border: var(--border-width) solid var(--border-neutral);
+  background: var(--surface);
+  color: var(--gray-900);
+}
+.gv-button--ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--brand-blue-700);
+}
+
+.gv-status--support .gv-icon {
+  color: var(--status-support-strip);
+}
+
+.gv-status--review .gv-icon {
+  color: var(--status-review-strip);
+}
+
+.gv-status--contradiction .gv-icon {
+  color: var(--status-contradiction-strip);
+}
+
+.gv-status--unknown .gv-icon {
+  color: var(--status-unknown-strip);
+}

@@ -1,0 +1,1458 @@
+{
+  "schema_version": "claims.v1",
+  "original_text": "# 改图复核意见（建筑机电专业）\n\n**致：** 建筑机电工程师\n**事项：** 公开样例 A→A-change 两版图纸差异复核\n**依据：** 调用者提供的同一图纸两版纯文字摘要（非 DWG 原图）\n**旧版哈希：** 021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1\n**新版哈希：** 39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7\n**变化对象数：** 180\n\n**总体说明：** 以下内容仅为摘要记录，不是模型已核验的结论。影响记录均为\"已识别范围候选\"，范围仅限已识别电气房间内部及 5mm 轮廓近邻，不保证覆盖未识别对象，也不代表对整图电气设计无影响。所有工作建议的\"是否批准\"均为 False，即均需人工复核后方可确认。\n\n---\n\n## 一、已知事实（摘要直接记录）\n\n### 1. 电气房间本体变化\n\n| 变化编号 | 类别 | 旧对象（handle/名称/用途） | 新对象（handle/名称/用途） | 影响候选房间 |\n|---|---|---|---|---|\n| change_1404 | 几何变化、来源对象变化 | 4FA8E / 专变配电房 / SUBSTATION | 59554 / 专变配电房 / SUBSTATION | 新旧两侧专变配电房 |\n| change_1407 | 几何变化、来源对象变化 | 4F8D9 / 3#公变配电房 / SUBSTATION | 59591 / 3#公变配电房 / SUBSTATION | 新旧两侧 3#公变配电房 |\n| change_1408 | 几何变化、来源对象变化 | 4F787 / 充电桩电表间 / SMALL_ELECTRICAL_ROOM | 5959A / 充电桩电表间 / SMALL_ELECTRICAL_ROOM | 新旧两侧充电桩电表间 |\n| change_1440 | 几何变化、来源对象变化 | 4F59B / 预留充电桩配电房 / DISTRIBUTION_ROOM | 59AA5 / 预留充电桩配电房 / DISTRIBUTION_ROOM | 新旧两侧预留充电桩配电房 |\n| change_1441 | 新增 | 无 | 59D61 / 变配电室 / SUBSTATION | 新增变配电室 |\n\n### 2. 非电气房间用途/名称变化\n\n| 变化编号 | 类别 | 旧对象 | 新对象 | 影响记录 |\n|---|---|---|---|---|\n| change_1379 | 名称或用途变化、来源对象变化 | 51402 / 设备用房 / EQUIPMENT_ROOM | 503AC / 储藏间 / STORAGE | 限定范围内未发现影响候选 |\n| change_1386 | 删除 | 512DC / 设备用房 / EQUIPMENT_ROOM | 无对应记录 | 限定范围内未发现影响候选 |\n| change_1433 | 名称或用途变化、来源对象变化 | 505C7 / 设备用房 / EQUIPMENT_ROOM | 599DC / 水泵房 / PUMP_ROOM | 影响候选：新旧两侧 2#公变配电房（4F722 / 599DC） |\n| change_1443 | 几何变化、来源对象变化 | 50208 / 设备用房 / EQUIPMENT_ROOM | 60214 / 设备用房 / EQUIPMENT_ROOM | 限定范围内未发现影响候选 |\n| change_1444 | 几何变化、来源对象变化 | 502DF / 设备用房 / EQUIPMENT_ROOM | 607E2 / 设备用房 / EQUIPMENT_ROOM | 限定范围内未发现影响候选 |\n\n### 3. 采光井变化\n\n| 变化编号 | 类别 | 旧对象 | 新对象 | 影响记录 |\n|---|---|---|---|---|\n| change_1373 | 几何变化、来源对象变化 | 4F5DC / 采光井 / LIGHT_WELL | 59A06 / 采光井 / LIGHT_WELL | 限定范围内未发现影响候选 |\n\n### 4. 门洞（opening）变化——影响候选落在电气房间的\n\n**删除类：**\n\n| 变化编号 | 旧对象 handle | 影响候选房间 |\n|---|---|---|\n| change_841 | 4F595 | 预留充电桩配电房（4F59B） |\n| change_842 | 4F595 | 预留充电桩配电房（4F59B） |\n| change_853 | 4F8D7 | 3#公变配电房（4F8D9） |\n| change_854 | 4F8D7 | 3#公变配电房（4F8D9） |\n| change_879 | 4FA4F | 专变配电房（4FA8E） |\n| change_880 | 4FA4F | 专变配电房（4FA8E） |\n\n**新增类：**\n\n| 变化编号 | 新对象 handle | 影响候选房间 |\n|---|---|---|\n| change_1251 | 596AA | 3#公变配电房（59591） |\n| change_1252 | 596AA | 3#公变配电房（59591） |\n| change_1307 | 59A32 | 变配电室（59D61） |\n| change_1308 | 59A32 | 变配电室（59D61） |\n| change_1327 | 5E6F3 | 专变配电房（59554） |\n| change_1328 | 5E6F3 | 专变配电房（59554） |\n\n### 5. 外墙（wall）变化——影响候选落在电气房间的\n\n**删除类（旧侧）：**\n\n| 变化编号 | 旧对象 handle | 影响候选房间 |\n|---|---|---|\n| change_1461、change_1462 | 4F594 | 预留充电桩配电房（4F59B） |\n| change_1521、change_1522 | 4F75A | 3#公变配电房（4F8D9） |\n| change_1531～change_1538 | 4F8D6、4F8D8、4F8D9、4F8DA | 3#公变配电房（4F8D9） |\n| change_1675～change_1678 | 4FA4E、4FA50 | 专变配电房（4FA8E） |\n\n**新增类（新侧）：**\n\n| 变化编号 | 新对象 handle | 影响候选房间 |\n|---|---|---|\n| change_3309、change_3310 | 59496 | 预留充电桩配电房（59AA5） |\n| change_3663、change_3664、change_3943、change_3944、change_4501、change_4502 | 59591、596A9、59D88 | 3#公变配电房（59591） |\n| change_4069～change_4072 | 59728、5972A | 专变配电房（59554） |\n| change_4313～change_4324、change_4465～change_4468 | 59A2D、59A2E、59A30、59A31、59A33、59D60、59D61 | 变配电室（59D61） |\n\n### 6. 摘要中\"限定范围内未发现影响候选\"的变化（不代表整图无影响）\n\n- 门洞删除：change_899～change_906、change_1017、change_1018\n- 门洞新增：change_1333、change_1334、change_1341、change_1342、change_1355～change_1358、change_1361、change_1362\n- 外墙删除：change_1539、change_1540、change_1673、change_1674、change_1797～change_1814、change_2401～change_2420\n- 外墙新增：change_3979、change_3980、change_4031、change_4032、change_4271、change_4272、change_4311、change_4312、change_4499、change_4500、change_4503、change_4504、change_4507～change_4510、change_4537、change_4538、change_4547、change_4548、change_4561～change_4566、change_4615、change_4616、change_4643～change_4650\n- 窗删除：change_4703～change_4710\n- 窗新增：change_4827、change_4828、change_4835、change_4836、change_4849～change_4852\n\n### 7. 决策确认继承情况（摘要记录）\n\n- **可继承原范围确认（1 条）：** decision_fcf84ee2ff6cc1955b2d45cf → decision_9d0fe024b9eeb2877452c214（规则 R1），确认人张田，日期 2026-10-12，状态\"输入条件已复核\"，范围明确为\"本条输入条件，不是整间房设计签字\"。\n- **原确认因输入变化失效、需复核（1 条）：** decision_56cc7e758cae4518ee4a3e07 → decision_57cdc0da110b325ed73cdab0（规则 R1）。\n- **其余记录：** 原记录无人工确认，不继承签字（含 R1、R2、R3、R4 及 DRAFT_88e437765ce8 各条）。\n\n### 8. 房间输入复核继承情况（摘要记录）\n\n| 房间 | 旧房间 ID | 新房间 ID | 状态 | 原因 |\n|---|---|---|---|---|\n| 预留充电桩配电房 | sem_6e1dc941f8f3293c2293772a | sem_455c4e2eeefbca7907a8a77f | 原确认因变化失效，需复核 | 房间/门洞变化、候选集合改变或匹配不足 |\n| 商业配电房 | sem_89496a6626781569ee17a73a | sem_f00d3bd48ed659303d810bb3 | 原确认因变化失效，需复核 | 房间/门洞变化、候选集合改变或匹配不足 |\n\n上述两条均记录复核人张田、复核日期 2026-10-12，但状态为\"需复核\"，不能视为已通过。\n\n---\n\n## 二、影响候选（需机电专业复核的方向，非结论）\n\n以下按摘要给出的工作建议归类，均为候选，需工程师结合原图核实：\n\n1. **应急照明与疏散指示复核**：change_841、change_842（预留充电桩配电房）。\n2. **配电平面布置复核、配电柜布置复核**：change_841、change_842（预留充电桩配电房）。\n3. **变配电设备布置复核、机房条件重新核对**：change_1404（专变配电房）、change_1407（3#公变配电房）。\n4. **设备布置与检修通道复核、配电房条件重新核对**：change_1440（预留充电桩配电房）。\n5. **建筑防水或隔热提资重新核对、贴邻用水或热源风险复核**：涉及 3#公变配电房、专变配电房、变配电室的多条门洞与外墙变化（如 change_853、change_854、change_879、change_880、change_1251、change_1252、change_1307、change_1308、change_1327、change_1328、change_1461、change_1462、change_1521、change_1522、change_1531～change_1538、change_1675～change_1678、change_3309、change_3310、change_3663、change_3664、change_3943、change_3944、change_4069～change_4072、change_4313～change_4324、change_4465～change_4468、change_4501、change_4502）。\n6. **空间用途与相关电气任务范围重新核对**：change_1433（设备用房→水泵房，影响 2#公变配电房）。\n7. **change_1408（充电桩电表间几何变化）**：摘要影响记录为\"影响候选，需复核\"，但工作建议栏为空，需工程师自行判断复核方向。\n\n---\n\n## 三、待核实事项\n\n1. **门洞删除/新增的实际位置与净宽**：change_841、change_842、change_853、change_854、change_879、change_880、change_1251、change_1252、change_1307、change_1308、change_1327、change_1328 等，需核对是否影响配电房疏散、设备运输及防火分隔。摘要未给出尺寸，不得推定。\n2. **外墙删除/新增对配电房围护、防水、隔热的影响**：change_1461、change_1462、change_1521、change_1522、change_1531～change_1538、change_1675～change_1678、change_3309、change_3310、change_3663、change_3664、change_3943、change_3944、change_4069～change_4072、change_4313～change_4324、change_4465～change_4468、change_4501、change_4502，需核实外墙构造与贴邻房间关系。\n3. **电气房间几何变化后的设备布置与检修通道**：change_1404、change_1407、change_1408、change_1440，需核实配电柜、变压器等布置及通道是否仍满足要求（摘要未给尺寸）。\n4. **新增变配电室（change_1441，59D61）**：需核实其用途定位、与既有配电系统的关系及机房条件；摘要未给出面积、位置尺寸。\n5. **设备用房→水泵房（change_1433）**：需核实水泵房对贴邻 2#公变配电房的用水/渗漏风险及隔声、防水提资。\n6. **设备用房→储藏间（change_1379）及设备用房删除（change_1386）**：摘要显示限定范围内未发现影响候选，但仍需确认原设备用房内是否有电气设备或管线需迁移。\n7. **采光井几何变化（change_1373）**：摘要显示限定范围内未发现影响候选，需确认是否影响电气房间自然采光或排烟路径。\n8. **\"限定范围内未发现影响候选\"的窗、门洞、外墙变化**：该结论仅限已识别电气房间内部及 5mm 轮廓近邻，需工程师确认是否存在未识别对象或范围外影响。\n9. **决策继承**：仅 decision_9d0fe024b9eeb2877452c214 可继承原范围确认，且明确\"不是整间房设计签字\"；decision_57cdc0da110b325ed73cdab0 因输入变化失效需复核；其余均无人工确认，不得视为已批准。\n10. **房间输入复核**：预留充电桩配电房、商业配电房两条均为\"原确认因变化失效，需复核\"，需重新确认后方可用于后续判断。\n11. **change_1408 工作建议为空**：需工程师补充复核方向。\n\n---\n\n## 四、复核结论（供工程师填写前参考）\n\n- 本次摘要中所有工作建议的\"是否批准\"均为 **False**，即无一条可直接批准。\n- 可继承的仅限 decision_9d0fe024b9eeb2877452c214 所载\"本条输入条件\"范围，不构成整间房或整图设计签字。\n- 请建筑机电工程师针对上述第二、三节逐条核实，并在原图（DWG）上确认后再行签署；本意见不替代原图核验。\n\n**编制说明：** 本意见仅使用所给纯文字摘要，未访问任何工具或外部资料，未补造尺寸、面积或工程师确认信息。",
+  "original_text_origin": "full_original",
+  "claims": [
+    {
+      "id": "s1_001",
+      "text": "**致：** 建筑机电工程师",
+      "span": {
+        "start": 18,
+        "end": 32
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_002",
+      "text": "**事项：** 公开样例 A→A-change 两版图纸差异复核",
+      "span": {
+        "start": 33,
+        "end": 65
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_003",
+      "text": "**依据：** 调用者提供的同一图纸两版纯文字摘要（非 DWG 原图）",
+      "span": {
+        "start": 66,
+        "end": 101
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_004",
+      "text": "**旧版哈希：** 021A8623ABE9BB847A2F7F8103AB1F4A673ABD25A0ECFEFC315F1396B385E7B1",
+      "span": {
+        "start": 102,
+        "end": 176
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_005",
+      "text": "**新版哈希：** 39B4B3FA6F1D7B76CB4DDDEF76A9C9F9931E78B31C983754E8CCA2DA429773C7",
+      "span": {
+        "start": 177,
+        "end": 251
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_006",
+      "text": "**变化对象数：** 180",
+      "span": {
+        "start": 252,
+        "end": 266
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_007",
+      "text": "**总体说明：** 以下内容仅为摘要记录，不是模型已核验的结论。",
+      "span": {
+        "start": 268,
+        "end": 300
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_008",
+      "text": "影响记录均为\"已识别范围候选\"，范围仅限已识别电气房间内部及 5mm 轮廓近邻，不保证覆盖未识别对象，也不代表对整图电气设计无影响。",
+      "span": {
+        "start": 300,
+        "end": 366
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_009",
+      "text": "所有工作建议的\"是否批准\"均为 False，即均需人工复核后方可确认。",
+      "span": {
+        "start": 366,
+        "end": 401
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_010",
+      "text": "| change_1404 | 几何变化、来源对象变化 | 4FA8E / 专变配电房 / SUBSTATION | 59554 / 专变配电房 / SUBSTATION | 新旧两侧专变配电房 |",
+      "span": {
+        "start": 529,
+        "end": 628
+      },
+      "refs": [
+        "change_1404"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_011",
+      "text": "| change_1407 | 几何变化、来源对象变化 | 4F8D9 / 3#公变配电房 / SUBSTATION | 59591 / 3#公变配电房 / SUBSTATION | 新旧两侧 3#公变配电房 |",
+      "span": {
+        "start": 629,
+        "end": 735
+      },
+      "refs": [
+        "change_1407"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_012",
+      "text": "| change_1408 | 几何变化、来源对象变化 | 4F787 / 充电桩电表间 / SMALL_ELECTRICAL_ROOM | 5959A / 充电桩电表间 / SMALL_ELECTRICAL_ROOM | 新旧两侧充电桩电表间 |",
+      "span": {
+        "start": 736,
+        "end": 860
+      },
+      "refs": [
+        "change_1408"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_013",
+      "text": "| change_1440 | 几何变化、来源对象变化 | 4F59B / 预留充电桩配电房 / DISTRIBUTION_ROOM | 59AA5 / 预留充电桩配电房 / DISTRIBUTION_ROOM | 新旧两侧预留充电桩配电房 |",
+      "span": {
+        "start": 861,
+        "end": 983
+      },
+      "refs": [
+        "change_1440"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_014",
+      "text": "| change_1441 | 新增 | 无 | 59D61 / 变配电室 / SUBSTATION | 新增变配电室 |",
+      "span": {
+        "start": 984,
+        "end": 1045
+      },
+      "refs": [
+        "change_1441"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_015",
+      "text": "| change_1379 | 名称或用途变化、来源对象变化 | 51402 / 设备用房 / EQUIPMENT_ROOM | 503AC / 储藏间 / STORAGE | 限定范围内未发现影响候选 |",
+      "span": {
+        "start": 1123,
+        "end": 1226
+      },
+      "refs": [
+        "change_1379"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_016",
+      "text": "| change_1386 | 删除 | 512DC / 设备用房 / EQUIPMENT_ROOM | 无对应记录 | 限定范围内未发现影响候选 |",
+      "span": {
+        "start": 1227,
+        "end": 1302
+      },
+      "refs": [
+        "change_1386"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_017",
+      "text": "| change_1433 | 名称或用途变化、来源对象变化 | 505C7 / 设备用房 / EQUIPMENT_ROOM | 599DC / 水泵房 / PUMP_ROOM | 影响候选：新旧两侧 2#公变配电房（4F722 / 599DC） |",
+      "span": {
+        "start": 1303,
+        "end": 1428
+      },
+      "refs": [
+        "change_1433"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_018",
+      "text": "| change_1443 | 几何变化、来源对象变化 | 50208 / 设备用房 / EQUIPMENT_ROOM | 60214 / 设备用房 / EQUIPMENT_ROOM | 限定范围内未发现影响候选 |",
+      "span": {
+        "start": 1429,
+        "end": 1537
+      },
+      "refs": [
+        "change_1443"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_019",
+      "text": "| change_1444 | 几何变化、来源对象变化 | 502DF / 设备用房 / EQUIPMENT_ROOM | 607E2 / 设备用房 / EQUIPMENT_ROOM | 限定范围内未发现影响候选 |",
+      "span": {
+        "start": 1538,
+        "end": 1646
+      },
+      "refs": [
+        "change_1444"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_020",
+      "text": "| change_1373 | 几何变化、来源对象变化 | 4F5DC / 采光井 / LIGHT_WELL | 59A06 / 采光井 / LIGHT_WELL | 限定范围内未发现影响候选 |",
+      "span": {
+        "start": 1717,
+        "end": 1815
+      },
+      "refs": [
+        "change_1373"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_021",
+      "text": "| change_841 | 4F595 | 预留充电桩配电房（4F59B） |",
+      "span": {
+        "start": 1907,
+        "end": 1947
+      },
+      "refs": [
+        "change_841"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_022",
+      "text": "| change_842 | 4F595 | 预留充电桩配电房（4F59B） |",
+      "span": {
+        "start": 1948,
+        "end": 1988
+      },
+      "refs": [
+        "change_842"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_023",
+      "text": "| change_853 | 4F8D7 | 3#公变配电房（4F8D9） |",
+      "span": {
+        "start": 1989,
+        "end": 2028
+      },
+      "refs": [
+        "change_853"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_024",
+      "text": "| change_854 | 4F8D7 | 3#公变配电房（4F8D9） |",
+      "span": {
+        "start": 2029,
+        "end": 2068
+      },
+      "refs": [
+        "change_854"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_025",
+      "text": "| change_879 | 4FA4F | 专变配电房（4FA8E） |",
+      "span": {
+        "start": 2069,
+        "end": 2106
+      },
+      "refs": [
+        "change_879"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_026",
+      "text": "| change_880 | 4FA4F | 专变配电房（4FA8E） |",
+      "span": {
+        "start": 2107,
+        "end": 2144
+      },
+      "refs": [
+        "change_880"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_027",
+      "text": "| change_1251 | 596AA | 3#公变配电房（59591） |",
+      "span": {
+        "start": 2201,
+        "end": 2241
+      },
+      "refs": [
+        "change_1251"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_028",
+      "text": "| change_1252 | 596AA | 3#公变配电房（59591） |",
+      "span": {
+        "start": 2242,
+        "end": 2282
+      },
+      "refs": [
+        "change_1252"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_029",
+      "text": "| change_1307 | 59A32 | 变配电室（59D61） |",
+      "span": {
+        "start": 2283,
+        "end": 2320
+      },
+      "refs": [
+        "change_1307"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_030",
+      "text": "| change_1308 | 59A32 | 变配电室（59D61） |",
+      "span": {
+        "start": 2321,
+        "end": 2358
+      },
+      "refs": [
+        "change_1308"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_031",
+      "text": "| change_1327 | 5E6F3 | 专变配电房（59554） |",
+      "span": {
+        "start": 2359,
+        "end": 2397
+      },
+      "refs": [
+        "change_1327"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_032",
+      "text": "| change_1328 | 5E6F3 | 专变配电房（59554） |",
+      "span": {
+        "start": 2398,
+        "end": 2436
+      },
+      "refs": [
+        "change_1328"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_033",
+      "text": "**删除类（旧侧）：**",
+      "span": {
+        "start": 2470,
+        "end": 2482
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_034",
+      "text": "| change_1461、change_1462 | 4F594 | 预留充电桩配电房（4F59B） |",
+      "span": {
+        "start": 2529,
+        "end": 2582
+      },
+      "refs": [
+        "change_1461",
+        "change_1462"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_035",
+      "text": "| change_1521、change_1522 | 4F75A | 3#公变配电房（4F8D9） |",
+      "span": {
+        "start": 2583,
+        "end": 2635
+      },
+      "refs": [
+        "change_1521",
+        "change_1522"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_036",
+      "text": "| change_1531～change_1538 | 4F8D6、4F8D8、4F8D9、4F8DA | 3#公变配电房（4F8D9） |",
+      "span": {
+        "start": 2636,
+        "end": 2706
+      },
+      "refs": [
+        "change_1531",
+        "change_1532",
+        "change_1533",
+        "change_1534",
+        "change_1535",
+        "change_1536",
+        "change_1537",
+        "change_1538"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_037",
+      "text": "| change_1675～change_1678 | 4FA4E、4FA50 | 专变配电房（4FA8E） |",
+      "span": {
+        "start": 2707,
+        "end": 2763
+      },
+      "refs": [
+        "change_1675",
+        "change_1676",
+        "change_1677",
+        "change_1678"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_038",
+      "text": "**新增类（新侧）：**",
+      "span": {
+        "start": 2765,
+        "end": 2777
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_039",
+      "text": "| change_3309、change_3310 | 59496 | 预留充电桩配电房（59AA5） |",
+      "span": {
+        "start": 2824,
+        "end": 2877
+      },
+      "refs": [
+        "change_3309",
+        "change_3310"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_040",
+      "text": "| change_3663、change_3664、change_3943、change_3944、change_4501、change_4502 | 59591、596A9、59D88 | 3#公变配电房（59591） |",
+      "span": {
+        "start": 2878,
+        "end": 2990
+      },
+      "refs": [
+        "change_3663",
+        "change_3664",
+        "change_3943",
+        "change_3944",
+        "change_4501",
+        "change_4502"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_041",
+      "text": "| change_4069～change_4072 | 59728、5972A | 专变配电房（59554） |",
+      "span": {
+        "start": 2991,
+        "end": 3047
+      },
+      "refs": [
+        "change_4069",
+        "change_4070",
+        "change_4071",
+        "change_4072"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_042",
+      "text": "| change_4313～change_4324、change_4465～change_4468 | 59A2D、59A2E、59A30、59A31、59A33、59D60、59D61 | 变配电室（59D61） |",
+      "span": {
+        "start": 3048,
+        "end": 3157
+      },
+      "refs": [
+        "change_4313",
+        "change_4314",
+        "change_4315",
+        "change_4316",
+        "change_4317",
+        "change_4318",
+        "change_4319",
+        "change_4320",
+        "change_4321",
+        "change_4322",
+        "change_4323",
+        "change_4324",
+        "change_4465",
+        "change_4466",
+        "change_4467",
+        "change_4468"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_043",
+      "text": "- 门洞删除：change_899～change_906、change_1017、change_1018",
+      "span": {
+        "start": 3198,
+        "end": 3250
+      },
+      "refs": [
+        "change_899",
+        "change_900",
+        "change_901",
+        "change_902",
+        "change_903",
+        "change_904",
+        "change_905",
+        "change_906",
+        "change_1017",
+        "change_1018"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_044",
+      "text": "- 门洞新增：change_1333、change_1334、change_1341、change_1342、change_1355～change_1358、change_1361、change_1362",
+      "span": {
+        "start": 3251,
+        "end": 3353
+      },
+      "refs": [
+        "change_1333",
+        "change_1334",
+        "change_1341",
+        "change_1342",
+        "change_1355",
+        "change_1356",
+        "change_1357",
+        "change_1358",
+        "change_1361",
+        "change_1362"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_045",
+      "text": "- 外墙删除：change_1539、change_1540、change_1673、change_1674、change_1797～change_1814、change_2401～change_2420",
+      "span": {
+        "start": 3354,
+        "end": 3456
+      },
+      "refs": [
+        "change_1539",
+        "change_1540",
+        "change_1673",
+        "change_1674",
+        "change_1797",
+        "change_1798",
+        "change_1799",
+        "change_1800",
+        "change_1801",
+        "change_1802",
+        "change_1803",
+        "change_1804",
+        "change_1805",
+        "change_1806",
+        "change_1807",
+        "change_1808",
+        "change_1809",
+        "change_1810",
+        "change_1811",
+        "change_1812",
+        "change_1813",
+        "change_1814",
+        "change_2401",
+        "change_2402",
+        "change_2403",
+        "change_2404",
+        "change_2405",
+        "change_2406",
+        "change_2407",
+        "change_2408",
+        "change_2409",
+        "change_2410",
+        "change_2411",
+        "change_2412",
+        "change_2413",
+        "change_2414",
+        "change_2415",
+        "change_2416",
+        "change_2417",
+        "change_2418",
+        "change_2419",
+        "change_2420"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_046",
+      "text": "- 外墙新增：change_3979、change_3980、change_4031、change_4032、change_4271、change_4272、change_4311、change_4312、change_4499、change_4500、change_4503、change_4504、change_4507～change_4510、change_4537、change_4538、change_4547、change_4548、change_4561～change_4566、change_4615、change_4616、change_4643～change_4650",
+      "span": {
+        "start": 3457,
+        "end": 3751
+      },
+      "refs": [
+        "change_3979",
+        "change_3980",
+        "change_4031",
+        "change_4032",
+        "change_4271",
+        "change_4272",
+        "change_4311",
+        "change_4312",
+        "change_4499",
+        "change_4500",
+        "change_4503",
+        "change_4504",
+        "change_4507",
+        "change_4508",
+        "change_4509",
+        "change_4510",
+        "change_4537",
+        "change_4538",
+        "change_4547",
+        "change_4548",
+        "change_4561",
+        "change_4562",
+        "change_4563",
+        "change_4564",
+        "change_4565",
+        "change_4566",
+        "change_4615",
+        "change_4616",
+        "change_4643",
+        "change_4644",
+        "change_4645",
+        "change_4646",
+        "change_4647",
+        "change_4648",
+        "change_4649",
+        "change_4650"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_047",
+      "text": "- 窗删除：change_4703～change_4710",
+      "span": {
+        "start": 3752,
+        "end": 3781
+      },
+      "refs": [
+        "change_4703",
+        "change_4704",
+        "change_4705",
+        "change_4706",
+        "change_4707",
+        "change_4708",
+        "change_4709",
+        "change_4710"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_048",
+      "text": "- 窗新增：change_4827、change_4828、change_4835、change_4836、change_4849～change_4852",
+      "span": {
+        "start": 3782,
+        "end": 3859
+      },
+      "refs": [
+        "change_4827",
+        "change_4828",
+        "change_4835",
+        "change_4836",
+        "change_4849",
+        "change_4850",
+        "change_4851",
+        "change_4852"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_049",
+      "text": "- **可继承原范围确认（1 条）：** decision_fcf84ee2ff6cc1955b2d45cf → decision_9d0fe024b9eeb2877452c214（规则 R1），确认人张田，日期 2026-10-12，状态\"输入条件已复核\"，范围明确为\"本条输入条件，不是整间房设计签字\"。",
+      "span": {
+        "start": 3884,
+        "end": 4038
+      },
+      "refs": [
+        "decision_fcf84ee2ff6cc1955b2d45cf",
+        "decision_9d0fe024b9eeb2877452c214"
+      ],
+      "values": {},
+      "kind": "status",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_050",
+      "text": "- **原确认因输入变化失效、需复核（1 条）：** decision_56cc7e758cae4518ee4a3e07 → decision_57cdc0da110b325ed73cdab0（规则 R1）。",
+      "span": {
+        "start": 4039,
+        "end": 4143
+      },
+      "refs": [
+        "decision_56cc7e758cae4518ee4a3e07",
+        "decision_57cdc0da110b325ed73cdab0"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_051",
+      "text": "- **其余记录：** 原记录无人工确认，不继承签字（含 R1、R2、R3、R4 及 DRAFT_88e437765ce8 各条）。",
+      "span": {
+        "start": 4144,
+        "end": 4210
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_052",
+      "text": "| 预留充电桩配电房 | sem_6e1dc941f8f3293c2293772a | sem_455c4e2eeefbca7907a8a77f | 原确认因变化失效，需复核 | 房间/门洞变化、候选集合改变或匹配不足 |",
+      "span": {
+        "start": 4294,
+        "end": 4405
+      },
+      "refs": [
+        "sem_6e1dc941f8f3293c2293772a",
+        "sem_455c4e2eeefbca7907a8a77f"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_053",
+      "text": "| 商业配电房 | sem_89496a6626781569ee17a73a | sem_f00d3bd48ed659303d810bb3 | 原确认因变化失效，需复核 | 房间/门洞变化、候选集合改变或匹配不足 |",
+      "span": {
+        "start": 4406,
+        "end": 4514
+      },
+      "refs": [
+        "sem_89496a6626781569ee17a73a",
+        "sem_f00d3bd48ed659303d810bb3"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_054",
+      "text": "上述两条均记录复核人张田、复核日期 2026-10-12，但状态为\"需复核\"，不能视为已通过。",
+      "span": {
+        "start": 4516,
+        "end": 4563
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_055",
+      "text": "以下按摘要给出的工作建议归类，均为候选，需工程师结合原图核实：",
+      "span": {
+        "start": 4597,
+        "end": 4628
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_056",
+      "text": "1. **应急照明与疏散指示复核**：change_841、change_842（预留充电桩配电房）。",
+      "span": {
+        "start": 4630,
+        "end": 4681
+      },
+      "refs": [
+        "change_841",
+        "change_842"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_057",
+      "text": "2. **配电平面布置复核、配电柜布置复核**：change_841、change_842（预留充电桩配电房）。",
+      "span": {
+        "start": 4682,
+        "end": 4738
+      },
+      "refs": [
+        "change_841",
+        "change_842"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_058",
+      "text": "3. **变配电设备布置复核、机房条件重新核对**：change_1404（专变配电房）、change_1407（3#公变配电房）。",
+      "span": {
+        "start": 4739,
+        "end": 4805
+      },
+      "refs": [
+        "change_1404",
+        "change_1407"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_059",
+      "text": "4. **设备布置与检修通道复核、配电房条件重新核对**：change_1440（预留充电桩配电房）。",
+      "span": {
+        "start": 4806,
+        "end": 4857
+      },
+      "refs": [
+        "change_1440"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_060",
+      "text": "5. **建筑防水或隔热提资重新核对、贴邻用水或热源风险复核**：涉及 3#公变配电房、专变配电房、变配电室的多条门洞与外墙变化（如 change_853、change_854、change_879、change_880、change_1251、change_1252、change_1307、change_1308、change_1327、change_1328、change_1461、change_1462、change_1521、change_1522、change_1531～change_1538、change_1675～change_1678、change_3309、change_3310、change_3663、change_3664、change_3943、change_3944、change_4069～change_4072、change_4313～change_4324、change_4465～change_4468、change_4501、change_4502）。",
+      "span": {
+        "start": 4858,
+        "end": 5306
+      },
+      "refs": [
+        "change_853",
+        "change_854",
+        "change_879",
+        "change_880",
+        "change_1251",
+        "change_1252",
+        "change_1307",
+        "change_1308",
+        "change_1327",
+        "change_1328",
+        "change_1461",
+        "change_1462",
+        "change_1521",
+        "change_1522",
+        "change_1531",
+        "change_1532",
+        "change_1533",
+        "change_1534",
+        "change_1535",
+        "change_1536",
+        "change_1537",
+        "change_1538",
+        "change_1675",
+        "change_1676",
+        "change_1677",
+        "change_1678",
+        "change_3309",
+        "change_3310",
+        "change_3663",
+        "change_3664",
+        "change_3943",
+        "change_3944",
+        "change_4069",
+        "change_4070",
+        "change_4071",
+        "change_4072",
+        "change_4313",
+        "change_4314",
+        "change_4315",
+        "change_4316",
+        "change_4317",
+        "change_4318",
+        "change_4319",
+        "change_4320",
+        "change_4321",
+        "change_4322",
+        "change_4323",
+        "change_4324",
+        "change_4465",
+        "change_4466",
+        "change_4467",
+        "change_4468",
+        "change_4501",
+        "change_4502"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_061",
+      "text": "6. **空间用途与相关电气任务范围重新核对**：change_1433（设备用房→水泵房，影响 2#公变配电房）。",
+      "span": {
+        "start": 5307,
+        "end": 5365
+      },
+      "refs": [
+        "change_1433"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_062",
+      "text": "7. **change_1408（充电桩电表间几何变化）**：摘要影响记录为\"影响候选，需复核\"，但工作建议栏为空，需工程师自行判断复核方向。",
+      "span": {
+        "start": 5366,
+        "end": 5437
+      },
+      "refs": [
+        "change_1408"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_063",
+      "text": "1. **门洞删除/新增的实际位置与净宽**：change_841、change_842、change_853、change_854、change_879、change_880、change_1251、change_1252、change_1307、change_1308、change_1327、change_1328 等，需核对是否影响配电房疏散、设备运输及防火分隔。",
+      "span": {
+        "start": 5456,
+        "end": 5642
+      },
+      "refs": [
+        "change_841",
+        "change_842",
+        "change_853",
+        "change_854",
+        "change_879",
+        "change_880",
+        "change_1251",
+        "change_1252",
+        "change_1307",
+        "change_1308",
+        "change_1327",
+        "change_1328"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_064",
+      "text": "摘要未给出尺寸，不得推定。",
+      "span": {
+        "start": 5642,
+        "end": 5655
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_065",
+      "text": "2. **外墙删除/新增对配电房围护、防水、隔热的影响**：change_1461、change_1462、change_1521、change_1522、change_1531～change_1538、change_1675～change_1678、change_3309、change_3310、change_3663、change_3664、change_3943、change_3944、change_4069～change_4072、change_4313～change_4324、change_4465～change_4468、change_4501、change_4502，需核实外墙构造与贴邻房间关系。",
+      "span": {
+        "start": 5656,
+        "end": 5965
+      },
+      "refs": [
+        "change_1461",
+        "change_1462",
+        "change_1521",
+        "change_1522",
+        "change_1531",
+        "change_1532",
+        "change_1533",
+        "change_1534",
+        "change_1535",
+        "change_1536",
+        "change_1537",
+        "change_1538",
+        "change_1675",
+        "change_1676",
+        "change_1677",
+        "change_1678",
+        "change_3309",
+        "change_3310",
+        "change_3663",
+        "change_3664",
+        "change_3943",
+        "change_3944",
+        "change_4069",
+        "change_4070",
+        "change_4071",
+        "change_4072",
+        "change_4313",
+        "change_4314",
+        "change_4315",
+        "change_4316",
+        "change_4317",
+        "change_4318",
+        "change_4319",
+        "change_4320",
+        "change_4321",
+        "change_4322",
+        "change_4323",
+        "change_4324",
+        "change_4465",
+        "change_4466",
+        "change_4467",
+        "change_4468",
+        "change_4501",
+        "change_4502"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_066",
+      "text": "3. **电气房间几何变化后的设备布置与检修通道**：change_1404、change_1407、change_1408、change_1440，需核实配电柜、变压器等布置及通道是否仍满足要求（摘要未给尺寸）。",
+      "span": {
+        "start": 5966,
+        "end": 6073
+      },
+      "refs": [
+        "change_1404",
+        "change_1407",
+        "change_1408",
+        "change_1440"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_067",
+      "text": "4. **新增变配电室（change_1441，59D61）**：需核实其用途定位、与既有配电系统的关系及机房条件；",
+      "span": {
+        "start": 6074,
+        "end": 6132
+      },
+      "refs": [
+        "change_1441"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_068",
+      "text": "摘要未给出面积、位置尺寸。",
+      "span": {
+        "start": 6132,
+        "end": 6145
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_069",
+      "text": "5. **设备用房→水泵房（change_1433）**：需核实水泵房对贴邻 2#公变配电房的用水/渗漏风险及隔声、防水提资。",
+      "span": {
+        "start": 6146,
+        "end": 6209
+      },
+      "refs": [
+        "change_1433"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_070",
+      "text": "6. **设备用房→储藏间（change_1379）及设备用房删除（change_1386）**：摘要显示限定范围内未发现影响候选，但仍需确认原设备用房内是否有电气设备或管线需迁移。",
+      "span": {
+        "start": 6210,
+        "end": 6301
+      },
+      "refs": [
+        "change_1379",
+        "change_1386"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_071",
+      "text": "7. **采光井几何变化（change_1373）**：摘要显示限定范围内未发现影响候选，需确认是否影响电气房间自然采光或排烟路径。",
+      "span": {
+        "start": 6302,
+        "end": 6368
+      },
+      "refs": [
+        "change_1373"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_072",
+      "text": "8. **\"限定范围内未发现影响候选\"的窗、门洞、外墙变化**：该结论仅限已识别电气房间内部及 5mm 轮廓近邻，需工程师确认是否存在未识别对象或范围外影响。",
+      "span": {
+        "start": 6369,
+        "end": 6448
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_073",
+      "text": "9. **决策继承**：仅 decision_9d0fe024b9eeb2877452c214 可继承原范围确认，且明确\"不是整间房设计签字\"；",
+      "span": {
+        "start": 6449,
+        "end": 6521
+      },
+      "refs": [
+        "decision_9d0fe024b9eeb2877452c214"
+      ],
+      "values": {},
+      "kind": "status",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_074",
+      "text": "decision_57cdc0da110b325ed73cdab0 因输入变化失效需复核；",
+      "span": {
+        "start": 6521,
+        "end": 6566
+      },
+      "refs": [
+        "decision_57cdc0da110b325ed73cdab0"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_075",
+      "text": "其余均无人工确认，不得视为已批准。",
+      "span": {
+        "start": 6566,
+        "end": 6583
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_076",
+      "text": "10. **房间输入复核**：预留充电桩配电房、商业配电房两条均为\"原确认因变化失效，需复核\"，需重新确认后方可用于后续判断。",
+      "span": {
+        "start": 6584,
+        "end": 6647
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_077",
+      "text": "11. **change_1408 工作建议为空**：需工程师补充复核方向。",
+      "span": {
+        "start": 6648,
+        "end": 6686
+      },
+      "refs": [
+        "change_1408"
+      ],
+      "values": {},
+      "kind": "reference",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_078",
+      "text": "- 本次摘要中所有工作建议的\"是否批准\"均为 **False**，即无一条可直接批准。",
+      "span": {
+        "start": 6715,
+        "end": 6758
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_079",
+      "text": "- 可继承的仅限 decision_9d0fe024b9eeb2877452c214 所载\"本条输入条件\"范围，不构成整间房或整图设计签字。",
+      "span": {
+        "start": 6759,
+        "end": 6829
+      },
+      "refs": [
+        "decision_9d0fe024b9eeb2877452c214"
+      ],
+      "values": {},
+      "kind": "status",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_080",
+      "text": "- 请建筑机电工程师针对上述第二、三节逐条核实，并在原图（DWG）上确认后再行签署；",
+      "span": {
+        "start": 6830,
+        "end": 6872
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_081",
+      "text": "本意见不替代原图核验。",
+      "span": {
+        "start": 6872,
+        "end": 6883
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    },
+    {
+      "id": "s1_082",
+      "text": "**编制说明：** 本意见仅使用所给纯文字摘要，未访问任何工具或外部资料，未补造尺寸、面积或工程师确认信息。",
+      "span": {
+        "start": 6885,
+        "end": 6939
+      },
+      "refs": [],
+      "values": {},
+      "kind": "unsupported",
+      "extraction": "model",
+      "generated_by": "Codex"
+    }
+  ],
+  "legacy_reason": null,
+  "model_name": "DeepSeek（W13真实原文，未改写）",
+  "transcript_refs": [
+    "bundled-demo:W13/sample-1，原文保持；Codex辅助划分"
+  ]
+}

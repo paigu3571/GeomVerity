@@ -2,19 +2,39 @@
 """同图两版语义差异及有界影响分析；不修改图纸或识别结果。"""
 from collections import Counter,defaultdict
 import json
+from contextlib import contextmanager
+from contextvars import ContextVar
 from pathlib import Path
 import time
 from datetime import datetime,timezone,timedelta
 import yaml
 from shapely.geometry import Polygon,LineString,Point,GeometryCollection,box
 from shapely.ops import unary_union
-from .model import load,L2
+from .model import load,L2,snapshot_session
 from .uses import classify
 from .l4 import check,read_r1_confirmations,RULES
 
 ELECTRICAL={'SUBSTATION','DISTRIBUTION_ROOM','ELECTRICAL_SHAFT','WEAK_CURRENT_ROOM','SMALL_ELECTRICAL_ROOM'}
 
+_geometry_cache = ContextVar('comparison_geometry_cache', default=None)
+
+
+@contextmanager
+def geometry_session():
+    token=_geometry_cache.set({})
+    try:yield
+    finally:_geometry_cache.reset(token)
+
+
 def shape(obj):
+    cache=_geometry_cache.get()
+    if cache is None:return _shape(obj)
+    key=id(obj)
+    if key not in cache:cache[key]=(obj,_shape(obj))
+    return cache[key][1]
+
+
+def _shape(obj):
     parts=[]
     for path in obj.geometry.paths:
         xy=[(p.x,p.y) for p in path]
@@ -43,20 +63,30 @@ def source_key(o):
     # 块名可能重命名，实例Handle与外参路径区分同Handle的不同实例。
     return (o.type,o.source.handle.upper(),tuple(p.split(':')[0].upper() for p in o.source.block_path),tuple(o.source.xref_path))
 
+def raw_paths(obj):
+    cache=_geometry_cache.get();key=('raw_paths',id(obj))
+    if cache is not None and key in cache:return cache[key][1]
+    shapes=[];zs=[];all_z=[]
+    for path in obj.geometry.paths:
+        xy=[(p.x,p.y) for p in path];z=[p.z for p in path]
+        shapes.append(LineString(xy) if len(xy)>=2 else Point(xy[0]) if xy else GeometryCollection())
+        zs.append(z);all_z.extend(z)
+    result=(shapes,zs,(min(all_z),max(all_z)) if all_z else None)
+    if cache is not None:cache[key]=(obj,result)
+    return result
+
+
 def same_geometry(a,b):
     if a.geometry.kind!=b.geometry.kind or a.geometry.is_closed!=b.geometry.is_closed:return False
     if a.geometry.is_exact!=b.geometry.is_exact:return False
-    if any(abs(p.z-q.z)>0.001 for pa,pb in zip(a.geometry.paths,b.geometry.paths) for p,q in zip(pa,pb)):return False
-    # 多路径union会把浮点微差放大为不同的交点拆段；先比较原路径。
-    # 仍使用既定0.001mm坐标容差，不把门位/墙位真实移动吞掉。
-    def path_shape(path):
-        xy=[(p.x,p.y) for p in path]
-        return LineString(xy) if len(xy)>=2 else Point(xy[0]) if xy else GeometryCollection()
-    remaining=[path_shape(p) for p in b.geometry.paths]
-    raw_equal=len(a.geometry.paths)==len(remaining)
+    ap,az,ar=raw_paths(a);bp,bz,br=raw_paths(b)
+    # 只有所有可能配对都在原有Z容差内时省去逐点循环；否则沿用逐点判断。
+    z_safe=ar is None or br is None or max(abs(ar[0]-br[1]),abs(ar[1]-br[0]))<=0.001
+    if not z_safe and any(abs(p-q)>0.001 for pa,pb in zip(az,bz) for p,q in zip(pa,pb)):return False
+    remaining=list(bp)
+    raw_equal=len(ap)==len(remaining)
     if raw_equal:
-        for p in a.geometry.paths:
-            g=path_shape(p)
+        for g in ap:
             match=next((i for i,h in enumerate(remaining) if g.equals(h) or g.equals_exact(h,0.001,normalize=True)),None)
             if match is None:raw_equal=False;break
             remaining.pop(match)
@@ -65,6 +95,7 @@ def same_geometry(a,b):
     if ga is not None and gb is not None:
         return ga.equals(gb) or ga.equals_exact(gb,0.001,normalize=True) or ga.simplify(0.001).equals_exact(gb.simplify(0.001),0.001,normalize=True)
     return a.geometry.model_dump()==b.geometry.model_dump()
+
 
 def ref(o):
     if o is None:return None
@@ -174,24 +205,24 @@ def compare_objects(old,new):
     for i,c in enumerate(changes):c['id']='change_'+str(i+1)
     return changes,mapping,unchanged,warnings
 
-def inherit_reviews(old_findings,new_findings,mapping,unchanged,confirmations):
-    newer={(f['rule_id'],f['object_ids'][0]):f for f in new_findings if f['object_ids']}
+def inherit_reviews(old_findings,new_findings,mapping,unchanged,confirmations,review_records=None):
+    from .decisions import inherit_decision
+    # unchanged参数保留旧调用兼容；所有适用性判断只来自inherit_decision。
+    newer={(f['rule_id'],tuple(f['object_ids'])):f for f in new_findings}
     inherited={};records=[]
     for f in old_findings:
         if f['rule_id']!='R1' or not f['object_ids'] or not f['engineer_reviewed']['reviewed_by']:continue
-        room=f['object_ids'][0];new_id=mapping.get(room);nf=newer.get(('R1',new_id))
-        dependencies={room,*f['values'].get('candidate_opening_ids',[])}
-        mapped={mapping.get(i) for i in f['values'].get('candidate_opening_ids',[])}
-        current=set(nf['values'].get('candidate_opening_ids',[])) if nf else set()
-        safe=bool(nf and room in confirmations and dependencies<=unchanged and None not in mapped and mapped==current)
-        if safe:
+        room=f['object_ids'][0];new_id=mapping.get(room);nf=newer.get(('R1',(new_id,)))
+        transfer=next((r for r in reversed(review_records or []) if r.get('old_decision_id')==f['decision']['id'] and nf and r.get('new_decision_id')==nf['decision']['id']),None)
+        outcome=inherit_decision(f['decision'],nf['decision'] if nf else None,mapping,confirmation_available=room in confirmations,identity_confirmation=transfer)
+        if outcome['inherited']:
             confirmed,review=confirmations[room]
             inherited[new_id]=(confirmed.model_copy(update={'object_id':new_id}),review)
         records.append({'old_room':room,'new_room':new_id,'room_name':f['object_name'],
-            'source_handles':f['source_handles'],'state':'继承' if safe else '原确认因变化失效，需复核',
-            'reason':'房间及门洞候选未变化，候选集合一致' if safe else '房间/门洞变化、候选集合改变或匹配不足',
-            'engineer_reviewed':f['engineer_reviewed']})
+            'source_handles':f['source_handles'],**outcome,'engineer_reviewed':f['engineer_reviewed'],
+            'old_decision_id':f['decision']['id']})
     return inherited,records
+
 
 def conclusion_changes(old_findings,new_findings,mapping):
     remaining={f['id']:f for f in new_findings};rows=[]
@@ -271,8 +302,16 @@ def change_checklist(changes,old,new):
     return sorted(rows,key=lambda r:(r['type']!='房间',r['name'],r['id']))
 
 
-def diff(old_dir,new_dir,output='dist/changes'):
+def diff(old_dir,new_dir,output='dist/changes',progress=None,review_records=None):
+    with snapshot_session(),geometry_session():
+        return _diff(old_dir,new_dir,output,progress,review_records)
+
+
+def _diff(old_dir,new_dir,output,progress,review_records):
+    emit=progress or (lambda message:None)
+    emit('读取并验证两版数据')
     start=time.perf_counter();old,new=load(old_dir),load(new_dir)
+    emit('匹配对象来源与几何')
     if old.drawing.geometry_units!=new.drawing.geometry_units or old.drawing.coordinate_system!=new.drawing.coordinate_system:
         raise ValueError('两版单位或坐标系不同，不能直接比较；请提供同图同坐标扫描')
     changes,mapping,unchanged,warnings=compare_objects(old,new)
@@ -281,16 +320,24 @@ def diff(old_dir,new_dir,output='dist/changes'):
             if c[side]:
                 o=next(o for o in data.objects if o.semantic_id==c[side]['id'])
                 c[side+'_geometry']=o.geometry.model_dump()
-    old_check,new_check=check(old_dir),check(new_dir)
+    emit('核对旧版规则与依据')
+    old_check=check(old_dir)
+    emit('核对新版规则与依据')
+    new_check=check(new_dir)
+    from .reviews import apply_reviews
+    apply_reviews(old_check['findings'],old.drawing.sha256,review_records or [])
+    apply_reviews(new_check['findings'],new.drawing.sha256,review_records or [])
     confirmations,_=read_r1_confirmations(old_dir,old.drawing.sha256)
-    inherited,reviews=inherit_reviews(old_check['findings'],new_check['findings'],mapping,unchanged,confirmations)
+    inherited,reviews=inherit_reviews(old_check['findings'],new_check['findings'],mapping,unchanged,confirmations,review_records)
     if inherited:
+        emit('重核原确认的适用范围')
         new_check=check(new_dir,inherited_confirmations=inherited)
         for f in new_check['findings']:
             if f['object_ids'] and f['object_ids'][0] in inherited and f['rule_id']=='R1':
                 f['engineer_reviewed']['record_file']='旧版/l4_confirmations.yaml'
                 f['values']['confirmation_inherited']=True
                 f['reason']='继承未变化对象的原人工核对；'+f['reason']
+    apply_reviews(new_check['findings'],new.drawing.sha256,review_records or [])
     uses={side:{r['object_id']:r for r in classify(directory)['rows']} for side,directory in [('old',old_dir),('new',new_dir)]}
     work_map=yaml.safe_load((RULES/'impact_map.yaml').read_text(encoding='utf-8'))
     identity_changes=[c for c in changes if c['kinds']==['来源对象变化']]
@@ -298,7 +345,9 @@ def diff(old_dir,new_dir,output='dist/changes'):
     missing_rooms=[c for c in changes if c['old'] and not c['new'] and c['old']['type']=='space']
     remaining_texts={f.source.handle.upper() for f in load(new_dir,L2).facts if f.raw_text} if missing_rooms else set()
     physical=[c for c in changes if (c['new'] or c['old'])['type'] in ('wall','opening','door','window')]
-    for change in changes:
+    emit('分析变化影响')
+    for change_index,change in enumerate(changes,1):
+        if change_index==1 or change_index%25==0 or change_index==len(changes):emit(f'分析变化影响 {change_index}/{len(changes)}')
         change['basis']='源几何或名称变化候选'
         if (change['new'] or change['old'])['type'] in ('space','shaft'):
             related=[]
@@ -335,10 +384,12 @@ def diff(old_dir,new_dir,output='dist/changes'):
                 if row['room_use'] in (category,'*') and row['change_type'] in types:work.extend(row['work'])
         change['suggested_work']={'approved':bool(work_map.get('approved')),'items':sorted(set(work))}
     from .lighting import generate,input_hash,compare_groups
+    emit('计算灯具候选与换版影响')
     old_lights=generate(old,uses['old'],input_hash(old_dir))
     new_lights=generate(new,uses['new'],input_hash(new_dir))
     lighting_changes=compare_groups(old_lights,new_lights,mapping,changes)
-    result={'identity_changes':identity_changes,'origin':'REAL_JSON','lineage_assumption':'调用者提供同一DWG的两版；Handle不是跨图永久身份',
+    from .decisions import INHERITANCE_VERSION
+    result={'schema_version':'changes.v2','inheritance_version':INHERITANCE_VERSION,'object_mapping':mapping,'identity_changes':identity_changes,'origin':'REAL_JSON','lineage_assumption':'调用者提供同一DWG的两版；Handle不是跨图永久身份',
             'times':comparison_times(old,new),'checklist':change_checklist(changes,old,new),
             'old_hash':old.drawing.sha256,'new_hash':new.drawing.sha256,'geometry_units':new.drawing.geometry_units,'coordinate_system':new.drawing.coordinate_system,
             'matched':len(mapping),'unchanged':len(unchanged),'change_count':len(changes),
@@ -349,6 +400,7 @@ def diff(old_dir,new_dir,output='dist/changes'):
             'matching_warnings':warnings,'mapping_approved':bool(work_map.get('approved')),
             'old_check':old_check,'new_check':new_check,'tool_seconds':round(time.perf_counter()-start,4)}
     from .light_calc import calculate
+    emit('复核派生计算')
     old_calculations=calculate(old,uses['old'],old_lights)['rows'];new_calculations=calculate(new,uses['new'],new_lights)['rows']
     new_calc_by_room={r['room_semantic_id']:r for r in new_calculations}
     result['lighting_calculation_changes']=[]
@@ -358,25 +410,8 @@ def diff(old_dir,new_dir,output='dist/changes'):
         changed=old_fp!=new_fp
         state='旧计算失效，按新版重算' if changed and prior.get('estimated') else '轮廓变化，计算适用性需按新版重核' if changed else '输入未变化，计算记录保留'
         result['lighting_calculation_changes'].append({'room_name':prior['room_name'],'old_room_id':rid,'new_room_id':mapping.get(rid),'state':state,'old_calculation':prior,'new_calculation':current,'invalidated':bool(changed and prior.get('estimated'))})
-    from .priority import room_priorities
-    for c in changes:
-        ref=c['new'] or c['old'];oid=(c['new'] or {}).get('id')
-        c['priorities']=room_priorities(oid,ref['name'],[f for f in new_check['findings'] if oid in f['object_ids']],result,(c['old'] or {}).get('id')) if ref['type']=='space' else []
-    current_findings={f['id']:f for f in new_check['findings']}
-    prior_findings={f['id']:f for f in old_check['findings']}
-    for change in changes:
-        for alert in change['priorities']:
-            for fid in alert['finding_ids']:
-                if fid not in current_findings:continue
-                finding=current_findings[fid];finding['priority_rank']=alert['rank'];finding['decision']['priority']=alert
-                finding['decision']['priority_evidence']={'old_drawing_sha256':old.drawing.sha256,'new_drawing_sha256':new.drawing.sha256,'change_id':change['id'],'prior_decision_ids':[prior_findings[i]['decision']['id'] for i in alert['finding_ids'] if i in prior_findings]}
-    from .decisions import inherit_decision
-    new_decisions={(f['rule_id'],tuple(f['object_ids'])):f['decision'] for f in new_check['findings']}
-    result['decision_inheritance']=[]
-    for f in old_check['findings']:
-        mapped=tuple(mapping.get(i) for i in f['object_ids'])
-        current=new_decisions.get((f['rule_id'],mapped))
-        result['decision_inheritance'].append({'old_decision_id':f['decision']['id'],'new_decision_id':current['id'] if current else None,'rule_id':f['rule_id'],**(inherit_decision(f['decision'],current,mapping) if current else {'state':'新版无对应决策，原确认失效','inherited':False})})
+    finalize_review_decisions(result)
+    emit('写出比较结果')
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
     (output/'lighting_candidates.json').write_text(json.dumps(new_lights,ensure_ascii=False,indent=2),encoding='utf-8')
     from .lighting import write_dxf
@@ -413,3 +448,31 @@ def write_impact_report(result,path):
         body+=f'<p>{e(row["room_name"])}：<b>{e(row["state"])}</b>。{e(row["reason"])}；原复核人{e(row["engineer_reviewed"]["reviewed_by"])}，日期{e(row["engineer_reviewed"]["reviewed_date"])}。</p>'
     body+='<p>本单不修改原图，不代替工程师判断；未识别对象的变化不在当前覆盖范围。</p>'
     Path(path).write_text('<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>提资变更影响单</title><style>body{font:16px/1.7 "Microsoft YaHei",sans-serif;background:#f5f7fb;color:#21334c;max-width:1050px;margin:auto;padding:24px}details{background:white;padding:16px;border:1px solid #ccd7e7;border-radius:8px;margin:12px 0}summary{cursor:pointer;font-weight:bold}p{overflow-wrap:anywhere}</style>'+body+'</html>',encoding='utf-8')
+
+
+
+def finalize_review_decisions(result):
+    """复用原优先项/决策处理，供完整比较与仅复核重算共享。"""
+    from .priority import room_priorities
+    for c in result['changes']:
+        ref=c['new'] or c['old'];oid=(c['new'] or {}).get('id')
+        c['priorities']=room_priorities(oid,ref['name'],[f for f in result['new_check']['findings'] if oid in f['object_ids']],result,(c['old'] or {}).get('id')) if ref['type']=='space' else []
+    current_findings={f['id']:f for f in result['new_check']['findings']}
+    prior_findings={f['id']:f for f in result['old_check']['findings']}
+    for change in result['changes']:
+        for alert in change['priorities']:
+            for fid in alert['finding_ids']:
+                if fid not in current_findings:continue
+                finding=current_findings[fid];finding['priority_rank']=alert['rank'];finding['decision']['priority']=alert
+                finding['decision']['priority_evidence']={'old_drawing_sha256':result['old_hash'],'new_drawing_sha256':result['new_hash'],'change_id':change['id'],'prior_decision_ids':[prior_findings[i]['decision']['id'] for i in alert['finding_ids'] if i in prior_findings]}
+    from .decisions import inherit_decision
+    new_decisions={(f['rule_id'],tuple(f['object_ids'])):f['decision'] for f in result['new_check']['findings']}
+    result['decision_inheritance']=[]
+    shared_reviews={r['old_decision_id']:r for r in result['review_inheritance']}
+    for f in result['old_check']['findings']:
+        mapped=tuple(result['object_mapping'].get(i) for i in f['object_ids'])
+        current=new_decisions.get((f['rule_id'],mapped))
+        shared=shared_reviews.get(f['decision']['id'])
+        outcome=({k:shared[k] for k in ('policy_version','status','state','reason','inherited','requires_confirmation','confirmation_available') } | ({k:shared[k] for k in ('engineer','identity_confirmation') if k in shared})) if shared else inherit_decision(f['decision'],current,result['object_mapping'])
+        if outcome['inherited'] and current and not shared:current['engineer']=outcome['engineer'];current['sign_off_state']='原范围工具结果核对已继承，非整图签字'
+        result['decision_inheritance'].append({'old_decision_id':f['decision']['id'],'new_decision_id':current['id'] if current else None,'rule_id':f['rule_id'],**outcome})

@@ -3,6 +3,8 @@
 from typing import Literal
 from pathlib import Path
 import gzip
+from contextlib import contextmanager
+from contextvars import ContextVar
 from pydantic import BaseModel, ConfigDict
 
 Decision = Literal["accepted", "review", "rejected"]
@@ -214,13 +216,62 @@ class L3(Snapshot):
 
 FILENAMES = {L1: "cad-primitives.v1.json", L2: "building-geometry.v1.json", L3: "building-semantics.v1.json"}
 
+_snapshot_cache = ContextVar('snapshot_cache', default=None)
+
+
+@contextmanager
+def snapshot_session(shared_cache=None):
+    """默认仅单任务复用；跨任务由工作台输入哈希守卫显式提供私有缓存。"""
+    current=_snapshot_cache.get()
+    if current is not None and shared_cache is not None and current is not shared_cache:
+        raise ValueError("不能混用两个只读快照会话")
+    if current is not None:
+        yield
+        return
+    token = _snapshot_cache.set({} if shared_cache is None else shared_cache)
+    try:yield
+    finally:_snapshot_cache.reset(token)
+
+
+def session_memo(namespace,key,signature,build):
+    """只读任务内的派生依赖复用；由调用者复制可变结果，依赖变化时拒绝混用。"""
+    cache=_snapshot_cache.get()
+    if cache is None:return build()
+    cache_key=(namespace,key)
+    if cache_key in cache:
+        prior,value=cache[cache_key]
+        if prior!=signature:raise ValueError('计算过程中依赖文件发生变化，请重新运行')
+        return value
+    value=build();cache[cache_key]=(signature,value)
+    return value
+
+
 def load(directory: str | Path, model= L3):
     directory = Path(directory)
     if not directory.is_dir():
         raise ValueError("数据目录不存在")
     path=directory / FILENAMES[model]
-    if path.is_file():
-        payload=path.read_bytes()
-    else:
-        payload=gzip.decompress(path.with_name(path.name+".gz").read_bytes())
-    return model.model_validate_json(payload)
+    compressed = not path.is_file()
+    if compressed:path=path.with_name(path.name+".gz")
+    stat=path.stat();signature=(str(path.resolve()),stat.st_mtime_ns,stat.st_size)
+    cache=_snapshot_cache.get();key=(str(directory.resolve()),model)
+    if cache is not None and key in cache:
+        prior,value=cache[key]
+        if prior!=signature:raise ValueError("计算过程中扫描文件发生变化，请重新运行")
+        return value
+    payload=path.read_bytes()
+    if compressed:payload=gzip.decompress(payload)
+    value=model.model_validate_json(payload)
+    stat=path.stat()
+    if (str(path.resolve()),stat.st_mtime_ns,stat.st_size)!=signature:raise ValueError("读取过程中扫描文件发生变化，请重新运行")
+    if cache is not None:cache[key]=(signature,value)
+    return value
+
+
+def snapshot_digest(directory,model,data):
+    """已验证模型的序列化摘要；文件签名变化时仍拒绝在同一会话混用。"""
+    from .naming import digest
+    path=Path(directory)/FILENAMES[model]
+    if not path.is_file():path=path.with_name(path.name+'.gz')
+    stat=path.stat();signature=(str(path.resolve()),stat.st_mtime_ns,stat.st_size)
+    return session_memo('snapshot_digest',(str(Path(directory).resolve()),model),signature,lambda:digest(data.model_dump()))
