@@ -1,30 +1,96 @@
 {
+  "version": "v0.4.0-beta.1",
+  "exe_sha256": "47bd407c4f242069932582244448edf0b2fce2cf4e5fe5d48d2ffca407960194",
+  "source_kind": "本次公开分支最终比赛包本机浏览器实拍",
+  "css_viewport": [
+    1920,
+    1080
+  ],
   "images": [
     {
       "file": "project.png",
-      "sha256": "b4ae82a09cb245592eaf377fb7c0c973ac7c38521c87e236fd264c81e6d94cb9",
-      "caption": "2026-10-28 六项收口比赛候选：首页",
-      "source_kind": "既有公开示例比赛候选包实拍",
-      "processing": "字节原样复用；非本次公开分支新截图"
+      "source_size": [
+        2560,
+        1440
+      ],
+      "size": [
+        1920,
+        1080
+      ],
+      "processing": "仅裁浏览器截图外围空白；无缩放、无图面重绘",
+      "sha256": "135da2181f797d9693f384228bcc306113c630b312b2a3977d7a5bd8e042b727"
     },
     {
       "file": "changes.png",
-      "sha256": "94070afe9ac69aa969346d3c0406656d0addc2fca815264843cc85d2bc5ab350",
-      "caption": "2026-10-28 六项收口比赛候选：换版按房间",
-      "source_kind": "既有公开示例比赛候选包实拍",
-      "processing": "字节原样复用；非本次公开分支新截图"
+      "source_size": [
+        2560,
+        1440
+      ],
+      "size": [
+        1920,
+        1080
+      ],
+      "processing": "仅裁浏览器截图外围空白；无缩放、无图面重绘",
+      "sha256": "d3ae41c993358dac4a63692107a131d7742d0f9521b60d5ee78e94ea2c952aa8"
     },
     {
       "file": "ai.png",
-      "sha256": "88bec04a1a6ae7157ffc3f223ba88d9971e74c85dda0e63554e195dcf20dc633",
-      "caption": "2026-10-28 复核闭环R2比赛候选：AI意见对照",
-      "source_kind": "既有公开示例比赛候选包实拍",
-      "processing": "字节原样复用；非本次公开分支新截图"
+      "source_size": [
+        2560,
+        1440
+      ],
+      "size": [
+        1920,
+        1080
+      ],
+      "processing": "仅裁浏览器截图外围空白；无缩放、无图面重绘",
+      "sha256": "7a728a347738237d793a116a5ff5e0f4ce3c65a74ad91f0f5b4fbfe0dc5d6222"
+    },
+    {
+      "file": "before.png",
+      "source_size": [
+        2560,
+        1440
+      ],
+      "size": [
+        1920,
+        1080
+      ],
+      "processing": "仅裁浏览器截图外围空白；无缩放、无图面重绘",
+      "sha256": "3b02eb3645e1832ab8689f187dfe7374a036c93b8ad168b6847ead87c66dee7d"
+    },
+    {
+      "file": "after.png",
+      "source_size": [
+        2560,
+        1440
+      ],
+      "size": [
+        1920,
+        1080
+      ],
+      "processing": "仅裁浏览器截图外围空白；无缩放、无图面重绘",
+      "sha256": "f59c9ade62652a91110d4de16d91959e0129c2212974cf7631c21e4f3f96d968"
+    },
+    {
+      "file": "before-after.png",
+      "size": [
+        2680,
+        918
+      ],
+      "sources": [
+        "before.png",
+        "after.png"
+      ],
+      "crop": [
+        200,
+        143,
+        1540,
+        943
+      ],
+      "processing": "两个原始截图的图面区域并列，加版本标题；未重绘CAD内容",
+      "sha256": "1948584e081ef1702dfb0bf24e21dce00f57cf69612ac5a75c74e7a1242b3eba"
     }
   ],
-  "pending": [
-    "本次公开分支候选包四张最终实拍",
-    "改前/改后对照实拍"
-  ],
-  "boundary": "新包截图接口连续失败；既有实拍不作为本轮新截图验收。未使用含人工姓名或意见的复核截图。"
+  "boundary": "只用公开A/A-change；没有写人工确认。改前改后图源分别见before.png、after.png。"
 }

@@ -2,7 +2,7 @@
 
 工程 AI 成果可追溯与多层核验：在本机对照 CAD 扫描、版本变化与工程意见，让工程师看图复核并记录处理依据。
 
-[下载程序（Release）](https://github.com/paigu3571/GeomVerity/releases/tag/v0.4.0-beta.1) ｜ [演示视频（待录制）](#演示视频) ｜ [使用文档](docs/README.md)
+下载程序（[GitHub](https://github.com/paigu3571/GeomVerity/releases/tag/v0.4.0-beta.1)｜[Gitee](https://gitee.com/xiangle7/geom-verity/releases)） ｜ [演示视频（待录制）](#演示视频) ｜ [使用文档](docs/README.md)
 
 **打开公开示例 → 按房间看改动 → 对照 AI 意见与图纸 → 记录人工复核 → 导出证据包。**
 
@@ -12,9 +12,9 @@
 |---|---|
 | ![比赛候选包：首页](docs/images/v0.4/project.png) | ![比赛候选包：换版按房间](docs/images/v0.4/changes.png) |
 | AI 说的与图纸实际 | 同一图纸改前与改后 |
-| ![比赛候选包：AI意见对照](docs/images/v0.4/ai.png) | 改前/改后实拍待补（不使用已知灯具显示有误的旧图） |
+| ![比赛候选包：AI意见对照](docs/images/v0.4/ai.png) | ![最终比赛包：同房间改前改后](docs/images/v0.4/before-after.png) |
 
-以上三张为10/28既有比赛候选包的公开示例实拍，来源见[图片清单](docs/images/v0.4/provenance.json)。本次公开分支新包截图暂未取得，四张最终实拍仍待补，维护者已批准按当前资料发布预览版。程序条数是候选记录数，不能当作人工改动数、识别准确率或整图合规结论。
+以上四张来自本次公开分支最终比赛包的公开示例实拍，来源与摘要见[图片清单](docs/images/v0.4/provenance.json)。改前/改后由两版各自定位同一房间的实拍并列，非像素差分；实验灯具已隐藏，不代表设计审查通过。程序条数是候选记录数，不能当作人工改动数、识别准确率或整图合规结论。
 
 ## 快速开始（Windows）
 
