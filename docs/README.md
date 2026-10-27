@@ -1,12 +1,15 @@
 # 文档导航
 
-| 主题 | 文档 |
+| 需要做什么 | 入口 |
 |---|---|
-| 分层与证据 | [架构](architecture/engine.md)、[换版分析](architecture/change-analysis.md)、[路线图](architecture/roadmap.md)、[可追溯方法](architecture/traceability.md)、[愿景图](architecture/vision.svg) |
-| 接口 | [SDK](api/sdk.md)、[CLI](api/cli.md)、[MCP](api/mcp.md)、[字段契约](api/schema.md) |
-| 开发与CAD | [开发环境](guides/development.md)、[CAD构建](guides/cad-build.md)、[图纸适配与贡献](guides/drawing-adaptation.md)、[L1回放](guides/replay.md) |
-| 专业规则 | [规范出处](guides/rule-references.md)、[规则贡献](guides/rule-contribution.md)、[标注](guides/annotation.md) |
-| 运行验收 | [离线演示](acceptance/demo.md)、[数据](acceptance/data.md)、[规则](acceptance/rules.md)、[规则来源核对](acceptance/rule-provenance.md)、[变化](acceptance/changes.md)、[AI](acceptance/ai.md)、[证据](acceptance/evidence.md)、[接口](acceptance/interfaces.md)、[CAD定位](acceptance/cad-location.md) |
-| 提交材料 | [作品说明](submission/work-description.md)、[演示脚本](submission/video-script.md) |
+| 下载、启动、看四张截图 | [项目首页](../README.md) |
+| 按房间完成一次复核 | [工作台上手](guides/workbench.md)、[换版与复核](guides/workbench-changes.md) |
+| 看真实能力与局限 | [能力状态](status.md)、[已知局限](guides/limitations.md) |
+| 核对本次候选验收 | [发布检查](acceptance/release-0.4.md) |
+| CAD采集与适配 | [CAD构建](guides/cad-build.md)、[图纸适配](guides/drawing-adaptation.md)、[回放](guides/replay.md) |
+| CLI/SDK/MCP | [CLI](api/cli.md)、[SDK](api/sdk.md)、[只读MCP](api/mcp.md)、[逐条主张](api/claims-check.md) |
+| 理解确认与证据 | [确认继承](mechanisms/confirmation-inheritance.md)、[证据包](mechanisms/evidence-bundle.md) |
+| 扩展与贡献 | [扩展指南](guides/extending.md)、[贡献规则](../CONTRIBUTING.md)、[规范来源](guides/rule-references.md) |
+| 架构 | [分层核心](architecture/engine.md)、[工作台前端](architecture/frontend.md) |
 
-生成结果在dist，测试样例在samples，评测证据在eval。第三方原许可在licenses。
+旧验收文档描述其当时版本，不能替代本轮发布检查。输出位于dist，公开样例位于samples。第三方声明见[NOTICE](../NOTICE)。
