@@ -4,7 +4,9 @@
 
 **工程 AI 成果可追溯与多层核验的开源框架及工作台。** 图纸改版后，找出哪些旧确认依赖了被改动的门、墙、房间，提醒工程师复核；AI 写的工程意见，拿回当前图纸数据核对。CAD 换版复核是当前验证场景，最终专业判断由工程师负责。
 
-[下载 Windows 程序 · GitHub](https://github.com/paigu3571/GeomVerity/releases/tag/v0.4.0-beta.1) ｜ [国内下载 · Gitee](https://gitee.com/xiangle7/geom-verity/releases) ｜ [上手指南](docs/guides/workbench.md) ｜ [开发与接口文档](docs/README.md)
+[免安装网页演示 · v0.3.2](https://paigu3571.github.io/GeomVerity/) ｜ [下载 Windows 程序 · GitHub](https://github.com/paigu3571/GeomVerity/releases/tag/v0.4.0-beta.1) ｜ [国内下载 · Gitee](https://gitee.com/xiangle7/geom-verity/releases) ｜ [上手指南](docs/guides/workbench.md) ｜ [开发与接口文档](docs/README.md)
+
+网页演示保留 v0.3.2 的静态交互示例，浏览器即可打开；v0.4.0-beta.1 完整工作台使用 Windows 下载版。
 
 **北京赛比赛版本：v0.4.0-beta.1，已于 2026-10-28 公开发布。** 两端均可下载；“预览版 / Pre-release”表示软件成熟度，并非尚未公开。当前保留此版本参赛，不把发布等同于完成通用性或专业验收。
 
@@ -130,3 +132,4 @@ python -m cst.desktop
 作者与维护者：**张田**，建筑电气设计工程师。专业同事参与规则验证与功能测试；个人开源项目与单位业务采用分别认定。源码采用 [MPL-2.0](LICENSE)，第三方组件与来源见 [NOTICE](NOTICE)，请保留原作者与许可证。公开包不分发商业 CAD 组件或原始 DWG。
 
 **AI 可以查，工程师作专业判断。让每一个判断都有出处。**
+
